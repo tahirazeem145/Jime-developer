@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   Menu, 
   X, 
@@ -14,6 +14,25 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [servicesHovered, setServicesHovered] = useState(false);
+  const hoverTimeoutRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    setServicesHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    hoverTimeoutRef.current = setTimeout(() => {
+      setServicesHovered(false);
+    }, 150);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    };
+  }, []);
 
   // 2 on left, 2 on right
   const leftServices = [
@@ -50,9 +69,9 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Full screen backdrop blur overlay when focusing / hovering on Services */}
+      {/* Silky 2-Second Full-Screen Backdrop Blur */}
       <div 
-        className={`fixed inset-0 bg-[#0B0F0C]/70 backdrop-blur-md z-40 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none ${
+        className={`fixed inset-0 bg-[#0B0F0C]/75 backdrop-blur-md z-40 transition-all duration-[2000ms] ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none ${
           servicesHovered ? 'opacity-100' : 'opacity-0'
         }`} 
       />
@@ -81,22 +100,30 @@ export default function Navbar() {
                 <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-accent-lime transition-all duration-500 ease-out group-hover:w-full rounded-full" />
               </a>
 
-              {/* Services with 2x2 Mega-Dropdown & Background Blur */}
+              {/* Services with 2x2 Mega-Dropdown & Controlled Smooth Hover */}
               <div 
-                className="relative group py-5"
-                onMouseEnter={() => setServicesHovered(true)}
-                onMouseLeave={() => setServicesHovered(false)}
+                className="relative py-5"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
               >
                 <button
                   type="button"
-                  className="flex items-center gap-1.5 text-muted-text group-hover:text-main-text text-[14px] font-inter font-medium tracking-wide transition-colors duration-300 focus:outline-none"
+                  className="flex items-center gap-1.5 text-muted-text hover:text-main-text text-[14px] font-inter font-medium tracking-wide transition-colors duration-500 focus:outline-none"
                 >
-                  <span className={servicesHovered ? 'text-accent-lime font-semibold' : ''}>Services</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${servicesHovered ? 'rotate-180 text-accent-lime' : 'text-muted-text/80'}`} />
+                  <span className={`transition-colors duration-500 ${servicesHovered ? 'text-accent-lime font-semibold' : ''}`}>
+                    Services
+                  </span>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-[2000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${servicesHovered ? 'rotate-180 text-accent-lime' : 'text-muted-text/80'}`} />
                 </button>
 
-                {/* Big 2x2 Mega Dropdown Menu with Silky Smooth Eased Animation */}
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 translate-y-4 scale-[0.98] pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform">
+                {/* Big 2x2 Mega Dropdown Menu with 2-Second Silky Smooth Eased Animation */}
+                <div 
+                  className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-[2000ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${
+                    servicesHovered 
+                      ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto' 
+                      : 'opacity-0 translate-y-4 scale-[0.97] pointer-events-none'
+                  }`}
+                >
                   <div className="w-[580px] sm:w-[620px] lg:w-[660px] p-4 rounded-2xl bg-[#0E1711]/95 backdrop-blur-2xl border border-[#1A2E1F] shadow-[0_20px_60px_rgba(0,0,0,0.85),0_0_30px_rgba(167,243,160,0.1)]">
                     
                     {/* Header bar inside mega menu */}
@@ -121,15 +148,15 @@ export default function Navbar() {
                               href={item.href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-start gap-3.5 p-3 rounded-xl bg-[#121E15]/60 hover:bg-[#16291C] border border-[#1A2E1F]/80 hover:border-[#A7F3A0]/40 transition-all duration-200 group/item hover:shadow-[0_0_20px_rgba(167,243,160,0.08)]"
+                              className="flex items-start gap-3.5 p-3 rounded-xl bg-[#121E15]/60 hover:bg-[#16291C] border border-[#1A2E1F]/80 hover:border-[#A7F3A0]/40 transition-all duration-300 group/item hover:shadow-[0_0_20px_rgba(167,243,160,0.08)]"
                             >
-                              <div className="w-10 h-10 rounded-lg bg-[#152B1B] border border-[#1E3E27] flex items-center justify-center flex-shrink-0 group-hover/item:border-[#A7F3A0]/50 group-hover/item:bg-[#1D4726] shadow-[0_2px_10px_rgba(0,0,0,0.3)] transition-all duration-200">
-                                <Icon className="w-5 h-5 text-accent-lime transition-transform duration-200 group-hover/item:scale-110" />
+                              <div className="w-10 h-10 rounded-lg bg-[#152B1B] border border-[#1E3E27] flex items-center justify-center flex-shrink-0 group-hover/item:border-[#A7F3A0]/50 group-hover/item:bg-[#1D4726] shadow-[0_2px_10px_rgba(0,0,0,0.3)] transition-all duration-300">
+                                <Icon className="w-5 h-5 text-accent-lime transition-transform duration-300 group-hover/item:scale-110" />
                               </div>
                               <div className="flex-1 text-left min-w-0">
                                 <div className="font-sora font-semibold text-[14px] text-main-text group-hover/item:text-accent-lime transition-colors flex items-center justify-between">
                                   <span className="truncate">{item.title}</span>
-                                  <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200 text-accent-lime flex-shrink-0" />
+                                  <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 text-accent-lime flex-shrink-0" />
                                 </div>
                                 <p className="text-[12px] text-muted-text font-inter mt-0.5 line-clamp-2 leading-snug">
                                   {item.desc}
@@ -150,15 +177,15 @@ export default function Navbar() {
                               href={item.href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-start gap-3.5 p-3 rounded-xl bg-[#121E15]/60 hover:bg-[#16291C] border border-[#1A2E1F]/80 hover:border-[#A7F3A0]/40 transition-all duration-200 group/item hover:shadow-[0_0_20px_rgba(167,243,160,0.08)]"
+                              className="flex items-start gap-3.5 p-3 rounded-xl bg-[#121E15]/60 hover:bg-[#16291C] border border-[#1A2E1F]/80 hover:border-[#A7F3A0]/40 transition-all duration-300 group/item hover:shadow-[0_0_20px_rgba(167,243,160,0.08)]"
                             >
-                              <div className="w-10 h-10 rounded-lg bg-[#152B1B] border border-[#1E3E27] flex items-center justify-center flex-shrink-0 group-hover/item:border-[#A7F3A0]/50 group-hover/item:bg-[#1D4726] shadow-[0_2px_10px_rgba(0,0,0,0.3)] transition-all duration-200">
-                                <Icon className="w-5 h-5 text-accent-lime transition-transform duration-200 group-hover/item:scale-110" />
+                              <div className="w-10 h-10 rounded-lg bg-[#152B1B] border border-[#1E3E27] flex items-center justify-center flex-shrink-0 group-hover/item:border-[#A7F3A0]/50 group-hover/item:bg-[#1D4726] shadow-[0_2px_10px_rgba(0,0,0,0.3)] transition-all duration-300">
+                                <Icon className="w-5 h-5 text-accent-lime transition-transform duration-300 group-hover/item:scale-110" />
                               </div>
                               <div className="flex-1 text-left min-w-0">
                                 <div className="font-sora font-semibold text-[14px] text-main-text group-hover/item:text-accent-lime transition-colors flex items-center justify-between">
                                   <span className="truncate">{item.title}</span>
-                                  <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200 text-accent-lime flex-shrink-0" />
+                                  <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 text-accent-lime flex-shrink-0" />
                                 </div>
                                 <p className="text-[12px] text-muted-text font-inter mt-0.5 line-clamp-2 leading-snug">
                                   {item.desc}
@@ -242,7 +269,7 @@ export default function Navbar() {
                   className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-muted-text hover:text-main-text hover:bg-[#1A2E1F]/40 text-base font-medium transition-colors"
                 >
                   <span>Services</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileServicesOpen ? 'rotate-180 text-accent-lime' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileServicesOpen ? 'rotate-180 text-accent-lime' : ''}`} />
                 </button>
 
                 {mobileServicesOpen && (
