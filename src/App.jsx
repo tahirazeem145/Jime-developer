@@ -14,7 +14,7 @@ export default function App() {
       <Navbar />
 
       {/* Main Hero Section */}
-      <main className="flex-grow flex items-center justify-center">
+      <main className="flex-grow flex items-center justify-center pt-20">
         <Hero />
       </main>
 
