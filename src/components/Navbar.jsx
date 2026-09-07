@@ -52,7 +52,7 @@ export default function Navbar() {
     <>
       {/* Full screen backdrop blur overlay when focusing / hovering on Services */}
       <div 
-        className={`fixed inset-0 bg-[#0B0F0C]/65 backdrop-blur-md z-40 transition-all duration-300 pointer-events-none ${
+        className={`fixed inset-0 bg-[#0B0F0C]/70 backdrop-blur-md z-40 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none ${
           servicesHovered ? 'opacity-100' : 'opacity-0'
         }`} 
       />
@@ -62,7 +62,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-20">
             {/* Logo on the left */}
             <div className="flex items-center gap-3">
-              <a href="#" className="flex items-center group transition-transform duration-200 hover:scale-[1.02]">
+              <a href="#" className="flex items-center group transition-transform duration-300 hover:scale-[1.02]">
                 <img
                   src="/assets/jime-logo-brand.png"
                   alt="Jime Developers"
@@ -75,10 +75,10 @@ export default function Navbar() {
             <nav className="hidden md:flex items-center gap-7 lg:gap-9">
               <a
                 href="#home"
-                className="text-muted-text hover:text-main-text text-[14px] font-inter font-medium tracking-wide transition-colors relative py-1 group"
+                className="text-muted-text hover:text-main-text text-[14px] font-inter font-medium tracking-wide transition-colors duration-300 relative py-1 group"
               >
                 Home
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-accent-lime transition-all duration-300 group-hover:w-full rounded-full" />
+                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-accent-lime transition-all duration-500 ease-out group-hover:w-full rounded-full" />
               </a>
 
               {/* Services with 2x2 Mega-Dropdown & Background Blur */}
@@ -89,14 +89,14 @@ export default function Navbar() {
               >
                 <button
                   type="button"
-                  className="flex items-center gap-1.5 text-muted-text group-hover:text-main-text text-[14px] font-inter font-medium tracking-wide transition-colors focus:outline-none"
+                  className="flex items-center gap-1.5 text-muted-text group-hover:text-main-text text-[14px] font-inter font-medium tracking-wide transition-colors duration-300 focus:outline-none"
                 >
                   <span className={servicesHovered ? 'text-accent-lime font-semibold' : ''}>Services</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${servicesHovered ? 'rotate-180 text-accent-lime' : 'text-muted-text/80'}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${servicesHovered ? 'rotate-180 text-accent-lime' : 'text-muted-text/80'}`} />
                 </button>
 
-                {/* Big 2x2 Mega Dropdown Menu */}
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 translate-y-3 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 ease-out">
+                {/* Big 2x2 Mega Dropdown Menu with Silky Smooth Eased Animation */}
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 translate-y-4 scale-[0.98] pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform">
                   <div className="w-[580px] sm:w-[620px] lg:w-[660px] p-4 rounded-2xl bg-[#0E1711]/95 backdrop-blur-2xl border border-[#1A2E1F] shadow-[0_20px_60px_rgba(0,0,0,0.85),0_0_30px_rgba(167,243,160,0.1)]">
                     
                     {/* Header bar inside mega menu */}
