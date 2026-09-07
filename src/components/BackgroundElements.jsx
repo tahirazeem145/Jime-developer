@@ -140,31 +140,33 @@ export default function BackgroundElements() {
         </svg>
       </div>
 
-      {/* LARGE CURVED / PARTIAL CIRCULAR LINE ON LOWER-LEFT */}
-      <div className="absolute left-[-15%] sm:left-[-8%] bottom-[-5%] sm:bottom-[2%] w-[450px] sm:w-[650px] lg:w-[850px] h-[450px] sm:h-[650px] lg:h-[850px] pointer-events-none opacity-40 sm:opacity-55">
+      {/* SUBTLE CURVED ARC ON LOWER-LEFT WITH 4-POINT SPARKLE STAR (MATCHING REFERENCE) */}
+      <div className="absolute left-[-6%] sm:left-[0%] bottom-[8%] sm:bottom-[14%] w-[360px] sm:w-[500px] lg:w-[620px] h-[360px] sm:h-[500px] lg:h-[620px] pointer-events-none opacity-65 sm:opacity-85">
         <svg
-          viewBox="0 0 800 800"
+          viewBox="0 0 600 600"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="w-full h-full"
         >
           <defs>
-            <linearGradient id="arcGradient" x1="100" y1="700" x2="700" y2="100" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#A7F3A0" stopOpacity="0" />
-              <stop offset="25%" stopColor="#A7F3A0" stopOpacity="0.45" />
-              <stop offset="50%" stopColor="#2E6B3F" stopOpacity="0.75" />
-              <stop offset="75%" stopColor="#A7F3A0" stopOpacity="0.25" />
-              <stop offset="100%" stopColor="#1A2E1F" stopOpacity="0" />
-            </linearGradient>
-            
-            <linearGradient id="arcInnerGradient" x1="200" y1="650" x2="650" y2="200" gradientUnits="userSpaceOnUse">
+            <linearGradient id="arcLineGradient" x1="0" y1="420" x2="520" y2="160" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#1A2E1F" stopOpacity="0" />
-              <stop offset="40%" stopColor="#A7F3A0" stopOpacity="0.2" />
-              <stop offset="80%" stopColor="#1A2E1F" stopOpacity="0" />
+              <stop offset="25%" stopColor="#2E6B3F" stopOpacity="0.5" />
+              <stop offset="60%" stopColor="#A7F3A0" stopOpacity="0.9" />
+              <stop offset="88%" stopColor="#4E975F" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#1A2E1F" stopOpacity="0" />
             </linearGradient>
 
             <filter id="arcGlowFilter" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="4" result="blur" />
+              <feGaussianBlur stdDeviation="2.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+
+            <filter id="sparkleGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="5" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
@@ -172,35 +174,30 @@ export default function BackgroundElements() {
             </filter>
           </defs>
 
-          {/* Primary Main Curved Arc */}
-          <circle
-            cx="400"
-            cy="400"
-            r="320"
-            stroke="url(#arcGradient)"
-            strokeWidth="1.8"
-            strokeDasharray="14 10 180 8 300 20"
+          {/* Smooth Partial Arc Segment (No full circle) */}
+          <path
+            d="M 0,420 A 460,460 0 0,1 500,170"
+            stroke="url(#arcLineGradient)"
+            strokeWidth="1.6"
+            strokeLinecap="round"
             filter="url(#arcGlowFilter)"
           />
 
-          {/* Fainter concentric orbital arc */}
-          <circle
-            cx="400"
-            cy="400"
-            r="370"
-            stroke="url(#arcInnerGradient)"
-            strokeWidth="1"
-            strokeDasharray="4 8"
-          />
-
-          {/* Tiny glowing beacon node on arc */}
-          <circle 
-            cx="580" 
-            cy="170" 
-            r="3.5" 
-            fill="#A7F3A0" 
-            filter="drop-shadow(0 0 6px #A7F3A0)" 
-          />
+          {/* 4-Point Star Sparkle positioned just above the curve */}
+          <g transform="translate(320, 115)">
+            {/* Ambient soft glow aura */}
+            <circle cx="0" cy="0" r="14" fill="#A7F3A0" opacity="0.3" filter="url(#sparkleGlow)" />
+            
+            {/* 4-point star shape */}
+            <path
+              d="M 0 -15 Q 0 0 15 0 Q 0 0 0 15 Q 0 0 -15 0 Q 0 0 0 -15 Z"
+              fill="#D6FBD4"
+              filter="drop-shadow(0 0 7px rgba(167, 243, 160, 0.9))"
+            />
+            
+            {/* Bright inner core */}
+            <circle cx="0" cy="0" r="1.8" fill="#FFFFFF" />
+          </g>
         </svg>
       </div>
 
