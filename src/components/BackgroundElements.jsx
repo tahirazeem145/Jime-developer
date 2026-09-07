@@ -140,24 +140,24 @@ export default function BackgroundElements() {
         </svg>
       </div>
 
-      {/* SUBTLE CURVED ARC & SPARKLE STAR IN BOTTOM-LEFT CORNER */}
-      <div className="absolute left-0 bottom-0 w-[280px] sm:w-[380px] lg:w-[480px] h-[280px] sm:h-[380px] lg:h-[480px] pointer-events-none opacity-70 sm:opacity-85 z-0">
+      {/* LEFT CORNER CURVED ARC & 4-POINT SPARKLE STAR (EXACTLY MATCHING REFERENCE) */}
+      <div className="absolute left-0 top-[52%] -translate-y-1/2 w-[340px] sm:w-[480px] lg:w-[620px] h-[450px] sm:h-[580px] lg:h-[700px] pointer-events-none opacity-75 sm:opacity-90 z-0">
         <svg
-          viewBox="0 0 500 500"
+          viewBox="0 0 600 700"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="w-full h-full"
         >
           <defs>
-            <linearGradient id="arcLineGradient" x1="0" y1="320" x2="380" y2="500" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#1A2E1F" stopOpacity="0" />
-              <stop offset="20%" stopColor="#2E6B3F" stopOpacity="0.4" />
-              <stop offset="55%" stopColor="#A7F3A0" stopOpacity="0.85" />
-              <stop offset="85%" stopColor="#4E975F" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#1A2E1F" stopOpacity="0" />
+            <linearGradient id="leftArcGradient" x1="0" y1="360" x2="340" y2="680" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#1A2E1F" stopOpacity="0.2" />
+              <stop offset="25%" stopColor="#357845" stopOpacity="0.65" />
+              <stop offset="60%" stopColor="#A7F3A0" stopOpacity="0.95" />
+              <stop offset="90%" stopColor="#2E6B3F" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="#0B0F0C" stopOpacity="0" />
             </linearGradient>
 
-            <filter id="arcGlowFilter" x="-20%" y="-20%" width="140%" height="140%">
+            <filter id="arcGlow" x="-20%" y="-20%" width="140%" height="140%">
               <feGaussianBlur stdDeviation="2.5" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
@@ -165,8 +165,8 @@ export default function BackgroundElements() {
               </feMerge>
             </filter>
 
-            <filter id="sparkleGlow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="5" result="blur" />
+            <filter id="starGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="6" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
@@ -174,23 +174,23 @@ export default function BackgroundElements() {
             </filter>
           </defs>
 
-          {/* Smooth Partial Arc in Bottom-Left Corner */}
+          {/* Smooth Elegant Arc Line sweeping down-right */}
           <path
-            d="M 0,330 A 380,380 0 0,1 360,500"
-            stroke="url(#arcLineGradient)"
+            d="M -10,360 C 130,370 270,440 330,680"
+            stroke="url(#leftArcGradient)"
             strokeWidth="1.6"
             strokeLinecap="round"
-            filter="url(#arcGlowFilter)"
+            filter="url(#arcGlow)"
           />
 
-          {/* 4-Point Star Sparkle positioned above the corner curve */}
-          <g transform="translate(210, 280)">
+          {/* 4-Point Star Sparkle positioned above the arc */}
+          <g transform="translate(175, 415)">
             {/* Ambient soft glow aura */}
-            <circle cx="0" cy="0" r="14" fill="#A7F3A0" opacity="0.35" filter="url(#sparkleGlow)" />
+            <circle cx="0" cy="0" r="16" fill="#A7F3A0" opacity="0.3" filter="url(#starGlow)" />
             
             {/* 4-point star shape */}
             <path
-              d="M 0 -14 Q 0 0 14 0 Q 0 0 0 14 Q 0 0 -14 0 Q 0 0 0 -14 Z"
+              d="M 0 -15 Q 0 0 15 0 Q 0 0 0 15 Q 0 0 -15 0 Q 0 0 0 -15 Z"
               fill="#D6FBD4"
               filter="drop-shadow(0 0 8px rgba(167, 243, 160, 0.95))"
             />

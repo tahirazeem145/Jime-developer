@@ -19,17 +19,30 @@ export default function Navbar() {
           {/* Logo on the left */}
           <div className="flex items-center gap-3">
             <a href="#" className="flex items-center gap-3 group">
-              {/* Clean JD Monogram Mark */}
-              <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-[#1A2E1F] to-[#0E1B12] border border-[#A7F3A0]/30 flex items-center justify-center shadow-[0_0_15px_rgba(167,243,160,0.15)] group-hover:border-[#A7F3A0]/70 group-hover:shadow-lime-glow transition-all duration-300">
-                <span className="font-sora font-extrabold text-accent-lime text-base tracking-tighter">
-                  JD
-                </span>
-                <span className="absolute -top-1 -right-1 w-2 h-2 bg-accent-lime rounded-full animate-ping opacity-75" />
-                <span className="absolute -top-1 -right-1 w-2 h-2 bg-accent-lime rounded-full" />
+              {/* Fluid JD Ribbon Monogram Mark */}
+              <div className="flex items-center justify-center">
+                <svg className="w-9 h-9" viewBox="0 0 36 36" fill="none">
+                  <path
+                    d="M12 8C7.58 8 4 11.58 4 16C4 20.42 7.58 24 12 24H18V12C18 9.79 19.79 8 22 8C24.21 8 26 9.79 26 12V24C26 26.21 24.21 28 22 28H12C5.37 28 0 22.63 0 16C0 9.37 5.37 4 12 4H22C28.63 4 34 9.37 34 16C34 22.63 28.63 28 22 28V24C26.42 24 30 20.42 30 16C30 11.58 26.42 8 22 8H12Z"
+                    fill="url(#jdLogoGradient)"
+                  />
+                  <defs>
+                    <linearGradient id="jdLogoGradient" x1="0" y1="4" x2="34" y2="28" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#A7F3A0" />
+                      <stop offset="50%" stopColor="#6BC27B" />
+                      <stop offset="100%" stopColor="#D2FAD0" />
+                    </linearGradient>
+                  </defs>
+                </svg>
               </div>
-              <span className="font-sora font-bold text-lg sm:text-xl text-main-text tracking-tight group-hover:text-white transition-colors">
-                Jime Developers
-              </span>
+              <div className="flex flex-col text-left">
+                <span className="font-sora font-bold text-[17px] leading-[1.15] text-main-text tracking-tight group-hover:text-white transition-colors">
+                  Jime
+                </span>
+                <span className="font-sora font-semibold text-[14px] leading-[1.15] text-main-text/90 tracking-tight">
+                  Developers
+                </span>
+              </div>
             </a>
           </div>
 
