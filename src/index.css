@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  
+  body {
+    background-color: #0B0F0C;
+    color: #F8FAF7;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Grid Effect for bottom of hero */
+.cyber-grid-bottom {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(26, 46, 31, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26, 46, 31, 0.25) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 100%, black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 100%, black 20%, transparent 100%);
+}
+
+/* Glassmorphic card styling */
+.glass-panel {
+  background: rgba(16, 23, 18, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(167, 243, 160, 0.12);
+}
+
+.glass-pill {
+  background: rgba(19, 29, 22, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(167, 243, 160, 0.15);
+}
+
+/* Star glowing effect */
+.gold-star {
+  filter: drop-shadow(0 0 4px rgba(250, 204, 21, 0.5));
+}
