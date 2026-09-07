@@ -164,14 +164,6 @@ export default function BackgroundElements() {
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
-
-            <filter id="starGlow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="6" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
           </defs>
 
           {/* Smooth Elegant Arc Line sweeping down-right */}
@@ -182,22 +174,6 @@ export default function BackgroundElements() {
             strokeLinecap="round"
             filter="url(#arcGlow)"
           />
-
-          {/* 4-Point Star Sparkle positioned above the arc */}
-          <g transform="translate(175, 415)">
-            {/* Ambient soft glow aura */}
-            <circle cx="0" cy="0" r="16" fill="#A7F3A0" opacity="0.3" filter="url(#starGlow)" />
-            
-            {/* 4-point star shape */}
-            <path
-              d="M 0 -15 Q 0 0 15 0 Q 0 0 0 15 Q 0 0 -15 0 Q 0 0 0 -15 Z"
-              fill="#D6FBD4"
-              filter="drop-shadow(0 0 8px rgba(167, 243, 160, 0.95))"
-            />
-            
-            {/* Bright inner core */}
-            <circle cx="0" cy="0" r="1.8" fill="#FFFFFF" />
-          </g>
         </svg>
       </div>
 
