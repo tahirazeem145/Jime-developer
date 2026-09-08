@@ -229,14 +229,14 @@ export const StackedCards = () => {
         });
       });
 
-      // Master scrub timeline
+      // Master scrub timeline with buttery easing
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: container,
           start: 'top top+=70',
           end: `+=${(cards.length - 1) * 1100}`,
           pin: true,
-          scrub: 1,
+          scrub: 1.2,
           anticipatePin: 1,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
@@ -256,7 +256,7 @@ export const StackedCards = () => {
             yPercent: 0,
             opacity: 0.2,
             filter: 'brightness(0.35)',
-            ease: 'power1.inOut',
+            ease: 'power2.inOut',
           },
           i
         ).to(
@@ -266,7 +266,7 @@ export const StackedCards = () => {
             scale: 1,
             opacity: 1,
             filter: 'brightness(1)',
-            ease: 'power1.inOut',
+            ease: 'power2.inOut',
           },
           i
         );
