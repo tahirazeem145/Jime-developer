@@ -13,10 +13,10 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Projects() {
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
-  const ctaContainerRef = useRef(null);
-  const ctaMetricsScreenRef = useRef(null);
   const metricsRef = useRef(null);
   const metricItemsRef = useRef([]);
+  const ctaSectionRef = useRef(null);
+  const ctaContentRef = useRef(null);
   const ctaBannerRef = useRef(null);
 
   useEffect(() => {
@@ -83,14 +83,14 @@ export default function Projects() {
         );
       }
 
-      // Pin the Metrics + CTA screen still when it reaches the viewport so it stays locked
+      // Pin the CTA screen still when it reaches the viewport so it stays locked
       // while the About section rises up from bottom to top and physically overlaps / replaces it!
-      if (ctaMetricsScreenRef.current && ctaContainerRef.current) {
+      if (ctaContentRef.current && ctaSectionRef.current) {
         ScrollTrigger.create({
-          trigger: ctaContainerRef.current,
+          trigger: ctaSectionRef.current,
           start: 'top 80px',
           end: 'bottom 80px',
-          pin: ctaMetricsScreenRef.current,
+          pin: ctaContentRef.current,
           pinSpacing: false,
           anticipatePin: 1,
           invalidateOnRefresh: true,
@@ -149,112 +149,110 @@ export default function Projects() {
         </div>
 
         {/* GSAP STACKING GLASS CARDS */}
-        <div className="mb-20 sm:mb-28">
+        <div className="mb-12 sm:mb-16">
           <StackedCards />
         </div>
 
-        {/* FULL-VIEWPORT CONTAINER THAT KEEPS ABOUT SECTION COMPLETELY OFFSCREEN INITIALLY */}
+        {/* FULL-VIEWPORT CTA & METRICS STAGE: PINNED DURING CURTAIN SCROLL FOR ABOUT SECTION */}
         <div 
-          ref={ctaContainerRef}
-          className="relative w-full min-h-[calc(100vh-80px)] flex flex-col justify-center py-6"
+          ref={ctaSectionRef} 
+          className="relative w-full min-h-[calc(100vh-80px)] flex flex-col justify-center items-center py-4 sm:py-6"
         >
-          {/* PINNED METRICS & CTA SCREEN (OVERLAPPED BY ABOUT SECTION) */}
           <div 
-            ref={ctaMetricsScreenRef} 
-            className="w-full flex flex-col justify-center will-change-transform opacity-100"
+            ref={ctaContentRef}
+            className="w-full max-w-5xl flex flex-col justify-center items-center gap-5 sm:gap-7 will-change-transform opacity-100"
           >
-          {/* BOTTOM METRICS STRIP */}
-          <div ref={metricsRef} className="rounded-3xl glass-card-bw bg-[#121214]/95 p-6 sm:p-10 mb-8 sm:mb-10 shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/20">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
-              
-              <div 
-                ref={(el) => (metricItemsRef.current[0] = el)}
-                className="flex flex-col items-center"
-              >
-                <span className="font-sora font-extrabold text-3xl sm:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
-                  15+
-                </span>
-                <span className="mt-1.5 text-xs sm:text-sm font-inter text-neutral-300 font-medium">
-                  Shipped Products
-                </span>
-              </div>
-
-              <div 
-                ref={(el) => (metricItemsRef.current[1] = el)}
-                className="flex flex-col items-center"
-              >
-                <span className="font-sora font-extrabold text-3xl sm:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
-                  99.8%
-                </span>
-                <span className="mt-1.5 text-xs sm:text-sm font-inter text-neutral-300 font-medium">
-                  On-Time Delivery
-                </span>
-              </div>
-
-              <div 
-                ref={(el) => (metricItemsRef.current[2] = el)}
-                className="flex flex-col items-center"
-              >
-                <span className="font-sora font-extrabold text-3xl sm:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
-                  100%
-                </span>
-                <span className="mt-1.5 text-xs sm:text-sm font-inter text-neutral-300 font-medium">
-                  Code Ownership
-                </span>
-              </div>
-
-              <div 
-                ref={(el) => (metricItemsRef.current[3] = el)}
-                className="flex flex-col items-center"
-              >
-                <span className="font-sora font-extrabold text-3xl sm:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
-                  5.0 ★
-                </span>
-                <span className="mt-1.5 text-xs sm:text-sm font-inter text-neutral-300 font-medium">
-                  Client Rating
-                </span>
-              </div>
-
-            </div>
-          </div>
-
-          {/* BOTTOM CTA CALLOUT */}
-          <div 
-            ref={ctaBannerRef}
-            className="relative rounded-3xl glass-card-bw bg-gradient-to-r from-[#18181b]/98 via-[#27272a]/98 to-[#18181b]/98 p-8 sm:p-12 text-center text-white overflow-hidden border border-white/25 shadow-[0_25px_60px_rgba(0,0,0,0.95)]"
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15)_0%,transparent_70%)] pointer-events-none" />
-            
-            <div className="relative z-10 max-w-2xl mx-auto">
-              <h3 className="font-sora font-bold text-2xl sm:text-3xl text-white">
-                Have a project you want to bring to life?
-              </h3>
-              <p className="mt-3 text-sm sm:text-base text-neutral-300 font-inter">
-                We turn concepts into market-dominating web platforms, applications, and e-commerce stores with agile velocity.
-              </p>
-              
-              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a
-                  href="#book-call"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white text-black font-sora font-semibold text-sm sm:text-[15px] hover:bg-neutral-200 hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
-                >
-                  <span>Start Your Project</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+            {/* BOTTOM METRICS STRIP */}
+            <div ref={metricsRef} className="w-full rounded-3xl glass-card-bw bg-[#121214]/95 p-5 sm:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/20">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 text-center">
                 
-                <a
-                  href="https://wa.me/919999999999" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-neutral-900/90 border border-white/25 hover:border-white/50 text-white font-sora font-semibold text-sm hover:bg-neutral-800 transition-all duration-200 backdrop-blur-sm"
+                <div 
+                  ref={(el) => (metricItemsRef.current[0] = el)}
+                  className="flex flex-col items-center"
                 >
-                  <span>Chat on WhatsApp</span>
-                  <ExternalLink className="w-4 h-4 text-neutral-300" />
-                </a>
+                  <span className="font-sora font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
+                    15+
+                  </span>
+                  <span className="mt-1 text-xs sm:text-sm font-inter text-neutral-300 font-medium">
+                    Shipped Products
+                  </span>
+                </div>
+
+                <div 
+                  ref={(el) => (metricItemsRef.current[1] = el)}
+                  className="flex flex-col items-center"
+                >
+                  <span className="font-sora font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
+                    99.8%
+                  </span>
+                  <span className="mt-1 text-xs sm:text-sm font-inter text-neutral-300 font-medium">
+                    On-Time Delivery
+                  </span>
+                </div>
+
+                <div 
+                  ref={(el) => (metricItemsRef.current[2] = el)}
+                  className="flex flex-col items-center"
+                >
+                  <span className="font-sora font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
+                    100%
+                  </span>
+                  <span className="mt-1 text-xs sm:text-sm font-inter text-neutral-300 font-medium">
+                    Code Ownership
+                  </span>
+                </div>
+
+                <div 
+                  ref={(el) => (metricItemsRef.current[3] = el)}
+                  className="flex flex-col items-center"
+                >
+                  <span className="font-sora font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
+                    5.0 ★
+                  </span>
+                  <span className="mt-1 text-xs sm:text-sm font-inter text-neutral-300 font-medium">
+                    Client Rating
+                  </span>
+                </div>
+
               </div>
             </div>
-          </div>
 
+            {/* BOTTOM CTA CALLOUT */}
+            <div 
+              ref={ctaBannerRef}
+              className="relative w-full rounded-3xl glass-card-bw bg-gradient-to-r from-[#18181b]/98 via-[#27272a]/98 to-[#18181b]/98 p-6 sm:p-10 text-center text-white overflow-hidden border border-white/25 shadow-[0_25px_60px_rgba(0,0,0,0.95)]"
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15)_0%,transparent_70%)] pointer-events-none" />
+              
+              <div className="relative z-10 max-w-2xl mx-auto">
+                <h3 className="font-sora font-bold text-xl sm:text-2xl md:text-3xl text-white">
+                  Have a project you want to bring to life?
+                </h3>
+                <p className="mt-2.5 text-xs sm:text-sm md:text-base text-neutral-300 font-inter">
+                  We turn concepts into market-dominating web platforms, applications, and e-commerce stores with agile velocity.
+                </p>
+                
+                <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
+                  <a
+                    href="#book-call"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3 sm:py-3.5 rounded-full bg-white text-black font-sora font-semibold text-xs sm:text-sm md:text-[15px] hover:bg-neutral-200 hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                  >
+                    <span>Start Your Project</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                  
+                  <a
+                    href="https://wa.me/919999999999" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-neutral-900/90 border border-white/25 hover:border-white/50 text-white font-sora font-semibold text-xs sm:text-sm hover:bg-neutral-800 transition-all duration-200 backdrop-blur-sm"
+                  >
+                    <span>Chat on WhatsApp</span>
+                    <ExternalLink className="w-4 h-4 text-neutral-300" />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
