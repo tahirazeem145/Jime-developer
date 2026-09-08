@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { 
   Code, 
   ShoppingBag, 
@@ -12,8 +12,19 @@ import {
   Clock, 
   ChevronRight
 } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Services() {
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const cardsGridRef = useRef(null);
+  const cardsRef = useRef([]);
+  const highlightsRef = useRef(null);
+  const highlightItemsRef = useRef([]);
+
   const services = [
     {
       id: 'web-dev',
@@ -108,8 +119,67 @@ export default function Services() {
     }
   ];
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Header scroll entrance
+      gsap.from(headerRef.current?.children || [], {
+        scrollTrigger: {
+          trigger: headerRef.current,
+          start: 'top 85%',
+          once: true,
+        },
+        opacity: 0,
+        y: 35,
+        stagger: 0.15,
+        duration: 0.8,
+        ease: 'power3.out',
+      });
+
+      // 2x2 Services Cards staggered scroll entrance
+      const validCards = cardsRef.current.filter(Boolean);
+      if (validCards.length > 0) {
+        gsap.from(validCards, {
+          scrollTrigger: {
+            trigger: cardsGridRef.current,
+            start: 'top 80%',
+            once: true,
+          },
+          opacity: 0,
+          y: 60,
+          scale: 0.95,
+          stagger: 0.16,
+          duration: 0.9,
+          ease: 'power3.out',
+        });
+      }
+
+      // Highlights strip scroll entrance
+      const validHighlights = highlightItemsRef.current.filter(Boolean);
+      if (validHighlights.length > 0) {
+        gsap.from(validHighlights, {
+          scrollTrigger: {
+            trigger: highlightsRef.current,
+            start: 'top 88%',
+            once: true,
+          },
+          opacity: 0,
+          y: 35,
+          stagger: 0.12,
+          duration: 0.75,
+          ease: 'power3.out',
+        });
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="services" className="relative z-10 py-20 sm:py-28 overflow-hidden">
+    <section 
+      id="services" 
+      ref={sectionRef}
+      className="relative z-10 py-20 sm:py-28 overflow-hidden"
+    >
       {/* Subtle Ambient Radial Glows */}
       <div 
         className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full opacity-15 blur-[120px] pointer-events-none"
@@ -127,7 +197,7 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* SECTION HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+        <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
           
           {/* Pill Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0D110F] border border-[#1A221E] text-[#66FF88] shadow-[0_2px_15px_rgba(0,0,0,0.5)] backdrop-blur-md mb-5 animate-fadeIn">
@@ -152,13 +222,14 @@ export default function Services() {
         </div>
 
         {/* 2x2 SERVICES GRID - GLASSMORPHIC CARDS */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-16 sm:mb-20">
+        <div ref={cardsGridRef} className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
               <div
                 key={service.id}
-                className="group relative rounded-3xl glass-card transition-all duration-500 overflow-hidden flex flex-col justify-between hover:-translate-y-1.5"
+                ref={(el) => (cardsRef.current[index] = el)}
+                className="group relative rounded-3xl glass-card transition-all duration-500 overflow-hidden flex flex-col justify-between hover:-translate-y-1.5 will-change-transform"
               >
                 {/* Top Ambient Glass Refraction Shimmer */}
                 <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-white/[0.06] via-[#66FF88]/[0.03] to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -247,12 +318,16 @@ export default function Services() {
         </div>
 
         {/* VALUE PROPOSITION / GUARANTEE HIGHLIGHTS */}
-        <div className="rounded-3xl glass-card p-6 sm:p-10">
+        <div ref={highlightsRef} className="rounded-3xl glass-card p-6 sm:p-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {highlights.map((item, idx) => {
               const HighlightIcon = item.icon;
               return (
-                <div key={idx} className="flex flex-col items-start gap-3">
+                <div 
+                  key={idx} 
+                  ref={(el) => (highlightItemsRef.current[idx] = el)}
+                  className="flex flex-col items-start gap-3 will-change-transform"
+                >
                   <div className="w-10 h-10 rounded-xl bg-[#121B15]/80 border border-[#1E2D23] flex items-center justify-center text-[#66FF88] shadow-[0_2px_10px_rgba(0,0,0,0.4)] backdrop-blur-md">
                     <HighlightIcon className="w-5 h-5" />
                   </div>
@@ -272,3 +347,4 @@ export default function Services() {
     </section>
   );
 }
+

@@ -1,11 +1,42 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function SectionDivider() {
+  const dividerRef = useRef(null);
+  const trackRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(trackRef.current, {
+        scrollTrigger: {
+          trigger: dividerRef.current,
+          start: 'top 90%',
+          once: true,
+        },
+        scaleX: 0,
+        opacity: 0,
+        duration: 1.2,
+        ease: 'power3.out',
+        transformOrigin: 'center center',
+      });
+    }, dividerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pointer-events-none z-10 overflow-hidden">
+    <div 
+      ref={dividerRef}
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pointer-events-none z-10 overflow-hidden"
+    >
       {/* Container Track */}
-      <div className="relative w-full h-[1px] bg-gradient-to-r from-transparent via-[#1D2E22] to-transparent flex items-center justify-center">
-        
+      <div 
+        ref={trackRef}
+        className="relative w-full h-[1px] bg-gradient-to-r from-transparent via-[#1D2E22] to-transparent flex items-center justify-center will-change-transform"
+      >
         {/* Animated Traveling Shooting Laser Beam 1 */}
         <div 
           className="absolute h-[1.8px] w-28 sm:w-44 bg-gradient-to-r from-transparent via-[#A7F3A0] to-transparent animate-laser-sweep shadow-[0_0_15px_rgba(167,243,160,0.9)]" 
@@ -28,3 +59,4 @@ export default function SectionDivider() {
     </div>
   );
 }
+

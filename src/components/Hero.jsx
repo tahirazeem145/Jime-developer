@@ -1,10 +1,74 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Mail, ArrowRight, Star, CheckCircle } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import BackgroundElements from './BackgroundElements';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+
+  const heroRef = useRef(null);
+  const badgeRef = useRef(null);
+  const headlineRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const ctaRef = useRef(null);
+  const statsRef = useRef(null);
+  const statsItemsRef = useRef([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Entrance Timeline on Page Load
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      tl.from(badgeRef.current, {
+        opacity: 0,
+        y: -25,
+        scale: 0.9,
+        duration: 0.8,
+        delay: 0.2,
+      })
+      .from(headlineRef.current, {
+        opacity: 0,
+        y: 35,
+        duration: 0.9,
+      }, '-=0.5')
+      .from(subtitleRef.current, {
+        opacity: 0,
+        y: 25,
+        duration: 0.8,
+      }, '-=0.6')
+      .from(ctaRef.current, {
+        opacity: 0,
+        y: 25,
+        scale: 0.97,
+        duration: 0.8,
+      }, '-=0.5')
+      .from(statsItemsRef.current.filter(Boolean), {
+        opacity: 0,
+        y: 30,
+        stagger: 0.15,
+        duration: 0.8,
+      }, '-=0.4');
+
+      // Subtle Scroll Parallax as Hero scrolls out of view
+      gsap.to([headlineRef.current, subtitleRef.current, ctaRef.current], {
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.2,
+        },
+        y: -40,
+        opacity: 0.35,
+        ease: 'none',
+      });
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,14 +82,18 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative z-10 pt-10 sm:pt-14 md:pt-18 pb-16 sm:pb-24 overflow-hidden">
+    <section 
+      id="home" 
+      ref={heroRef}
+      className="relative z-10 pt-10 sm:pt-14 md:pt-18 pb-16 sm:pb-24 overflow-hidden"
+    >
       {/* Background Graphic Visuals scoped strictly to Hero */}
       <BackgroundElements />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         {/* GOOGLE REVIEW BADGE */}
-        <div className="inline-flex items-center justify-center mb-6 sm:mb-8 animate-fadeIn">
+        <div ref={badgeRef} className="inline-flex items-center justify-center mb-6 sm:mb-8">
           <div className="inline-flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-[#131D16]/90 border border-[#1D2E22] hover:border-[#A7F3A0]/30 shadow-[0_2px_15px_rgba(0,0,0,0.4)] backdrop-blur-md transition-all">
             {/* Google Icon */}
             <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24">
@@ -73,7 +141,10 @@ export default function Hero() {
         </div>
 
         {/* MAIN HEADLINE */}
-        <h1 className="font-sora font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-[72px] leading-[1.08] tracking-[-0.03em] text-main-text max-w-4xl mx-auto">
+        <h1 
+          ref={headlineRef}
+          className="font-sora font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-[72px] leading-[1.08] tracking-[-0.03em] text-main-text max-w-4xl mx-auto will-change-transform"
+        >
           We turn your idea <br className="hidden sm:inline" />
           into a{' '}
           <span className="text-accent-lime italic font-extrabold inline-block tracking-tight drop-shadow-[0_0_20px_rgba(167,243,160,0.2)]">
@@ -82,12 +153,15 @@ export default function Hero() {
         </h1>
 
         {/* SUBTITLE */}
-        <p className="mt-6 sm:mt-7 text-base sm:text-lg md:text-xl text-muted-text max-w-2xl mx-auto font-inter font-normal leading-relaxed tracking-normal">
+        <p 
+          ref={subtitleRef}
+          className="mt-6 sm:mt-7 text-base sm:text-lg md:text-xl text-muted-text max-w-2xl mx-auto font-inter font-normal leading-relaxed tracking-normal"
+        >
           Web and mobile apps, designed and shipped fast.
         </p>
 
         {/* EMAIL CTA CONTAINER */}
-        <div className="mt-8 sm:mt-11 max-w-xl mx-auto w-full">
+        <div ref={ctaRef} className="mt-8 sm:mt-11 max-w-xl mx-auto w-full">
           {submitted ? (
             <div className="p-4 rounded-full bg-[#131D16]/90 border border-[#A7F3A0]/40 flex items-center justify-center gap-3 text-accent-lime font-inter font-medium text-sm sm:text-base animate-fadeIn shadow-lime-glow">
               <CheckCircle className="w-5 h-5 flex-shrink-0" />
@@ -123,10 +197,13 @@ export default function Hero() {
         </div>
 
         {/* THREE STATS */}
-        <div className="mt-14 sm:mt-18 pt-6 max-w-3xl mx-auto w-full">
+        <div ref={statsRef} className="mt-14 sm:mt-18 pt-6 max-w-3xl mx-auto w-full">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-0">
             {/* Stat 1 */}
-            <div className="flex-1 flex flex-col items-center text-center px-4 sm:px-6">
+            <div 
+              ref={(el) => (statsItemsRef.current[0] = el)}
+              className="flex-1 flex flex-col items-center text-center px-4 sm:px-6"
+            >
               <span className="font-sora font-extrabold text-3xl sm:text-4xl lg:text-[44px] text-accent-lime tracking-tight drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
                 15+
               </span>
@@ -139,7 +216,10 @@ export default function Hero() {
             <div className="hidden sm:block w-[1px] h-12 bg-gradient-to-b from-transparent via-[#2E4A35] to-transparent flex-shrink-0" />
 
             {/* Stat 2 */}
-            <div className="flex-1 flex flex-col items-center text-center px-4 sm:px-6">
+            <div 
+              ref={(el) => (statsItemsRef.current[1] = el)}
+              className="flex-1 flex flex-col items-center text-center px-4 sm:px-6"
+            >
               <span className="font-sora font-extrabold text-3xl sm:text-4xl lg:text-[44px] text-accent-lime tracking-tight drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
                 2+
               </span>
@@ -152,7 +232,10 @@ export default function Hero() {
             <div className="hidden sm:block w-[1px] h-12 bg-gradient-to-b from-transparent via-[#2E4A35] to-transparent flex-shrink-0" />
 
             {/* Stat 3 */}
-            <div className="flex-1 flex flex-col items-center text-center px-4 sm:px-6">
+            <div 
+              ref={(el) => (statsItemsRef.current[2] = el)}
+              className="flex-1 flex flex-col items-center text-center px-4 sm:px-6"
+            >
               <span className="font-sora font-extrabold text-3xl sm:text-4xl lg:text-[44px] text-accent-lime tracking-tight drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
                 2
               </span>
@@ -167,3 +250,4 @@ export default function Hero() {
     </section>
   );
 }
+

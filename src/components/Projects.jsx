@@ -1,14 +1,82 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { 
   Sparkles, 
   ExternalLink, 
   ArrowRight
 } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import StackedCards from './ui/glass-cards';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Projects() {
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const metricsRef = useRef(null);
+  const metricItemsRef = useRef([]);
+  const ctaBannerRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Header scroll animation
+      gsap.from(headerRef.current?.children || [], {
+        scrollTrigger: {
+          trigger: headerRef.current,
+          start: 'top 85%',
+          once: true,
+        },
+        opacity: 0,
+        y: 35,
+        stagger: 0.15,
+        duration: 0.8,
+        ease: 'power3.out',
+      });
+
+      // Bottom Metrics Strip staggered scroll animation
+      const validMetrics = metricItemsRef.current.filter(Boolean);
+      if (validMetrics.length > 0) {
+        gsap.from(validMetrics, {
+          scrollTrigger: {
+            trigger: metricsRef.current,
+            start: 'top 85%',
+            once: true,
+          },
+          opacity: 0,
+          y: 35,
+          scale: 0.95,
+          stagger: 0.12,
+          duration: 0.8,
+          ease: 'power3.out',
+        });
+      }
+
+      // Bottom CTA Callout scroll entrance
+      if (ctaBannerRef.current) {
+        gsap.from(ctaBannerRef.current, {
+          scrollTrigger: {
+            trigger: ctaBannerRef.current,
+            start: 'top 85%',
+            once: true,
+          },
+          opacity: 0,
+          y: 45,
+          scale: 0.97,
+          duration: 0.85,
+          ease: 'power3.out',
+        });
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="projects" className="relative z-10 py-20 sm:py-28 overflow-hidden">
+    <section 
+      id="projects" 
+      ref={sectionRef}
+      className="relative z-10 py-20 sm:py-28 overflow-hidden"
+    >
       {/* Subtle Ambient Radial Glows */}
       <div 
         className="absolute top-1/3 right-1/4 w-[700px] h-[450px] rounded-full opacity-15 blur-[140px] pointer-events-none"
@@ -26,7 +94,7 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* SECTION HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           
           {/* Pill Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill mb-5 animate-fadeIn">
@@ -56,10 +124,13 @@ export default function Projects() {
         </div>
 
         {/* BOTTOM METRICS STRIP */}
-        <div className="rounded-3xl glass-card p-6 sm:p-10 mb-16">
+        <div ref={metricsRef} className="rounded-3xl glass-card p-6 sm:p-10 mb-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
             
-            <div className="flex flex-col items-center">
+            <div 
+              ref={(el) => (metricItemsRef.current[0] = el)}
+              className="flex flex-col items-center will-change-transform"
+            >
               <span className="font-sora font-extrabold text-3xl sm:text-4xl text-[#66FF88] drop-shadow-[0_0_15px_rgba(102,255,136,0.25)]">
                 15+
               </span>
@@ -68,7 +139,10 @@ export default function Projects() {
               </span>
             </div>
 
-            <div className="flex flex-col items-center">
+            <div 
+              ref={(el) => (metricItemsRef.current[1] = el)}
+              className="flex flex-col items-center will-change-transform"
+            >
               <span className="font-sora font-extrabold text-3xl sm:text-4xl text-accent-lime drop-shadow-[0_0_15px_rgba(102,255,136,0.25)]">
                 99.8%
               </span>
@@ -77,7 +151,10 @@ export default function Projects() {
               </span>
             </div>
 
-            <div className="flex flex-col items-center">
+            <div 
+              ref={(el) => (metricItemsRef.current[2] = el)}
+              className="flex flex-col items-center will-change-transform"
+            >
               <span className="font-sora font-extrabold text-3xl sm:text-4xl text-[#66FF88] drop-shadow-[0_0_15px_rgba(102,255,136,0.25)]">
                 100%
               </span>
@@ -86,7 +163,10 @@ export default function Projects() {
               </span>
             </div>
 
-            <div className="flex flex-col items-center">
+            <div 
+              ref={(el) => (metricItemsRef.current[3] = el)}
+              className="flex flex-col items-center will-change-transform"
+            >
               <span className="font-sora font-extrabold text-3xl sm:text-4xl text-[#66FF88] drop-shadow-[0_0_15px_rgba(102,255,136,0.25)]">
                 5.0 ★
               </span>
@@ -99,7 +179,10 @@ export default function Projects() {
         </div>
 
         {/* BOTTOM CTA CALLOUT */}
-        <div className="relative rounded-3xl glass-card bg-gradient-to-r from-[#122216]/80 via-[#0E1B13]/80 to-[#122216]/80 p-8 sm:p-12 text-center overflow-hidden">
+        <div 
+          ref={ctaBannerRef}
+          className="relative rounded-3xl glass-card bg-gradient-to-r from-[#122216]/80 via-[#0E1B13]/80 to-[#122216]/80 p-8 sm:p-12 text-center overflow-hidden will-change-transform"
+        >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(102,255,136,0.12)_0%,transparent_70%)] pointer-events-none" />
           
           <div className="relative z-10 max-w-2xl mx-auto">
@@ -136,3 +219,4 @@ export default function Projects() {
     </section>
   );
 }
+
