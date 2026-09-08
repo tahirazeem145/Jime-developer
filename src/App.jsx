@@ -15,19 +15,21 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
   useEffect(() => {
-    // Initialize Lenis for buttery smooth scrolling
+    // Initialize Lenis for butter-smooth momentum scrolling
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.25,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 2.0,
+      wheelMultiplier: 1.05,
+      touchMultiplier: 1.8,
       infinite: false,
     });
 
-    // Synchronize Lenis with GSAP ScrollTrigger
+    window.lenis = lenis;
+
+    // Synchronize Lenis with GSAP ScrollTrigger (GSAP ScrollSmoother effect)
     lenis.on('scroll', ScrollTrigger.update);
 
     const tickerCallback = (time) => {
@@ -37,9 +39,31 @@ export default function App() {
     gsap.ticker.add(tickerCallback);
     gsap.ticker.lagSmoothing(0);
 
+    // Smooth Anchor Navigation Handler
+    const handleAnchorClick = (e) => {
+      const anchor = e.target.closest('a[href^="#"]');
+      if (!anchor) return;
+      const href = anchor.getAttribute('href');
+      if (!href || href === '#' || href.length <= 1) return;
+
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        lenis.scrollTo(target, {
+          offset: -75,
+          duration: 1.4,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+
     return () => {
+      document.removeEventListener('click', handleAnchorClick);
       gsap.ticker.remove(tickerCallback);
       lenis.destroy();
+      delete window.lenis;
     };
   }, []);
 
