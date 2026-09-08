@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import Projects from './components/Projects';
+import SectionDivider from './components/SectionDivider';
 import BackgroundElements from './components/BackgroundElements';
 import ParticleBackground from './components/ParticleBackground';
 import MouseGlow from './components/MouseGlow';
@@ -23,10 +24,12 @@ export default function App() {
       {/* Top Sticky/Fixed Header */}
       <Navbar />
 
-      {/* Main Content Sections */}
+      {/* Main Content Sections with Divider Lines */}
       <main className="flex-grow pt-20">
         <Hero />
+        <SectionDivider />
         <Services />
+        <SectionDivider />
         <Projects />
       </main>
 
