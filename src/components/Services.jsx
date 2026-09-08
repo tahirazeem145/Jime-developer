@@ -32,7 +32,7 @@ export default function Services() {
       ],
       techStack: ['React', 'Next.js', 'TailwindCSS', 'TypeScript', 'Vite', 'SEO'],
       href: 'https://www.jimedevelopers.in/web-development',
-      gradient: 'from-emerald-600/10 via-accent-lime/15 to-transparent',
+      gradient: 'from-emerald-500/20 via-accent-lime/10 to-transparent',
     },
     {
       id: 'ecommerce',
@@ -68,7 +68,7 @@ export default function Services() {
       ],
       techStack: ['React Native', 'Flutter', 'iOS', 'Android', 'Firebase', 'REST API'],
       href: 'https://www.jimedevelopers.in/mobile-app-development',
-      gradient: 'from-emerald-500/15 via-[#1A2E1F]/10 to-transparent',
+      gradient: 'from-emerald-400/20 via-[#1A2E1F] to-transparent',
     },
     {
       id: 'saas-cloud',
@@ -86,7 +86,7 @@ export default function Services() {
       ],
       techStack: ['Node.js', 'PostgreSQL', 'Docker', 'AWS', 'GraphQL', 'Redis'],
       href: 'https://www.jimedevelopers.in/saas-development',
-      gradient: 'from-emerald-600/10 via-accent-lime/20 to-transparent',
+      gradient: 'from-[#1A2E1F] via-accent-lime/15 to-transparent',
     }
   ];
 
@@ -156,22 +156,22 @@ export default function Services() {
           </p>
         </div>
 
-        {/* 2x2 SERVICES GRID - WARM BEIGE / IVORY LUXURY CARDS */}
+        {/* 2x2 SERVICES GRID - PREMIUM OBSIDIAN BLACK CARDS */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
               <div
                 key={service.id}
-                className="group relative rounded-3xl bg-[#FAF7F2] border border-[#E5DFD3] hover:border-accent-lime transition-all duration-500 overflow-hidden flex flex-col justify-between shadow-[0_10px_35px_rgba(0,0,0,0.35)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_35px_rgba(167,243,160,0.3)] hover:-translate-y-1.5"
+                className="group relative rounded-3xl bg-[#0D130F]/95 backdrop-blur-xl border border-[#1D2E22] hover:border-accent-lime/50 transition-all duration-500 overflow-hidden flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.7)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_30px_rgba(167,243,160,0.18)] hover:-translate-y-1.5"
               >
-                {/* Top Subtle Shimmer Highlight */}
+                {/* Top Subtle Ambient Card Gradient */}
                 <div 
                   className={`absolute top-0 left-0 right-0 h-40 bg-gradient-to-b ${service.gradient} opacity-40 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} 
                 />
 
                 {/* Card Corner Index Indicator */}
-                <div className="absolute top-6 right-6 font-sora font-extrabold text-xs text-[#8C827A]/40 group-hover:text-[#1A2E1F] transition-colors">
+                <div className="absolute top-6 right-6 font-sora font-extrabold text-xs text-muted-text/30 group-hover:text-accent-lime/70 transition-colors">
                   0{index + 1}
                 </div>
 
@@ -179,34 +179,34 @@ export default function Services() {
                   
                   {/* Top Row: Icon + Badge */}
                   <div className="flex items-center justify-between gap-4 mb-6">
-                    <div className="w-13 h-13 p-3 rounded-2xl bg-[#0B0F0C] border border-[#1A2E1F] group-hover:bg-[#152B1B] shadow-[0_4px_16px_rgba(0,0,0,0.2)] group-hover:shadow-[0_0_20px_rgba(167,243,160,0.3)] transition-all duration-300 flex items-center justify-center">
+                    <div className="w-13 h-13 p-3 rounded-2xl bg-[#152B1B] border border-[#1E3E27] group-hover:border-accent-lime/50 group-hover:bg-[#1D4726] shadow-[0_4px_20px_rgba(0,0,0,0.3)] group-hover:shadow-[0_0_20px_rgba(167,243,160,0.25)] transition-all duration-300 flex items-center justify-center">
                       <IconComponent className="w-6 h-6 text-accent-lime transition-transform duration-300 group-hover:scale-110" />
                     </div>
 
-                    <span className="px-3 py-1 rounded-full text-xs font-inter font-semibold text-[#143B1E] bg-[#E8F5E9] border border-[#C8E6C9] shadow-sm">
+                    <span className="px-3 py-1 rounded-full text-xs font-inter font-medium text-accent-lime bg-[#1A2E1F]/70 border border-[#2E4A35] backdrop-blur-sm">
                       {service.badge}
                     </span>
                   </div>
 
                   {/* Title & Tagline */}
-                  <h3 className="font-sora font-bold text-2xl sm:text-[26px] text-[#0F1711] group-hover:text-[#143B1E] transition-colors duration-300">
+                  <h3 className="font-sora font-bold text-2xl sm:text-[26px] text-main-text group-hover:text-accent-lime transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="font-inter text-xs sm:text-sm font-semibold text-[#1E6B35] mt-1 mb-4">
+                  <p className="font-inter text-xs sm:text-sm font-medium text-accent-lime/85 mt-1 mb-4">
                     {service.tagline}
                   </p>
 
                   {/* Description */}
-                  <p className="text-sm sm:text-[15px] text-[#3D4D42] font-inter leading-relaxed mb-6 font-normal">
+                  <p className="text-sm sm:text-[15px] text-muted-text font-inter leading-relaxed mb-6 font-normal">
                     {service.description}
                   </p>
 
                   {/* Capabilities List */}
-                  <div className="space-y-2.5 pt-4 border-t border-[#E5DFD3] mb-6">
+                  <div className="space-y-2.5 pt-4 border-t border-[#1D2E22]/80 mb-6">
                     {service.capabilities.map((cap, i) => (
                       <div key={i} className="flex items-start gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-[#1E6B35] flex-shrink-0 mt-0.5" />
-                        <span className="text-xs sm:text-sm font-inter text-[#1A241C] font-medium leading-snug">
+                        <CheckCircle2 className="w-4 h-4 text-accent-lime flex-shrink-0 mt-0.5" />
+                        <span className="text-xs sm:text-sm font-inter text-main-text/90 leading-snug">
                           {cap}
                         </span>
                       </div>
@@ -218,7 +218,7 @@ export default function Services() {
                     {service.techStack.map((tech) => (
                       <span 
                         key={tech} 
-                        className="text-[11px] font-inter font-semibold px-2.5 py-1 rounded-md bg-[#EFE9DD] border border-[#DED7C8] text-[#1E3023] group-hover:border-[#C7BFAD] transition-colors"
+                        className="text-[11px] font-inter font-medium px-2.5 py-1 rounded-md bg-[#131D16] border border-[#1D2E22] text-muted-text group-hover:border-[#2E4A35] group-hover:text-main-text transition-colors"
                       >
                         {tech}
                       </span>
@@ -228,20 +228,20 @@ export default function Services() {
                 </div>
 
                 {/* Card Action Footer */}
-                <div className="relative px-6 sm:px-8 py-4 bg-[#F1ECE2] border-t border-[#E2DCCE] flex items-center justify-between z-10 group-hover:bg-[#EAE4D7] transition-colors duration-300">
+                <div className="relative px-6 sm:px-8 py-4 bg-[#090E0B]/95 border-t border-[#1D2E22] flex items-center justify-between z-10 group-hover:bg-[#0D1610]/95 transition-colors duration-300">
                   <a
                     href={service.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-sora font-bold text-[#143B1E] hover:text-[#091D0E] transition-colors group/link"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-sora font-semibold text-accent-lime hover:text-accent-lime-hover transition-colors group/link"
                   >
                     <span>Explore {service.title}</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/link:translate-x-1 text-[#1E6B35]" />
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />
                   </a>
 
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-inter font-semibold text-[#526357] hover:text-[#0F1711] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-inter text-muted-text hover:text-main-text transition-colors"
                   >
                     <span>Get a Quote</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -254,19 +254,19 @@ export default function Services() {
         </div>
 
         {/* VALUE PROPOSITION / GUARANTEE HIGHLIGHTS */}
-        <div className="rounded-3xl bg-[#FAF7F2] border border-[#E5DFD3] p-6 sm:p-10 mb-16 shadow-[0_10px_35px_rgba(0,0,0,0.35)]">
+        <div className="rounded-3xl bg-[#0D130F]/90 border border-[#1D2E22] p-6 sm:p-10 mb-16 shadow-[0_15px_40px_rgba(0,0,0,0.5)] backdrop-blur-md">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {highlights.map((item, idx) => {
               const HighlightIcon = item.icon;
               return (
                 <div key={idx} className="flex flex-col items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#0B0F0C] border border-[#1A2E1F] flex items-center justify-center text-accent-lime shadow-[0_2px_10px_rgba(0,0,0,0.15)]">
+                  <div className="w-10 h-10 rounded-xl bg-[#152B1B] border border-[#1E3E27] flex items-center justify-center text-accent-lime shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
                     <HighlightIcon className="w-5 h-5" />
                   </div>
-                  <h4 className="font-sora font-bold text-base text-[#0F1711]">
+                  <h4 className="font-sora font-semibold text-base text-main-text">
                     {item.title}
                   </h4>
-                  <p className="font-inter text-xs sm:text-sm text-[#48594D] leading-relaxed">
+                  <p className="font-inter text-xs sm:text-sm text-muted-text leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
