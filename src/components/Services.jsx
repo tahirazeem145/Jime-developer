@@ -120,9 +120,10 @@ const highlights = [
   }
 ];
 
+import HoloCard from './ui/holo-card';
+
 const ServiceCard = React.forwardRef(({ item, index, totalCards }, ref) => {
   const IconComponent = item.icon;
-  const cardColor = item.color || 'rgba(102, 255, 136, 0.8)';
 
   return (
     <div
@@ -132,171 +133,123 @@ const ServiceCard = React.forwardRef(({ item, index, totalCards }, ref) => {
         transformOrigin: 'center center',
       }}
     >
-      <div className="relative w-full rounded-[26px] isolation-auto group">
-        {/* Electric Conic Border Glow */}
-        <div
-          className="absolute -inset-[2px] rounded-[28px] pointer-events-none transition-opacity duration-500"
-          style={{
-            background: `conic-gradient(
-              from 0deg,
-              transparent 0deg,
-              ${cardColor} 60deg,
-              rgba(102, 255, 136, 0.4) 120deg,
-              transparent 180deg,
-              rgba(102, 255, 136, 0.3) 240deg,
-              transparent 360deg
-            )`,
-            zIndex: -1,
-          }}
-        />
-
-        {/* Main Card Glass Container */}
-        <div
-          className="relative w-full rounded-[26px] overflow-hidden border border-[#66FF88]/20 transition-all duration-500"
-          style={{
-            background: 'linear-gradient(145deg, rgba(13, 17, 15, 0.94) 0%, rgba(8, 12, 10, 0.98) 100%)',
-            backdropFilter: 'blur(30px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(30px) saturate(180%)',
-            boxShadow: '0 25px 60px rgba(0, 0, 0, 0.9), inset 0 1px 1px rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(255, 255, 255, 0.05)',
-          }}
-        >
-          {/* Glass reflection gradient top overlay */}
-          <div
-            className="absolute top-0 left-0 right-0 h-2/3 pointer-events-none rounded-t-[26px]"
-            style={{
-              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%)',
-            }}
-          />
-
-          {/* Top Edge Shine Line */}
-          <div
-            className="absolute top-2.5 left-3 right-3 h-[1.5px] pointer-events-none rounded-full"
-            style={{
-              background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%)',
-            }}
-          />
-
-          {/* Frosted texture noise overlay */}
-          <div
-            className="absolute inset-0 pointer-events-none opacity-40 rounded-[26px]"
-            style={{
-              backgroundImage: `
-                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08) 1px, transparent 2px),
-                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.06) 1px, transparent 2px)
-              `,
-              backgroundSize: '28px 28px, 22px 22px',
-            }}
-          />
-
-          {/* Service Content Layout */}
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 min-h-[460px]">
-            {/* Left Column: Icon Showcase & Capabilities Checklist (6 Cols) */}
-            <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/[0.08] bg-[#050806]/75">
-              <div>
-                <div className="flex items-center justify-between gap-4 mb-6">
-                  <div className="w-14 h-14 p-3.5 rounded-2xl bg-[#121B15]/90 border border-[#1E2D23] group-hover:border-[#66FF88]/50 group-hover:bg-[#16291F] shadow-[0_4px_20px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_25px_rgba(102,255,136,0.3)] transition-all duration-300 flex items-center justify-center backdrop-blur-md">
-                    <IconComponent className="w-7 h-7 text-[#66FF88] transition-transform duration-300 group-hover:scale-110" />
-                  </div>
-
-                  <span className="px-3.5 py-1 rounded-full text-xs font-inter font-semibold text-[#66FF88] glass-pill">
-                    {item.badge}
-                  </span>
+      <HoloCard
+        maxTilt={8}
+        foil={index % 2 === 0 ? "spectral" : "azure"}
+        glare={true}
+        shadow={true}
+        idleSway={true}
+        aspect={0}
+        className="w-full"
+      >
+        {/* Service Content Layout */}
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 min-h-[460px]">
+          {/* Left Column: Icon Showcase & Capabilities Checklist (6 Cols) */}
+          <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/[0.08] bg-[#050806]/65 rounded-t-[26px] lg:rounded-tr-none lg:rounded-l-[26px]">
+            <div>
+              <div className="flex items-center justify-between gap-4 mb-6">
+                <div className="w-14 h-14 p-3.5 rounded-2xl bg-[#121B15]/90 border border-[#1E2D23] group-hover:border-[#66FF88]/50 group-hover:bg-[#16291F] shadow-[0_4px_20px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_25px_rgba(102,255,136,0.3)] transition-all duration-300 flex items-center justify-center backdrop-blur-md">
+                  <IconComponent className="w-7 h-7 text-[#66FF88] transition-transform duration-300 group-hover:scale-110" />
                 </div>
 
-                <h4 className="font-sora font-semibold text-xs text-[#9EA8A3] uppercase tracking-wider mb-3">
-                  Core Capabilities & Deliverables
-                </h4>
-
-                <div className="space-y-3">
-                  {item.capabilities.map((cap, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-4 h-4 text-[#66FF88] flex-shrink-0 mt-0.5" />
-                      <span className="text-xs sm:text-sm font-inter text-[#E2E8E4] font-medium leading-snug">
-                        {cap}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+                <span className="px-3.5 py-1 rounded-full text-xs font-inter font-semibold text-[#66FF88] glass-pill">
+                  {item.badge}
+                </span>
               </div>
 
-              {/* Delivery timeline strip */}
-              <div className="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs font-inter">
-                <span className="text-[#9EA8A3]">Typical Timeline:</span>
-                <span className="font-sora font-semibold text-[#66FF88] px-2.5 py-0.5 rounded-md bg-[#080C0A] border border-[#66FF88]/20">
-                  {item.delivery}
-                </span>
+              <h4 className="font-sora font-semibold text-xs text-[#9EA8A3] uppercase tracking-wider mb-3">
+                Core Capabilities & Deliverables
+              </h4>
+
+              <div className="space-y-3">
+                {item.capabilities.map((cap, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-4 h-4 text-[#66FF88] flex-shrink-0 mt-0.5" />
+                    <span className="text-xs sm:text-sm font-inter text-[#E2E8E4] font-medium leading-snug">
+                      {cap}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Right Column: Service Description, Tech Stack & CTA (6 Cols) */}
-            <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between">
-              <div>
-                {/* Header & Step Tag */}
-                <div className="flex items-center justify-between gap-2 mb-3 sm:mb-4">
-                  <span className="text-xs font-mono text-[#66FF88]/80 px-2.5 py-1 rounded-md bg-[#080C0A] border border-[#66FF88]/20">
-                    Service 0{index + 1} / 0{totalCards}
-                  </span>
-                  <span className="px-3 py-1 rounded-lg text-xs font-inter font-medium text-[#9EA8A3] bg-[#080C0A]/80 border border-white/[0.08]">
-                    Production-Ready
-                  </span>
-                </div>
+            {/* Delivery timeline strip */}
+            <div className="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs font-inter">
+              <span className="text-[#9EA8A3]">Typical Timeline:</span>
+              <span className="font-sora font-semibold text-[#66FF88] px-2.5 py-0.5 rounded-md bg-[#080C0A] border border-[#66FF88]/20">
+                {item.delivery}
+              </span>
+            </div>
+          </div>
 
-                {/* Title */}
-                <h3 className="font-sora font-bold text-xl sm:text-2xl md:text-3xl text-white group-hover:text-[#66FF88] transition-colors duration-300 leading-snug">
-                  {item.title}
-                </h3>
-                
-                {/* Tagline */}
-                <p className="font-inter text-xs sm:text-sm font-semibold text-[#66FF88]/90 mt-1 mb-3">
-                  {item.tagline}
-                </p>
-
-                {/* Description */}
-                <p className="text-xs sm:text-sm md:text-[15px] text-[#9EA8A3] font-inter leading-relaxed">
-                  {item.description}
-                </p>
+          {/* Right Column: Service Description, Tech Stack & CTA (6 Cols) */}
+          <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              {/* Header & Step Tag */}
+              <div className="flex items-center justify-between gap-2 mb-3 sm:mb-4">
+                <span className="text-xs font-mono text-[#66FF88]/80 px-2.5 py-1 rounded-md bg-[#080C0A] border border-[#66FF88]/20">
+                  Service 0{index + 1} / 0{totalCards}
+                </span>
+                <span className="px-3 py-1 rounded-lg text-xs font-inter font-medium text-[#9EA8A3] bg-[#080C0A]/80 border border-white/[0.08]">
+                  Production-Ready
+                </span>
               </div>
 
-              <div>
-                {/* Tech stack */}
-                {item.techStack && (
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-4 border-t border-white/[0.08] mb-5">
-                    {item.techStack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-[10px] sm:text-[11px] font-inter font-medium px-2.5 py-1 rounded-md bg-[#080C0A]/70 border border-white/[0.08] text-[#9EA8A3] group-hover:border-[#66FF88]/40 group-hover:text-white transition-colors"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                )}
+              {/* Title */}
+              <h3 className="font-sora font-bold text-xl sm:text-2xl md:text-3xl text-white group-hover:text-[#66FF88] transition-colors duration-300 leading-snug">
+                {item.title}
+              </h3>
+              
+              {/* Tagline */}
+              <p className="font-inter text-xs sm:text-sm font-semibold text-[#66FF88]/90 mt-1 mb-3">
+                {item.tagline}
+              </p>
 
-                {/* Actions */}
-                <div className="flex items-center justify-between pt-1">
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-sora font-semibold text-[#66FF88] hover:text-[#4ADE80] transition-colors group/link"
-                  >
-                    <span>Explore {item.title}</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
-                  </a>
+              {/* Description */}
+              <p className="text-xs sm:text-sm md:text-[15px] text-[#9EA8A3] font-inter leading-relaxed">
+                {item.description}
+              </p>
+            </div>
 
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-inter text-[#9EA8A3] hover:text-white transition-colors px-3 py-1.5 rounded-full bg-[#080C0A]/80 border border-white/[0.08] hover:border-[#66FF88]/50"
-                  >
-                    <span>Get a Quote</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </a>
+            <div>
+              {/* Tech stack */}
+              {item.techStack && (
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-4 border-t border-white/[0.08] mb-5">
+                  {item.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-[10px] sm:text-[11px] font-inter font-medium px-2.5 py-1 rounded-md bg-[#080C0A]/70 border border-white/[0.08] text-[#9EA8A3] group-hover:border-[#66FF88]/40 group-hover:text-white transition-colors"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
+              )}
+
+              {/* Actions */}
+              <div className="flex items-center justify-between pt-1">
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-sora font-semibold text-[#66FF88] hover:text-[#4ADE80] transition-colors group/link"
+                >
+                  <span>Explore {item.title}</span>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+                </a>
+
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-1.5 text-xs font-inter text-[#9EA8A3] hover:text-white transition-colors px-3 py-1.5 rounded-full bg-[#080C0A]/80 border border-white/[0.08] hover:border-[#66FF88]/50"
+                >
+                  <span>Get a Quote</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </a>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </HoloCard>
     </div>
   );
 });
