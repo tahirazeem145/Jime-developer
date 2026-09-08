@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import Projects from './components/Projects';
 import BackgroundElements from './components/BackgroundElements';
 import ParticleBackground from './components/ParticleBackground';
 import MouseGlow from './components/MouseGlow';
@@ -26,6 +27,7 @@ export default function App() {
       <main className="flex-grow pt-20">
         <Hero />
         <Services />
+        <Projects />
       </main>
 
       {/* Floating Action Button */}
