@@ -151,17 +151,20 @@ export default function Services() {
           </p>
         </div>
 
-        {/* 2x2 SERVICES GRID - REFINED CHARCOAL & ELECTRIC MINT */}
+        {/* 2x2 SERVICES GRID - GLASSMORPHIC CARDS */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
               <div
                 key={service.id}
-                className="group relative rounded-3xl bg-[#0D110F] border border-[#1A221E] hover:border-[#66FF88]/50 transition-all duration-500 overflow-hidden flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.85)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.95),0_0_30px_rgba(102,255,136,0.15)] hover:-translate-y-1.5"
+                className="group relative rounded-3xl glass-card transition-all duration-500 overflow-hidden flex flex-col justify-between hover:-translate-y-1.5"
               >
+                {/* Top Ambient Glass Refraction Shimmer */}
+                <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-white/[0.06] via-[#66FF88]/[0.03] to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
                 {/* Card Corner Index Indicator */}
-                <div className="absolute top-6 right-6 font-sora font-extrabold text-xs text-[#9EA8A3]/30 group-hover:text-[#66FF88]/70 transition-colors">
+                <div className="absolute top-6 right-6 font-sora font-extrabold text-xs text-[#9EA8A3]/40 group-hover:text-[#66FF88]/80 transition-colors">
                   0{index + 1}
                 </div>
 
@@ -169,11 +172,11 @@ export default function Services() {
                   
                   {/* Top Row: Icon + Badge */}
                   <div className="flex items-center justify-between gap-4 mb-6">
-                    <div className="w-13 h-13 p-3 rounded-2xl bg-[#121B15] border border-[#1E2D23] group-hover:border-[#66FF88]/40 group-hover:bg-[#16291F] shadow-[0_4px_20px_rgba(0,0,0,0.4)] group-hover:shadow-[0_0_20px_rgba(102,255,136,0.2)] transition-all duration-300 flex items-center justify-center">
+                    <div className="w-13 h-13 p-3 rounded-2xl bg-[#121B15]/80 border border-[#1E2D23] group-hover:border-[#66FF88]/50 group-hover:bg-[#16291F] shadow-[0_4px_20px_rgba(0,0,0,0.4)] group-hover:shadow-[0_0_20px_rgba(102,255,136,0.25)] transition-all duration-300 flex items-center justify-center backdrop-blur-md">
                       <IconComponent className="w-6 h-6 text-[#66FF88] transition-transform duration-300 group-hover:scale-110" />
                     </div>
 
-                    <span className="px-3 py-1 rounded-full text-xs font-inter font-medium text-[#66FF88] bg-[#132218] border border-[#1D3A26]">
+                    <span className="px-3 py-1 rounded-full text-xs font-inter font-medium text-[#66FF88] glass-pill">
                       {service.badge}
                     </span>
                   </div>
@@ -192,7 +195,7 @@ export default function Services() {
                   </p>
 
                   {/* Capabilities List */}
-                  <div className="space-y-2.5 pt-4 border-t border-[#1A221E] mb-6">
+                  <div className="space-y-2.5 pt-4 border-t border-white/[0.08] mb-6">
                     {service.capabilities.map((cap, i) => (
                       <div key={i} className="flex items-start gap-2.5">
                         <CheckCircle2 className="w-4 h-4 text-[#66FF88] flex-shrink-0 mt-0.5" />
@@ -208,7 +211,7 @@ export default function Services() {
                     {service.techStack.map((tech) => (
                       <span 
                         key={tech} 
-                        className="text-[11px] font-inter font-medium px-2.5 py-1 rounded-md bg-[#080C0A] border border-[#1A221E] text-[#9EA8A3] group-hover:border-[#66FF88]/40 group-hover:text-white transition-colors"
+                        className="text-[11px] font-inter font-medium px-2.5 py-1 rounded-md bg-[#080C0A]/70 border border-white/[0.08] text-[#9EA8A3] group-hover:border-[#66FF88]/40 group-hover:text-white transition-colors backdrop-blur-sm"
                       >
                         {tech}
                       </span>
@@ -218,7 +221,7 @@ export default function Services() {
                 </div>
 
                 {/* Card Action Footer */}
-                <div className="relative px-6 sm:px-8 py-4 bg-[#080C0A] border-t border-[#1A221E] flex items-center justify-between z-10 group-hover:bg-[#0B100D] transition-colors duration-300">
+                <div className="relative px-6 sm:px-8 py-4 bg-[#080C0A]/75 border-t border-white/[0.08] flex items-center justify-between z-10 group-hover:bg-[#0B100D]/85 transition-colors duration-300 backdrop-blur-md">
                   <a
                     href={service.href}
                     target="_blank"
@@ -244,13 +247,13 @@ export default function Services() {
         </div>
 
         {/* VALUE PROPOSITION / GUARANTEE HIGHLIGHTS */}
-        <div className="rounded-3xl bg-[#0D110F] border border-[#1A221E] p-6 sm:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.8)]">
+        <div className="rounded-3xl glass-card p-6 sm:p-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {highlights.map((item, idx) => {
               const HighlightIcon = item.icon;
               return (
                 <div key={idx} className="flex flex-col items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#121B15] border border-[#1E2D23] flex items-center justify-center text-[#66FF88] shadow-[0_2px_10px_rgba(0,0,0,0.4)]">
+                  <div className="w-10 h-10 rounded-xl bg-[#121B15]/80 border border-[#1E2D23] flex items-center justify-center text-[#66FF88] shadow-[0_2px_10px_rgba(0,0,0,0.4)] backdrop-blur-md">
                     <HighlightIcon className="w-5 h-5" />
                   </div>
                   <h4 className="font-sora font-semibold text-base text-white">
