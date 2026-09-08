@@ -10,7 +10,6 @@ import {
   Zap, 
   ShieldCheck, 
   Clock, 
-  ExternalLink,
   ChevronRight
 } from 'lucide-react';
 
@@ -254,7 +253,7 @@ export default function Services() {
         </div>
 
         {/* VALUE PROPOSITION / GUARANTEE HIGHLIGHTS */}
-        <div className="rounded-3xl bg-[#0D130F]/90 border border-[#1D2E22] p-6 sm:p-10 mb-16 shadow-[0_15px_40px_rgba(0,0,0,0.5)] backdrop-blur-md">
+        <div className="rounded-3xl bg-[#0D130F]/90 border border-[#1D2E22] p-6 sm:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.5)] backdrop-blur-md">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {highlights.map((item, idx) => {
               const HighlightIcon = item.icon;
@@ -272,41 +271,6 @@ export default function Services() {
                 </div>
               );
             })}
-          </div>
-        </div>
-
-        {/* BOTTOM CTA CALLOUT BANNER */}
-        <div className="relative rounded-3xl bg-gradient-to-r from-[#122216] via-[#101F14] to-[#122216] border border-[#23422B] p-8 sm:p-12 text-center overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
-          {/* Subtle Ambient Glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(167,243,160,0.12)_0%,transparent_70%)] pointer-events-none" />
-          
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <h3 className="font-sora font-bold text-2xl sm:text-3xl text-main-text">
-              Have a unique custom project in mind?
-            </h3>
-            <p className="mt-3 text-sm sm:text-base text-muted-text font-inter">
-              We specialize in custom software architectures, tailor-made integrations, and scalable platforms. Let’s discuss your roadmap.
-            </p>
-            
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="#book-call"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-accent-lime text-[#0B0F0C] font-sora font-semibold text-sm sm:text-[15px] hover:bg-accent-lime-hover hover:shadow-lime-glow hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
-              >
-                <span>Book a Discovery Call</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-              
-              <a
-                href="https://wa.me/919999999999" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#131D16] border border-[#1D2E22] hover:border-accent-lime/50 text-main-text font-sora font-semibold text-sm hover:bg-[#16291C] transition-all duration-200"
-              >
-                <span>Chat on WhatsApp</span>
-                <ExternalLink className="w-4 h-4 text-accent-lime" />
-              </a>
-            </div>
           </div>
         </div>
 
