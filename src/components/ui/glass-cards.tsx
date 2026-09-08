@@ -6,257 +6,304 @@ import { cardData } from '../../lib/utils';
 gsap.registerPlugin(ScrollTrigger);
 
 interface CardProps {
-    id: number;
-    title: string;
-    description: string;
-    index: number;
-    totalCards: number;
-    color: string;
+  id: number;
+  title: string;
+  description: string;
+  index: number;
+  totalCards: number;
+  color: string;
+  frameColor?: string;
+  glowColor?: string;
+  borderColor?: string;
 }
 
-const Card: React.FC<CardProps> = ({ title, description, index, totalCards, color }) => {
-    const cardRef = useRef<HTMLDivElement>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
+const Card: React.FC<CardProps> = ({ title, description, index, totalCards, color, frameColor, glowColor, borderColor }) => {
+  const finalFrameColor = frameColor || 'rgba(255, 255, 255, 0.8)';
+  const finalGlowColor = glowColor || 'rgba(255, 255, 255, 0.2)';
 
-    useEffect(() => {
-        const card = cardRef.current;
-        const container = containerRef.current;
-        if (!card || !container) return;
+  return (
+    <div
+      style={{
+        position: 'relative',
+        width: '100%',
+        maxWidth: '1000px',
+        margin: '0 auto',
+        borderRadius: '28px',
+        isolation: 'isolate',
+      }}
+      className="card-content"
+    >
+      {/* Electric Conic Border Glow Frame */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: '-2px',
+          borderRadius: '30px',
+          background: `conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            ${finalFrameColor} 60deg,
+            rgba(255, 255, 255, 0.8) 120deg,
+            transparent 180deg,
+            ${finalFrameColor} 240deg,
+            transparent 360deg
+          )`,
+          zIndex: -1,
+        }}
+      />
 
-        const targetScale = 1 - (totalCards - index) * 0.05;
-
-        // Set initial state
-        gsap.set(card, {
-            scale: 1,
-            transformOrigin: "center top"
-        });
-
-        // Create scroll trigger for stacking effect (similar to the reference component)
-        const trigger = ScrollTrigger.create({
-            trigger: container,
-            start: "top center",
-            end: "bottom center",
-            scrub: 1,
-            onUpdate: (self) => {
-                const progress = self.progress;
-                const scale = gsap.utils.interpolate(1, targetScale, progress);
-
-                gsap.set(card, {
-                    scale: Math.max(scale, targetScale),
-                    transformOrigin: "center top"
-                });
-            }
-        });
-
-        return () => {
-            trigger.kill();
-        };
-    }, [index, totalCards]);
-
-    return (
+      {/* Main Card Content (Black Body with Colored Frame) */}
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          minHeight: '420px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          padding: '2.5rem',
+          borderRadius: '28px',
+          background: 'linear-gradient(145deg, rgba(16, 16, 18, 0.96) 0%, rgba(8, 8, 10, 0.99) 100%)',
+          backdropFilter: 'blur(32px) saturate(190%)',
+          WebkitBackdropFilter: 'blur(32px) saturate(190%)',
+          border: `2px solid ${borderColor || finalFrameColor}`,
+          boxShadow: `
+            0 30px 70px rgba(0, 0, 0, 0.95),
+            0 0 35px ${finalGlowColor},
+            0 4px 16px rgba(0, 0, 0, 0.6),
+            inset 0 1.5px 2px rgba(255, 255, 255, 0.4),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.1)
+          `,
+          overflow: 'hidden',
+        }}
+      >
+        {/* Top Edge Colored Specular Highlight Line */}
         <div
-            ref={containerRef}
-            style={{
-                height: '100vh',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'sticky',
-                top: 0
-            }}
-        >
-            <div
-                ref={cardRef}
-                style={{
-                    position: 'relative',
-                    width: '70%',
-                    height: '450px',
-                    borderRadius: '24px',
-                    isolation: 'isolate',
-                    top: `calc(-5vh + ${index * 25}px)`,
-                    transformOrigin: 'top'
-                }}
-                className="card-content"
-            >
-                {/* Electric Border Effect */}
-                <div
-                    style={{
-                        position: 'absolute',
-                        inset: '-3px',
-                        borderRadius: '27px',
-                        padding: '3px',
-                        background: `conic-gradient(
-                            from 0deg,
-                            transparent 0deg,
-                            ${color} 60deg,
-                            ${color.replace('0.8', '0.6')} 120deg,
-                            transparent 180deg,
-                            ${color.replace('0.8', '0.4')} 240deg,
-                            transparent 360deg
-                        )`,
-                        zIndex: -1
-                    }}
-                />
+          style={{
+            position: 'absolute',
+            top: '8px',
+            left: '16px',
+            right: '16px',
+            height: '2.5px',
+            background: `linear-gradient(90deg, transparent 0%, ${color} 25%, #ffffff 50%, ${color} 75%, transparent 100%)`,
+            borderRadius: '1px',
+            pointerEvents: 'none',
+          }}
+        />
 
-                {/* Main Card Content */}
-                <div style={{
-                    position: 'relative',
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    borderRadius: '24px',
-                    background: `
-                        linear-gradient(145deg, 
-                            rgba(255, 255, 255, 0.1), 
-                            rgba(255, 255, 255, 0.05)
-                        )
-                    `,
-                    backdropFilter: 'blur(25px) saturate(180%)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    boxShadow: `
-                        0 8px 32px rgba(0, 0, 0, 0.3),
-                        0 2px 8px rgba(0, 0, 0, 0.2),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.3),
-                        inset 0 -1px 0 rgba(255, 255, 255, 0.1)
-                    `,
-                    overflow: 'hidden'
-                }}>
-                    {/* Enhanced Glass reflection overlay */}
-                    <div style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        height: '60%',
-                        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%)',
-                        pointerEvents: 'none',
-                        borderRadius: '24px 24px 0 0'
-                    }} />
+        {/* Enhanced Glass reflection overlay */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: '60%',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%)',
+            pointerEvents: 'none',
+            borderRadius: '28px 28px 0 0',
+          }}
+        />
 
-                    {/* Glass shine effect */}
-                    <div style={{
-                        position: 'absolute',
-                        top: '10px',
-                        left: '10px',
-                        right: '10px',
-                        height: '2px',
-                        background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%)',
-                        borderRadius: '1px',
-                        pointerEvents: 'none'
-                    }} />
+        {/* Side glass reflection */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '2px',
+            height: '100%',
+            background: `linear-gradient(180deg, ${color} 0%, transparent 60%)`,
+            borderRadius: '28px 0 0 28px',
+            pointerEvents: 'none',
+          }}
+        />
 
-                    {/* Side glass reflection */}
-                    <div style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '2px',
-                        height: '100%',
-                        background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 50%)',
-                        borderRadius: '24px 0 0 24px',
-                        pointerEvents: 'none'
-                    }} />
+        {/* Frosted glass dot texture */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundImage: `
+              radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 1px, transparent 2px),
+              radial-gradient(circle at 80% 70%, rgba(255,255,255,0.06) 1px, transparent 2px),
+              radial-gradient(circle at 40% 80%, rgba(255,255,255,0.04) 1px, transparent 2px)
+            `,
+            backgroundSize: '30px 30px, 25px 25px, 35px 35px',
+            pointerEvents: 'none',
+            borderRadius: '28px',
+            opacity: 0.3,
+          }}
+        />
 
-                    {/* Frosted glass texture */}
-                    <div style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        backgroundImage: `
-                            radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 1px, transparent 2px),
-                            radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08) 1px, transparent 2px),
-                            radial-gradient(circle at 40% 80%, rgba(255,255,255,0.06) 1px, transparent 2px)
-                        `,
-                        backgroundSize: '30px 30px, 25px 25px, 35px 35px',
-                        pointerEvents: 'none',
-                        borderRadius: '24px',
-                        opacity: 0.7
-                    }} />
-                </div>
-            </div>
+        {/* Card Content Elements */}
+        <div style={{ position: 'relative', zIndex: 10 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+            <span style={{
+              padding: '0.35rem 0.85rem',
+              borderRadius: '9999px',
+              fontSize: '0.75rem',
+              fontWeight: 600,
+              background: 'rgba(0, 0, 0, 0.6)',
+              border: `1px solid ${color}80`,
+              color: '#ffffff',
+            }}>
+              <span style={{ display: 'inline-block', width: '6px', height: '6px', borderRadius: '50%', backgroundColor: color, marginRight: '6px' }} />
+              0{index + 1} / 0{totalCards}
+            </span>
+            <span style={{
+              fontSize: '0.75rem',
+              color: 'rgba(255, 255, 255, 0.7)',
+              background: 'rgba(0, 0, 0, 0.4)',
+              padding: '0.25rem 0.75rem',
+              borderRadius: '8px',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+            }}>
+              Production-Ready
+            </span>
+          </div>
+
+          <h2 style={{
+            fontSize: '2rem',
+            fontWeight: 700,
+            color: '#ffffff',
+            marginBottom: '1rem',
+            lineHeight: 1.2,
+          }}>
+            {title}
+          </h2>
+
+          <p style={{
+            fontSize: '0.95rem',
+            color: 'rgba(255, 255, 255, 0.75)',
+            lineHeight: 1.6,
+            maxWidth: '650px',
+          }}>
+            {description}
+          </p>
         </div>
-    );
+
+        <div style={{ position: 'relative', zIndex: 10, paddingTop: '1.5rem', borderTop: '1px solid rgba(255, 255, 255, 0.15)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.75)', fontWeight: 500 }}>
+            Jime Developers
+          </span>
+          <span style={{ fontSize: '0.85rem', color: '#ffffff', fontWeight: 600 }}>
+            Learn More →
+          </span>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export const StackedCards: React.FC = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
+  const pinSectionRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-    useEffect(() => {
-        const container = containerRef.current;
-        if (!container) return;
+  useEffect(() => {
+    const pinSection = pinSectionRef.current;
+    const cards = cardRefs.current.filter(Boolean) as HTMLDivElement[];
+    if (!pinSection || cards.length === 0) return;
 
-        gsap.fromTo(container,
-            { opacity: 0 },
-            {
-                opacity: 1,
-                duration: 1.2,
-                ease: "power2.out"
-            }
+    const ctx = gsap.context(() => {
+      // Set initial positions
+      cards.forEach((card, i) => {
+        if (i === 0) {
+          gsap.set(card, { y: 0, scale: 1, transformOrigin: 'top center' });
+        } else {
+          gsap.set(card, { y: '110vh', scale: 1.02, transformOrigin: 'top center' });
+        }
+      });
+
+      // Pinning timeline
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: pinSection,
+          start: 'top 85px',
+          end: `+=${(cards.length - 1) * 750}`,
+          pin: true,
+          scrub: 1,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      // Animate each subsequent card rising from the bottom
+      for (let i = 1; i < cards.length; i++) {
+        const timeOffset = (i - 1) * 1.2;
+
+        tl.to(
+          cards[i],
+          {
+            y: 0,
+            scale: 1,
+            duration: 1,
+            ease: 'power2.out',
+          },
+          timeOffset
         );
-    }, []);
 
-    return (
-        <main ref={containerRef} style={{ background: '#0a0a0a' }}>
-            {/* Hero Section */}
-            <section style={{
-                height: '70vh',
-                width: '100%',
-                display: 'grid',
-                placeContent: 'center',
-                position: 'relative',
-                color: '#ffffff'
-            }}>
-                <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    backgroundImage: `
-                        linear-gradient(to right, rgba(79, 79, 79, 0.18) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgba(79, 79, 79, 0.18) 1px, transparent 1px)
-                    `,
-                    backgroundSize: '54px 54px',
-                    maskImage: 'radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%)'
-                }} />
-                <h1 style={{
-                    fontSize: 'clamp(2rem, 5vw, 4rem)',
-                    fontWeight: '500',
-                    textAlign: 'center',
-                    lineHeight: '1.2',
-                    padding: '0 2rem',
-                    position: 'relative',
-                    zIndex: 1
-                }}>
-                    Stacking Glass Cards with GSAP <br /> Scroll down! 👇
-                </h1>
-            </section>
+        for (let j = 0; j < i; j++) {
+          const depthScale = 1 - (i - j) * 0.025;
+          tl.to(
+            cards[j],
+            {
+              scale: depthScale,
+              duration: 1,
+              ease: 'power2.out',
+            },
+            timeOffset
+          );
+        }
+      }
+    }, pinSection);
 
-            {/* Cards Section */}
-            <section style={{
-                color: '#ffffff',
-                width: '100%'
-            }}>
-                {cardData.map((card, index) => {
-                    return (
-                        <Card
-                            key={card.id}
-                            id={card.id}
-                            title={card.title}
-                            description={card.description}
-                            index={index}
-                            totalCards={cardData.length}
-                            color={card.color}
-                        />
-                    );
-                })}
-            </section>
-        </main>
-    );
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div ref={pinSectionRef} style={{ position: 'relative', width: '100%', padding: '1.5rem 0' }}>
+      <div 
+        style={{
+          position: 'relative',
+          width: '100%',
+          maxWidth: '1000px',
+          margin: '0 auto',
+          minHeight: `${460 + (cardData.length - 1) * 36}px`,
+        }}
+      >
+        {cardData.map((card, index) => (
+          <div
+            key={card.id}
+            ref={(el) => (cardRefs.current[index] = el)}
+            style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              top: `${index * 36}px`,
+              zIndex: 10 + index * 5,
+              willChange: 'transform',
+            }}
+          >
+            <Card
+              id={card.id}
+              title={card.title}
+              description={card.description}
+              index={index}
+              totalCards={cardData.length}
+              color={card.color}
+              frameColor={card.frameColor}
+              glowColor={card.glowColor}
+              borderColor={card.borderColor}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default StackedCards;
