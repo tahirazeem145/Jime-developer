@@ -1,48 +1,12 @@
 import React from 'react';
 import { 
-  ArrowUpRight, 
   Sparkles, 
   ExternalLink, 
-  Globe, 
-  ArrowRight,
-  School,
-  Zap,
-  Briefcase,
-  Smartphone
+  ArrowRight
 } from 'lucide-react';
+import StackedCards from './ui/glass-cards';
 
 export default function Projects() {
-  const projects = [
-    {
-      id: 1,
-      tag: 'website',
-      year: '2026',
-      title: 'Brilliant Al Hidhaya School | Best School in Arasarukulam',
-      description: 'Rooted in the heart of Arasarkulam since 1995 – a legacy of quality education, community values, and the pursuit of excellence.',
-      image: '/assets/al-hidhaya-school.jpg',
-      url: 'alhidhayaschool.com',
-      techStack: ['React', 'Next.js', 'TailwindCSS', 'SEO Optimization', 'Responsive Design'],
-      stats: [
-        { label: 'Page Speed', value: '< 0.8s', icon: Zap },
-        { label: 'Curriculum', value: 'TN State Board', icon: School }
-      ]
-    },
-    {
-      id: 2,
-      tag: 'app',
-      year: '2025',
-      title: 'Tamizha Jobs',
-      description: "A job portal built for Tamil Nadu's tier-2/tier-3 towns — telecalling, data entry, system admin, part-time and student jobs — a segment LinkedIn and professional job boards overlook.",
-      image: '/assets/tamizha-jobs.png',
-      url: 'tamizhajobs.com',
-      techStack: ['React', 'Node.js', 'PostgreSQL', 'TailwindCSS', 'Mobile App'],
-      stats: [
-        { label: 'Target Market', value: 'TN Tier 2/3', icon: Briefcase },
-        { label: 'Platform', value: 'Web & Mobile', icon: Smartphone }
-      ]
-    }
-  ];
-
   return (
     <section id="projects" className="relative z-10 py-20 sm:py-28 overflow-hidden">
       {/* Subtle Ambient Radial Glows */}
@@ -82,140 +46,13 @@ export default function Projects() {
 
           {/* Subtitle */}
           <p className="mt-5 text-base sm:text-lg text-[#9EA8A3] font-inter font-normal leading-relaxed">
-            Discover our latest client deployments engineered with blazing-fast speeds, elegant responsive UI, and high-conversion user journeys.
+            Scroll down to explore our latest client deployments engineered with blazing-fast speeds, elegant responsive UI, and high-conversion user journeys.
           </p>
         </div>
 
-        {/* 2 FEATURED PROJECTS GLASS GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 mb-16 sm:mb-20">
-          {projects.map((proj) => (
-            <div
-              key={proj.id}
-              className="group relative rounded-3xl glass-card transition-all duration-500 overflow-hidden flex flex-col justify-between hover:-translate-y-1.5"
-            >
-              {/* Top Ambient Glass Shimmer */}
-              <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-white/[0.06] via-[#66FF88]/[0.03] to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-              <div>
-                {/* Browser Window Mockup Frame */}
-                <div className="p-5 sm:p-6 bg-[#080C0A]/60 border-b border-white/[0.08]">
-                  <div className="rounded-2xl glass-subcard overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.8)] group-hover:border-[#66FF88]/40 transition-all duration-500">
-                    
-                    {/* Browser Navigation Top Bar */}
-                    <div className="px-4 py-2.5 bg-[#0D110F]/80 border-b border-white/[0.08] flex items-center justify-between backdrop-blur-md">
-                      <div className="flex items-center gap-1.5">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#EF4444]/80" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#F59E0B]/80" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#10B981]/80" />
-                      </div>
-
-                      <div className="flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#080C0A]/80 border border-white/[0.08] text-[11px] font-mono text-[#9EA8A3]">
-                        <Globe className="w-3 h-3 text-[#66FF88]" />
-                        <span>{proj.url}</span>
-                      </div>
-
-                      <div className="flex items-center gap-1">
-                        <span className="w-2 h-2 rounded-full bg-[#66FF88] animate-pulse" />
-                        <span className="text-[10px] font-inter font-semibold text-[#66FF88] uppercase tracking-wider hidden sm:inline">
-                          Live
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Screenshot Container with Subtle Zoom on Hover */}
-                    <div className="relative overflow-hidden aspect-[16/10] bg-[#080C0A]">
-                      <img
-                        src={proj.image}
-                        alt={proj.title}
-                        className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#080C0A]/50 via-transparent to-transparent pointer-events-none" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card Content Body */}
-                <div className="p-6 sm:p-8">
-                  
-                  {/* Category Badge + Year Badge Row */}
-                  <div className="flex items-center justify-between gap-2 mb-4">
-                    <span className="px-3.5 py-1 rounded-full text-xs font-inter font-semibold text-[#66FF88] glass-pill">
-                      {proj.tag}
-                    </span>
-                    
-                    <span className="px-3 py-1 rounded-lg text-xs font-inter font-medium text-[#9EA8A3] bg-[#080C0A]/70 border border-white/[0.08]">
-                      {proj.year}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="font-sora font-bold text-xl sm:text-2xl text-white group-hover:text-[#66FF88] transition-colors duration-300 leading-snug">
-                    {proj.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="mt-3 text-sm sm:text-[15px] text-[#9EA8A3] font-inter leading-relaxed font-normal">
-                    {proj.description}
-                  </p>
-
-                  {/* Stats Pill Row */}
-                  <div className="grid grid-cols-2 gap-2.5 mt-5">
-                    {proj.stats.map((st, i) => {
-                      const StIcon = st.icon;
-                      return (
-                        <div key={i} className="px-3 py-2 rounded-xl bg-[#080C0A]/60 border border-white/[0.08] flex items-center gap-2 backdrop-blur-sm">
-                          <StIcon className="w-3.5 h-3.5 text-[#66FF88] flex-shrink-0" />
-                          <div className="min-w-0">
-                            <span className="block text-[10px] font-inter text-[#9EA8A3] uppercase tracking-wider leading-none">
-                              {st.label}
-                            </span>
-                            <span className="block text-xs font-sora font-bold text-white mt-0.5 leading-none truncate">
-                              {st.value}
-                            </span>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                </div>
-              </div>
-
-              {/* Card Bottom Area: Tech Tags & Action Footer */}
-              <div className="px-6 sm:px-8 pb-6 sm:pb-8 pt-0">
-                {/* Tech Stack Tags */}
-                <div className="flex flex-wrap gap-2 pt-4 border-t border-white/[0.08] mb-5">
-                  {proj.techStack.map((tech) => (
-                    <span 
-                      key={tech} 
-                      className="text-[11px] font-inter font-medium px-2.5 py-1 rounded-md bg-[#080C0A]/70 border border-white/[0.08] text-[#9EA8A3] group-hover:border-[#66FF88]/40 group-hover:text-white transition-colors backdrop-blur-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Action Link Matching Reference */}
-                <div className="flex items-center justify-between pt-1">
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center gap-2 text-sm sm:text-base font-sora font-semibold text-[#66FF88] hover:text-[#4ADE80] transition-colors group/link"
-                  >
-                    <span>Read Case Study</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
-                  </a>
-
-                  <a
-                    href="#contact"
-                    className="w-9 h-9 rounded-full bg-[#080C0A]/80 border border-white/[0.08] hover:border-[#66FF88]/50 flex items-center justify-center text-[#9EA8A3] hover:text-[#66FF88] transition-colors backdrop-blur-sm"
-                  >
-                    <ArrowUpRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-
-            </div>
-          ))}
+        {/* GSAP STACKING GLASS CARDS */}
+        <div className="mb-20 sm:mb-28">
+          <StackedCards />
         </div>
 
         {/* BOTTOM METRICS STRIP */}
