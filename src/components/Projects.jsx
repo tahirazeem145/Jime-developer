@@ -9,25 +9,21 @@ import {
   School,
   Zap,
   ShieldCheck,
-  Smartphone,
-  Eye
+  Smartphone
 } from 'lucide-react';
 
 export default function Projects() {
   const project = {
-    title: 'Brilliant – Al-Hidhaya School',
-    institution: 'Alhidhaya Nursery, Primary & High School',
-    location: 'Arasarkulam, Near Aranthangi',
-    curriculum: 'Tamil Nadu State Board Curriculum',
-    category: 'Institutional Portal & Web App',
-    tagline: 'From Potential to Performance. We Make It Happen.',
-    description: 'A modern, high-performance institutional website engineered for Al-Hidhaya Nursery, Primary & High School. Built to showcase academic excellence, streamline online admissions & parent inquiries, and present a vibrant campus gallery across all devices with instant load times.',
+    tag: 'website',
+    year: '2026',
+    title: 'Brilliant Al Hidhaya School | Best School in Arasarukulam',
+    description: 'Rooted in the heart of Arasarkulam since 1995 – a legacy of quality education, community values, and the pursuit of excellence.',
     image: '/assets/al-hidhaya-school.jpg',
     capabilities: [
-      'Streamlined Online Admissions & Enrollment Inquiries',
-      'Interactive Academic Programs & Curriculum Explorer',
-      'High-Resolution Campus Life & Event Gallery',
-      'Sub-Second Page Load Speed & Full Mobile Responsiveness'
+      'Streamlined Online Admissions & Parent Enrollment',
+      'Interactive Academic Programs & Curriculum Guide',
+      'High-Resolution Campus Life & Activities Gallery',
+      'Sub-Second Page Speeds & 100% Mobile Responsiveness'
     ],
     techStack: ['React', 'Next.js', 'TailwindCSS', 'SEO Optimization', 'Responsive Design', 'Fast CDN'],
     stats: [
@@ -152,37 +148,33 @@ export default function Projects() {
 
             </div>
 
-            {/* RIGHT COLUMN: PROJECT DETAILS & CASE STUDY SPECS (5 Cols) */}
+            {/* RIGHT COLUMN: EXACT PROJECT DETAILS (5 Cols) */}
             <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between bg-[#0D110F]">
               
               <div>
-                {/* Category & Badge */}
-                <div className="flex flex-wrap items-center gap-2 mb-4">
-                  <span className="px-3 py-1 rounded-full text-xs font-inter font-medium text-[#66FF88] bg-[#132218] border border-[#1D3A26]">
-                    {project.category}
+                {/* Top Row: website badge & 2026 year badge */}
+                <div className="flex items-center justify-between gap-2 mb-5">
+                  <span className="px-3.5 py-1 rounded-full text-xs font-inter font-semibold text-[#66FF88] bg-[#132218] border border-[#1D3A26]">
+                    {project.tag}
                   </span>
-                  <span className="px-3 py-1 rounded-full text-xs font-inter font-semibold text-[#9EA8A3] bg-[#080C0A] border border-[#1A221E]">
-                    {project.location}
+                  
+                  <span className="px-3 py-1 rounded-lg text-xs font-inter font-medium text-[#9EA8A3] bg-[#080C0A] border border-[#1A221E]">
+                    {project.year}
                   </span>
                 </div>
 
-                {/* Main Project Title */}
-                <h3 className="font-sora font-bold text-2xl sm:text-3xl text-white group-hover:text-[#66FF88] transition-colors duration-300">
+                {/* Main Project Headline */}
+                <h3 className="font-sora font-bold text-2xl sm:text-[26px] text-white group-hover:text-[#66FF88] transition-colors duration-300 leading-snug">
                   {project.title}
                 </h3>
-                
-                {/* Tagline / Subtitle */}
-                <p className="font-inter text-xs sm:text-sm font-semibold text-[#66FF88]/90 mt-1 mb-4">
-                  "{project.tagline}"
-                </p>
 
-                {/* Description */}
-                <p className="text-sm sm:text-[15px] text-[#9EA8A3] font-inter leading-relaxed mb-6 font-normal">
+                {/* Exact Description */}
+                <p className="mt-4 text-sm sm:text-[15px] text-[#9EA8A3] font-inter leading-relaxed font-normal">
                   {project.description}
                 </p>
 
                 {/* Capabilities List */}
-                <div className="space-y-2.5 pt-4 border-t border-[#1A221E] mb-6">
+                <div className="space-y-2.5 pt-6 border-t border-[#1A221E] mt-6 mb-6">
                   {project.capabilities.map((cap, i) => (
                     <div key={i} className="flex items-start gap-2.5">
                       <CheckCircle2 className="w-4 h-4 text-[#66FF88] flex-shrink-0 mt-0.5" />
@@ -207,22 +199,22 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Action Buttons */}
-                <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
+                {/* Action Link Matching Reference */}
+                <div className="pt-2 flex items-center justify-between">
                   <a
                     href="#contact"
-                    className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#66FF88] text-[#080C0A] font-sora font-semibold text-xs sm:text-sm hover:bg-[#4ADE80] hover:shadow-[0_0_20px_rgba(102,255,136,0.4)] transition-all duration-200"
+                    className="inline-flex items-center gap-2 text-sm sm:text-base font-sora font-semibold text-[#66FF88] hover:text-[#4ADE80] transition-colors group/link"
                   >
-                    <span>Get a Similar Website</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <span>Read Case Study</span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
                   </a>
 
                   <a
-                    href="#home"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#080C0A] border border-[#1A221E] hover:border-[#66FF88]/50 text-white font-sora font-semibold text-xs sm:text-sm hover:bg-[#121B15] transition-all duration-200"
+                    href="#contact"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#132218] border border-[#1D3A26] hover:border-[#66FF88]/50 text-white font-sora font-semibold text-xs transition-all duration-200"
                   >
-                    <span>Back to Top</span>
-                    <ArrowUpRight className="w-4 h-4 text-[#66FF88]" />
+                    <span>Get a Quote</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#66FF88]" />
                   </a>
                 </div>
               </div>
