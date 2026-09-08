@@ -212,9 +212,9 @@ export const StackedCards: React.FC = () => {
       // Set initial positions
       cards.forEach((card, i) => {
         if (i === 0) {
-          gsap.set(card, { y: 0, scale: 1, transformOrigin: 'top center' });
+          gsap.set(card, { y: 0, opacity: 1, scale: 1, pointerEvents: 'auto', transformOrigin: 'top center' });
         } else {
-          gsap.set(card, { y: '70vh', scale: 1.01, transformOrigin: 'top center' });
+          gsap.set(card, { y: 140, opacity: 0, scale: 0.98, pointerEvents: 'none', transformOrigin: 'top center' });
         }
       });
 
@@ -233,15 +233,17 @@ export const StackedCards: React.FC = () => {
 
       // Animate each subsequent card rising from the bottom
       for (let i = 1; i < cards.length; i++) {
-        const timeOffset = (i - 1) * 0.85;
+        const timeOffset = (i - 1) * 0.9;
 
         tl.to(
           cards[i],
           {
             y: 0,
+            opacity: 1,
             scale: 1,
-            duration: 0.8,
+            duration: 0.85,
             ease: 'power2.out',
+            pointerEvents: 'auto',
           },
           timeOffset
         );
@@ -252,7 +254,7 @@ export const StackedCards: React.FC = () => {
             cards[j],
             {
               scale: depthScale,
-              duration: 0.8,
+              duration: 0.85,
               ease: 'power2.out',
             },
             timeOffset

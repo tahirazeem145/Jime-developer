@@ -350,17 +350,17 @@ export const StackedServices = () => {
 
     const ctx = gsap.context(() => {
       // Set initial positions:
-      // Card 0 starts in place at top (y: 0, scale: 1)
-      // Subsequent cards start just below the viewport (y: '70vh') so they appear immediately on scroll
+      // Card 0 starts in place at top (y: 0, opacity: 1, scale: 1)
+      // Subsequent cards are hidden (opacity: 0, y: 140) so they NEVER peek at the bottom beforehand
       cards.forEach((card, i) => {
         if (i === 0) {
-          gsap.set(card, { y: 0, scale: 1, transformOrigin: 'top center' });
+          gsap.set(card, { y: 0, opacity: 1, scale: 1, pointerEvents: 'auto', transformOrigin: 'top center' });
         } else {
-          gsap.set(card, { y: '70vh', scale: 1.01, transformOrigin: 'top center' });
+          gsap.set(card, { y: 140, opacity: 0, scale: 0.98, pointerEvents: 'none', transformOrigin: 'top center' });
         }
       });
 
-      // Pinning timeline: snappy scroll scrubbing with fast card entrances
+      // Pinning timeline: snappy scroll scrubbing
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: pinSection,
@@ -373,18 +373,20 @@ export const StackedServices = () => {
         },
       });
 
-      // Animate each subsequent card rising fast from bottom to stack on top
+      // Animate each subsequent card fading in and rising smoothly into place
       for (let i = 1; i < cards.length; i++) {
-        const timeOffset = (i - 1) * 0.85;
+        const timeOffset = (i - 1) * 0.9;
 
-        // Card i slides up fast
+        // Card i fades in and glides up into place
         tl.to(
           cards[i],
           {
             y: 0,
+            opacity: 1,
             scale: 1,
-            duration: 0.8,
+            duration: 0.85,
             ease: 'power2.out',
+            pointerEvents: 'auto',
           },
           timeOffset
         );
@@ -396,7 +398,7 @@ export const StackedServices = () => {
             cards[j],
             {
               scale: depthScale,
-              duration: 0.8,
+              duration: 0.85,
               ease: 'power2.out',
             },
             timeOffset
