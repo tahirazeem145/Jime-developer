@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import Projects from './components/Projects';
 import SectionDivider from './components/SectionDivider';
-import BackgroundElements from './components/BackgroundElements';
 import ParticleBackground from './components/ParticleBackground';
 import MouseGlow from './components/MouseGlow';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
@@ -14,9 +13,6 @@ export default function App() {
     <div className="relative min-h-screen bg-background text-main-text font-inter flex flex-col selection:bg-accent-lime selection:text-background overflow-x-hidden">
       {/* Interactive Cursor Mouse Glow */}
       <MouseGlow />
-
-      {/* Background Graphic Visuals, Glows and Grid */}
-      <BackgroundElements />
 
       {/* Subtle Floating Ambient Particles */}
       <ParticleBackground />

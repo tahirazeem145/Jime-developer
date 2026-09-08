@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, ArrowRight, Star, CheckCircle } from 'lucide-react';
+import BackgroundElements from './BackgroundElements';
 
 export default function Hero() {
   const [email, setEmail] = useState('');
@@ -18,7 +19,10 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative z-10 pt-10 sm:pt-14 md:pt-18 pb-16 sm:pb-24 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Background Graphic Visuals scoped strictly to Hero */}
+      <BackgroundElements />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         {/* GOOGLE REVIEW BADGE */}
         <div className="inline-flex items-center justify-center mb-6 sm:mb-8 animate-fadeIn">
