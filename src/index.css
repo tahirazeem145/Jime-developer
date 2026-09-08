@@ -43,3 +43,76 @@
 .gold-star {
   filter: drop-shadow(0 0 4px rgba(250, 204, 21, 0.5));
 }
+
+/* Animated Section Divider Effects */
+@keyframes laserSweep {
+  0% {
+    left: -20%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    left: 120%;
+    opacity: 0;
+  }
+}
+
+@keyframes laserSweepDelayed {
+  0% {
+    left: -30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.75;
+  }
+  80% {
+    opacity: 0.75;
+  }
+  100% {
+    left: 130%;
+    opacity: 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: rotate(45deg) scale(1);
+    box-shadow: 0 0 8px rgba(167, 243, 160, 0.7), 0 0 16px rgba(167, 243, 160, 0.3);
+  }
+  50% {
+    transform: rotate(45deg) scale(1.4);
+    box-shadow: 0 0 16px rgba(167, 243, 160, 1), 0 0 30px rgba(167, 243, 160, 0.6);
+  }
+}
+
+@keyframes flarePulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scaleX(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1.15);
+  }
+}
+
+.animate-laser-sweep {
+  animation: laserSweep 3.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-laser-sweep-delayed {
+  animation: laserSweepDelayed 5.5s cubic-bezier(0.4, 0, 0.2, 1) 1.8s infinite;
+}
+
+.animate-diamond-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+.animate-flare-pulse {
+  animation: flarePulse 3s ease-in-out infinite;
+}
