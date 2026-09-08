@@ -33,6 +33,29 @@ export default function About() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Smooth bottom-to-top rising entrance for About Section
+      if (sectionRef.current) {
+        gsap.fromTo(
+          sectionRef.current,
+          {
+            y: '45vh',
+            opacity: 0.85,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top bottom',
+              end: 'top 80px',
+              scrub: 0.5,
+              invalidateOnRefresh: true,
+            },
+          }
+        );
+      }
+
       // Header entrance animation
       if (headerRef.current?.children) {
         gsap.fromTo(
