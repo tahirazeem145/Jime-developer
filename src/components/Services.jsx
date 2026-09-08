@@ -350,40 +350,40 @@ export const StackedServices = () => {
 
     const ctx = gsap.context(() => {
       // Set initial positions:
-      // Card 0 starts at center/top (y: 0, scale: 1)
-      // All subsequent cards start below the viewport (y: '110vh')
+      // Card 0 starts in place at top (y: 0, scale: 1)
+      // Subsequent cards start just below the viewport (y: '70vh') so they appear immediately on scroll
       cards.forEach((card, i) => {
         if (i === 0) {
           gsap.set(card, { y: 0, scale: 1, transformOrigin: 'top center' });
         } else {
-          gsap.set(card, { y: '110vh', scale: 1.02, transformOrigin: 'top center' });
+          gsap.set(card, { y: '70vh', scale: 1.01, transformOrigin: 'top center' });
         }
       });
 
-      // Pinning timeline: locks section while cards sequentially glide up from bottom and stack
+      // Pinning timeline: snappy scroll scrubbing with fast card entrances
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: pinSection,
           start: 'top 85px',
-          end: `+=${(cards.length - 1) * 750}`,
+          end: `+=${(cards.length - 1) * 360}`,
           pin: true,
-          scrub: 1,
+          scrub: 0.4,
           anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       });
 
-      // Animate each subsequent card rising from the bottom to stack on top
+      // Animate each subsequent card rising fast from bottom to stack on top
       for (let i = 1; i < cards.length; i++) {
-        const timeOffset = (i - 1) * 1.2;
+        const timeOffset = (i - 1) * 0.85;
 
-        // Card i slides up from bottom
+        // Card i slides up fast
         tl.to(
           cards[i],
           {
             y: 0,
             scale: 1,
-            duration: 1,
+            duration: 0.8,
             ease: 'power2.out',
           },
           timeOffset
@@ -396,7 +396,7 @@ export const StackedServices = () => {
             cards[j],
             {
               scale: depthScale,
-              duration: 1,
+              duration: 0.8,
               ease: 'power2.out',
             },
             timeOffset
