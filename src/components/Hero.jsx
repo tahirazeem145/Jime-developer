@@ -20,51 +20,38 @@ export default function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Entrance Timeline on Page Load
+      // Clean, non-colliding Entrance Timeline on Page Load
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      tl.from(badgeRef.current, {
-        opacity: 0,
-        y: -25,
-        scale: 0.9,
-        duration: 0.8,
-        delay: 0.2,
-      })
-      .from(headlineRef.current, {
-        opacity: 0,
-        y: 35,
-        duration: 0.9,
-      }, '-=0.5')
-      .from(subtitleRef.current, {
-        opacity: 0,
-        y: 25,
-        duration: 0.8,
-      }, '-=0.6')
-      .from(ctaRef.current, {
-        opacity: 0,
-        y: 25,
-        scale: 0.97,
-        duration: 0.8,
-      }, '-=0.5')
-      .from(statsItemsRef.current.filter(Boolean), {
-        opacity: 0,
-        y: 30,
-        stagger: 0.15,
-        duration: 0.8,
-      }, '-=0.4');
-
-      // Subtle Scroll Parallax as Hero scrolls out of view
-      gsap.to([headlineRef.current, subtitleRef.current, ctaRef.current], {
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1.2,
-        },
-        y: -40,
-        opacity: 0.35,
-        ease: 'none',
-      });
+      tl.fromTo(
+        badgeRef.current,
+        { opacity: 0, y: -20, scale: 0.92 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.7, delay: 0.1 }
+      )
+      .fromTo(
+        headlineRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8 },
+        '-=0.4'
+      )
+      .fromTo(
+        subtitleRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.7 },
+        '-=0.5'
+      )
+      .fromTo(
+        ctaRef.current,
+        { opacity: 0, y: 20, scale: 0.98 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.7 },
+        '-=0.4'
+      )
+      .fromTo(
+        statsItemsRef.current.filter(Boolean),
+        { opacity: 0, y: 25 },
+        { opacity: 1, y: 0, stagger: 0.12, duration: 0.7 },
+        '-=0.3'
+      );
     }, heroRef);
 
     return () => ctx.revert();

@@ -20,51 +20,65 @@ export default function Projects() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Header scroll animation
-      gsap.from(headerRef.current?.children || [], {
-        scrollTrigger: {
-          trigger: headerRef.current,
-          start: 'top 85%',
-          once: true,
-        },
-        opacity: 0,
-        y: 35,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: 'power3.out',
-      });
+      if (headerRef.current?.children) {
+        gsap.fromTo(
+          headerRef.current.children,
+          { opacity: 0, y: 35 },
+          {
+            scrollTrigger: {
+              trigger: headerRef.current,
+              start: 'top 85%',
+              once: true,
+            },
+            opacity: 1,
+            y: 0,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: 'power3.out',
+          }
+        );
+      }
 
       // Bottom Metrics Strip staggered scroll animation
       const validMetrics = metricItemsRef.current.filter(Boolean);
       if (validMetrics.length > 0) {
-        gsap.from(validMetrics, {
-          scrollTrigger: {
-            trigger: metricsRef.current,
-            start: 'top 85%',
-            once: true,
-          },
-          opacity: 0,
-          y: 35,
-          scale: 0.95,
-          stagger: 0.12,
-          duration: 0.8,
-          ease: 'power3.out',
-        });
+        gsap.fromTo(
+          validMetrics,
+          { opacity: 0, y: 35, scale: 0.95 },
+          {
+            scrollTrigger: {
+              trigger: metricsRef.current,
+              start: 'top 85%',
+              once: true,
+            },
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            stagger: 0.12,
+            duration: 0.8,
+            ease: 'power3.out',
+          }
+        );
       }
 
       // Bottom CTA Callout scroll entrance
       if (ctaBannerRef.current) {
-        gsap.from(ctaBannerRef.current, {
-          scrollTrigger: {
-            trigger: ctaBannerRef.current,
-            start: 'top 85%',
-            once: true,
-          },
-          opacity: 0,
-          y: 45,
-          scale: 0.97,
-          duration: 0.85,
-          ease: 'power3.out',
-        });
+        gsap.fromTo(
+          ctaBannerRef.current,
+          { opacity: 0, y: 40, scale: 0.97 },
+          {
+            scrollTrigger: {
+              trigger: ctaBannerRef.current,
+              start: 'top 85%',
+              once: true,
+            },
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.85,
+            ease: 'power3.out',
+          }
+        );
       }
     }, sectionRef);
 
