@@ -350,13 +350,13 @@ export const StackedServices = () => {
 
     const ctx = gsap.context(() => {
       // Set initial positions:
-      // Card 0 starts in place at top (y: 0, opacity: 1, scale: 1)
-      // Subsequent cards are hidden (opacity: 0, y: 140) so they NEVER peek at the bottom beforehand
+      // Card 0 starts in place at top (y: 0, scale: 1)
+      // Subsequent cards start offscreen at the bottom (y: '100vh') so they are completely offscreen initially
       cards.forEach((card, i) => {
         if (i === 0) {
-          gsap.set(card, { y: 0, opacity: 1, scale: 1, pointerEvents: 'auto', transformOrigin: 'top center' });
+          gsap.set(card, { y: 0, scale: 1, transformOrigin: 'top center' });
         } else {
-          gsap.set(card, { y: 140, opacity: 0, scale: 0.98, pointerEvents: 'none', transformOrigin: 'top center' });
+          gsap.set(card, { y: '100vh', scale: 1.02, transformOrigin: 'top center' });
         }
       });
 
@@ -365,28 +365,26 @@ export const StackedServices = () => {
         scrollTrigger: {
           trigger: pinSection,
           start: 'top 85px',
-          end: `+=${(cards.length - 1) * 360}`,
+          end: `+=${(cards.length - 1) * 450}`,
           pin: true,
-          scrub: 0.4,
+          scrub: 0.5,
           anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       });
 
-      // Animate each subsequent card fading in and rising smoothly into place
+      // Animate each subsequent card rising from the bottom (100vh) all the way up into place (y: 0)
       for (let i = 1; i < cards.length; i++) {
-        const timeOffset = (i - 1) * 0.9;
+        const timeOffset = (i - 1) * 1;
 
-        // Card i fades in and glides up into place
+        // Card i glides up from the bottom to the top
         tl.to(
           cards[i],
           {
             y: 0,
-            opacity: 1,
             scale: 1,
-            duration: 0.85,
+            duration: 1,
             ease: 'power2.out',
-            pointerEvents: 'auto',
           },
           timeOffset
         );
@@ -398,7 +396,7 @@ export const StackedServices = () => {
             cards[j],
             {
               scale: depthScale,
-              duration: 0.85,
+              duration: 1,
               ease: 'power2.out',
             },
             timeOffset

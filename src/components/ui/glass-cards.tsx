@@ -209,12 +209,12 @@ export const StackedCards: React.FC = () => {
     if (!pinSection || cards.length === 0) return;
 
     const ctx = gsap.context(() => {
-      // Set initial positions
+      // Set initial positions:
       cards.forEach((card, i) => {
         if (i === 0) {
-          gsap.set(card, { y: 0, opacity: 1, scale: 1, pointerEvents: 'auto', transformOrigin: 'top center' });
+          gsap.set(card, { y: 0, scale: 1, transformOrigin: 'top center' });
         } else {
-          gsap.set(card, { y: 140, opacity: 0, scale: 0.98, pointerEvents: 'none', transformOrigin: 'top center' });
+          gsap.set(card, { y: '100vh', scale: 1.02, transformOrigin: 'top center' });
         }
       });
 
@@ -223,27 +223,25 @@ export const StackedCards: React.FC = () => {
         scrollTrigger: {
           trigger: pinSection,
           start: 'top 85px',
-          end: `+=${(cards.length - 1) * 360}`,
+          end: `+=${(cards.length - 1) * 450}`,
           pin: true,
-          scrub: 0.4,
+          scrub: 0.5,
           anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       });
 
-      // Animate each subsequent card rising from the bottom
+      // Animate each subsequent card rising from the bottom (100vh) up to 0
       for (let i = 1; i < cards.length; i++) {
-        const timeOffset = (i - 1) * 0.9;
+        const timeOffset = (i - 1) * 1;
 
         tl.to(
           cards[i],
           {
             y: 0,
-            opacity: 1,
             scale: 1,
-            duration: 0.85,
+            duration: 1,
             ease: 'power2.out',
-            pointerEvents: 'auto',
           },
           timeOffset
         );
@@ -254,7 +252,7 @@ export const StackedCards: React.FC = () => {
             cards[j],
             {
               scale: depthScale,
-              duration: 0.85,
+              duration: 1,
               ease: 'power2.out',
             },
             timeOffset
