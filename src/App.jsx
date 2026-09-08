@@ -21,7 +21,7 @@ export default function App() {
         <main className="flex-grow pt-20">
           
           {/* HERO SECTION: Black & Neon Green Theme */}
-          <div className="relative bg-[#080C0A] text-white selection:bg-[#66FF88] selection:text-[#080C0A] overflow-hidden">
+          <div className="relative bg-[#080C0A] text-white selection:bg-[#66FF88] selection:text-[#080C0A]">
             {/* Interactive Cursor Mouse Glow */}
             <MouseGlow />
 
@@ -29,15 +29,13 @@ export default function App() {
             <ParticleBackground />
 
             <Hero />
-            <SectionDivider variant="dark-to-bw" />
           </div>
 
           {/* ALL OTHER SECTIONS: Black & Pure White Monochrome Theme */}
-          <div className="relative bg-[#080C0A] text-white selection:bg-white selection:text-black overflow-hidden">
+          <div className="relative bg-[#080C0A] text-white selection:bg-white selection:text-black">
             <Services />
             <SectionDivider variant="black-white" />
             <Projects />
-            <SectionDivider variant="black-white" />
             <About />
           </div>
 

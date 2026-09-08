@@ -11,6 +11,7 @@ export default function Hero() {
   const [submitted, setSubmitted] = useState(false);
 
   const heroRef = useRef(null);
+  const heroContentRef = useRef(null);
   const badgeRef = useRef(null);
   const headlineRef = useRef(null);
   const subtitleRef = useRef(null);
@@ -52,6 +53,20 @@ export default function Hero() {
         { opacity: 1, y: 0, stagger: 0.12, duration: 0.7 },
         '-=0.3'
       );
+
+      // Pin the Hero screen still when in viewport so it stays locked
+      // while the Services section rises up from bottom to top and physically overlaps / replaces it!
+      if (heroContentRef.current && heroRef.current) {
+        ScrollTrigger.create({
+          trigger: heroRef.current,
+          start: 'top 80px',
+          end: 'bottom 80px',
+          pin: heroContentRef.current,
+          pinSpacing: false,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        });
+      }
     }, heroRef);
 
     return () => ctx.revert();
@@ -72,12 +87,17 @@ export default function Hero() {
     <section 
       id="home" 
       ref={heroRef}
-      className="relative z-10 pt-10 sm:pt-14 md:pt-18 pb-16 sm:pb-24 overflow-hidden"
+      className="relative z-10 w-full min-h-[calc(100vh-80px)] flex flex-col justify-center items-center"
     >
-      {/* Background Graphic Visuals scoped strictly to Hero */}
-      <BackgroundElements />
+      {/* Hero Inner Content Wrapper (Pinned during curtain scroll) */}
+      <div 
+        ref={heroContentRef}
+        className="relative z-10 w-full flex flex-col justify-center will-change-transform opacity-100 py-6 sm:py-10"
+      >
+        {/* Background Graphic Visuals scoped strictly to Hero */}
+        <BackgroundElements />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         {/* GOOGLE REVIEW BADGE */}
         <div ref={badgeRef} className="inline-flex items-center justify-center mb-6 sm:mb-8">
@@ -234,7 +254,8 @@ export default function Hero() {
         </div>
 
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
 }
 

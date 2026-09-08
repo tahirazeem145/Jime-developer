@@ -495,8 +495,19 @@ export default function Services() {
     <section 
       id="services" 
       ref={sectionRef}
-      className="relative z-10 py-20 sm:py-28 overflow-hidden"
+      className="relative z-30 pt-20 sm:pt-28 pb-20 sm:pb-28 bg-[#080C0A] rounded-t-[36px] sm:rounded-t-[48px] border-t border-white/20 shadow-[0_-35px_100px_rgba(0,0,0,0.98)] overflow-hidden"
     >
+      {/* Top Specular Edge Glow Highlight */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
+      
+      {/* Top Ambient Radial Glow */}
+      <div 
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 opacity-15 blur-2xl pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at top, rgba(255,255,255,0.5) 0%, transparent 70%)'
+        }}
+      />
+
       {/* Subtle Ambient Radial Glows */}
       <div 
         className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full opacity-10 blur-[130px] pointer-events-none"

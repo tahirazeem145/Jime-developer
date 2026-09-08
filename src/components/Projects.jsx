@@ -13,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Projects() {
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
+  const ctaContainerRef = useRef(null);
   const ctaMetricsScreenRef = useRef(null);
   const metricsRef = useRef(null);
   const metricItemsRef = useRef([]);
@@ -38,19 +39,6 @@ export default function Projects() {
             ease: 'power3.out',
           }
         );
-      }
-
-      // Pin the Metrics + CTA screen still when centered in viewport
-      if (ctaMetricsScreenRef.current) {
-        ScrollTrigger.create({
-          trigger: ctaMetricsScreenRef.current,
-          start: 'center center',
-          end: '+=700',
-          pin: true,
-          pinSpacing: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        });
       }
 
       // Bottom Metrics Strip staggered scroll animation
@@ -94,6 +82,20 @@ export default function Projects() {
           }
         );
       }
+
+      // Pin the Metrics + CTA screen still when it reaches the viewport so it stays locked
+      // while the About section rises up from bottom to top and physically overlaps / replaces it!
+      if (ctaMetricsScreenRef.current && ctaContainerRef.current) {
+        ScrollTrigger.create({
+          trigger: ctaContainerRef.current,
+          start: 'top 80px',
+          end: 'bottom 80px',
+          pin: ctaMetricsScreenRef.current,
+          pinSpacing: false,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        });
+      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -103,7 +105,7 @@ export default function Projects() {
     <section 
       id="projects" 
       ref={sectionRef}
-      className="relative z-10 py-20 sm:py-28 overflow-hidden"
+      className="relative z-10 pt-20 sm:pt-28 pb-0"
     >
       {/* Subtle Ambient Radial White Glows */}
       <div 
@@ -151,57 +153,64 @@ export default function Projects() {
           <StackedCards />
         </div>
 
-        {/* PINNED METRICS & CTA SCREEN (STAYS STILL ON SCROLL) */}
-        <div ref={ctaMetricsScreenRef} className="relative w-full py-4 flex flex-col justify-center">
-          
+        {/* FULL-VIEWPORT CONTAINER THAT KEEPS ABOUT SECTION COMPLETELY OFFSCREEN INITIALLY */}
+        <div 
+          ref={ctaContainerRef}
+          className="relative w-full min-h-[calc(100vh-80px)] flex flex-col justify-center py-6"
+        >
+          {/* PINNED METRICS & CTA SCREEN (OVERLAPPED BY ABOUT SECTION) */}
+          <div 
+            ref={ctaMetricsScreenRef} 
+            className="w-full flex flex-col justify-center will-change-transform opacity-100"
+          >
           {/* BOTTOM METRICS STRIP */}
-          <div ref={metricsRef} className="rounded-3xl glass-card-bw p-6 sm:p-10 mb-8 sm:mb-10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/15">
+          <div ref={metricsRef} className="rounded-3xl glass-card-bw bg-[#121214]/95 p-6 sm:p-10 mb-8 sm:mb-10 shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/20">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
               
               <div 
                 ref={(el) => (metricItemsRef.current[0] = el)}
-                className="flex flex-col items-center will-change-transform"
+                className="flex flex-col items-center"
               >
-                <span className="font-sora font-extrabold text-3xl sm:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                <span className="font-sora font-extrabold text-3xl sm:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
                   15+
                 </span>
-                <span className="mt-1 text-xs sm:text-sm font-inter text-neutral-400 font-medium">
+                <span className="mt-1.5 text-xs sm:text-sm font-inter text-neutral-300 font-medium">
                   Shipped Products
                 </span>
               </div>
 
               <div 
                 ref={(el) => (metricItemsRef.current[1] = el)}
-                className="flex flex-col items-center will-change-transform"
+                className="flex flex-col items-center"
               >
-                <span className="font-sora font-extrabold text-3xl sm:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                <span className="font-sora font-extrabold text-3xl sm:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
                   99.8%
                 </span>
-                <span className="mt-1 text-xs sm:text-sm font-inter text-neutral-400 font-medium">
+                <span className="mt-1.5 text-xs sm:text-sm font-inter text-neutral-300 font-medium">
                   On-Time Delivery
                 </span>
               </div>
 
               <div 
                 ref={(el) => (metricItemsRef.current[2] = el)}
-                className="flex flex-col items-center will-change-transform"
+                className="flex flex-col items-center"
               >
-                <span className="font-sora font-extrabold text-3xl sm:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                <span className="font-sora font-extrabold text-3xl sm:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
                   100%
                 </span>
-                <span className="mt-1 text-xs sm:text-sm font-inter text-neutral-400 font-medium">
+                <span className="mt-1.5 text-xs sm:text-sm font-inter text-neutral-300 font-medium">
                   Code Ownership
                 </span>
               </div>
 
               <div 
                 ref={(el) => (metricItemsRef.current[3] = el)}
-                className="flex flex-col items-center will-change-transform"
+                className="flex flex-col items-center"
               >
-                <span className="font-sora font-extrabold text-3xl sm:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                <span className="font-sora font-extrabold text-3xl sm:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
                   5.0 ★
                 </span>
-                <span className="mt-1 text-xs sm:text-sm font-inter text-neutral-400 font-medium">
+                <span className="mt-1.5 text-xs sm:text-sm font-inter text-neutral-300 font-medium">
                   Client Rating
                 </span>
               </div>
@@ -212,9 +221,9 @@ export default function Projects() {
           {/* BOTTOM CTA CALLOUT */}
           <div 
             ref={ctaBannerRef}
-            className="relative rounded-3xl glass-card-bw bg-gradient-to-r from-[#141414]/95 via-[#202020]/95 to-[#141414]/95 p-8 sm:p-12 text-center text-white overflow-hidden border border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.9)] will-change-transform"
+            className="relative rounded-3xl glass-card-bw bg-gradient-to-r from-[#18181b]/98 via-[#27272a]/98 to-[#18181b]/98 p-8 sm:p-12 text-center text-white overflow-hidden border border-white/25 shadow-[0_25px_60px_rgba(0,0,0,0.95)]"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12)_0%,transparent_70%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15)_0%,transparent_70%)] pointer-events-none" />
             
             <div className="relative z-10 max-w-2xl mx-auto">
               <h3 className="font-sora font-bold text-2xl sm:text-3xl text-white">
@@ -237,7 +246,7 @@ export default function Projects() {
                   href="https://wa.me/919999999999" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-neutral-900 border border-white/20 hover:border-white/50 text-white font-sora font-semibold text-sm hover:bg-neutral-800 transition-all duration-200 backdrop-blur-sm"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-neutral-900/90 border border-white/25 hover:border-white/50 text-white font-sora font-semibold text-sm hover:bg-neutral-800 transition-all duration-200 backdrop-blur-sm"
                 >
                   <span>Chat on WhatsApp</span>
                   <ExternalLink className="w-4 h-4 text-neutral-300" />
@@ -246,6 +255,7 @@ export default function Projects() {
             </div>
           </div>
 
+          </div>
         </div>
 
       </div>
