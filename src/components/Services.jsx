@@ -31,7 +31,6 @@ export default function Services() {
       ],
       techStack: ['React', 'Next.js', 'TailwindCSS', 'TypeScript', 'Vite', 'SEO'],
       href: 'https://www.jimedevelopers.in/web-development',
-      gradient: 'from-emerald-500/20 via-accent-lime/10 to-transparent',
     },
     {
       id: 'ecommerce',
@@ -49,7 +48,6 @@ export default function Services() {
       ],
       techStack: ['Shopify', 'WooCommerce', 'Stripe', 'Headless CMS', 'Next.js'],
       href: 'https://www.jimedevelopers.in/ecommerce-development',
-      gradient: 'from-accent-lime/20 via-emerald-600/10 to-transparent',
     },
     {
       id: 'mobile-app',
@@ -67,7 +65,6 @@ export default function Services() {
       ],
       techStack: ['React Native', 'Flutter', 'iOS', 'Android', 'Firebase', 'REST API'],
       href: 'https://www.jimedevelopers.in/mobile-app-development',
-      gradient: 'from-emerald-400/20 via-[#1A2E1F] to-transparent',
     },
     {
       id: 'saas-cloud',
@@ -85,7 +82,6 @@ export default function Services() {
       ],
       techStack: ['Node.js', 'PostgreSQL', 'Docker', 'AWS', 'GraphQL', 'Redis'],
       href: 'https://www.jimedevelopers.in/saas-development',
-      gradient: 'from-[#1A2E1F] via-accent-lime/15 to-transparent',
     }
   ];
 
@@ -114,17 +110,17 @@ export default function Services() {
 
   return (
     <section id="services" className="relative z-10 py-20 sm:py-28 overflow-hidden">
-      {/* Subtle Background Glows */}
+      {/* Subtle Ambient Radial Glows */}
       <div 
         className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full opacity-15 blur-[120px] pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(167,243,160,0.25) 0%, rgba(26,46,31,0.5) 60%, transparent 80%)'
+          background: 'radial-gradient(circle, rgba(102,255,136,0.2) 0%, rgba(22,46,31,0.5) 60%, transparent 80%)'
         }}
       />
       <div 
         className="absolute bottom-10 right-0 w-[500px] h-[500px] rounded-full opacity-10 blur-[130px] pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(167,243,160,0.3) 0%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(102,255,136,0.25) 0%, transparent 70%)'
         }}
       />
 
@@ -134,43 +130,38 @@ export default function Services() {
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
           
           {/* Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#131D16]/90 border border-[#1D2E22] text-accent-lime shadow-[0_2px_15px_rgba(0,0,0,0.4)] backdrop-blur-md mb-5 animate-fadeIn">
-            <Sparkles className="w-3.5 h-3.5 animate-pulse text-accent-lime" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0D110F] border border-[#1A221E] text-[#66FF88] shadow-[0_2px_15px_rgba(0,0,0,0.5)] backdrop-blur-md mb-5 animate-fadeIn">
+            <Sparkles className="w-3.5 h-3.5 animate-pulse text-[#66FF88]" />
             <span className="font-sora font-semibold text-xs tracking-wider uppercase">
               Our Core Services
             </span>
           </div>
 
           {/* Heading */}
-          <h2 className="font-sora font-extrabold text-3xl sm:text-4xl md:text-5xl text-main-text leading-[1.15] tracking-tight">
+          <h2 className="font-sora font-extrabold text-3xl sm:text-4xl md:text-5xl text-white leading-[1.15] tracking-tight">
             Comprehensive engineering for{' '}
-            <span className="text-accent-lime italic font-extrabold inline-block drop-shadow-[0_0_20px_rgba(167,243,160,0.25)]">
+            <span className="text-[#66FF88] italic font-extrabold inline-block drop-shadow-[0_0_20px_rgba(102,255,136,0.25)]">
               ambitious products.
             </span>
           </h2>
 
           {/* Subtitle */}
-          <p className="mt-5 text-base sm:text-lg text-muted-text font-inter font-normal leading-relaxed">
+          <p className="mt-5 text-base sm:text-lg text-[#9EA8A3] font-inter font-normal leading-relaxed">
             Whether you need a high-converting website, a scalable mobile application, or an enterprise SaaS platform, we design, engineer, and deploy digital products that drive measurable business growth.
           </p>
         </div>
 
-        {/* 2x2 SERVICES GRID - PREMIUM OBSIDIAN BLACK CARDS */}
+        {/* 2x2 SERVICES GRID - REFINED CHARCOAL & ELECTRIC MINT */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
               <div
                 key={service.id}
-                className="group relative rounded-3xl bg-[#0D130F]/95 backdrop-blur-xl border border-[#1D2E22] hover:border-accent-lime/50 transition-all duration-500 overflow-hidden flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.7)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_30px_rgba(167,243,160,0.18)] hover:-translate-y-1.5"
+                className="group relative rounded-3xl bg-[#0D110F] border border-[#1A221E] hover:border-[#66FF88]/50 transition-all duration-500 overflow-hidden flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.85)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.95),0_0_30px_rgba(102,255,136,0.15)] hover:-translate-y-1.5"
               >
-                {/* Top Subtle Ambient Card Gradient */}
-                <div 
-                  className={`absolute top-0 left-0 right-0 h-40 bg-gradient-to-b ${service.gradient} opacity-40 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} 
-                />
-
                 {/* Card Corner Index Indicator */}
-                <div className="absolute top-6 right-6 font-sora font-extrabold text-xs text-muted-text/30 group-hover:text-accent-lime/70 transition-colors">
+                <div className="absolute top-6 right-6 font-sora font-extrabold text-xs text-[#9EA8A3]/30 group-hover:text-[#66FF88]/70 transition-colors">
                   0{index + 1}
                 </div>
 
@@ -178,34 +169,34 @@ export default function Services() {
                   
                   {/* Top Row: Icon + Badge */}
                   <div className="flex items-center justify-between gap-4 mb-6">
-                    <div className="w-13 h-13 p-3 rounded-2xl bg-[#152B1B] border border-[#1E3E27] group-hover:border-accent-lime/50 group-hover:bg-[#1D4726] shadow-[0_4px_20px_rgba(0,0,0,0.3)] group-hover:shadow-[0_0_20px_rgba(167,243,160,0.25)] transition-all duration-300 flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 text-accent-lime transition-transform duration-300 group-hover:scale-110" />
+                    <div className="w-13 h-13 p-3 rounded-2xl bg-[#121B15] border border-[#1E2D23] group-hover:border-[#66FF88]/40 group-hover:bg-[#16291F] shadow-[0_4px_20px_rgba(0,0,0,0.4)] group-hover:shadow-[0_0_20px_rgba(102,255,136,0.2)] transition-all duration-300 flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 text-[#66FF88] transition-transform duration-300 group-hover:scale-110" />
                     </div>
 
-                    <span className="px-3 py-1 rounded-full text-xs font-inter font-medium text-accent-lime bg-[#1A2E1F]/70 border border-[#2E4A35] backdrop-blur-sm">
+                    <span className="px-3 py-1 rounded-full text-xs font-inter font-medium text-[#66FF88] bg-[#132218] border border-[#1D3A26]">
                       {service.badge}
                     </span>
                   </div>
 
                   {/* Title & Tagline */}
-                  <h3 className="font-sora font-bold text-2xl sm:text-[26px] text-main-text group-hover:text-accent-lime transition-colors duration-300">
+                  <h3 className="font-sora font-bold text-2xl sm:text-[26px] text-white group-hover:text-[#66FF88] transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="font-inter text-xs sm:text-sm font-medium text-accent-lime/85 mt-1 mb-4">
+                  <p className="font-inter text-xs sm:text-sm font-medium text-[#66FF88]/90 mt-1 mb-4">
                     {service.tagline}
                   </p>
 
                   {/* Description */}
-                  <p className="text-sm sm:text-[15px] text-muted-text font-inter leading-relaxed mb-6 font-normal">
+                  <p className="text-sm sm:text-[15px] text-[#9EA8A3] font-inter leading-relaxed mb-6 font-normal">
                     {service.description}
                   </p>
 
                   {/* Capabilities List */}
-                  <div className="space-y-2.5 pt-4 border-t border-[#1D2E22]/80 mb-6">
+                  <div className="space-y-2.5 pt-4 border-t border-[#1A221E] mb-6">
                     {service.capabilities.map((cap, i) => (
                       <div key={i} className="flex items-start gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-accent-lime flex-shrink-0 mt-0.5" />
-                        <span className="text-xs sm:text-sm font-inter text-main-text/90 leading-snug">
+                        <CheckCircle2 className="w-4 h-4 text-[#66FF88] flex-shrink-0 mt-0.5" />
+                        <span className="text-xs sm:text-sm font-inter text-[#E2E8E4] font-medium leading-snug">
                           {cap}
                         </span>
                       </div>
@@ -217,7 +208,7 @@ export default function Services() {
                     {service.techStack.map((tech) => (
                       <span 
                         key={tech} 
-                        className="text-[11px] font-inter font-medium px-2.5 py-1 rounded-md bg-[#131D16] border border-[#1D2E22] text-muted-text group-hover:border-[#2E4A35] group-hover:text-main-text transition-colors"
+                        className="text-[11px] font-inter font-medium px-2.5 py-1 rounded-md bg-[#080C0A] border border-[#1A221E] text-[#9EA8A3] group-hover:border-[#66FF88]/40 group-hover:text-white transition-colors"
                       >
                         {tech}
                       </span>
@@ -227,12 +218,12 @@ export default function Services() {
                 </div>
 
                 {/* Card Action Footer */}
-                <div className="relative px-6 sm:px-8 py-4 bg-[#090E0B]/95 border-t border-[#1D2E22] flex items-center justify-between z-10 group-hover:bg-[#0D1610]/95 transition-colors duration-300">
+                <div className="relative px-6 sm:px-8 py-4 bg-[#080C0A] border-t border-[#1A221E] flex items-center justify-between z-10 group-hover:bg-[#0B100D] transition-colors duration-300">
                   <a
                     href={service.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-sora font-semibold text-accent-lime hover:text-accent-lime-hover transition-colors group/link"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-sora font-semibold text-[#66FF88] hover:text-[#4ADE80] transition-colors group/link"
                   >
                     <span>Explore {service.title}</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />
@@ -240,7 +231,7 @@ export default function Services() {
 
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-inter text-muted-text hover:text-main-text transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-inter text-[#9EA8A3] hover:text-white transition-colors"
                   >
                     <span>Get a Quote</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -253,19 +244,19 @@ export default function Services() {
         </div>
 
         {/* VALUE PROPOSITION / GUARANTEE HIGHLIGHTS */}
-        <div className="rounded-3xl bg-[#0D130F]/90 border border-[#1D2E22] p-6 sm:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.5)] backdrop-blur-md">
+        <div className="rounded-3xl bg-[#0D110F] border border-[#1A221E] p-6 sm:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.8)]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {highlights.map((item, idx) => {
               const HighlightIcon = item.icon;
               return (
                 <div key={idx} className="flex flex-col items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#152B1B] border border-[#1E3E27] flex items-center justify-center text-accent-lime shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
+                  <div className="w-10 h-10 rounded-xl bg-[#121B15] border border-[#1E2D23] flex items-center justify-center text-[#66FF88] shadow-[0_2px_10px_rgba(0,0,0,0.4)]">
                     <HighlightIcon className="w-5 h-5" />
                   </div>
-                  <h4 className="font-sora font-semibold text-base text-main-text">
+                  <h4 className="font-sora font-semibold text-base text-white">
                     {item.title}
                   </h4>
-                  <p className="font-inter text-xs sm:text-sm text-muted-text leading-relaxed">
+                  <p className="font-inter text-xs sm:text-sm text-[#9EA8A3] leading-relaxed">
                     {item.desc}
                   </p>
                 </div>

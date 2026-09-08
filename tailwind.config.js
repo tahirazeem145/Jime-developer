@@ -7,15 +7,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#0B0F0C',
-        'primary-green': '#1A2E1F',
-        'accent-lime': '#A7F3A0',
-        'accent-lime-hover': '#90e688',
-        'main-text': '#F8FAF7',
-        'muted-text': '#8B9A8F',
-        'surface-dark': '#101712',
-        'surface-card': '#131D16',
-        'border-subtle': '#1D2E22',
+        background: '#080C0A',
+        'primary-green': '#162E1F',
+        'accent-lime': '#66FF88',
+        'accent-lime-hover': '#4ADE80',
+        'main-text': '#FFFFFF',
+        'muted-text': '#9EA8A3',
+        'surface-dark': '#0A0E0C',
+        'surface-card': '#0D110F',
+        'border-subtle': '#1A221E',
       },
       fontFamily: {
         sora: ['Sora', 'sans-serif'],

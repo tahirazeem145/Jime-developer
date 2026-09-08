@@ -37,9 +37,7 @@ export default function Projects() {
       metric: '50k+ Active Users',
       metricIcon: TrendingUp,
       techStack: ['Next.js 14', 'TypeScript', 'PostgreSQL', 'TailwindCSS', 'AWS', 'Redis'],
-      previewGradient: 'from-[#0D2416] via-[#12361E] to-[#0A170F]',
-      accentColor: '#A7F3A0',
-      uiType: 'dashboard',
+      previewGradient: 'from-[#102418] via-[#0E1A13] to-[#080C0A]',
       href: 'https://www.jimedevelopers.in/saas-development',
       stats: [
         { label: 'Latency', value: '< 120ms' },
@@ -57,9 +55,7 @@ export default function Projects() {
       metric: '+280% Sales Growth',
       metricIcon: Zap,
       techStack: ['Shopify Plus', 'Hydrogen', 'React', 'Stripe', 'TailwindCSS'],
-      previewGradient: 'from-[#192D1B] via-[#0F1E13] to-[#0B150E]',
-      accentColor: '#A7F3A0',
-      uiType: 'ecommerce',
+      previewGradient: 'from-[#14281B] via-[#0F1E14] to-[#080C0A]',
       href: 'https://www.jimedevelopers.in/ecommerce-development',
       stats: [
         { label: 'Conversion Rate', value: '4.8%' },
@@ -77,9 +73,7 @@ export default function Projects() {
       metric: '4.9★ App Store Rating',
       metricIcon: ShieldCheck,
       techStack: ['React Native', 'Expo', 'Node.js', 'Biometrics', 'TailwindCSS'],
-      previewGradient: 'from-[#122C1A] via-[#193F25] to-[#0D1810]',
-      accentColor: '#A7F3A0',
-      uiType: 'mobile',
+      previewGradient: 'from-[#112619] via-[#0E1D13] to-[#080C0A]',
       href: 'https://www.jimedevelopers.in/mobile-app-development',
       stats: [
         { label: 'Downloads', value: '120k+' },
@@ -97,9 +91,7 @@ export default function Projects() {
       metric: '99.99% Cloud Uptime',
       metricIcon: ShieldCheck,
       techStack: ['Next.js', 'WebRTC', 'PostgreSQL', 'Docker', 'TailwindCSS'],
-      previewGradient: 'from-[#0F2617] via-[#173D22] to-[#0A160F]',
-      accentColor: '#A7F3A0',
-      uiType: 'dashboard',
+      previewGradient: 'from-[#102418] via-[#0E1B13] to-[#080C0A]',
       href: 'https://www.jimedevelopers.in/saas-development',
       stats: [
         { label: 'Consultations', value: '35k+' },
@@ -117,9 +109,7 @@ export default function Projects() {
       metric: '100/100 Lighthouse Speed',
       metricIcon: Zap,
       techStack: ['React', 'TailwindCSS', 'Vite', 'SEO', 'Framer Motion'],
-      previewGradient: 'from-[#172E1E] via-[#0E2014] to-[#09130D]',
-      accentColor: '#A7F3A0',
-      uiType: 'website',
+      previewGradient: 'from-[#13281B] via-[#0F1E14] to-[#080C0A]',
       href: 'https://www.jimedevelopers.in/web-development',
       stats: [
         { label: 'Load Time', value: '0.48s' },
@@ -137,9 +127,7 @@ export default function Projects() {
       metric: '15-Min Live Tracking',
       metricIcon: TrendingUp,
       techStack: ['Flutter', 'Firebase', 'Google Maps API', 'Node.js', 'Socket.io'],
-      previewGradient: 'from-[#112A18] via-[#1A4225] to-[#0B150E]',
-      accentColor: '#A7F3A0',
-      uiType: 'mobile',
+      previewGradient: 'from-[#112619] via-[#0E1D13] to-[#080C0A]',
       href: 'https://www.jimedevelopers.in/mobile-app-development',
       stats: [
         { label: 'Daily Orders', value: '18k+' },
@@ -159,13 +147,13 @@ export default function Projects() {
       <div 
         className="absolute top-1/3 right-1/4 w-[700px] h-[450px] rounded-full opacity-15 blur-[140px] pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(167,243,160,0.2) 0%, rgba(26,46,31,0.5) 60%, transparent 80%)'
+          background: 'radial-gradient(circle, rgba(102,255,136,0.2) 0%, rgba(22,46,31,0.5) 60%, transparent 80%)'
         }}
       />
       <div 
         className="absolute bottom-20 left-10 w-[550px] h-[550px] rounded-full opacity-10 blur-[130px] pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(167,243,160,0.25) 0%, transparent 75%)'
+          background: 'radial-gradient(circle, rgba(102,255,136,0.25) 0%, transparent 75%)'
         }}
       />
 
@@ -175,23 +163,23 @@ export default function Projects() {
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           
           {/* Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#131D16]/90 border border-[#1D2E22] text-accent-lime shadow-[0_2px_15px_rgba(0,0,0,0.4)] backdrop-blur-md mb-5 animate-fadeIn">
-            <Sparkles className="w-3.5 h-3.5 animate-pulse text-accent-lime" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0D110F] border border-[#1A221E] text-[#66FF88] shadow-[0_2px_15px_rgba(0,0,0,0.5)] backdrop-blur-md mb-5 animate-fadeIn">
+            <Sparkles className="w-3.5 h-3.5 animate-pulse text-[#66FF88]" />
             <span className="font-sora font-semibold text-xs tracking-wider uppercase">
               Featured Work & Case Studies
             </span>
           </div>
 
           {/* Heading */}
-          <h2 className="font-sora font-extrabold text-3xl sm:text-4xl md:text-5xl text-main-text leading-[1.15] tracking-tight">
+          <h2 className="font-sora font-extrabold text-3xl sm:text-4xl md:text-5xl text-white leading-[1.15] tracking-tight">
             Engineered for speed, built for{' '}
-            <span className="text-accent-lime italic font-extrabold inline-block drop-shadow-[0_0_20px_rgba(167,243,160,0.25)]">
+            <span className="text-[#66FF88] italic font-extrabold inline-block drop-shadow-[0_0_20px_rgba(102,255,136,0.25)]">
               real-world impact.
             </span>
           </h2>
 
           {/* Subtitle */}
-          <p className="mt-5 text-base sm:text-lg text-muted-text font-inter font-normal leading-relaxed">
+          <p className="mt-5 text-base sm:text-lg text-[#9EA8A3] font-inter font-normal leading-relaxed">
             Take a look at how we help venture-backed startups and industry leaders launch high-performance digital products, scalable SaaS platforms, and revenue-driving mobile applications.
           </p>
         </div>
@@ -206,11 +194,11 @@ export default function Projects() {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-sora text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
                   isActive
-                    ? 'bg-accent-lime text-[#0B0F0C] shadow-lime-glow scale-[1.02]'
-                    : 'bg-[#101712]/90 text-muted-text hover:text-main-text border border-[#1D2E22] hover:border-accent-lime/40'
+                    ? 'bg-[#66FF88] text-[#080C0A] shadow-[0_0_20px_rgba(102,255,136,0.35)] scale-[1.02]'
+                    : 'bg-[#0D110F] text-[#9EA8A3] hover:text-white border border-[#1A221E] hover:border-[#66FF88]/40'
                 }`}
               >
-                {cat.icon && <cat.icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#0B0F0C]' : 'text-accent-lime'}`} />}
+                {cat.icon && <cat.icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#080C0A]' : 'text-[#66FF88]'}`} />}
                 <span>{cat.label}</span>
               </button>
             );
@@ -224,59 +212,59 @@ export default function Projects() {
             return (
               <div
                 key={project.id}
-                className="group relative rounded-3xl bg-[#0D130F]/95 backdrop-blur-xl border border-[#1D2E22] hover:border-accent-lime/50 transition-all duration-500 overflow-hidden flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.7)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.85),0_0_35px_rgba(167,243,160,0.18)] hover:-translate-y-1.5"
+                className="group relative rounded-3xl bg-[#0D110F] border border-[#1A221E] hover:border-[#66FF88]/50 transition-all duration-500 overflow-hidden flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.85)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.95),0_0_35px_rgba(102,255,136,0.15)] hover:-translate-y-1.5"
               >
                 {/* Visual Mockup Header Area */}
-                <div className={`relative h-60 sm:h-72 w-full bg-gradient-to-br ${project.previewGradient} p-6 overflow-hidden border-b border-[#1D2E22] flex flex-col justify-between`}>
+                <div className={`relative h-60 sm:h-72 w-full bg-gradient-to-br ${project.previewGradient} p-6 overflow-hidden border-b border-[#1A221E] flex flex-col justify-between`}>
                   
                   {/* Subtle Grid Pattern Overlay */}
                   <div 
                     className="absolute inset-0 opacity-20 pointer-events-none" 
                     style={{
-                      backgroundImage: 'radial-gradient(rgba(167,243,160,0.3) 1px, transparent 1px)',
+                      backgroundImage: 'radial-gradient(rgba(102,255,136,0.3) 1px, transparent 1px)',
                       backgroundSize: '24px 24px'
                     }}
                   />
 
                   {/* Top Bar: Category Pill + Metric Pill */}
                   <div className="relative z-10 flex items-center justify-between gap-3">
-                    <span className="px-3 py-1 rounded-full text-xs font-inter font-medium text-accent-lime bg-[#0B0F0C]/80 border border-[#1E3E27] backdrop-blur-md">
+                    <span className="px-3 py-1 rounded-full text-xs font-inter font-medium text-[#66FF88] bg-[#080C0A]/90 border border-[#1A221E] backdrop-blur-md">
                       {project.categoryLabel}
                     </span>
 
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B0F0C]/85 border border-[#2E4A35] text-accent-lime text-xs font-inter font-semibold backdrop-blur-md shadow-sm">
-                      <MetricIcon className="w-3.5 h-3.5 text-accent-lime" />
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#080C0A]/90 border border-[#1D3A26] text-[#66FF88] text-xs font-inter font-semibold backdrop-blur-md shadow-sm">
+                      <MetricIcon className="w-3.5 h-3.5 text-[#66FF88]" />
                       <span>{project.metric}</span>
                     </div>
                   </div>
 
                   {/* Center Interface Graphic Element */}
                   <div className="relative z-10 my-auto transform transition-transform duration-500 group-hover:scale-[1.03]">
-                    <div className="max-w-md mx-auto rounded-2xl bg-[#0B0F0C]/80 border border-[#1E3E27] p-4 shadow-[0_10px_30px_rgba(0,0,0,0.7)] backdrop-blur-xl">
+                    <div className="max-w-md mx-auto rounded-2xl bg-[#080C0A]/90 border border-[#1A221E] p-4 shadow-[0_10px_30px_rgba(0,0,0,0.9)] backdrop-blur-xl">
                       
                       {/* Window Header Dots */}
-                      <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#1A2E1F]">
+                      <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#1A221E]">
                         <div className="flex items-center gap-1.5">
                           <span className="w-2.5 h-2.5 rounded-full bg-[#EF4444]/70" />
                           <span className="w-2.5 h-2.5 rounded-full bg-[#F59E0B]/70" />
                           <span className="w-2.5 h-2.5 rounded-full bg-[#10B981]/70" />
                         </div>
-                        <span className="text-[11px] font-mono text-muted-text/80">
+                        <span className="text-[11px] font-mono text-[#9EA8A3]">
                           {project.title.toLowerCase().replace(/\s+/g, '')}.app
                         </span>
-                        <div className="w-4 h-4 rounded bg-[#1A2E1F] flex items-center justify-center">
-                          <div className="w-1.5 h-1.5 rounded-full bg-accent-lime" />
+                        <div className="w-4 h-4 rounded bg-[#121B15] flex items-center justify-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#66FF88]" />
                         </div>
                       </div>
 
                       {/* Stat Metrics Row Inside Window */}
                       <div className="grid grid-cols-3 gap-2">
                         {project.stats.map((stat, i) => (
-                          <div key={i} className="p-2 rounded-lg bg-[#121E15]/80 border border-[#1D2E22] text-center">
-                            <span className="block text-[10px] font-inter text-muted-text uppercase tracking-wider">
+                          <div key={i} className="p-2 rounded-lg bg-[#0D110F] border border-[#1A221E] text-center">
+                            <span className="block text-[10px] font-inter text-[#9EA8A3] uppercase tracking-wider">
                               {stat.label}
                             </span>
-                            <span className="block text-xs sm:text-sm font-sora font-bold text-accent-lime mt-0.5">
+                            <span className="block text-xs sm:text-sm font-sora font-bold text-[#66FF88] mt-0.5">
                               {stat.value}
                             </span>
                           </div>
@@ -287,9 +275,9 @@ export default function Projects() {
                   </div>
 
                   {/* Bottom Corner Subtle Hint */}
-                  <div className="relative z-10 flex items-center justify-between text-[11px] font-inter text-muted-text/70">
+                  <div className="relative z-10 flex items-center justify-between text-[11px] font-inter text-[#9EA8A3]">
                     <span>Live Architecture</span>
-                    <span className="flex items-center gap-1 text-accent-lime/80 font-medium">
+                    <span className="flex items-center gap-1 text-[#66FF88] font-medium">
                       Case Study Available <ChevronRight className="w-3 h-3" />
                     </span>
                   </div>
@@ -299,24 +287,24 @@ export default function Projects() {
                 {/* Content Section */}
                 <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="font-sora font-bold text-2xl text-main-text group-hover:text-accent-lime transition-colors duration-300">
+                    <h3 className="font-sora font-bold text-2xl text-white group-hover:text-[#66FF88] transition-colors duration-300">
                       {project.title}
                     </h3>
-                    <p className="font-inter text-xs sm:text-sm font-medium text-accent-lime/85 mt-1 mb-3">
+                    <p className="font-inter text-xs sm:text-sm font-medium text-[#66FF88]/90 mt-1 mb-3">
                       {project.tagline}
                     </p>
-                    <p className="text-sm sm:text-[15px] text-muted-text font-inter leading-relaxed mb-6 font-normal">
+                    <p className="text-sm sm:text-[15px] text-[#9EA8A3] font-inter leading-relaxed mb-6 font-normal">
                       {project.description}
                     </p>
                   </div>
 
                   <div>
                     {/* Tech Stack Tags */}
-                    <div className="flex flex-wrap gap-2 pt-2 border-t border-[#1D2E22]/80 mb-6">
+                    <div className="flex flex-wrap gap-2 pt-2 border-t border-[#1A221E] mb-6">
                       {project.techStack.map((tech) => (
                         <span 
                           key={tech} 
-                          className="text-[11px] font-inter font-medium px-2.5 py-1 rounded-md bg-[#131D16] border border-[#1D2E22] text-muted-text group-hover:border-[#2E4A35] group-hover:text-main-text transition-colors"
+                          className="text-[11px] font-inter font-medium px-2.5 py-1 rounded-md bg-[#080C0A] border border-[#1A221E] text-[#9EA8A3] group-hover:border-[#66FF88]/40 group-hover:text-white transition-colors"
                         >
                           {tech}
                         </span>
@@ -329,7 +317,7 @@ export default function Projects() {
                         href={project.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-sora font-semibold text-accent-lime hover:text-accent-lime-hover transition-colors group/link"
+                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-sora font-semibold text-[#66FF88] hover:text-[#4ADE80] transition-colors group/link"
                       >
                         <span>View Project Details</span>
                         <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />
@@ -339,7 +327,7 @@ export default function Projects() {
                         href={project.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-8 h-8 rounded-full bg-[#131D16] border border-[#1D2E22] hover:border-accent-lime/50 flex items-center justify-center text-muted-text hover:text-accent-lime transition-colors"
+                        className="w-8 h-8 rounded-full bg-[#080C0A] border border-[#1A2E1F] hover:border-[#66FF88]/50 flex items-center justify-center text-[#9EA8A3] hover:text-[#66FF88] transition-colors"
                       >
                         <ArrowUpRight className="w-4 h-4" />
                       </a>
@@ -354,41 +342,41 @@ export default function Projects() {
         </div>
 
         {/* BOTTOM METRICS STRIP */}
-        <div className="rounded-3xl bg-[#0D130F]/90 border border-[#1D2E22] p-6 sm:p-10 mb-16 shadow-[0_15px_40px_rgba(0,0,0,0.5)] backdrop-blur-md">
+        <div className="rounded-3xl bg-[#0D110F] border border-[#1A221E] p-6 sm:p-10 mb-16 shadow-[0_15px_45px_rgba(0,0,0,0.85)]">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
             
             <div className="flex flex-col items-center">
-              <span className="font-sora font-extrabold text-3xl sm:text-4xl text-accent-lime drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
+              <span className="font-sora font-extrabold text-3xl sm:text-4xl text-[#66FF88] drop-shadow-[0_0_15px_rgba(102,255,136,0.25)]">
                 15+
               </span>
-              <span className="mt-1 text-xs sm:text-sm font-inter text-muted-text font-medium">
+              <span className="mt-1 text-xs sm:text-sm font-inter text-[#9EA8A3] font-medium">
                 Shipped Products
               </span>
             </div>
 
             <div className="flex flex-col items-center">
-              <span className="font-sora font-extrabold text-3xl sm:text-4xl text-accent-lime drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
+              <span className="font-sora font-extrabold text-3xl sm:text-4xl text-[#66FF88] drop-shadow-[0_0_15px_rgba(102,255,136,0.25)]">
                 99.8%
               </span>
-              <span className="mt-1 text-xs sm:text-sm font-inter text-muted-text font-medium">
+              <span className="mt-1 text-xs sm:text-sm font-inter text-[#9EA8A3] font-medium">
                 On-Time Delivery
               </span>
             </div>
 
             <div className="flex flex-col items-center">
-              <span className="font-sora font-extrabold text-3xl sm:text-4xl text-accent-lime drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
+              <span className="font-sora font-extrabold text-3xl sm:text-4xl text-[#66FF88] drop-shadow-[0_0_15px_rgba(102,255,136,0.25)]">
                 100%
               </span>
-              <span className="mt-1 text-xs sm:text-sm font-inter text-muted-text font-medium">
+              <span className="mt-1 text-xs sm:text-sm font-inter text-[#9EA8A3] font-medium">
                 Code Ownership
               </span>
             </div>
 
             <div className="flex flex-col items-center">
-              <span className="font-sora font-extrabold text-3xl sm:text-4xl text-accent-lime drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
+              <span className="font-sora font-extrabold text-3xl sm:text-4xl text-[#66FF88] drop-shadow-[0_0_15px_rgba(102,255,136,0.25)]">
                 5.0 ★
               </span>
-              <span className="mt-1 text-xs sm:text-sm font-inter text-muted-text font-medium">
+              <span className="mt-1 text-xs sm:text-sm font-inter text-[#9EA8A3] font-medium">
                 Client Rating
               </span>
             </div>
@@ -397,21 +385,21 @@ export default function Projects() {
         </div>
 
         {/* BOTTOM CTA CALLOUT */}
-        <div className="relative rounded-3xl bg-gradient-to-r from-[#122216] via-[#101F14] to-[#122216] border border-[#23422B] p-8 sm:p-12 text-center overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(167,243,160,0.12)_0%,transparent_70%)] pointer-events-none" />
+        <div className="relative rounded-3xl bg-gradient-to-r from-[#122216] via-[#0E1B13] to-[#122216] border border-[#1A2E1F] p-8 sm:p-12 text-center overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(102,255,136,0.12)_0%,transparent_70%)] pointer-events-none" />
           
           <div className="relative z-10 max-w-2xl mx-auto">
-            <h3 className="font-sora font-bold text-2xl sm:text-3xl text-main-text">
+            <h3 className="font-sora font-bold text-2xl sm:text-3xl text-white">
               Have a project you want to bring to life?
             </h3>
-            <p className="mt-3 text-sm sm:text-base text-muted-text font-inter">
+            <p className="mt-3 text-sm sm:text-base text-[#9EA8A3] font-inter">
               We turn concepts into market-dominating web platforms, applications, and e-commerce stores with agile velocity.
             </p>
             
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="#book-call"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-accent-lime text-[#0B0F0C] font-sora font-semibold text-sm sm:text-[15px] hover:bg-accent-lime-hover hover:shadow-lime-glow hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#66FF88] text-[#080C0A] font-sora font-semibold text-sm sm:text-[15px] hover:bg-[#4ADE80] hover:shadow-[0_0_25px_rgba(102,255,136,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
               >
                 <span>Start Your Project</span>
                 <ArrowRight className="w-4 h-4" />
@@ -421,10 +409,10 @@ export default function Projects() {
                 href="https://wa.me/919999999999" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#131D16] border border-[#1D2E22] hover:border-accent-lime/50 text-main-text font-sora font-semibold text-sm hover:bg-[#16291C] transition-all duration-200"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#080C0A] border border-[#1A221E] hover:border-[#66FF88]/50 text-white font-sora font-semibold text-sm hover:bg-[#121B15] transition-all duration-200"
               >
                 <span>Chat on WhatsApp</span>
-                <ExternalLink className="w-4 h-4 text-accent-lime" />
+                <ExternalLink className="w-4 h-4 text-[#66FF88]" />
               </a>
             </div>
           </div>
