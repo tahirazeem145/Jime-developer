@@ -17,7 +17,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative z-10 pt-10 sm:pt-14 md:pt-18 pb-16 sm:pb-24 overflow-hidden">
+    <section id="home" className="relative z-10 pt-10 sm:pt-14 md:pt-18 pb-16 sm:pb-24 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         {/* GOOGLE REVIEW BADGE */}

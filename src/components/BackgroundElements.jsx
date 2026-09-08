@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function BackgroundElements() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Top ambient soft radial glow */}
       <div 
         className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full opacity-20 blur-[130px]"

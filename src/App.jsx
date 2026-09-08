@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Services from './components/Services';
 import BackgroundElements from './components/BackgroundElements';
 import ParticleBackground from './components/ParticleBackground';
 import MouseGlow from './components/MouseGlow';
@@ -21,9 +22,10 @@ export default function App() {
       {/* Top Sticky/Fixed Header */}
       <Navbar />
 
-      {/* Main Hero Section */}
-      <main className="flex-grow flex items-center justify-center pt-20">
+      {/* Main Content Sections */}
+      <main className="flex-grow pt-20">
         <Hero />
+        <Services />
       </main>
 
       {/* Floating Action Button */}
@@ -31,3 +33,4 @@ export default function App() {
     </div>
   );
 }
+
