@@ -211,9 +211,9 @@ const ServiceCard = ({ item, index, totalCards }) => {
         />
 
         {/* Service Content Layout */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 min-h-[440px] sm:min-h-[460px]">
-          {/* Left Column: Icon Showcase & Capabilities Checklist (6 Cols) */}
-          <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 bg-[#0C0C0E]/90">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 min-h-[350px] sm:min-h-[420px] lg:min-h-[460px]">
+          {/* Left Column: Icon Showcase & Capabilities Checklist (Visible strictly on desktop) */}
+          <div className="hidden lg:flex lg:col-span-6 p-6 sm:p-8 flex-col justify-between border-r border-white/10 bg-[#0C0C0E]/90">
             <div>
               <div className="flex items-center justify-between gap-4 mb-6">
                 <div 
@@ -263,11 +263,35 @@ const ServiceCard = ({ item, index, totalCards }) => {
             </div>
           </div>
 
-          {/* Right Column: Service Description, Tech Stack & CTA (6 Cols) */}
-          <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between bg-[#0E0E10]/80">
+          {/* Right Column (Mobile & Desktop details) */}
+          <div className="col-span-1 lg:col-span-6 p-4 sm:p-7 lg:p-8 flex flex-col justify-between bg-[#0E0E10]/80">
             <div>
-              {/* Header & Step Tag */}
-              <div className="flex items-center justify-between gap-2 mb-3 sm:mb-4">
+              {/* Mobile Top Header: Icon + Badge + Counter */}
+              <div className="flex lg:hidden items-center justify-between gap-2 mb-2.5 sm:mb-3">
+                <div className="flex items-center gap-2">
+                  <div 
+                    className="w-8 h-8 sm:w-9 sm:h-9 p-1.5 rounded-xl bg-neutral-900 border flex items-center justify-center text-white"
+                    style={{ borderColor: `${color}80` }}
+                  >
+                    <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                  </div>
+                  <span 
+                    className="px-2.5 py-0.5 rounded-full text-[11px] font-inter font-semibold text-white bg-neutral-900 border"
+                    style={{ borderColor: `${color}80` }}
+                  >
+                    {item.badge}
+                  </span>
+                </div>
+                <span 
+                  className="text-xs font-mono font-semibold px-2 py-0.5 rounded-md bg-neutral-900 border"
+                  style={{ color: color, borderColor: `${color}60` }}
+                >
+                  0{index + 1} / 0{totalCards}
+                </span>
+              </div>
+
+              {/* Desktop Header & Step Tag */}
+              <div className="hidden lg:flex items-center justify-between gap-2 mb-3 sm:mb-4">
                 <span 
                   className="text-xs font-mono font-semibold px-2.5 py-1 rounded-md bg-neutral-900 border"
                   style={{ color: color, borderColor: `${color}60` }}
@@ -280,29 +304,39 @@ const ServiceCard = ({ item, index, totalCards }) => {
               </div>
 
               {/* Title */}
-              <h3 className="font-sora font-bold text-xl sm:text-2xl md:text-3xl text-white group-hover:text-neutral-100 transition-colors duration-300 leading-snug">
+              <h3 className="font-sora font-bold text-lg sm:text-2xl md:text-3xl text-white group-hover:text-neutral-100 transition-colors duration-300 leading-snug">
                 {item.title}
               </h3>
               
               {/* Tagline */}
-              <p className="font-inter text-xs sm:text-sm font-semibold text-neutral-300 mt-1 mb-3">
+              <p className="font-inter text-xs sm:text-sm font-semibold text-neutral-300 mt-1 mb-1.5 sm:mb-3">
                 {item.tagline}
               </p>
 
               {/* Description */}
-              <p className="text-xs sm:text-sm md:text-[14px] text-neutral-400 font-inter leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-[14px] text-neutral-400 font-inter leading-relaxed line-clamp-3 sm:line-clamp-none">
                 {item.description}
               </p>
+
+              {/* Mobile Key Capabilities Strip (Shows top 2 on mobile) */}
+              <div className="flex lg:hidden flex-col gap-1.5 mt-2.5 pt-2 border-t border-white/10">
+                {item.capabilities.slice(0, 2).map((cap, i) => (
+                  <div key={i} className="flex items-center gap-2 text-[11px] sm:text-xs font-inter text-neutral-300">
+                    <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0" style={{ color: color }} />
+                    <span className="truncate">{cap}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div>
               {/* Tech stack */}
               {item.techStack && (
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-4 border-t border-white/10 mb-5">
-                  {item.techStack.map((tech) => (
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-2.5 sm:pt-4 border-t border-white/10 mb-2.5 sm:mb-5">
+                  {item.techStack.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
-                      className="text-[10px] sm:text-[11px] font-inter font-medium px-2.5 py-1 rounded-md bg-neutral-900/70 border border-white/10 text-neutral-300 group-hover:border-white/25 group-hover:text-white transition-colors"
+                      className="text-[10px] sm:text-[11px] font-inter font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-neutral-900/70 border border-white/10 text-neutral-300 group-hover:border-white/25 group-hover:text-white transition-colors"
                     >
                       {tech}
                     </span>
@@ -316,19 +350,19 @@ const ServiceCard = ({ item, index, totalCards }) => {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-sora font-semibold text-white hover:text-neutral-300 transition-colors group/link"
+                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-sora font-semibold text-white hover:text-neutral-300 transition-colors group/link"
                 >
-                  <span>Explore {item.title}</span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+                  <span>Explore Service</span>
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
                 </a>
 
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-1.5 text-xs font-inter text-neutral-300 hover:text-white transition-colors px-3.5 py-1.5 rounded-full bg-neutral-900 border border-white/15 hover:border-white/40"
+                  className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-inter text-neutral-300 hover:text-white transition-colors px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-neutral-900 border border-white/15 hover:border-white/40"
                   style={{ borderColor: `${color}60` }}
                 >
                   <span>Get a Quote</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
+                  <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 </a>
               </div>
             </div>
@@ -350,8 +384,6 @@ export const StackedServices = () => {
 
     const ctx = gsap.context(() => {
       // Set initial positions:
-      // Card 0 starts in place at top (y: 0, scale: 1)
-      // Subsequent cards start offscreen at the bottom (y: '100vh') so they are completely offscreen initially
       cards.forEach((card, i) => {
         if (i === 0) {
           gsap.set(card, { y: 0, scale: 1, transformOrigin: 'top center' });
@@ -360,12 +392,15 @@ export const StackedServices = () => {
         }
       });
 
+      const isMobile = window.innerWidth < 768;
+      const scrollDistance = isMobile ? (cards.length - 1) * 320 : (cards.length - 1) * 450;
+
       // Pinning timeline: snappy scroll scrubbing
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: pinSection,
           start: 'top 85px',
-          end: `+=${(cards.length - 1) * 450}`,
+          end: `+=${scrollDistance}`,
           pin: true,
           scrub: 0.5,
           anticipatePin: 1,
@@ -377,7 +412,6 @@ export const StackedServices = () => {
       for (let i = 1; i < cards.length; i++) {
         const timeOffset = (i - 1) * 1;
 
-        // Card i glides up from the bottom to the top
         tl.to(
           cards[i],
           {
@@ -389,7 +423,6 @@ export const StackedServices = () => {
           timeOffset
         );
 
-        // Previous cards scale down slightly to create physical tabbed deck depth
         for (let j = 0; j < i; j++) {
           const depthScale = 1 - (i - j) * 0.025;
           tl.to(
@@ -409,12 +442,9 @@ export const StackedServices = () => {
   }, []);
 
   return (
-    <div ref={pinSectionRef} className="relative w-full py-6">
+    <div ref={pinSectionRef} className="relative w-full py-2 sm:py-6">
       <div 
-        className="relative w-full max-w-5xl mx-auto"
-        style={{
-          minHeight: `${480 + (servicesData.length - 1) * 36}px`,
-        }}
+        className="relative w-full max-w-5xl mx-auto min-h-[440px] sm:min-h-[480px] lg:min-h-[460px]"
       >
         {servicesData.map((service, index) => (
           <div
@@ -422,7 +452,7 @@ export const StackedServices = () => {
             ref={(el) => (cardRefs.current[index] = el)}
             className="absolute inset-x-0 w-full will-change-transform"
             style={{
-              top: `${index * 36}px`,
+              top: `${index * 12}px`,
               zIndex: 10 + index * 5,
             }}
           >

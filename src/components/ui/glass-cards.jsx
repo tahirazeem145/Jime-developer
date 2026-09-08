@@ -85,18 +85,18 @@ const ProjectCard = ({ item, index, totalCards }) => {
         />
 
         {/* Project Content Layout */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 min-h-[440px] sm:min-h-[460px]">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 min-h-[400px] sm:min-h-[460px]">
           {/* Left Column: Live Mockup Frame (6 Cols) */}
-          <div className="lg:col-span-6 p-5 sm:p-7 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 bg-[#0C0C0E]/90">
+          <div className="lg:col-span-6 p-4 sm:p-6 lg:p-7 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 bg-[#0C0C0E]/90">
             <div className="rounded-2xl bg-neutral-950 border border-white/15 overflow-hidden shadow-[0_12px_35px_rgba(0,0,0,0.85)] group-hover:border-white/30 transition-all duration-500">
               {/* Browser bar */}
-              <div className="px-3.5 py-2.5 bg-neutral-900 border-b border-white/10 flex items-center justify-between">
+              <div className="px-3 py-2 sm:px-3.5 sm:py-2.5 bg-neutral-900 border-b border-white/10 flex items-center justify-between">
                 <div className="flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-[#EF4444]/80" />
                   <span className="w-2.5 h-2.5 rounded-full bg-[#F59E0B]/80" />
                   <span className="w-2.5 h-2.5 rounded-full bg-[#10B981]/80" />
                 </div>
-                <div className="flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-neutral-950 border border-white/15 text-[11px] font-mono text-neutral-200">
+                <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-neutral-950 border border-white/15 text-[10px] sm:text-[11px] font-mono text-neutral-200">
                   <Globe className="w-3 h-3 text-white" />
                   <span>{item.url}</span>
                 </div>
@@ -112,7 +112,7 @@ const ProjectCard = ({ item, index, totalCards }) => {
               </div>
 
               {/* Screenshot */}
-              <div className="relative overflow-hidden aspect-[16/10] bg-neutral-950">
+              <div className="relative overflow-hidden aspect-[16/9] sm:aspect-[16/10] max-h-[160px] sm:max-h-none bg-neutral-950">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -124,10 +124,10 @@ const ProjectCard = ({ item, index, totalCards }) => {
 
             {/* Stats pills */}
             {item.stats && item.stats.length > 0 && (
-              <div className="grid grid-cols-2 gap-2.5 mt-4">
+              <div className="grid grid-cols-2 gap-2 mt-3 sm:mt-4">
                 {item.stats.map((st, i) => (
-                  <div key={i} className="px-3 py-2 rounded-xl bg-neutral-900/80 border border-white/10 text-center">
-                    <span className="block text-[10px] font-inter text-neutral-400 uppercase tracking-wider">
+                  <div key={i} className="px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-neutral-900/80 border border-white/10 text-center">
+                    <span className="block text-[9px] sm:text-[10px] font-inter text-neutral-400 uppercase tracking-wider">
                       {st.label}
                     </span>
                     <span className="block text-xs font-sora font-bold text-white mt-0.5 truncate">
@@ -140,24 +140,24 @@ const ProjectCard = ({ item, index, totalCards }) => {
           </div>
 
           {/* Right Column: Project Details (6 Cols) */}
-          <div className="lg:col-span-6 p-5 sm:p-7 flex flex-col justify-between bg-[#0E0E10]/80">
+          <div className="lg:col-span-6 p-4 sm:p-6 lg:p-7 flex flex-col justify-between bg-[#0E0E10]/80">
             <div>
               {/* Badges & Counter */}
-              <div className="flex items-center justify-between gap-2 mb-3 sm:mb-4">
+              <div className="flex items-center justify-between gap-2 mb-2.5 sm:mb-4">
                 <div className="flex items-center gap-2">
                   <span 
-                    className="px-3 py-1 rounded-full text-xs font-inter font-semibold text-white bg-neutral-900 border"
+                    className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[11px] sm:text-xs font-inter font-semibold text-white bg-neutral-900 border"
                     style={{ borderColor: `${color}80` }}
                   >
                     <span className="inline-block w-1.5 h-1.5 rounded-full mr-1.5" style={{ backgroundColor: color }} />
                     {item.tag}
                   </span>
-                  <span className="px-3 py-1 rounded-lg text-xs font-inter font-medium text-neutral-400 bg-neutral-900/80 border border-white/10">
+                  <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-lg text-[11px] sm:text-xs font-inter font-medium text-neutral-400 bg-neutral-900/80 border border-white/10">
                     {item.year}
                   </span>
                 </div>
                 <span 
-                  className="text-xs font-mono font-semibold px-2.5 py-1 rounded-md bg-neutral-900 border"
+                  className="text-xs font-mono font-semibold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-neutral-900 border"
                   style={{ color: color, borderColor: `${color}60` }}
                 >
                   0{index + 1} / 0{totalCards}
@@ -165,19 +165,19 @@ const ProjectCard = ({ item, index, totalCards }) => {
               </div>
 
               {/* Title */}
-              <h3 className="font-sora font-bold text-lg sm:text-xl md:text-2xl text-white group-hover:text-neutral-100 transition-colors duration-300 leading-snug">
+              <h3 className="font-sora font-bold text-base sm:text-xl md:text-2xl text-white group-hover:text-neutral-100 transition-colors duration-300 leading-snug">
                 {item.title}
               </h3>
 
               {/* Tagline */}
               {item.tagline && (
-                <p className="font-inter text-xs sm:text-sm font-semibold text-neutral-300 mt-1 mb-2">
+                <p className="font-inter text-xs sm:text-sm font-semibold text-neutral-300 mt-0.5 sm:mt-1 mb-1 sm:mb-2">
                   {item.tagline}
                 </p>
               )}
 
               {/* Description */}
-              <p className="mt-2 text-xs sm:text-sm md:text-[14px] text-neutral-400 font-inter leading-relaxed">
+              <p className="mt-1 sm:mt-2 text-xs sm:text-sm md:text-[14px] text-neutral-400 font-inter leading-relaxed line-clamp-2 sm:line-clamp-none">
                 {item.description}
               </p>
             </div>
@@ -185,11 +185,11 @@ const ProjectCard = ({ item, index, totalCards }) => {
             <div>
               {/* Tech stack */}
               {item.techStack && (
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-3 sm:pt-4 border-t border-white/10 mb-4 sm:mb-5">
-                  {item.techStack.map((tech) => (
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-2.5 sm:pt-4 border-t border-white/10 mb-3 sm:mb-5">
+                  {item.techStack.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
-                      className="text-[10px] sm:text-[11px] font-inter font-medium px-2.5 py-1 rounded-md bg-neutral-900/70 border border-white/10 text-neutral-300 group-hover:border-white/25 group-hover:text-white transition-colors"
+                      className="text-[10px] sm:text-[11px] font-inter font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-neutral-900/70 border border-white/10 text-neutral-300 group-hover:border-white/25 group-hover:text-white transition-colors"
                     >
                       {tech}
                     </span>
@@ -201,10 +201,10 @@ const ProjectCard = ({ item, index, totalCards }) => {
               <div className="flex items-center justify-between pt-1">
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-sora font-semibold text-white hover:text-neutral-300 transition-colors group/link"
+                  className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-sora font-semibold text-white hover:text-neutral-300 transition-colors group/link"
                 >
                   <span>Read Case Study</span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
                 </a>
 
                 <a
@@ -212,7 +212,7 @@ const ProjectCard = ({ item, index, totalCards }) => {
                   className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-neutral-900 border border-white/20 hover:border-white/50 flex items-center justify-center text-white transition-colors hover:scale-105 active:scale-95"
                   style={{ borderColor: `${color}60` }}
                 >
-                  <ArrowUpRight className="w-4 h-4" />
+                  <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
               </div>
             </div>
@@ -234,8 +234,6 @@ export const StackedCards = () => {
 
     const ctx = gsap.context(() => {
       // Set initial positions:
-      // Card 0 starts in place at top (y: 0, scale: 1)
-      // Subsequent cards start offscreen at the bottom (y: '100vh') so they are completely offscreen initially
       cards.forEach((card, i) => {
         if (i === 0) {
           gsap.set(card, { y: 0, scale: 1, transformOrigin: 'top center' });
@@ -244,12 +242,15 @@ export const StackedCards = () => {
         }
       });
 
+      const isMobile = window.innerWidth < 768;
+      const scrollDistance = isMobile ? (cards.length - 1) * 340 : (cards.length - 1) * 450;
+
       // Pinning timeline: snappy scroll scrubbing
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: pinSection,
           start: 'top 85px',
-          end: `+=${(cards.length - 1) * 450}`,
+          end: `+=${scrollDistance}`,
           pin: true,
           scrub: 0.5,
           anticipatePin: 1,
@@ -293,12 +294,9 @@ export const StackedCards = () => {
   }, []);
 
   return (
-    <div ref={pinSectionRef} className="relative w-full py-6">
+    <div ref={pinSectionRef} className="relative w-full py-2 sm:py-6">
       <div 
-        className="relative w-full max-w-5xl mx-auto"
-        style={{
-          minHeight: `${480 + (cardData.length - 1) * 36}px`,
-        }}
+        className="relative w-full max-w-5xl mx-auto min-h-[500px] sm:min-h-[520px] lg:min-h-[480px]"
       >
         {cardData.map((card, index) => (
           <div
@@ -306,7 +304,7 @@ export const StackedCards = () => {
             ref={(el) => (cardRefs.current[index] = el)}
             className="absolute inset-x-0 w-full will-change-transform"
             style={{
-              top: `${index * 36}px`,
+              top: `${index * 12}px`,
               zIndex: 10 + index * 5,
             }}
           >

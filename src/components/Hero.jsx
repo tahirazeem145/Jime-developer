@@ -150,7 +150,7 @@ export default function Hero() {
         {/* MAIN HEADLINE */}
         <h1 
           ref={headlineRef}
-          className="font-sora font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-[72px] leading-[1.08] tracking-[-0.03em] text-main-text max-w-4xl mx-auto will-change-transform"
+          className="font-sora font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-[72px] leading-[1.12] sm:leading-[1.08] tracking-[-0.03em] text-main-text max-w-4xl mx-auto will-change-transform"
         >
           We turn your idea <br className="hidden sm:inline" />
           into a{' '}
@@ -162,13 +162,13 @@ export default function Hero() {
         {/* SUBTITLE */}
         <p 
           ref={subtitleRef}
-          className="mt-6 sm:mt-7 text-base sm:text-lg md:text-xl text-muted-text max-w-2xl mx-auto font-inter font-normal leading-relaxed tracking-normal"
+          className="mt-3 sm:mt-6 text-sm sm:text-lg md:text-xl text-muted-text max-w-2xl mx-auto font-inter font-normal leading-relaxed tracking-normal"
         >
           Web and mobile apps, designed and shipped fast.
         </p>
 
         {/* EMAIL CTA CONTAINER */}
-        <div ref={ctaRef} className="mt-8 sm:mt-11 max-w-xl mx-auto w-full">
+        <div ref={ctaRef} className="mt-6 sm:mt-10 max-w-xl mx-auto w-full">
           {submitted ? (
             <div className="p-4 rounded-full bg-[#131D16]/90 border border-[#A7F3A0]/40 flex items-center justify-center gap-3 text-accent-lime font-inter font-medium text-sm sm:text-base animate-fadeIn shadow-lime-glow">
               <CheckCircle className="w-5 h-5 flex-shrink-0" />
@@ -178,8 +178,8 @@ export default function Hero() {
             <form onSubmit={handleSubmit} className="w-full">
               <div className="relative flex flex-col sm:flex-row items-center p-1.5 sm:p-2 rounded-2xl sm:rounded-full bg-[#131D16]/85 backdrop-blur-xl border border-[#1D2E22] hover:border-[#A7F3A0]/30 focus-within:border-[#A7F3A0]/60 focus-within:shadow-[0_0_30px_rgba(167,243,160,0.18)] transition-all duration-300 gap-2 sm:gap-0">
                 {/* Email Input Field */}
-                <div className="flex items-center gap-3 w-full pl-4 py-2 sm:py-0">
-                  <Mail className="w-5 h-5 text-muted-text/70 flex-shrink-0" />
+                <div className="flex items-center gap-2.5 sm:gap-3 w-full pl-3 sm:pl-4 py-1.5 sm:py-0">
+                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-muted-text/70 flex-shrink-0" />
                   <input
                     type="email"
                     value={email}
@@ -193,60 +193,54 @@ export default function Hero() {
                 {/* Get a Quote Button */}
                 <button
                   type="submit"
-                  className="w-full sm:w-auto flex-shrink-0 inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl sm:rounded-full bg-accent-lime text-[#0B0F0C] font-sora font-semibold text-sm sm:text-[15px] tracking-tight hover:bg-accent-lime-hover hover:shadow-lime-glow active:scale-[0.98] transition-all duration-200"
+                  className="w-full sm:w-auto flex-shrink-0 inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl sm:rounded-full bg-accent-lime text-[#0B0F0C] font-sora font-semibold text-xs sm:text-[15px] tracking-tight hover:bg-accent-lime-hover hover:shadow-lime-glow active:scale-[0.98] transition-all duration-200"
                 >
                   <span>Get a quote</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </button>
               </div>
             </form>
           )}
         </div>
 
-        {/* THREE STATS */}
-        <div ref={statsRef} className="mt-14 sm:mt-18 pt-6 max-w-3xl mx-auto w-full">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-0">
+        {/* THREE STATS IN A COMPACT HORIZONTAL ROW */}
+        <div ref={statsRef} className="mt-8 sm:mt-14 pt-2 sm:pt-6 max-w-3xl mx-auto w-full">
+          <div className="grid grid-cols-3 divide-x divide-[#2E4A35]/60 items-center justify-center">
             {/* Stat 1 */}
             <div 
               ref={(el) => (statsItemsRef.current[0] = el)}
-              className="flex-1 flex flex-col items-center text-center px-4 sm:px-6"
+              className="flex flex-col items-center text-center px-2 sm:px-6"
             >
-              <span className="font-sora font-extrabold text-3xl sm:text-4xl lg:text-[44px] text-accent-lime tracking-tight drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
+              <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-accent-lime tracking-tight drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
                 15+
               </span>
-              <span className="mt-1.5 text-xs sm:text-sm text-muted-text font-inter font-medium tracking-wide whitespace-nowrap">
+              <span className="mt-0.5 sm:mt-1.5 text-[10px] sm:text-xs md:text-sm text-muted-text font-inter font-medium tracking-wide">
                 Products shipped
               </span>
             </div>
 
-            {/* Vertical Divider 1 */}
-            <div className="hidden sm:block w-[1px] h-12 bg-gradient-to-b from-transparent via-[#2E4A35] to-transparent flex-shrink-0" />
-
             {/* Stat 2 */}
             <div 
               ref={(el) => (statsItemsRef.current[1] = el)}
-              className="flex-1 flex flex-col items-center text-center px-4 sm:px-6"
+              className="flex flex-col items-center text-center px-2 sm:px-6"
             >
-              <span className="font-sora font-extrabold text-3xl sm:text-4xl lg:text-[44px] text-accent-lime tracking-tight drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
+              <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-accent-lime tracking-tight drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
                 2+
               </span>
-              <span className="mt-1.5 text-xs sm:text-sm text-muted-text font-inter font-medium tracking-wide whitespace-nowrap">
+              <span className="mt-0.5 sm:mt-1.5 text-[10px] sm:text-xs md:text-sm text-muted-text font-inter font-medium tracking-wide">
                 Years in business
               </span>
             </div>
 
-            {/* Vertical Divider 2 */}
-            <div className="hidden sm:block w-[1px] h-12 bg-gradient-to-b from-transparent via-[#2E4A35] to-transparent flex-shrink-0" />
-
             {/* Stat 3 */}
             <div 
               ref={(el) => (statsItemsRef.current[2] = el)}
-              className="flex-1 flex flex-col items-center text-center px-4 sm:px-6"
+              className="flex flex-col items-center text-center px-2 sm:px-6"
             >
-              <span className="font-sora font-extrabold text-3xl sm:text-4xl lg:text-[44px] text-accent-lime tracking-tight drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
+              <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-accent-lime tracking-tight drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
                 2
               </span>
-              <span className="mt-1.5 text-xs sm:text-sm text-muted-text font-inter font-medium tracking-wide whitespace-nowrap">
+              <span className="mt-0.5 sm:mt-1.5 text-[10px] sm:text-xs md:text-sm text-muted-text font-inter font-medium tracking-wide">
                 Countries
               </span>
             </div>
