@@ -31,8 +31,8 @@ export default function BackgroundElements() {
       <div 
         className="absolute right-0 top-0 bottom-0 w-[220px] sm:w-[320px] md:w-[380px] lg:w-[480px] pointer-events-none select-none overflow-hidden z-0"
         style={{
-          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0.5) 80%, transparent 98%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0.5) 80%, transparent 98%)',
+          maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 75%, transparent 96%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 75%, transparent 96%)',
         }}
       >
         <svg
@@ -160,7 +160,13 @@ export default function BackgroundElements() {
       </div>
 
       {/* LEFT CORNER CURVED ARC (EXACTLY MATCHING REFERENCE) */}
-      <div className="absolute left-0 top-[52%] -translate-y-1/2 w-[340px] sm:w-[480px] lg:w-[620px] h-[450px] sm:h-[580px] lg:h-[700px] pointer-events-none opacity-75 sm:opacity-90 z-0">
+      <div 
+        className="absolute left-0 top-[52%] -translate-y-1/2 w-[340px] sm:w-[480px] lg:w-[620px] h-[450px] sm:h-[580px] lg:h-[700px] pointer-events-none opacity-75 sm:opacity-90 z-0"
+        style={{
+          maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 85%, transparent 98%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 85%, transparent 98%)',
+        }}
+      >
         <svg
           viewBox="0 0 600 700"
           fill="none"
@@ -198,15 +204,15 @@ export default function BackgroundElements() {
 
       {/* DEEP BOTTOM FADE-OUT GRADIENTS */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-44 sm:h-64 lg:h-80 pointer-events-none z-20"
+        className="absolute bottom-0 left-0 right-0 h-16 sm:h-28 lg:h-36 pointer-events-none z-20"
         style={{
-          background: 'linear-gradient(to top, #0B0F0C 20%, rgba(11,15,12,0.85) 50%, rgba(11,15,12,0.4) 75%, transparent 100%)'
+          background: 'linear-gradient(to top, #0B0F0C 10%, rgba(11,15,12,0.7) 45%, transparent 100%)'
         }}
       />
       
       {/* Secondary Radial Bottom Shadow */}
       <div 
-        className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[1100px] h-[250px] rounded-full opacity-60 blur-[60px] pointer-events-none z-10"
+        className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[900px] h-[160px] rounded-full opacity-40 blur-[40px] pointer-events-none z-10"
         style={{
           background: 'radial-gradient(ellipse, #0B0F0C 50%, transparent 85%)'
         }}

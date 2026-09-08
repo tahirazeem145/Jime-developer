@@ -30,14 +30,17 @@ export default function Navbar() {
   };
 
   useEffect(() => {
+    let ticking = false;
+
     const checkScrollPosition = () => {
-      const heroEl = document.getElementById('home');
-      if (heroEl) {
-        const rect = heroEl.getBoundingClientRect();
-        // If bottom of hero passes near navbar height, switch to black & white theme
-        setIsPastHero(rect.bottom <= 85);
-      } else {
-        setIsPastHero(window.scrollY > 550);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const heroEl = document.getElementById('home');
+          const past = heroEl ? heroEl.getBoundingClientRect().bottom <= 85 : window.scrollY > 550;
+          setIsPastHero((prev) => (prev !== past ? past : prev));
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 

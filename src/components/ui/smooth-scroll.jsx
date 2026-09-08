@@ -13,22 +13,24 @@ export const useSmoothScroll = () => useContext(SmoothScrollContext);
  * SmoothScroll component following 21st.dev / UI Layouts implementation
  * Powered by Lenis + GSAP ScrollTrigger for buttery-smooth momentum scrolling
  */
-export const SmoothScroll = ({ children, options = {} }) => {
+export const SmoothScroll = React.memo(({ children, options = {} }) => {
   const lenisRef = useRef(null);
+  const optionsRef = useRef(options);
+  optionsRef.current = options;
 
   useEffect(() => {
     // 21st.dev Smooth Scroll configuration with optimized physics
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.95,
-      touchMultiplier: 1.5,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.8,
       infinite: false,
       autoResize: true,
-      ...options,
+      ...optionsRef.current,
     });
 
     lenisRef.current = lenis;
@@ -47,7 +49,7 @@ export const SmoothScroll = ({ children, options = {} }) => {
     // Initial refresh after DOM has settled
     const refreshTimer = setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 200);
+    }, 150);
 
     // Smooth Anchor Navigation Handler for nav links & CTAs
     const handleAnchorClick = (e) => {
@@ -61,7 +63,7 @@ export const SmoothScroll = ({ children, options = {} }) => {
         e.preventDefault();
         lenis.scrollTo(targetElement, {
           offset: -75,
-          duration: 1.35,
+          duration: 1.25,
           easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         });
       }
@@ -77,13 +79,13 @@ export const SmoothScroll = ({ children, options = {} }) => {
       lenisRef.current = null;
       delete window.lenis;
     };
-  }, [options]);
+  }, []);
 
   return (
-    <SmoothScrollContext.Provider value={lenisRef.current}>
+    <SmoothScrollContext.Provider value={lenisRef}>
       {children}
     </SmoothScrollContext.Provider>
   );
-};
+});
 
 export default SmoothScroll;
