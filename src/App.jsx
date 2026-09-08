@@ -76,7 +76,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen font-inter flex flex-col overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#080C0A] text-white font-inter flex flex-col overflow-x-hidden selection:bg-white selection:text-black">
       {/* Top Sticky/Fixed Header */}
       <Navbar />
 
@@ -92,27 +92,15 @@ export default function App() {
           <ParticleBackground />
 
           <Hero />
-          <SectionDivider variant="dark-to-beige" />
+          <SectionDivider variant="dark-to-bw" />
         </div>
 
-        {/* ALL OTHER SECTIONS: Beige & Royal Blue Theme */}
-        <div className="relative bg-[#FBF9F5] text-[#0F172A] selection:bg-[#2563EB] selection:text-white overflow-hidden transition-colors">
-          {/* Subtle Warm Grid Ambient Mask */}
-          <div 
-            className="absolute inset-0 pointer-events-none opacity-40"
-            style={{
-              backgroundImage: `
-                linear-gradient(to right, rgba(37, 99, 235, 0.04) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(37, 99, 235, 0.04) 1px, transparent 1px)
-              `,
-              backgroundSize: '48px 48px',
-            }}
-          />
-
+        {/* ALL OTHER SECTIONS: Black & Pure White Monochrome Theme */}
+        <div className="relative bg-[#080C0A] text-white selection:bg-white selection:text-black overflow-hidden">
           <Services />
-          <SectionDivider variant="beige-blue" />
+          <SectionDivider variant="black-white" />
           <Projects />
-          <SectionDivider variant="beige-blue" />
+          <SectionDivider variant="black-white" />
           <About />
         </div>
 

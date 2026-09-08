@@ -34,7 +34,7 @@ export default function Navbar() {
       const heroEl = document.getElementById('home');
       if (heroEl) {
         const rect = heroEl.getBoundingClientRect();
-        // If bottom of hero is near navbar height (80px), switch to blue & white theme
+        // If bottom of hero passes near navbar height, switch to black & white theme
         setIsPastHero(rect.bottom <= 85);
       } else {
         setIsPastHero(window.scrollY > 550);
@@ -89,9 +89,7 @@ export default function Navbar() {
       <div 
         className={`fixed inset-0 z-40 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none ${
           servicesHovered 
-            ? isPastHero 
-              ? 'bg-slate-900/30 backdrop-blur-sm opacity-100' 
-              : 'bg-[#0B0F0C]/75 backdrop-blur-md opacity-100' 
+            ? 'bg-[#0B0F0C]/75 backdrop-blur-md opacity-100' 
             : 'opacity-0'
         }`} 
       />
@@ -99,7 +97,7 @@ export default function Navbar() {
       <header 
         className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
           isPastHero
-            ? 'bg-white/90 backdrop-blur-xl border-b border-blue-200/80 shadow-[0_4px_25px_rgba(37,99,235,0.08)]'
+            ? 'bg-[#080C0A]/90 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_25px_rgba(0,0,0,0.8)]'
             : 'bg-[#080C0A]/80 backdrop-blur-md border-b border-[#1A2E1F]/70'
         }`}
       >
@@ -113,7 +111,7 @@ export default function Navbar() {
                   alt="Jime Developers"
                   className={`h-9 sm:h-10 w-auto object-contain transition-all duration-300 ${
                     isPastHero 
-                      ? 'drop-shadow-[0_2px_8px_rgba(37,99,235,0.25)]' 
+                      ? 'drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]' 
                       : 'drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]'
                   }`}
                 />
@@ -126,14 +124,14 @@ export default function Navbar() {
                 href="#home"
                 className={`text-[14px] font-inter font-medium tracking-wide transition-colors duration-300 relative py-1 group ${
                   isPastHero 
-                    ? 'text-slate-600 hover:text-[#2563EB]' 
+                    ? 'text-neutral-300 hover:text-white' 
                     : 'text-muted-text hover:text-main-text'
                 }`}
               >
                 Home
                 <span 
                   className={`absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 ease-out group-hover:w-full rounded-full ${
-                    isPastHero ? 'bg-[#2563EB]' : 'bg-accent-lime'
+                    isPastHero ? 'bg-white' : 'bg-accent-lime'
                   }`} 
                 />
               </a>
@@ -148,21 +146,21 @@ export default function Navbar() {
                   type="button"
                   className={`flex items-center gap-1.5 text-[14px] font-inter font-medium tracking-wide transition-colors duration-300 focus:outline-none ${
                     isPastHero 
-                      ? 'text-slate-600 hover:text-[#2563EB]' 
+                      ? 'text-neutral-300 hover:text-white' 
                       : 'text-muted-text hover:text-main-text'
                   }`}
                 >
                   <span className={`transition-colors duration-300 ${
                     servicesHovered 
-                      ? isPastHero ? 'text-[#2563EB] font-semibold' : 'text-accent-lime font-semibold' 
+                      ? isPastHero ? 'text-white font-semibold' : 'text-accent-lime font-semibold' 
                       : ''
                   }`}>
                     Services
                   </span>
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${
                     servicesHovered 
-                      ? isPastHero ? 'rotate-180 text-[#2563EB]' : 'rotate-180 text-accent-lime' 
-                      : isPastHero ? 'text-slate-400' : 'text-muted-text/80'
+                      ? isPastHero ? 'rotate-180 text-white' : 'rotate-180 text-accent-lime' 
+                      : isPastHero ? 'text-neutral-400' : 'text-muted-text/80'
                   }`} />
                 </button>
 
@@ -176,21 +174,21 @@ export default function Navbar() {
                 >
                   <div className={`w-[580px] sm:w-[620px] lg:w-[660px] p-4 rounded-2xl backdrop-blur-2xl border transition-all ${
                     isPastHero
-                      ? 'bg-white/98 border-blue-200 shadow-[0_20px_60px_rgba(15,23,42,0.12),0_0_30px_rgba(37,99,235,0.08)]'
+                      ? 'bg-[#0F0F0F]/98 border-white/15 shadow-[0_20px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(255,255,255,0.05)]'
                       : 'bg-[#0E1711]/95 border-[#1A2E1F] shadow-[0_20px_60px_rgba(0,0,0,0.85),0_0_30px_rgba(167,243,160,0.1)]'
                   }`}>
                     
                     {/* Header bar inside mega menu */}
                     <div className={`flex items-center justify-between pb-3 mb-3 border-b px-1 ${
-                      isPastHero ? 'border-slate-200/80' : 'border-[#1A2E1F]/70'
+                      isPastHero ? 'border-white/10' : 'border-[#1A2E1F]/70'
                     }`}>
                       <span className={`text-xs font-sora font-semibold tracking-wider uppercase ${
-                        isPastHero ? 'text-[#2563EB]' : 'text-accent-lime'
+                        isPastHero ? 'text-white' : 'text-accent-lime'
                       }`}>
                         Our Core Services
                       </span>
                       <span className={`text-xs font-inter ${
-                        isPastHero ? 'text-slate-500' : 'text-muted-text'
+                        isPastHero ? 'text-neutral-400' : 'text-muted-text'
                       }`}>
                         Custom Web & App Engineering
                       </span>
@@ -210,32 +208,32 @@ export default function Navbar() {
                               rel="noopener noreferrer"
                               className={`flex items-start gap-3.5 p-3 rounded-xl border transition-all duration-300 group/item ${
                                 isPastHero
-                                  ? 'bg-blue-50/40 hover:bg-blue-50/90 border-blue-100 hover:border-blue-300 shadow-sm'
+                                  ? 'bg-neutral-900/60 hover:bg-neutral-800/80 border-white/10 hover:border-white/30 shadow-sm'
                                   : 'bg-[#121E15]/60 hover:bg-[#16291C] border-[#1A2E1F]/80 hover:border-[#A7F3A0]/40 hover:shadow-[0_0_20px_rgba(167,243,160,0.08)]'
                               }`}
                             >
                               <div className={`w-10 h-10 rounded-lg border flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
                                 isPastHero
-                                  ? 'bg-white border-blue-200 group-hover/item:border-blue-400 group-hover/item:bg-blue-50 shadow-sm'
+                                  ? 'bg-neutral-900 border-white/15 group-hover/item:border-white/40 group-hover/item:bg-neutral-800 shadow-sm'
                                   : 'bg-[#152B1B] border-[#1E3E27] group-hover/item:border-[#A7F3A0]/50 group-hover/item:bg-[#1D4726] shadow-[0_2px_10px_rgba(0,0,0,0.3)]'
                               }`}>
                                 <Icon className={`w-5 h-5 transition-transform duration-300 group-hover/item:scale-110 ${
-                                  isPastHero ? 'text-[#2563EB]' : 'text-accent-lime'
+                                  isPastHero ? 'text-white' : 'text-accent-lime'
                                 }`} />
                               </div>
                               <div className="flex-1 text-left min-w-0">
                                 <div className={`font-sora font-semibold text-[14px] transition-colors flex items-center justify-between ${
                                   isPastHero 
-                                    ? 'text-[#0F172A] group-hover/item:text-[#2563EB]' 
+                                    ? 'text-white group-hover/item:text-neutral-200' 
                                     : 'text-main-text group-hover/item:text-accent-lime'
                                 }`}>
                                   <span className="truncate">{item.title}</span>
                                   <ArrowRight className={`w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 flex-shrink-0 ${
-                                    isPastHero ? 'text-[#2563EB]' : 'text-accent-lime'
+                                    isPastHero ? 'text-white' : 'text-accent-lime'
                                   }`} />
                                 </div>
                                 <p className={`text-[12px] font-inter mt-0.5 line-clamp-2 leading-snug ${
-                                  isPastHero ? 'text-slate-500' : 'text-muted-text'
+                                  isPastHero ? 'text-neutral-400' : 'text-muted-text'
                                 }`}>
                                   {item.desc}
                                 </p>
@@ -257,32 +255,32 @@ export default function Navbar() {
                               rel="noopener noreferrer"
                               className={`flex items-start gap-3.5 p-3 rounded-xl border transition-all duration-300 group/item ${
                                 isPastHero
-                                  ? 'bg-blue-50/40 hover:bg-blue-50/90 border-blue-100 hover:border-blue-300 shadow-sm'
+                                  ? 'bg-neutral-900/60 hover:bg-neutral-800/80 border-white/10 hover:border-white/30 shadow-sm'
                                   : 'bg-[#121E15]/60 hover:bg-[#16291C] border-[#1A2E1F]/80 hover:border-[#A7F3A0]/40 hover:shadow-[0_0_20px_rgba(167,243,160,0.08)]'
                               }`}
                             >
                               <div className={`w-10 h-10 rounded-lg border flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
                                 isPastHero
-                                  ? 'bg-white border-blue-200 group-hover/item:border-blue-400 group-hover/item:bg-blue-50 shadow-sm'
+                                  ? 'bg-neutral-900 border-white/15 group-hover/item:border-white/40 group-hover/item:bg-neutral-800 shadow-sm'
                                   : 'bg-[#152B1B] border-[#1E3E27] group-hover/item:border-[#A7F3A0]/50 group-hover/item:bg-[#1D4726] shadow-[0_2px_10px_rgba(0,0,0,0.3)]'
                               }`}>
                                 <Icon className={`w-5 h-5 transition-transform duration-300 group-hover/item:scale-110 ${
-                                  isPastHero ? 'text-[#2563EB]' : 'text-accent-lime'
+                                  isPastHero ? 'text-white' : 'text-accent-lime'
                                 }`} />
                               </div>
                               <div className="flex-1 text-left min-w-0">
                                 <div className={`font-sora font-semibold text-[14px] transition-colors flex items-center justify-between ${
                                   isPastHero 
-                                    ? 'text-[#0F172A] group-hover/item:text-[#2563EB]' 
+                                    ? 'text-white group-hover/item:text-neutral-200' 
                                     : 'text-main-text group-hover/item:text-accent-lime'
                                 }`}>
                                   <span className="truncate">{item.title}</span>
                                   <ArrowRight className={`w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 flex-shrink-0 ${
-                                    isPastHero ? 'text-[#2563EB]' : 'text-accent-lime'
+                                    isPastHero ? 'text-white' : 'text-accent-lime'
                                   }`} />
                                 </div>
                                 <p className={`text-[12px] font-inter mt-0.5 line-clamp-2 leading-snug ${
-                                  isPastHero ? 'text-slate-500' : 'text-muted-text'
+                                  isPastHero ? 'text-neutral-400' : 'text-muted-text'
                                 }`}>
                                   {item.desc}
                                 </p>
@@ -300,14 +298,14 @@ export default function Navbar() {
                 href="#projects"
                 className={`text-[14px] font-inter font-medium tracking-wide transition-colors relative py-1 group ${
                   isPastHero 
-                    ? 'text-slate-600 hover:text-[#2563EB]' 
+                    ? 'text-neutral-300 hover:text-white' 
                     : 'text-muted-text hover:text-main-text'
                 }`}
               >
                 Projects
                 <span 
                   className={`absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 ease-out group-hover:w-full rounded-full ${
-                    isPastHero ? 'bg-[#2563EB]' : 'bg-accent-lime'
+                    isPastHero ? 'bg-white' : 'bg-accent-lime'
                   }`} 
                 />
               </a>
@@ -316,14 +314,14 @@ export default function Navbar() {
                 href="#about"
                 className={`text-[14px] font-inter font-medium tracking-wide transition-colors relative py-1 group ${
                   isPastHero 
-                    ? 'text-slate-600 hover:text-[#2563EB]' 
+                    ? 'text-neutral-300 hover:text-white' 
                     : 'text-muted-text hover:text-main-text'
                 }`}
               >
                 About
                 <span 
                   className={`absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 ease-out group-hover:w-full rounded-full ${
-                    isPastHero ? 'bg-[#2563EB]' : 'bg-accent-lime'
+                    isPastHero ? 'bg-white' : 'bg-accent-lime'
                   }`} 
                 />
               </a>
@@ -332,14 +330,14 @@ export default function Navbar() {
                 href="#contact"
                 className={`text-[14px] font-inter font-medium tracking-wide transition-colors relative py-1 group ${
                   isPastHero 
-                    ? 'text-slate-600 hover:text-[#2563EB]' 
+                    ? 'text-neutral-300 hover:text-white' 
                     : 'text-muted-text hover:text-main-text'
                 }`}
               >
                 Contact
                 <span 
                   className={`absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 ease-out group-hover:w-full rounded-full ${
-                    isPastHero ? 'bg-[#2563EB]' : 'bg-accent-lime'
+                    isPastHero ? 'bg-white' : 'bg-accent-lime'
                   }`} 
                 />
               </a>
@@ -351,7 +349,7 @@ export default function Navbar() {
                 href="#book-call"
                 className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-sora font-semibold text-sm tracking-tight transition-all duration-200 ${
                   isPastHero
-                    ? 'bg-[#2563EB] text-white hover:bg-[#1D4ED8] shadow-[0_4px_20px_rgba(37,99,235,0.35)] hover:scale-[1.02] active:scale-[0.98]'
+                    ? 'bg-white text-black hover:bg-neutral-200 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-[1.02] active:scale-[0.98]'
                     : 'bg-accent-lime text-[#0B0F0C] hover:bg-accent-lime-hover hover:shadow-lime-glow hover:scale-[1.02] active:scale-[0.98]'
                 }`}
               >
@@ -366,7 +364,7 @@ export default function Navbar() {
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className={`p-2 rounded-lg focus:outline-none transition-colors ${
                   isPastHero
-                    ? 'text-slate-700 hover:text-[#2563EB] hover:bg-blue-50'
+                    ? 'text-neutral-300 hover:text-white hover:bg-neutral-800'
                     : 'text-muted-text hover:text-main-text hover:bg-[#1A2E1F]/50'
                 }`}
                 aria-label="Toggle Menu"
@@ -381,7 +379,7 @@ export default function Navbar() {
         {mobileMenuOpen && (
           <div className={`md:hidden border-b px-4 pt-3 pb-6 space-y-3 transition-all animate-fadeIn ${
             isPastHero
-              ? 'bg-white/98 backdrop-blur-xl border-blue-200 shadow-xl'
+              ? 'bg-[#0B0B0B]/98 backdrop-blur-xl border-white/10 shadow-xl'
               : 'bg-[#0B0F0C]/95 backdrop-blur-xl border-[#1A2E1F]'
           }`}>
             <div className="flex flex-col space-y-1.5">
@@ -390,7 +388,7 @@ export default function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`px-3 py-2 rounded-lg text-base font-medium transition-colors ${
                   isPastHero
-                    ? 'text-slate-700 hover:text-[#2563EB] hover:bg-blue-50'
+                    ? 'text-neutral-300 hover:text-white hover:bg-neutral-900'
                     : 'text-muted-text hover:text-main-text hover:bg-[#1A2E1F]/40'
                 }`}
               >
@@ -404,14 +402,14 @@ export default function Navbar() {
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                   className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium transition-colors ${
                     isPastHero
-                      ? 'text-slate-700 hover:text-[#2563EB] hover:bg-blue-50'
+                      ? 'text-neutral-300 hover:text-white hover:bg-neutral-900'
                       : 'text-muted-text hover:text-main-text hover:bg-[#1A2E1F]/40'
                   }`}
                 >
                   <span>Services</span>
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${
                     mobileServicesOpen 
-                      ? isPastHero ? 'rotate-180 text-[#2563EB]' : 'rotate-180 text-accent-lime' 
+                      ? isPastHero ? 'rotate-180 text-white' : 'rotate-180 text-accent-lime' 
                       : ''
                   }`} />
                 </button>
@@ -429,12 +427,12 @@ export default function Navbar() {
                           onClick={() => setMobileMenuOpen(false)}
                           className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                             isPastHero
-                              ? 'bg-blue-50/60 text-slate-800 hover:text-[#2563EB]'
+                              ? 'bg-neutral-900/60 text-neutral-200 hover:text-white'
                               : 'bg-[#142318]/50 text-main-text hover:text-accent-lime'
                           }`}
                         >
                           <Icon className={`w-4 h-4 flex-shrink-0 ${
-                            isPastHero ? 'text-[#2563EB]' : 'text-accent-lime'
+                            isPastHero ? 'text-white' : 'text-accent-lime'
                           }`} />
                           <span>{item.title}</span>
                         </a>
@@ -449,7 +447,7 @@ export default function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`px-3 py-2 rounded-lg text-base font-medium transition-colors ${
                   isPastHero
-                    ? 'text-slate-700 hover:text-[#2563EB] hover:bg-blue-50'
+                    ? 'text-neutral-300 hover:text-white hover:bg-neutral-900'
                     : 'text-muted-text hover:text-main-text hover:bg-[#1A2E1F]/40'
                 }`}
               >
@@ -461,7 +459,7 @@ export default function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`px-3 py-2 rounded-lg text-base font-medium transition-colors ${
                   isPastHero
-                    ? 'text-slate-700 hover:text-[#2563EB] hover:bg-blue-50'
+                    ? 'text-neutral-300 hover:text-white hover:bg-neutral-900'
                     : 'text-muted-text hover:text-main-text hover:bg-[#1A2E1F]/40'
                 }`}
               >
@@ -473,7 +471,7 @@ export default function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`px-3 py-2 rounded-lg text-base font-medium transition-colors ${
                   isPastHero
-                    ? 'text-slate-700 hover:text-[#2563EB] hover:bg-blue-50'
+                    ? 'text-neutral-300 hover:text-white hover:bg-neutral-900'
                     : 'text-muted-text hover:text-main-text hover:bg-[#1A2E1F]/40'
                 }`}
               >
@@ -482,14 +480,14 @@ export default function Navbar() {
             </div>
 
             <div className={`pt-2 border-t ${
-              isPastHero ? 'border-slate-200' : 'border-[#1A2E1F]/60'
+              isPastHero ? 'border-white/10' : 'border-[#1A2E1F]/60'
             }`}>
               <a
                 href="#book-call"
                 onClick={() => setMobileMenuOpen(false)}
                 className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full font-sora font-semibold text-sm tracking-tight transition-all ${
                   isPastHero
-                    ? 'bg-[#2563EB] text-white hover:bg-[#1D4ED8] shadow-[0_4px_20px_rgba(37,99,235,0.35)]'
+                    ? 'bg-white text-black hover:bg-neutral-200 shadow-[0_0_20px_rgba(255,255,255,0.3)]'
                     : 'bg-accent-lime text-[#0B0F0C] hover:bg-accent-lime-hover shadow-lime-glow'
                 }`}
               >

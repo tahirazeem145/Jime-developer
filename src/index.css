@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    color-scheme: dark light;
+    color-scheme: dark;
   }
   
   html {
@@ -99,55 +99,57 @@
 }
 
 /* ============================================================ */
-/* BEIGE & BLUE THEME GLASSMORPHISM (Services, Projects, About) */
+/* BLACK & WHITE THEME GLASSMORPHISM (Services, Projects, About) */
 /* ============================================================ */
 
-.glass-card-light {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.84) 0%, rgba(247, 244, 236, 0.92) 100%);
+.glass-card-bw {
+  background: linear-gradient(145deg, rgba(22, 22, 22, 0.75) 0%, rgba(10, 10, 10, 0.85) 100%);
   backdrop-filter: blur(28px) saturate(190%);
   -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(37, 99, 235, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 
-    0 20px 50px rgba(15, 23, 42, 0.07),
-    inset 0 1px 2px rgba(255, 255, 255, 0.95),
-    inset 0 -1px 1px rgba(226, 232, 240, 0.6);
+    0 24px 60px rgba(0, 0, 0, 0.9),
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.6),
+    inset 0 0 20px rgba(255, 255, 255, 0.02);
 }
 
-.glass-card-light:hover {
-  border-color: rgba(37, 99, 235, 0.45);
+.glass-card-bw:hover {
+  border-color: rgba(255, 255, 255, 0.45);
   box-shadow: 
-    0 28px 65px rgba(37, 99, 235, 0.14),
-    0 0 35px rgba(59, 130, 246, 0.12),
-    inset 0 1px 2px rgba(255, 255, 255, 1);
+    0 30px 70px rgba(0, 0, 0, 0.98),
+    0 0 35px rgba(255, 255, 255, 0.12),
+    inset 0 1px 2.5px 0 rgba(255, 255, 255, 0.4),
+    inset 0 0 25px rgba(255, 255, 255, 0.05);
 }
 
-.glass-subcard-light {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.75) 0%, rgba(245, 241, 232, 0.85) 100%);
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-  border: 1px solid rgba(226, 232, 240, 0.9);
+.glass-subcard-bw {
+  background: linear-gradient(145deg, rgba(26, 26, 26, 0.7) 0%, rgba(12, 12, 12, 0.8) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 
-    0 8px 25px rgba(15, 23, 42, 0.05),
-    inset 0 1px 1.5px rgba(255, 255, 255, 0.9);
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.16);
 }
 
-.glass-subcard-light:hover {
-  border-color: rgba(37, 99, 235, 0.38);
+.glass-subcard-bw:hover {
+  border-color: rgba(255, 255, 255, 0.35);
   box-shadow: 
-    0 12px 32px rgba(37, 99, 235, 0.1),
-    0 0 20px rgba(59, 130, 246, 0.08),
-    inset 0 1px 2px rgba(255, 255, 255, 1);
+    0 14px 40px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.25);
 }
 
-.glass-pill-light {
-  background: linear-gradient(135deg, rgba(239, 246, 255, 0.9) 0%, rgba(219, 234, 254, 0.75) 100%);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(37, 99, 235, 0.28);
+.glass-pill-bw {
+  background: linear-gradient(135deg, rgba(35, 35, 35, 0.8) 0%, rgba(18, 18, 18, 0.85) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 
-    0 4px 15px rgba(37, 99, 235, 0.08),
-    inset 0 1px 1.5px rgba(255, 255, 255, 0.95);
-  color: #1D4ED8;
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
 }
 
 /* Star glowing effect */
@@ -201,14 +203,14 @@
   }
 }
 
-@keyframes pulseGlowBlue {
+@keyframes pulseGlowWhite {
   0%, 100% {
     transform: rotate(45deg) scale(1);
-    box-shadow: 0 0 8px rgba(37, 99, 235, 0.7), 0 0 16px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 18px rgba(255, 255, 255, 0.4);
   }
   50% {
     transform: rotate(45deg) scale(1.4);
-    box-shadow: 0 0 16px rgba(37, 99, 235, 1), 0 0 30px rgba(59, 130, 246, 0.6);
+    box-shadow: 0 0 18px rgba(255, 255, 255, 1), 0 0 35px rgba(255, 255, 255, 0.7);
   }
 }
 
@@ -235,8 +237,8 @@
   animation: pulseGlow 2.5s ease-in-out infinite;
 }
 
-.animate-diamond-glow-blue {
-  animation: pulseGlowBlue 2.5s ease-in-out infinite;
+.animate-diamond-glow-white {
+  animation: pulseGlowWhite 2.5s ease-in-out infinite;
 }
 
 .animate-flare-pulse {
