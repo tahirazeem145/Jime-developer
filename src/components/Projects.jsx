@@ -148,11 +148,19 @@ export default function Projects() {
     return () => ctx.revert();
   }, [filteredProjects]);
 
+  const handleCardMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
+    e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
+  };
+
   return (
     <section 
       id="projects" 
       ref={sectionRef}
-      className="relative z-10 w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#080B10]"
+      className="relative z-10 w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8"
     >
       {/* Background Ambient Glows */}
       <div className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full bg-primary-blue/15 blur-[140px] pointer-events-none -z-10" />
@@ -209,8 +217,16 @@ export default function Projects() {
             <div
               key={project.id}
               ref={(el) => (cardsRef.current[idx] = el)}
-              className="group relative flex flex-col rounded-3xl overflow-hidden bg-[#0B101D]/75 backdrop-blur-xl border border-white/10 hover:border-accent-blue/50 shadow-[0_10px_40px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_50px_rgba(59,130,246,0.18)] transition-all duration-500"
+              onMouseMove={handleCardMouseMove}
+              className="group relative flex flex-col rounded-3xl overflow-hidden bg-[#0B101D]/75 backdrop-blur-xl border border-white/10 hover:border-accent-blue/50 shadow-[0_10px_40px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_50px_rgba(59,130,246,0.22)] transition-all duration-500"
             >
+              {/* Card Mouse Hover Spotlight */}
+              <div
+                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+                style={{
+                  background: 'radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.14), transparent 70%)',
+                }}
+              />
               {/* Card Image Container */}
               <div className="relative w-full h-56 sm:h-72 overflow-hidden bg-[#06080D]">
                 <img
@@ -292,8 +308,18 @@ export default function Projects() {
         </div>
 
         {/* BOTTOM CTA BANNER (Turing Inspiration) */}
-        <div className="mt-16 sm:mt-24 p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#0D1527] via-[#0B101D] to-[#0A1224] border border-[#1E3A8A]/40 shadow-[0_15px_50px_rgba(0,0,0,0.7)] flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-          <div>
+        <div 
+          onMouseMove={handleCardMouseMove}
+          className="group relative mt-16 sm:mt-24 p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#0D1527] via-[#0B101D] to-[#0A1224] border border-[#1E3A8A]/40 overflow-hidden shadow-[0_15px_50px_rgba(0,0,0,0.7)] flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
+        >
+          {/* Mouse Hover Spotlight */}
+          <div
+            className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
+            style={{
+              background: 'radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.16), transparent 70%)',
+            }}
+          />
+          <div className="relative z-10">
             <span className="text-xs font-sora font-semibold tracking-wider uppercase text-accent-blue">
               Start Your Journey
             </span>
