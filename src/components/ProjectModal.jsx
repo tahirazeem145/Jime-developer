@@ -259,19 +259,21 @@ export default function ProjectModal({ isOpen, onClose }) {
         }
       }}
     >
-      {/* Modal Dialog Card */}
+      {/* Modal Dialog Card with Double-Bezel Enclosure */}
       <div 
         ref={modalCardRef}
         data-lenis-prevent="true"
         data-lenis-prevent-touch="true"
         onWheel={(e) => e.stopPropagation()}
         onTouchMove={(e) => e.stopPropagation()}
-        className="relative w-full max-w-2xl bg-black border border-white/15 rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.98),0_0_50px_rgba(59,130,246,0.12)] flex flex-col max-h-[90vh] overflow-hidden my-auto"
+        className="relative w-full max-w-2xl p-1.5 sm:p-2 rounded-3xl sm:rounded-[2rem] bg-white/[0.04] border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.98),0_0_60px_rgba(59,130,246,0.15)] flex flex-col max-h-[90vh] overflow-hidden my-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        
-        {/* TOP PROGRESS BAR */}
-        <div className="w-full bg-white/[0.06] h-1.5 relative overflow-hidden">
+        {/* Inner Core Container */}
+        <div className="w-full rounded-[calc(1.5rem-0.25rem)] sm:rounded-[calc(2rem-0.375rem)] bg-black flex flex-col flex-1 overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+          
+          {/* TOP PROGRESS BAR */}
+          <div className="w-full bg-white/[0.06] h-1.5 relative overflow-hidden">
           <div 
             className="h-full bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#38BDF8] transition-all duration-500 ease-out shadow-[0_0_12px_rgba(59,130,246,0.8)]"
             style={{ width: `${progressPercentage}%` }}
@@ -583,19 +585,23 @@ export default function ProjectModal({ isOpen, onClose }) {
                 </div>
               </div>
 
-              {/* SUBMIT BUTTON */}
+              {/* SUBMIT BUTTON (Button-in-Button Architecture) */}
               <div className="pt-2">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-accent-blue hover:bg-accent-blue-hover text-white font-sora font-semibold text-sm tracking-tight shadow-blue-glow hover:shadow-[0_0_35px_rgba(59,130,246,0.55)] hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none transition-all duration-300"
+                  className="group w-full inline-flex items-center justify-between pl-6 pr-2 py-2.5 rounded-full bg-accent-blue hover:bg-accent-blue-hover text-white font-sora font-semibold text-sm tracking-tight shadow-[0_0_20px_rgba(59,130,246,0.45)] hover:shadow-[0_0_35px_rgba(59,130,246,0.7)] active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] cursor-pointer"
                 >
                   {isSubmitting ? (
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <div className="w-full flex items-center justify-center py-1">
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    </div>
                   ) : (
                     <>
                       <span>Submit Project Details</span>
-                      <Send className="w-4 h-4" />
+                      <div className="w-8 h-8 rounded-full bg-white/20 group-hover:bg-white/30 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5">
+                        <Send className="w-4 h-4" />
+                      </div>
                     </>
                   )}
                 </button>
@@ -605,6 +611,7 @@ export default function ProjectModal({ isOpen, onClose }) {
           )}
         </div>
 
+        </div>
       </div>
     </div>
   );

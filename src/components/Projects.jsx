@@ -247,87 +247,94 @@ export default function Projects() {
               ref={trackRef}
               className="flex gap-6 sm:gap-8 will-change-transform items-stretch"
             >
-              {filteredProjects.map((project, idx) => (
+              {filteredProjects.map((project) => (
                 <div
                   key={project.id}
-                  className="project-card group relative flex-shrink-0 w-[300px] sm:w-[360px] md:w-[400px] lg:w-[430px] flex flex-col rounded-3xl overflow-hidden bg-[#0B101D] border border-white/10 hover:border-accent-blue/60 shadow-[0_12px_40px_rgba(0,0,0,0.7)] hover:shadow-[0_20px_50px_rgba(59,130,246,0.25)] transition-all duration-300 select-none"
+                  className="project-card group relative flex-shrink-0 w-[300px] sm:w-[360px] md:w-[400px] lg:w-[430px] flex flex-col p-1.5 sm:p-2 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-accent-blue/50 shadow-[0_20px_50px_rgba(0,0,0,0.8)] hover:shadow-[0_25px_60px_rgba(59,130,246,0.22)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] select-none"
                 >
-                  {/* Card Image Banner */}
-                  <div className="relative w-full h-48 sm:h-56 overflow-hidden bg-[#06080D]">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
-                      loading="lazy"
-                      draggable={false}
-                    />
+                  {/* Inner Core Container (Concentric Math Radius) */}
+                  <div className="rounded-[calc(2rem-0.375rem)] bg-[#0B101D]/90 overflow-hidden flex flex-col flex-grow justify-between shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
                     
-                    {/* Gradient scrim */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B101D] via-[#0B101D]/30 to-transparent pointer-events-none" />
+                    {/* Card Image Banner */}
+                    <div className="relative w-full h-48 sm:h-56 overflow-hidden bg-[#06080D]">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                        loading="lazy"
+                        draggable={false}
+                      />
+                      
+                      {/* Gradient scrim */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0B101D] via-[#0B101D]/30 to-transparent pointer-events-none" />
 
-                    {/* Top Category Badge */}
-                    <div className="absolute top-3.5 left-3.5 z-10">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-inter font-semibold bg-[#080B10]/85 backdrop-blur-md text-accent-blue border border-[#1E293B] shadow-sm">
-                        <Layers className="w-3 h-3 text-accent-blue" />
-                        {project.categoryLabel}
-                      </span>
+                      {/* Top Category Badge */}
+                      <div className="absolute top-3.5 left-3.5 z-10">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-inter font-semibold bg-[#080B10]/85 backdrop-blur-md text-accent-blue border border-[#1E293B] shadow-sm">
+                          <Layers className="w-3 h-3 text-accent-blue" />
+                          {project.categoryLabel}
+                        </span>
+                      </div>
+
+                      {/* Top Right Link Icon */}
+                      <div className="absolute top-3.5 right-3.5 z-10 w-8 sm:w-9 h-8 sm:h-9 rounded-full bg-[#080B10]/85 backdrop-blur-md border border-white/15 flex items-center justify-center text-white group-hover:text-accent-blue group-hover:border-accent-blue/60 group-hover:bg-accent-blue/10 transition-all duration-300">
+                        <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </div>
                     </div>
 
-                    {/* Top Right Link Icon */}
-                    <div className="absolute top-3.5 right-3.5 z-10 w-8 sm:w-9 h-8 sm:h-9 rounded-full bg-[#080B10]/85 backdrop-blur-md border border-white/15 flex items-center justify-center text-white group-hover:text-accent-blue group-hover:border-accent-blue/60 group-hover:bg-accent-blue/10 transition-all duration-300">
-                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </div>
-                  </div>
+                    {/* Card Body Content */}
+                    <div className="p-5 sm:p-6 flex flex-col flex-grow justify-between">
+                      <div>
+                        <h3 className="font-sora font-bold text-lg sm:text-xl text-main-text group-hover:text-accent-blue transition-colors duration-300">
+                          {project.title}
+                        </h3>
+                        <p className="mt-1 text-xs sm:text-sm font-medium text-[#F8FAFC]">
+                          {project.headline}
+                        </p>
+                        <p className="mt-2 text-xs sm:text-sm text-muted-text font-inter leading-relaxed line-clamp-3">
+                          {project.description}
+                        </p>
+                      </div>
 
-                  {/* Card Body Content */}
-                  <div className="p-5 sm:p-6 flex flex-col flex-grow justify-between">
-                    <div>
-                      <h3 className="font-sora font-bold text-lg sm:text-xl text-main-text group-hover:text-accent-blue transition-colors duration-300">
-                        {project.title}
-                      </h3>
-                      <p className="mt-1 text-xs sm:text-sm font-medium text-[#F8FAFC]">
-                        {project.headline}
-                      </p>
-                      <p className="mt-2 text-xs sm:text-sm text-muted-text font-inter leading-relaxed line-clamp-3">
-                        {project.description}
-                      </p>
-                    </div>
-
-                    {/* Metrics Row */}
-                    <div className="mt-4 pt-3.5 border-t border-white/10 grid grid-cols-3 gap-2">
-                      {project.metrics.map((metric) => (
-                        <div key={metric.label} className="text-left">
-                          <div className="font-sora font-bold text-sm sm:text-base text-white group-hover:text-accent-blue transition-colors">
-                            {metric.value}
+                      {/* Metrics Row */}
+                      <div className="mt-4 pt-3.5 border-t border-white/10 grid grid-cols-3 gap-2">
+                        {project.metrics.map((metric) => (
+                          <div key={metric.label} className="text-left">
+                            <div className="font-sora font-bold text-sm sm:text-base text-white group-hover:text-accent-blue transition-colors">
+                              {metric.value}
+                            </div>
+                            <div className="text-[10px] sm:text-[11px] text-muted-text font-inter font-medium truncate">
+                              {metric.label}
+                            </div>
                           </div>
-                          <div className="text-[10px] sm:text-[11px] text-muted-text font-inter font-medium truncate">
-                            {metric.label}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Tech Tags & CTA Link */}
-                    <div className="mt-4 pt-3.5 border-t border-white/5 flex flex-wrap items-center justify-between gap-2">
-                      <div className="flex flex-wrap gap-1.5">
-                        {project.tags.slice(0, 3).map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-inter font-medium bg-white/[0.04] text-slate-300 border border-white/10"
-                          >
-                            {tag}
-                          </span>
                         ))}
                       </div>
 
-                      <a
-                        href={project.link}
-                        className="inline-flex items-center gap-1 text-xs font-sora font-semibold text-white group-hover:text-accent-blue transition-colors"
-                      >
-                        <span>View Project</span>
-                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                      </a>
+                      {/* Tech Tags & Button-in-Button CTA Link */}
+                      <div className="mt-4 pt-3.5 border-t border-white/5 flex flex-wrap items-center justify-between gap-2">
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.tags.slice(0, 3).map((tag) => (
+                            <span
+                              key={tag}
+                              className="px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-inter font-medium bg-white/[0.04] text-slate-300 border border-white/10"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+
+                        <a
+                          href={project.link}
+                          className="inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1 rounded-full bg-white/[0.05] group-hover:bg-accent-blue text-xs font-sora font-semibold text-white transition-all duration-300"
+                        >
+                          <span>View Project</span>
+                          <div className="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center transition-transform group-hover:translate-x-0.5">
+                            <ArrowRight className="w-3 h-3" />
+                          </div>
+                        </a>
+                      </div>
                     </div>
+
                   </div>
                 </div>
               ))}
@@ -352,10 +359,12 @@ export default function Projects() {
 
                 <a
                   href="#all-projects"
-                  className="w-full mt-6 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-accent-blue hover:bg-accent-blue-hover text-white font-sora font-semibold text-xs sm:text-sm tracking-tight shadow-blue-glow hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                  className="group w-full mt-6 inline-flex items-center justify-between pl-6 pr-2 py-2 rounded-full bg-accent-blue hover:bg-accent-blue-hover text-white font-sora font-semibold text-xs sm:text-sm tracking-tight shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_35px_rgba(59,130,246,0.7)] active:scale-[0.98] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]"
                 >
                   <span>View all the projects</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <div className="w-7 h-7 rounded-full bg-white/20 group-hover:bg-white/30 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5">
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
                 </a>
               </div>
             </div>
@@ -383,14 +392,16 @@ export default function Projects() {
               </span>
             </div>
 
-            {/* Primary Action Button: "View all the projects" */}
+            {/* Primary Action Button: "View all the projects" (Button-in-Button Architecture) */}
             <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
               <a
                 href="#all-projects"
-                className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 rounded-full bg-accent-blue hover:bg-accent-blue-hover text-white font-sora font-semibold text-xs sm:text-sm tracking-tight shadow-blue-glow hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                className="group inline-flex items-center justify-between gap-3 pl-6 pr-2 py-2 rounded-full bg-accent-blue hover:bg-accent-blue-hover text-white font-sora font-semibold text-xs sm:text-sm tracking-tight shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_35px_rgba(59,130,246,0.7)] active:scale-[0.98] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]"
               >
                 <span>View all the projects</span>
-                <ArrowRight className="w-4 h-4" />
+                <div className="w-7 h-7 rounded-full bg-white/20 group-hover:bg-white/30 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5">
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </div>
               </a>
             </div>
           </div>
