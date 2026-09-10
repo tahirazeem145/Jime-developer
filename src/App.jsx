@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import TrustedBy from './components/TrustedBy';
+import Testimonials from './components/Testimonials';
 import BackgroundElements from './components/BackgroundElements';
 import ParticleBackground from './components/ParticleBackground';
 import MouseGlow from './components/MouseGlow';
@@ -45,6 +46,9 @@ export default function App() {
 
           {/* 3rd SECTION: Proudly Worked With / Client Trust Marquee */}
           <TrustedBy />
+
+          {/* 4th SECTION: Verified Client Testimonials */}
+          <Testimonials />
         </main>
 
         {/* Floating Action Button */}
