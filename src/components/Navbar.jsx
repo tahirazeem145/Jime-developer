@@ -220,6 +220,14 @@ export default function Navbar({ onOpenProjectModal }) {
                 </a>
 
                 <a
+                  href="#faq"
+                  className="text-[14px] font-inter font-medium tracking-wide text-muted-text hover:text-main-text transition-colors relative py-1 group"
+                >
+                  FAQ
+                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-accent-blue transition-all duration-300 ease-out group-hover:w-full rounded-full" />
+                </a>
+
+                <a
                   href="#contact"
                   className="text-[14px] font-inter font-medium tracking-wide text-muted-text hover:text-main-text transition-colors relative py-1 group"
                 >
@@ -321,6 +329,14 @@ export default function Navbar({ onOpenProjectModal }) {
                     className="px-3 py-2 rounded-lg text-sm font-medium transition-colors text-muted-text hover:text-main-text hover:bg-white/[0.04]"
                   >
                     Testimonials
+                  </a>
+
+                  <a
+                    href="#faq"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="px-3 py-2 rounded-lg text-sm font-medium transition-colors text-muted-text hover:text-main-text hover:bg-white/[0.04]"
+                  >
+                    FAQ
                   </a>
 
                   <a

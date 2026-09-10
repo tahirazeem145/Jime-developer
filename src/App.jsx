@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import Projects from './components/Projects';
 import TrustedBy from './components/TrustedBy';
 import Testimonials from './components/Testimonials';
+import FAQ from './components/FAQ';
 import BackgroundElements from './components/BackgroundElements';
 import ParticleBackground from './components/ParticleBackground';
 import MouseGlow from './components/MouseGlow';
@@ -49,6 +50,9 @@ export default function App() {
 
           {/* 4th SECTION: Verified Client Testimonials */}
           <Testimonials />
+
+          {/* 5th SECTION: Frequently Asked Questions */}
+          <FAQ onOpenProjectModal={() => setIsProjectModalOpen(true)} />
         </main>
 
         {/* Floating Action Button */}
