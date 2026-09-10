@@ -128,54 +128,66 @@ export default function Projects() {
 
     const ctx = gsap.context(() => {
       // Calculate exact distance required to scroll all projects completely across the screen
-      const calculateDistance = () => {
-        const trackWidth = track.scrollWidth;
-        const viewportWidth = window.innerWidth;
-        const extraPadding = window.innerWidth < 768 ? 40 : 100;
-        return Math.max(0, trackWidth - viewportWidth + extraPadding);
-      };
+      const trackWidth = track.scrollWidth;
+      const viewportWidth = window.innerWidth;
+      const extraPadding = window.innerWidth < 768 ? 40 : 100;
+      const overflowDistance = trackWidth - viewportWidth + extraPadding;
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: 'top top',
-          end: () => `+=${calculateDistance() + 700}`,
-          pin: true,
-          pinSpacing: true,
-          scrub: 1.1,
-          invalidateOnRefresh: true,
-          anticipatePin: 1,
-          onUpdate: (self) => {
-            // Update live progress bar
-            if (progressBarRef.current) {
-              progressBarRef.current.style.width = `${Math.min(100, Math.max(5, self.progress * 100))}%`;
-            }
-            // Update live counter (01 / 05)
-            if (progressTextRef.current) {
-              const total = filteredProjects.length;
-              const current = Math.min(total, Math.max(1, Math.ceil(self.progress * total)));
-              progressTextRef.current.innerText = `0${current} / 0${total}`;
-            }
+      // Only pin when there are multiple cards that actually overflow the screen
+      const shouldPin = overflowDistance > 60 && filteredProjects.length >= 3;
+
+      if (shouldPin) {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: () => `+=${overflowDistance + 450}`,
+            pin: true,
+            pinSpacing: true,
+            scrub: 1.0,
+            invalidateOnRefresh: true,
+            anticipatePin: 1,
+            onUpdate: (self) => {
+              // Update live progress bar
+              if (progressBarRef.current) {
+                progressBarRef.current.style.width = `${Math.min(100, Math.max(5, self.progress * 100))}%`;
+              }
+              // Update live counter (01 / 05)
+              if (progressTextRef.current) {
+                const total = filteredProjects.length;
+                const current = Math.min(total, Math.max(1, Math.ceil(self.progress * total)));
+                progressTextRef.current.innerText = `0${current} / 0${total}`;
+              }
+            },
           },
-        },
-      });
+        });
 
-      // Smooth horizontal translation of the project cards track from right to left
-      tl.to(track, {
-        x: () => -calculateDistance(),
-        ease: 'none',
-      });
+        // Smooth horizontal translation of the project cards track from right to left
+        tl.to(track, {
+          x: -overflowDistance,
+          ease: 'none',
+        });
+      } else {
+        // If there are few cards that already fit on screen, scroll normally without pinning!
+        gsap.set(track, { x: 0 });
+        if (progressBarRef.current) {
+          progressBarRef.current.style.width = '100%';
+        }
+        if (progressTextRef.current) {
+          progressTextRef.current.innerText = `0${filteredProjects.length} / 0${filteredProjects.length}`;
+        }
+      }
     }, sectionRef);
 
     const refreshTimer = setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 250);
+    }, 200);
 
     return () => {
       clearTimeout(refreshTimer);
       ctx.revert();
     };
-  }, [filteredProjects]);
+  }, [filteredProjects, activeFilter]);
 
   return (
     <div className="relative w-full bg-[#080B10]">
