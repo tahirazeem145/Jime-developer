@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   ArrowUpRight, 
   Sparkles, 
-  ChevronLeft, 
-  ChevronRight, 
   Layers, 
-  ArrowRight 
+  ArrowRight,
+  ChevronRight,
+  FolderGit2
 } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -14,26 +14,18 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all');
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-  const [activeIndex, setActiveIndex] = useState(0);
 
   const sectionRef = useRef(null);
+  const trackRef = useRef(null);
   const headerRef = useRef(null);
-  const scrollContainerRef = useRef(null);
-  const cardsRef = useRef([]);
-  const isDragging = useRef(false);
-  const startX = useRef(0);
-  const scrollLeftStart = useRef(0);
-  const activeIndexRef = useRef(0);
-  const scrollRaf = useRef(null);
-  const cardMoveRaf = useRef(null);
+  const progressBarRef = useRef(null);
+  const progressTextRef = useRef(null);
 
   const filters = [
     { id: 'all', label: 'All Projects' },
     { id: 'saas', label: 'Web Apps & SaaS' },
-    { id: 'portal', label: 'EdTech & Portals' },
     { id: 'ecommerce', label: 'E-Commerce' },
+    { id: 'app', label: 'Mobile Apps & Portals' },
   ];
 
   const projectsData = [
@@ -56,7 +48,7 @@ export default function Projects() {
     },
     {
       id: 'al-hidhaya',
-      category: 'portal',
+      category: 'app',
       categoryLabel: 'EdTech & Web Portal',
       title: 'Al-Hidhaya Academy',
       headline: 'Next-Gen Educational Management & Portal',
@@ -72,35 +64,52 @@ export default function Projects() {
       featured: false,
     },
     {
-      id: 'nexus-commerce',
-      category: 'ecommerce',
-      categoryLabel: 'E-Commerce & Fintech',
-      title: 'Nexus Modern Storefront',
-      headline: 'High-Conversion Headless Commerce & Checkout',
-      description: 'Ultra-fast luxury e-commerce engine with frictionless 1-click checkout, multi-currency localization, and live inventory intelligence.',
-      image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=80',
-      tags: ['React', 'Stripe API', 'GraphQL', 'TailwindCSS'],
+      id: 'affylix-store',
+      category: 'saas',
+      categoryLabel: 'SaaS & Social Commerce',
+      title: 'Affylix Store',
+      headline: 'One Link. Sell Anything Effortlessly.',
+      description: 'A mobile-first social commerce storefront that helps creators turn one link into a scalable income stream.',
+      image: '/assets/affylix-store.png',
+      tags: ['React', 'Node.js', 'Social Commerce', 'TailwindCSS'],
       metrics: [
-        { label: 'Conversion Lift', value: '+42%' },
-        { label: 'Load Time', value: '0.6s' },
-        { label: 'Checkout Abandon', value: '-35%' },
+        { label: 'Monthly Active', value: '50k+' },
+        { label: 'Conversion', value: '+38%' },
+        { label: 'Setup Time', value: '<2 mins' },
       ],
       link: '#',
       featured: false,
     },
     {
-      id: 'pulse-ai',
-      category: 'saas',
-      categoryLabel: 'Enterprise AI Cloud',
-      title: 'Pulse Intelligence Workspace',
-      headline: 'Workflow Automation & Smart Document Copilot',
-      description: 'Enterprise AI workspace that analyzes unstructured data, creates automated summaries, and orchestrates cross-team workflows.',
-      image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
-      tags: ['Python', 'FastAPI', 'React', 'OpenAI API'],
+      id: 'unknownrx',
+      category: 'ecommerce',
+      categoryLabel: 'E-Commerce & Streetwear',
+      title: 'UnknownRx',
+      headline: 'Premium Streetwear E-Commerce Platform',
+      description: 'A bold WooCommerce-powered streetwear store designed for performance, branding, and seamless shopping.',
+      image: '/assets/unknownrx.png',
+      tags: ['WooCommerce', 'WordPress', 'React', 'Stripe'],
       metrics: [
-        { label: 'Time Saved', value: '65%' },
-        { label: 'Security', value: 'SOC2 Ready' },
-        { label: 'Accuracy', value: '99.4%' },
+        { label: 'Sales Growth', value: '+120%' },
+        { label: 'Page Speed', value: '0.7s' },
+        { label: 'Cart Abandon', value: '-28%' },
+      ],
+      link: '#',
+      featured: false,
+    },
+    {
+      id: 'fun-math',
+      category: 'app',
+      categoryLabel: 'Mobile App & EdTech',
+      title: 'Fun Math',
+      headline: 'Interactive Math Learning App for Kids',
+      description: 'A bilingual, gamified math learning app built with React Native and Expo to make arithmetic fun and interactive for kids.',
+      image: '/assets/fun-math.png',
+      tags: ['React Native', 'Expo', 'TypeScript', 'Gamification'],
+      metrics: [
+        { label: 'Downloads', value: '25k+' },
+        { label: 'Rating', value: '4.9 ★' },
+        { label: 'Daily Active', value: '10k+' },
       ],
       link: '#',
       featured: false,
@@ -111,178 +120,102 @@ export default function Projects() {
     ? projectsData
     : projectsData.filter((p) => p.category === activeFilter);
 
-  // Debounced non-thrashing scroll state checker
-  const checkScroll = () => {
-    if (scrollRaf.current) return;
-    scrollRaf.current = requestAnimationFrame(() => {
-      scrollRaf.current = null;
-      const el = scrollContainerRef.current;
-      if (!el) return;
-      const { scrollLeft, scrollWidth, clientWidth } = el;
-      const nextLeft = scrollLeft > 15;
-      const nextRight = scrollLeft < scrollWidth - clientWidth - 15;
-
-      setCanScrollLeft((prev) => (prev !== nextLeft ? nextLeft : prev));
-      setCanScrollRight((prev) => (prev !== nextRight ? nextRight : prev));
-
-      const cardWidth = 400;
-      const index = Math.round(scrollLeft / (cardWidth + 24));
-      const clampedIndex = Math.min(filteredProjects.length - 1, Math.max(0, index));
-      if (activeIndexRef.current !== clampedIndex) {
-        activeIndexRef.current = clampedIndex;
-        setActiveIndex(clampedIndex);
-      }
-    });
-  };
-
+  // GSAP ScrollTrigger Pinned Horizontal Scrolling
   useEffect(() => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    el.addEventListener('scroll', checkScroll, { passive: true });
-    checkScroll();
+    const section = sectionRef.current;
+    const track = trackRef.current;
+    if (!section || !track) return;
+
+    const ctx = gsap.context(() => {
+      // Calculate exact distance required to scroll all projects completely across the screen
+      const calculateDistance = () => {
+        const trackWidth = track.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        const extraPadding = window.innerWidth < 768 ? 40 : 100;
+        return Math.max(0, trackWidth - viewportWidth + extraPadding);
+      };
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: () => `+=${calculateDistance() + 700}`,
+          pin: true,
+          pinSpacing: true,
+          scrub: 1.1,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            // Update live progress bar
+            if (progressBarRef.current) {
+              progressBarRef.current.style.width = `${Math.min(100, Math.max(5, self.progress * 100))}%`;
+            }
+            // Update live counter (01 / 05)
+            if (progressTextRef.current) {
+              const total = filteredProjects.length;
+              const current = Math.min(total, Math.max(1, Math.ceil(self.progress * total)));
+              progressTextRef.current.innerText = `0${current} / 0${total}`;
+            }
+          },
+        },
+      });
+
+      // Smooth horizontal translation of the project cards track from right to left
+      tl.to(track, {
+        x: () => -calculateDistance(),
+        ease: 'none',
+      });
+    }, sectionRef);
+
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 250);
+
     return () => {
-      el.removeEventListener('scroll', checkScroll);
-      if (scrollRaf.current) cancelAnimationFrame(scrollRaf.current);
+      clearTimeout(refreshTimer);
+      ctx.revert();
     };
   }, [filteredProjects]);
 
-  // Smooth button navigation handler
-  const handleScroll = (direction) => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    const cardWidth = el.querySelector('.project-card')?.offsetWidth || 400;
-    const scrollAmount = direction === 'left' ? -(cardWidth + 28) : (cardWidth + 28);
-    el.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-  };
-
-  // Mouse Drag to Scroll handlers
-  const handleMouseDown = (e) => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    // Don't initiate drag if clicking buttons or links
-    if (e.target.closest('a, button')) return;
-    isDragging.current = true;
-    startX.current = e.pageX - el.offsetLeft;
-    scrollLeftStart.current = el.scrollLeft;
-    el.style.cursor = 'grabbing';
-    el.style.userSelect = 'none';
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDragging.current) return;
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    e.preventDefault();
-    const x = e.pageX - el.offsetLeft;
-    const walk = (x - startX.current) * 1.3;
-    el.scrollLeft = scrollLeftStart.current - walk;
-  };
-
-  const handleMouseUp = () => {
-    isDragging.current = false;
-    const el = scrollContainerRef.current;
-    if (el) {
-      el.style.cursor = 'grab';
-      el.style.removeProperty('user-select');
-    }
-  };
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // 1. Header Entrance
-      if (headerRef.current) {
-        gsap.fromTo(
-          headerRef.current,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.75,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: headerRef.current,
-              start: 'top 85%',
-              toggleActions: 'play none none none',
-            },
-          }
-        );
-      }
-
-      // 2. All Projects Entrance: Come smoothly from Right to Left
-      const cards = cardsRef.current.filter(Boolean);
-      if (cards.length > 0) {
-        gsap.fromTo(
-          cards,
-          { opacity: 0, x: 120 },
-          {
-            opacity: 1,
-            x: 0,
-            stagger: 0.12,
-            duration: 0.8,
-            ease: 'power3.out',
-            clearProps: 'transform',
-            scrollTrigger: {
-              trigger: scrollContainerRef.current || sectionRef.current,
-              start: 'top 85%',
-              toggleActions: 'play none none none',
-            },
-          }
-        );
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, [filteredProjects]);
-
   return (
-    <section 
-      id="projects" 
-      ref={sectionRef}
-      className="relative z-10 w-full py-20 sm:py-28 px-4 sm:px-6 lg:px-8"
-    >
-      {/* Background Ambient Glows */}
-      <div className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full bg-primary-blue/15 blur-[140px] pointer-events-none -z-10" />
-      <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full bg-accent-blue/10 blur-[150px] pointer-events-none -z-10" />
+    <div className="relative w-full bg-[#080B10]">
+      {/* 1. PINNED HORIZONTAL SCROLL SHOWCASE SECTION */}
+      <section 
+        id="projects" 
+        ref={sectionRef}
+        className="relative z-10 w-full min-h-screen flex flex-col justify-between py-6 sm:py-8 px-4 sm:px-6 lg:px-10 overflow-hidden"
+      >
+        {/* Ambient background glows */}
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full bg-primary-blue/10 blur-[150px] pointer-events-none -z-10" />
+        <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full bg-accent-blue/10 blur-[150px] pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto">
-        {/* SECTION HEADER WITH TITLE, FILTERS & CAROUSEL NAVIGATION CONTROLS */}
-        <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-14">
-          <div className="max-w-2xl">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-4">
-              <Sparkles className="w-3.5 h-3.5 text-accent-blue" />
-              <span className="text-xs sm:text-sm font-inter font-medium text-main-text tracking-wide">
-                Selected Case Studies
-              </span>
+        <div className="w-full max-w-7xl mx-auto flex flex-col justify-between flex-grow">
+          {/* SECTION HEADER */}
+          <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4 sm:mb-6">
+            <div className="max-w-2xl">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-2.5">
+                <Sparkles className="w-3.5 h-3.5 text-accent-blue" />
+                <span className="text-xs font-inter font-medium text-main-text tracking-wide">
+                  Featured Case Studies
+                </span>
+              </div>
+
+              {/* Headline */}
+              <h2 className="font-sora font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-[42px] leading-[1.15] text-main-text tracking-tight">
+                Transforming ideas into{' '}
+                <span className="text-accent-blue italic drop-shadow-[0_0_25px_rgba(59,130,246,0.35)]">
+                  high-impact products.
+                </span>
+              </h2>
             </div>
 
-            {/* Headline */}
-            <h2 className="font-sora font-extrabold text-3xl sm:text-4xl md:text-5xl leading-[1.15] text-main-text tracking-tight">
-              Transforming ideas into{' '}
-              <span className="text-accent-blue italic drop-shadow-[0_0_25px_rgba(59,130,246,0.35)]">
-                high-impact products.
-              </span>
-            </h2>
-
-            {/* Subtitle */}
-            <p className="mt-3 text-sm sm:text-base text-muted-text font-inter leading-relaxed">
-              Explore custom web platforms and SaaS solutions engineered for fast-growing businesses.
-            </p>
-          </div>
-
-          {/* RIGHT SIDE: FILTERS & NAVIGATION ARROWS */}
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6 self-start md:self-end">
-            {/* Filter Pills */}
-            <div className="flex flex-wrap items-center gap-2">
+            {/* Category Filter Pills */}
+            <div className="flex flex-wrap items-center gap-2 self-start md:self-end">
               {filters.map((tab) => (
                 <button
                   key={tab.id}
-                  onClick={() => {
-                    setActiveFilter(tab.id);
-                    if (scrollContainerRef.current) {
-                      scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => setActiveFilter(tab.id)}
                   type="button"
                   className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-inter font-medium transition-all duration-300 ${
                     activeFilter === tab.id
@@ -294,161 +227,168 @@ export default function Projects() {
                 </button>
               ))}
             </div>
+          </div>
 
-            {/* Left / Right Arrow Buttons */}
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleScroll('left')}
-                disabled={!canScrollLeft}
-                type="button"
-                aria-label="Scroll left"
-                className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 ${
-                  canScrollLeft
-                    ? 'bg-white/[0.06] border-white/20 text-white hover:bg-accent-blue hover:border-accent-blue hover:shadow-blue-glow active:scale-95 cursor-pointer'
-                    : 'bg-white/[0.02] border-white/5 text-muted-text/30 cursor-not-allowed'
-                }`}
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
+          {/* HORIZONTAL MOVING TRACK (GSAP PINNED RIGHT-TO-LEFT SCROLL) */}
+          <div className="w-full overflow-visible py-2 sm:py-4 my-auto">
+            <div
+              ref={trackRef}
+              className="flex gap-6 sm:gap-8 will-change-transform items-stretch"
+            >
+              {filteredProjects.map((project, idx) => (
+                <div
+                  key={project.id}
+                  className="project-card group relative flex-shrink-0 w-[300px] sm:w-[360px] md:w-[400px] lg:w-[430px] flex flex-col rounded-3xl overflow-hidden bg-[#0B101D] border border-white/10 hover:border-accent-blue/60 shadow-[0_12px_40px_rgba(0,0,0,0.7)] hover:shadow-[0_20px_50px_rgba(59,130,246,0.25)] transition-all duration-300 select-none"
+                >
+                  {/* Card Image Banner */}
+                  <div className="relative w-full h-48 sm:h-56 overflow-hidden bg-[#06080D]">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                      loading="lazy"
+                      draggable={false}
+                    />
+                    
+                    {/* Gradient scrim */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B101D] via-[#0B101D]/30 to-transparent pointer-events-none" />
 
-              <button
-                onClick={() => handleScroll('right')}
-                disabled={!canScrollRight}
-                type="button"
-                aria-label="Scroll right"
-                className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 ${
-                  canScrollRight
-                    ? 'bg-white/[0.06] border-white/20 text-white hover:bg-accent-blue hover:border-accent-blue hover:shadow-blue-glow active:scale-95 cursor-pointer'
-                    : 'bg-white/[0.02] border-white/5 text-muted-text/30 cursor-not-allowed'
-                }`}
+                    {/* Top Category Badge */}
+                    <div className="absolute top-3.5 left-3.5 z-10">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-inter font-semibold bg-[#080B10]/85 backdrop-blur-md text-accent-blue border border-[#1E293B] shadow-sm">
+                        <Layers className="w-3 h-3 text-accent-blue" />
+                        {project.categoryLabel}
+                      </span>
+                    </div>
+
+                    {/* Top Right Link Icon */}
+                    <div className="absolute top-3.5 right-3.5 z-10 w-8 sm:w-9 h-8 sm:h-9 rounded-full bg-[#080B10]/85 backdrop-blur-md border border-white/15 flex items-center justify-center text-white group-hover:text-accent-blue group-hover:border-accent-blue/60 group-hover:bg-accent-blue/10 transition-all duration-300">
+                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div>
+                  </div>
+
+                  {/* Card Body Content */}
+                  <div className="p-5 sm:p-6 flex flex-col flex-grow justify-between">
+                    <div>
+                      <h3 className="font-sora font-bold text-lg sm:text-xl text-main-text group-hover:text-accent-blue transition-colors duration-300">
+                        {project.title}
+                      </h3>
+                      <p className="mt-1 text-xs sm:text-sm font-medium text-[#F8FAFC]">
+                        {project.headline}
+                      </p>
+                      <p className="mt-2 text-xs sm:text-sm text-muted-text font-inter leading-relaxed line-clamp-3">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    {/* Metrics Row */}
+                    <div className="mt-4 pt-3.5 border-t border-white/10 grid grid-cols-3 gap-2">
+                      {project.metrics.map((metric) => (
+                        <div key={metric.label} className="text-left">
+                          <div className="font-sora font-bold text-sm sm:text-base text-white group-hover:text-accent-blue transition-colors">
+                            {metric.value}
+                          </div>
+                          <div className="text-[10px] sm:text-[11px] text-muted-text font-inter font-medium truncate">
+                            {metric.label}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Tech Tags & CTA Link */}
+                    <div className="mt-4 pt-3.5 border-t border-white/5 flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.tags.slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-inter font-medium bg-white/[0.04] text-slate-300 border border-white/10"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      <a
+                        href={project.link}
+                        className="inline-flex items-center gap-1 text-xs font-sora font-semibold text-white group-hover:text-accent-blue transition-colors"
+                      >
+                        <span>View Project</span>
+                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* FINAL CARD: EXPLORE ALL PROJECTS CALLOUT */}
+              <div className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[350px] rounded-3xl bg-gradient-to-br from-[#0F172A] via-[#0B101D] to-[#0A1224] border border-[#2563EB]/40 p-6 sm:p-8 flex flex-col justify-between items-center text-center shadow-[0_15px_45px_rgba(0,0,0,0.8)] select-none">
+                <div className="w-14 h-14 rounded-2xl bg-[#1E3A8A]/30 border border-[#3B82F6]/50 flex items-center justify-center text-accent-blue shadow-blue-glow mb-4">
+                  <FolderGit2 className="w-7 h-7" />
+                </div>
+
+                <div>
+                  <span className="text-xs font-sora font-semibold tracking-wider uppercase text-accent-blue">
+                    Complete Portfolio
+                  </span>
+                  <h3 className="font-sora font-bold text-xl sm:text-2xl text-main-text mt-1.5">
+                    15+ High-Growth Digital Products
+                  </h3>
+                  <p className="text-xs text-muted-text font-inter mt-2">
+                    Explore our full catalog of web applications, custom SaaS tools, mobile apps, and e-commerce platforms.
+                  </p>
+                </div>
+
+                <a
+                  href="#all-projects"
+                  className="w-full mt-6 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-accent-blue hover:bg-accent-blue-hover text-white font-sora font-semibold text-xs sm:text-sm tracking-tight shadow-blue-glow hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                >
+                  <span>View all the projects</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* BOTTOM CONTROLS & PRIMARY ACTION BUTTON ROW */}
+          <div className="mt-4 sm:mt-6 pt-3 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            {/* Live Progress Bar & Counter */}
+            <div className="flex items-center gap-3 w-full sm:w-auto">
+              <span 
+                ref={progressTextRef}
+                className="font-sora text-xs font-semibold text-accent-blue min-w-[50px]"
               >
-                <ChevronRight className="w-5 h-5" />
-              </button>
+                01 / 0{filteredProjects.length}
+              </span>
+              <div className="w-32 sm:w-48 h-1.5 rounded-full bg-white/10 overflow-hidden">
+                <div 
+                  ref={progressBarRef}
+                  className="h-full bg-accent-blue rounded-full transition-all duration-100 ease-out shadow-blue-glow"
+                  style={{ width: '20%' }}
+                />
+              </div>
+              <span className="text-[11px] text-muted-text font-inter hidden sm:inline">
+                Scroll to explore
+              </span>
+            </div>
+
+            {/* Primary Action Button: "View all the projects" */}
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
+              <a
+                href="#all-projects"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 rounded-full bg-accent-blue hover:bg-accent-blue-hover text-white font-sora font-semibold text-xs sm:text-sm tracking-tight shadow-blue-glow hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+              >
+                <span>View all the projects</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* SIDE-BY-SIDE HORIZONTAL TRACK */}
-        <div
-          ref={scrollContainerRef}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-          className="flex gap-6 sm:gap-8 overflow-x-auto scrollbar-none py-4 -mx-4 px-4 sm:mx-0 sm:px-0 cursor-grab active:cursor-grabbing"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {filteredProjects.map((project, idx) => (
-            <div
-              key={project.id}
-              ref={(el) => (cardsRef.current[idx] = el)}
-              className="project-card group relative flex-shrink-0 w-[310px] sm:w-[380px] md:w-[420px] lg:w-[450px] flex flex-col rounded-3xl overflow-hidden bg-[#0B101D] border border-white/10 hover:border-accent-blue/60 shadow-[0_12px_40px_rgba(0,0,0,0.7)] hover:shadow-[0_20px_50px_rgba(59,130,246,0.25)] transition-colors duration-300 select-none"
-            >
-              {/* Card Image Container */}
-              <div className="relative w-full h-52 sm:h-64 overflow-hidden bg-[#06080D]">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
-                  loading="lazy"
-                  draggable={false}
-                />
-                
-                {/* Gradient scrim */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B101D] via-[#0B101D]/30 to-transparent pointer-events-none" />
-
-                {/* Top Category Badge */}
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-inter font-semibold bg-[#080B10]/85 backdrop-blur-md text-accent-blue border border-[#1E293B] shadow-sm">
-                    <Layers className="w-3 h-3 text-accent-blue" />
-                    {project.categoryLabel}
-                  </span>
-                </div>
-
-                {/* Top Right External Link Arrow */}
-                <div className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-[#080B10]/85 backdrop-blur-md border border-white/15 flex items-center justify-center text-white group-hover:text-accent-blue group-hover:border-accent-blue/60 group-hover:bg-accent-blue/10 transition-all duration-300">
-                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </div>
-              </div>
-
-              {/* Card Content */}
-              <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between">
-                <div>
-                  <h3 className="font-sora font-bold text-xl sm:text-2xl text-main-text group-hover:text-accent-blue transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="mt-1.5 text-xs sm:text-sm font-medium text-accent-cyan">
-                    {project.headline}
-                  </p>
-                  <p className="mt-2.5 text-xs sm:text-sm text-muted-text font-inter leading-relaxed line-clamp-3">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Metrics Highlight Row */}
-                <div className="mt-5 pt-4 border-t border-white/10 grid grid-cols-3 gap-2">
-                  {project.metrics.map((metric) => (
-                    <div key={metric.label} className="text-left">
-                      <div className="font-sora font-bold text-base sm:text-lg text-white group-hover:text-accent-blue transition-colors">
-                        {metric.value}
-                      </div>
-                      <div className="text-[10px] sm:text-xs text-muted-text font-inter font-medium truncate">
-                        {metric.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Tech Tags & CTA Link */}
-                <div className="mt-5 pt-4 border-t border-white/5 flex flex-wrap items-center justify-between gap-3">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-1 rounded-md text-[11px] font-inter font-medium bg-white/[0.04] text-slate-300 border border-white/10"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <a
-                    href={project.link}
-                    className="inline-flex items-center gap-1.5 text-xs font-sora font-semibold text-white group-hover:text-accent-blue transition-colors"
-                  >
-                    <span>View Project</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* BOTTOM PAGINATION DOTS */}
-        <div className="mt-6 flex items-center justify-center gap-1.5">
-          {filteredProjects.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                const el = scrollContainerRef.current;
-                if (!el) return;
-                const cardWidth = el.querySelector('.project-card')?.offsetWidth || 400;
-                el.scrollTo({ left: i * (cardWidth + 24), behavior: 'smooth' });
-              }}
-              aria-label={`Go to slide ${i + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                activeIndex === i
-                  ? 'w-7 bg-accent-blue shadow-blue-glow'
-                  : 'w-2 bg-white/20 hover:bg-white/40'
-              }`}
-            />
-          ))}
-        </div>
-
-        {/* BOTTOM CTA BANNER (Turing Inspiration) */}
+      {/* 2. BOTTOM CONSULTATION BANNER (Resumes vertical scrolling seamlessly) */}
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div 
-          className="group relative mt-16 sm:mt-24 p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#0D1527] via-[#0B101D] to-[#0A1224] border border-[#1E3A8A]/40 overflow-hidden shadow-[0_15px_50px_rgba(0,0,0,0.7)] flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
+          className="group relative p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#0D1527] via-[#0B101D] to-[#0A1224] border border-[#1E3A8A]/40 overflow-hidden shadow-[0_15px_50px_rgba(0,0,0,0.7)] flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
         >
           <div className="relative z-10">
             <span className="text-xs font-sora font-semibold tracking-wider uppercase text-accent-blue">
@@ -470,8 +410,7 @@ export default function Projects() {
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>
-
       </div>
-    </section>
+    </div>
   );
 }

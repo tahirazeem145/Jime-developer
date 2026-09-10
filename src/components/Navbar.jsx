@@ -5,9 +5,9 @@ import {
   ArrowRight, 
   ChevronDown, 
   Code, 
-  ShoppingBag, 
+  TrendingUp, 
   Smartphone, 
-  Layers 
+  Cpu 
 } from 'lucide-react';
 
 export default function Navbar() {
@@ -37,10 +37,10 @@ export default function Navbar() {
       desc: 'High-performance modern websites & landing pages'
     },
     {
-      title: 'E-commerce Development',
-      href: 'https://www.jimedevelopers.in/ecommerce-development',
-      icon: ShoppingBag,
-      desc: 'High-converting online stores built to scale'
+      title: 'Digital Marketing',
+      href: 'https://www.jimedevelopers.in/digital-marketing',
+      icon: TrendingUp,
+      desc: 'Data-driven SEO, brand growth & performance marketing'
     },
   ];
 
@@ -52,10 +52,10 @@ export default function Navbar() {
       desc: 'Cross-platform iOS & Android native apps'
     },
     {
-      title: 'Web App & SaaS',
-      href: 'https://www.jimedevelopers.in/saas-development',
-      icon: Layers,
-      desc: 'Custom web software & scalable cloud platforms'
+      title: 'Custom AI & ML',
+      href: 'https://www.jimedevelopers.in/custom-ai-ml',
+      icon: Cpu,
+      desc: 'Intelligent AI automation, LLMs & machine learning'
     },
   ];
 

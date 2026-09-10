@@ -1,11 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Mail, ArrowRight, Star, CheckCircle } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { ArrowRight, Star } from 'lucide-react';
 import { gsap } from 'gsap';
 
 export default function Hero() {
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-
   const heroRef = useRef(null);
   const heroContentRef = useRef(null);
   const badgeRef = useRef(null);
@@ -54,17 +51,6 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        setEmail('');
-      }, 4000);
-    }
-  };
-
   return (
     <div 
       id="home" 
@@ -78,9 +64,14 @@ export default function Hero() {
         
         {/* GOOGLE REVIEW BADGE */}
         <div ref={badgeRef} className="inline-flex items-center justify-center mb-4 sm:mb-6">
-          <div className="inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 hover:border-accent-blue/40 backdrop-blur-sm transition-all">
+          <a
+            href="https://www.google.com/search?q=Jime+Developers+Reviews"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-accent-blue/40 backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+          >
             {/* Google Icon */}
-            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" viewBox="0 0 24 24">
+            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
               <path
                 fill="#4285F4"
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -100,7 +91,7 @@ export default function Hero() {
             </svg>
 
             {/* Rating Number */}
-            <span className="font-inter font-bold text-xs sm:text-sm text-main-text">
+            <span className="font-inter font-bold text-xs sm:text-sm text-main-text group-hover:text-white transition-colors">
               5.0
             </span>
 
@@ -118,10 +109,10 @@ export default function Hero() {
             <span className="text-muted-text/60 text-xs">·</span>
 
             {/* Reviews Count */}
-            <span className="text-xs sm:text-sm font-inter text-muted-text font-normal">
+            <span className="text-xs sm:text-sm font-inter text-muted-text group-hover:text-main-text font-normal transition-colors">
               5 Google reviews
             </span>
-          </div>
+          </a>
         </div>
 
         {/* MAIN HEADLINE */}
@@ -144,40 +135,36 @@ export default function Hero() {
           Web and mobile apps, designed and shipped fast.
         </p>
 
-        {/* EMAIL CTA CONTAINER (SLEEK SLIM PILL ON ALL SCREENS) */}
-        <div ref={ctaRef} className="mt-6 sm:mt-8 max-w-md mx-auto w-full px-2">
-          {submitted ? (
-            <div className="p-3.5 rounded-full bg-white/[0.05] border border-accent-blue/50 flex items-center justify-center gap-2.5 text-accent-blue font-inter font-medium text-sm animate-fadeIn shadow-blue-glow">
-              <CheckCircle className="w-4 h-4 flex-shrink-0" />
-              <span>Thank you! We'll be in touch shortly.</span>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="w-full">
-              <div className="relative flex flex-row items-center p-1.5 pl-3.5 sm:pl-4 rounded-full bg-white/[0.04] border border-white/15 hover:border-accent-blue/50 focus-within:border-accent-blue focus-within:shadow-[0_0_25px_rgba(59,130,246,0.2)] transition-all duration-300">
-                {/* Email Input Field */}
-                <div className="flex items-center gap-2 flex-1 min-w-0 pr-2">
-                  <Mail className="w-4 h-4 text-muted-text/60 flex-shrink-0" />
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    required
-                    className="w-full bg-transparent text-main-text placeholder:text-muted-text/50 text-xs sm:text-sm font-inter focus:outline-none min-w-0"
-                  />
-                </div>
+        {/* 2 CTA BUTTONS: PRIMARY (WHATSAPP) + SECONDARY (PLACEHOLDER) */}
+        <div 
+          ref={ctaRef} 
+          className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-lg mx-auto w-full px-2"
+        >
+          {/* Primary CTA: WhatsApp */}
+          <a
+            href="https://wa.me/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-accent-blue hover:bg-accent-blue-hover text-white font-sora font-semibold text-xs sm:text-sm tracking-tight shadow-blue-glow hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
+          >
+            <svg
+              className="w-4 h-4 fill-white transition-transform duration-300 group-hover:scale-110"
+              viewBox="0 0 24 24"
+            >
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+            </svg>
+            <span>Chat on WhatsApp</span>
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
 
-                {/* Get a Quote Button */}
-                <button
-                  type="submit"
-                  className="flex-shrink-0 inline-flex items-center justify-center gap-1.5 px-4 sm:px-6 py-2.5 rounded-full bg-accent-blue text-white font-sora font-semibold text-xs sm:text-sm tracking-tight hover:bg-accent-blue-hover hover:shadow-blue-glow active:scale-[0.98] transition-all duration-200"
-                >
-                  <span>Get quote</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </form>
-          )}
+          {/* Secondary CTA: Start your project */}
+          <a
+            href="#contact"
+            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] text-main-text hover:text-white border border-white/15 hover:border-white/30 backdrop-blur-md font-sora font-medium text-xs sm:text-sm tracking-tight hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
+          >
+            <span>Start your project</span>
+            <ArrowRight className="w-3.5 h-3.5 text-muted-text group-hover:text-white transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
         </div>
 
         {/* THREE STATS IN A COMPACT HORIZONTAL ROW */}
