@@ -15,6 +15,7 @@ export default function Navbar() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [servicesHovered, setServicesHovered] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const hoverTimeoutRef = useRef(null);
 
   const handleMouseEnter = () => {
@@ -32,12 +33,25 @@ export default function Navbar() {
   useEffect(() => {
     let ticking = false;
 
+    const sections = ['home', 'services', 'projects', 'about', 'contact'];
+
     const checkScrollPosition = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const heroEl = document.getElementById('home');
-          const past = heroEl ? heroEl.getBoundingClientRect().bottom <= 85 : window.scrollY > 550;
+          const past = heroEl ? heroEl.getBoundingClientRect().bottom <= 90 : window.scrollY > 550;
           setIsPastHero((prev) => (prev !== past ? past : prev));
+
+          // Calculate active section based on viewport center
+          const scrollPosition = window.scrollY + 180;
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const section = document.getElementById(sections[i]);
+            if (section && section.offsetTop <= scrollPosition) {
+              setActiveSection(sections[i]);
+              break;
+            }
+          }
+
           ticking = false;
         });
         ticking = true;

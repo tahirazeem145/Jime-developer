@@ -22,14 +22,14 @@ export const SmoothScroll: React.FC<SmoothScrollProps> = ({ children, options = 
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // 21st.dev Smooth Scroll configuration with optimized physics
+    // Highly-optimized Lenis physics configuration
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      easing: (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.95,
+      wheelMultiplier: 1.0,
       touchMultiplier: 1.5,
       infinite: false,
       autoResize: true,
@@ -47,7 +47,7 @@ export const SmoothScroll: React.FC<SmoothScrollProps> = ({ children, options = 
     };
 
     gsap.ticker.add(updateTicker);
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(500, 33);
 
     // Initial refresh after DOM has settled
     const refreshTimer = setTimeout(() => {
@@ -59,16 +59,27 @@ export const SmoothScroll: React.FC<SmoothScrollProps> = ({ children, options = 
       const anchor = (e.target as HTMLElement).closest('a[href^="#"]');
       if (!anchor) return;
       const targetId = anchor.getAttribute('href');
-      if (!targetId || targetId === '#' || targetId.length <= 1) return;
+      if (!targetId || targetId === '#') return;
 
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
+      if (targetId === '#home') {
         e.preventDefault();
-        lenis.scrollTo(targetElement as HTMLElement, {
-          offset: -75,
-          duration: 1.35,
-          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        lenis.scrollTo(0, {
+          duration: 1.2,
+          easing: (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
         });
+        return;
+      }
+
+      if (targetId.length > 1) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          lenis.scrollTo(targetElement as HTMLElement, {
+            offset: -80,
+            duration: 1.25,
+            easing: (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+          });
+        }
       }
     };
 

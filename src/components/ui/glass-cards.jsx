@@ -116,9 +116,10 @@ const ProjectCard = ({ item, index, totalCards }) => {
                 <img
                   src={item.image}
                   alt={item.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
               </div>
             </div>
 
@@ -236,29 +237,29 @@ export const StackedCards = () => {
       // Set initial positions:
       cards.forEach((card, i) => {
         if (i === 0) {
-          gsap.set(card, { y: 0, scale: 1, transformOrigin: 'top center' });
+          gsap.set(card, { y: 0, scale: 1, opacity: 1, transformOrigin: 'top center', force3D: true });
         } else {
-          gsap.set(card, { y: '100vh', scale: 1.02, transformOrigin: 'top center' });
+          gsap.set(card, { y: '100vh', scale: 1.02, opacity: 1, transformOrigin: 'top center', force3D: true });
         }
       });
 
       const isMobile = window.innerWidth < 768;
-      const scrollDistance = isMobile ? (cards.length - 1) * 340 : (cards.length - 1) * 450;
+      const scrollDistance = isMobile ? (cards.length - 1) * 360 : (cards.length - 1) * 480;
 
-      // Pinning timeline: snappy scroll scrubbing
+      // Pinning timeline: silky smooth scroll scrubbing with linear progression
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: pinSection,
           start: 'top 85px',
           end: `+=${scrollDistance}`,
           pin: true,
-          scrub: 0.5,
+          scrub: 0.6,
           anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       });
 
-      // Animate each subsequent card rising from the bottom (100vh) all the way up into place (y: 0)
+      // Animate each subsequent card rising from the bottom smoothly into place
       for (let i = 1; i < cards.length; i++) {
         const timeOffset = (i - 1) * 1;
 
@@ -268,8 +269,10 @@ export const StackedCards = () => {
           {
             y: 0,
             scale: 1,
+            opacity: 1,
             duration: 1,
-            ease: 'power2.out',
+            ease: 'none',
+            force3D: true,
           },
           timeOffset
         );
@@ -277,12 +280,15 @@ export const StackedCards = () => {
         // Previous cards scale down slightly to create physical tabbed deck depth
         for (let j = 0; j < i; j++) {
           const depthScale = 1 - (i - j) * 0.025;
+          const depthOpacity = Math.max(0.65, 1 - (i - j) * 0.12);
           tl.to(
             cards[j],
             {
               scale: depthScale,
+              opacity: depthOpacity,
               duration: 1,
-              ease: 'power2.out',
+              ease: 'none',
+              force3D: true,
             },
             timeOffset
           );

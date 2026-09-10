@@ -5,6 +5,8 @@
 @layer base {
   :root {
     color-scheme: dark;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   }
   
   html {
@@ -27,6 +29,10 @@
     overflow: hidden;
   }
 
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
   body {
     background-color: #080C0A;
     color: #FFFFFF;
@@ -34,6 +40,14 @@
     overscroll-behavior-y: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* GPU layer optimization for smooth 60/120fps scrolling */
+  .will-change-transform {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 }
 

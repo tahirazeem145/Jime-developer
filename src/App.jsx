@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import Projects from './components/Projects';
 import About from './components/About';
+import Contact from './components/Contact';
 import SectionDivider from './components/SectionDivider';
 import ParticleBackground from './components/ParticleBackground';
 import MouseGlow from './components/MouseGlow';
@@ -37,6 +38,8 @@ export default function App() {
             <SectionDivider variant="black-white" />
             <Projects />
             <About />
+            <SectionDivider variant="black-white" />
+            <Contact />
           </div>
 
         </main>
