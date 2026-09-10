@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   X, 
-  User, 
-  Mail, 
-  Phone, 
   ChevronDown, 
   Check, 
   Code, 
@@ -11,7 +8,6 @@ import {
   Cpu, 
   TrendingUp, 
   Layers, 
-  Sparkles, 
   ArrowRight,
   Send,
   CheckCircle2
@@ -69,6 +65,7 @@ const BUDGET_OPTIONS = [
 export default function ProjectModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
     name: '',
+    company: '',
     email: '',
     phone: '',
     service: '',
@@ -271,7 +268,7 @@ export default function ProjectModal({ isOpen, onClose }) {
         data-lenis-prevent-touch="true"
         onWheel={(e) => e.stopPropagation()}
         onTouchMove={(e) => e.stopPropagation()}
-        className="relative w-full max-w-2xl bg-[#0B101D] border border-white/15 rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.9),0_0_50px_rgba(59,130,246,0.15)] flex flex-col max-h-[90vh] overflow-hidden my-auto"
+        className="relative w-full max-w-2xl bg-black border border-white/15 rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.98),0_0_50px_rgba(59,130,246,0.12)] flex flex-col max-h-[90vh] overflow-hidden my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         
@@ -286,8 +283,12 @@ export default function ProjectModal({ isOpen, onClose }) {
         {/* Modal Header */}
         <div className="flex items-center justify-between px-5 sm:px-8 pt-5 pb-3 border-b border-white/10">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-accent-blue/15 border border-accent-blue/30 flex items-center justify-center text-accent-blue shadow-[0_0_15px_rgba(59,130,246,0.2)]">
-              <Sparkles className="w-4 h-4" />
+            <div className="flex items-center">
+              <img
+                src="/assets/jime-logo-white.png"
+                alt="Jime Developers"
+                className="h-7 sm:h-8 w-auto object-contain brightness-0 invert drop-shadow-[0_0_12px_rgba(255,255,255,0.25)]"
+              />
             </div>
             <div>
               <h2 className="font-sora font-bold text-lg sm:text-xl text-[#F8FAFC]">
@@ -389,81 +390,82 @@ export default function ProjectModal({ isOpen, onClose }) {
             /* PROJECT DETAILS FORM */
             <form onSubmit={handleSubmit} className="space-y-6">
               
-              {/* 1. NAME & EMAIL ROW */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Full Name */}
-                <div className="space-y-1.5 text-left">
-                  <label className="block text-xs font-sora font-medium text-main-text">
-                    Your Name <span className="text-accent-blue">*</span>
-                  </label>
-                  <div className="relative flex items-center">
-                    <User className="absolute left-3.5 w-4 h-4 text-muted-text/70" />
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Alex Carter"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-white/20 focus:border-accent-blue focus:bg-white/[0.06] focus:outline-none text-white text-xs sm:text-sm font-inter placeholder:text-muted-text/50 transition-all duration-200"
-                    />
-                  </div>
-                </div>
-
-                {/* Email Address */}
-                <div className="space-y-1.5 text-left">
-                  <label className="block text-xs font-sora font-medium text-main-text">
-                    Work Email <span className="text-accent-blue">*</span>
-                  </label>
-                  <div className="relative flex items-center">
-                    <Mail className="absolute left-3.5 w-4 h-4 text-muted-text/70" />
-                    <input
-                      type="email"
-                      required
-                      placeholder="alex@company.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-white/20 focus:border-accent-blue focus:bg-white/[0.06] focus:outline-none text-white text-xs sm:text-sm font-inter placeholder:text-muted-text/50 transition-all duration-200"
-                    />
-                  </div>
-                </div>
+              {/* 1. FULL NAME */}
+              <div className="space-y-2 text-left">
+                <label className="block font-sora font-semibold text-xs sm:text-sm text-[#F8FAFC]">
+                  Full Name <span className="text-accent-blue">*</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Enter your name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/15 hover:border-white/30 focus:border-accent-blue focus:bg-white/[0.07] focus:outline-none text-white text-sm sm:text-base font-inter placeholder:text-muted-text/50 transition-all duration-200"
+                />
               </div>
 
-              {/* 2. PHONE WITH AUTO IP-DETECTED COUNTRY CODE */}
-              <div className="space-y-1.5 text-left">
-                <label className="block text-xs font-sora font-medium text-main-text">
-                  Phone Number <span className="text-accent-blue">*</span>{' '}
-                  <span className="text-[10px] text-muted-text font-normal">
-                    (Auto-detected country code)
-                  </span>
+              {/* 2. COMPANY (OPTIONAL) */}
+              <div className="space-y-2 text-left">
+                <label className="block font-sora font-semibold text-xs sm:text-sm text-[#F8FAFC]">
+                  Company (Optional)
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter your company name"
+                  value={formData.company}
+                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/15 hover:border-white/30 focus:border-accent-blue focus:bg-white/[0.07] focus:outline-none text-white text-sm sm:text-base font-inter placeholder:text-muted-text/50 transition-all duration-200"
+                />
+              </div>
+
+              {/* 3. EMAIL ADDRESS */}
+              <div className="space-y-2 text-left">
+                <label className="block font-sora font-semibold text-xs sm:text-sm text-[#F8FAFC]">
+                  Email Address <span className="text-accent-blue">*</span>
+                </label>
+                <input
+                  type="email"
+                  required
+                  placeholder="Enter your email address"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/15 hover:border-white/30 focus:border-accent-blue focus:bg-white/[0.07] focus:outline-none text-white text-sm sm:text-base font-inter placeholder:text-muted-text/50 transition-all duration-200"
+                />
+              </div>
+
+              {/* 4. PHONE NUMBER WITH AUTO IP-DETECTED COUNTRY CODE */}
+              <div className="space-y-2 text-left">
+                <label className="block font-sora font-semibold text-xs sm:text-sm text-[#F8FAFC]">
+                  Phone Number <span className="text-accent-blue">*</span>
                 </label>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2.5">
                   {/* Country Selector Dropdown */}
-                  <div className="relative" ref={countryDropdownRef}>
+                  <div className="relative flex-shrink-0" ref={countryDropdownRef}>
                     <button
                       type="button"
                       onClick={() => setCountryDropdownOpen(!countryDropdownOpen)}
-                      className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-accent-blue/40 text-white text-xs sm:text-sm font-inter focus:outline-none transition-all"
+                      className="flex items-center gap-2 px-3.5 sm:px-4 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/15 hover:border-accent-blue/40 text-white text-sm sm:text-base font-inter focus:outline-none transition-all cursor-pointer"
                     >
-                      <span className="text-base">{selectedCountry.flag}</span>
-                      <span className="font-semibold text-accent-blue font-sora text-xs">
+                      <span className="text-lg">{selectedCountry.flag}</span>
+                      <span className="font-semibold text-accent-blue font-sora text-xs sm:text-sm">
                         {selectedCountry.dial}
                       </span>
-                      <ChevronDown className={`w-3.5 h-3.5 text-muted-text transition-transform duration-200 ${
+                      <ChevronDown className={`w-4 h-4 text-muted-text transition-transform duration-200 ${
                         countryDropdownOpen ? 'rotate-180' : ''
                       }`} />
                     </button>
 
                     {/* Dropdown Menu */}
                     {countryDropdownOpen && (
-                      <div className="absolute top-full left-0 mt-1.5 w-64 max-h-56 overflow-y-auto rounded-xl bg-[#0F172A] border border-white/15 shadow-[0_15px_40px_rgba(0,0,0,0.8)] z-50 p-2 custom-scrollbar animate-fadeIn">
-                        {/* Search input in dropdown */}
+                      <div className="absolute top-full left-0 mt-2 w-64 max-h-56 overflow-y-auto rounded-2xl bg-[#0A0A0A] border border-white/20 shadow-[0_15px_40px_rgba(0,0,0,0.95)] z-50 p-2 custom-scrollbar animate-fadeIn">
                         <input
                           type="text"
                           placeholder="Search country..."
                           value={countrySearch}
                           onChange={(e) => setCountrySearch(e.target.value)}
-                          className="w-full px-2.5 py-1.5 mb-2 rounded-lg bg-white/[0.06] border border-white/10 text-white text-xs placeholder:text-muted-text focus:outline-none focus:border-accent-blue"
+                          className="w-full px-3 py-2 mb-2 rounded-xl bg-white/[0.06] border border-white/10 text-white text-xs placeholder:text-muted-text focus:outline-none focus:border-accent-blue"
                           autoFocus
                         />
                         <div className="space-y-0.5">
@@ -476,7 +478,7 @@ export default function ProjectModal({ isOpen, onClose }) {
                                 setCountryDropdownOpen(false);
                                 setCountrySearch('');
                               }}
-                              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-inter transition-colors ${
+                              className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-inter transition-colors ${
                                 selectedCountry.code === c.code && selectedCountry.dial === c.dial
                                   ? 'bg-accent-blue/20 text-accent-blue font-semibold'
                                   : 'text-muted-text hover:text-white hover:bg-white/[0.05]'
@@ -497,15 +499,14 @@ export default function ProjectModal({ isOpen, onClose }) {
                   </div>
 
                   {/* Phone input field */}
-                  <div className="relative flex-1 flex items-center">
-                    <Phone className="absolute left-3.5 w-4 h-4 text-muted-text/70" />
+                  <div className="relative flex-1 min-w-0">
                     <input
                       type="tel"
                       required
-                      placeholder="98765 43210"
+                      placeholder="Enter your phone number"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-white/20 focus:border-accent-blue focus:bg-white/[0.06] focus:outline-none text-white text-xs sm:text-sm font-inter placeholder:text-muted-text/50 transition-all duration-200"
+                      className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/15 hover:border-white/30 focus:border-accent-blue focus:bg-white/[0.07] focus:outline-none text-white text-sm sm:text-base font-inter placeholder:text-muted-text/50 transition-all duration-200"
                     />
                   </div>
                 </div>
