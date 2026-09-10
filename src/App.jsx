@@ -3,6 +3,7 @@ import { SmoothScroll } from './components/ui/smooth-scroll';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
+import TrustedBy from './components/TrustedBy';
 import BackgroundElements from './components/BackgroundElements';
 import ParticleBackground from './components/ParticleBackground';
 import MouseGlow from './components/MouseGlow';
@@ -41,6 +42,9 @@ export default function App() {
 
           {/* 2nd SECTION: Projects Section */}
           <Projects />
+
+          {/* 3rd SECTION: Proudly Worked With / Client Trust Marquee */}
+          <TrustedBy />
         </main>
 
         {/* Floating Action Button */}
