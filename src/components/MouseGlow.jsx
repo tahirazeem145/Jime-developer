@@ -72,39 +72,39 @@ export default function MouseGlow() {
       ref={containerRef}
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden transition-opacity duration-500 opacity-0"
     >
-      {/* 1. Large Ambient Atmospheric Sapphire Glow (750px) */}
+      {/* 1. Subtle Ambient Sapphire Aura (450px) */}
       <div
         ref={outerGlowRef}
         className="absolute top-0 left-0 rounded-full pointer-events-none will-change-transform"
         style={{
-          width: '750px',
-          height: '750px',
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(30, 58, 138, 0.25) 40%, rgba(8, 11, 16, 0) 70%)',
-          filter: 'blur(70px)',
+          width: '450px',
+          height: '450px',
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(30, 58, 138, 0.10) 45%, transparent 70%)',
+          filter: 'blur(55px)',
         }}
       />
 
-      {/* 2. Medium Electric Blue Spotlight (350px) */}
+      {/* 2. Soft Electric Blue Spotlight (200px) */}
       <div
         ref={innerGlowRef}
         className="absolute top-0 left-0 rounded-full pointer-events-none will-change-transform"
         style={{
-          width: '350px',
-          height: '350px',
-          background: 'radial-gradient(circle, rgba(96, 165, 250, 0.22) 0%, rgba(59, 130, 246, 0.16) 45%, transparent 75%)',
-          filter: 'blur(35px)',
+          width: '200px',
+          height: '200px',
+          background: 'radial-gradient(circle, rgba(96, 165, 250, 0.10) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 75%)',
+          filter: 'blur(28px)',
         }}
       />
 
-      {/* 3. Concentrated Soft Cursor Core (120px) */}
+      {/* 3. Subtle Faint Cursor Center (80px) */}
       <div
         ref={coreGlowRef}
         className="absolute top-0 left-0 rounded-full pointer-events-none will-change-transform"
         style={{
-          width: '120px',
-          height: '120px',
-          background: 'radial-gradient(circle, rgba(147, 197, 253, 0.28) 0%, rgba(59, 130, 246, 0.12) 55%, transparent 80%)',
-          filter: 'blur(15px)',
+          width: '80px',
+          height: '80px',
+          background: 'radial-gradient(circle, rgba(147, 197, 253, 0.12) 0%, transparent 80%)',
+          filter: 'blur(12px)',
         }}
       />
     </div>

@@ -72,22 +72,22 @@ export default function Navbar() {
         }`} 
       />
 
-      <header className="fixed top-0 left-0 right-0 z-50 w-full bg-transparent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+      <header className="fixed top-3 sm:top-5 left-0 right-0 z-50 flex justify-center px-3 sm:px-6 pointer-events-none">
+        <div className="w-full max-w-6xl bg-[#0B101D]/85 backdrop-blur-2xl border border-white/10 hover:border-accent-blue/30 rounded-full px-4 sm:px-6 py-2 sm:py-2.5 shadow-[0_10px_35px_rgba(0,0,0,0.75),0_0_25px_rgba(59,130,246,0.1)] transition-all duration-300 pointer-events-auto">
+          <div className="flex items-center justify-between">
             {/* Logo on the left */}
             <div className="flex items-center gap-3">
               <a href="#" className="flex items-center group transition-transform duration-300 hover:scale-[1.02]">
                 <img
-                  src="/assets/jime-logo-brand.png"
+                  src="/assets/jime-logo-white.png"
                   alt="Jime Developers"
-                  className="h-9 sm:h-10 w-auto object-contain transition-all duration-300 drop-shadow-[0_0_15px_rgba(59,130,246,0.35)]"
+                  className="h-8 sm:h-9 w-auto object-contain brightness-0 invert transition-all duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]"
                 />
               </a>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-7 lg:gap-9">
+            <nav className="hidden md:flex items-center gap-6 lg:gap-8">
               <a
                 href="#home"
                 className="text-[14px] font-inter font-medium tracking-wide text-muted-text hover:text-main-text transition-colors duration-300 relative py-1 group"
@@ -98,7 +98,7 @@ export default function Navbar() {
 
               {/* Services with Mega-Dropdown */}
               <div 
-                className="relative py-5"
+                className="relative py-2"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
@@ -116,7 +116,7 @@ export default function Navbar() {
 
                 {/* 2x2 Mega Dropdown Menu */}
                 <div 
-                  className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-300 will-change-transform ${
+                  className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-300 will-change-transform ${
                     servicesHovered 
                       ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto' 
                       : 'opacity-0 translate-y-3 scale-[0.97] pointer-events-none'
@@ -227,10 +227,10 @@ export default function Navbar() {
             <div className="hidden md:flex items-center">
               <a
                 href="#book-call"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-sora font-semibold text-sm tracking-tight bg-[#0D1527]/90 text-white border border-[#2563EB]/60 hover:border-[#3B82F6] hover:bg-[#111C3D] shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full font-sora font-semibold text-xs sm:text-sm tracking-tight bg-accent-blue text-white hover:bg-accent-blue-hover shadow-blue-glow hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
               >
                 <span>Book a free call</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 text-accent-blue" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
 
@@ -238,99 +238,99 @@ export default function Navbar() {
             <div className="flex md:hidden items-center">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-lg focus:outline-none transition-colors text-muted-text hover:text-main-text hover:bg-[#1E293B]/50"
+                className="p-1.5 rounded-full focus:outline-none transition-colors text-muted-text hover:text-main-text hover:bg-[#1E293B]/60"
                 aria-label="Toggle Menu"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
           </div>
-        </div>
 
-        {/* Mobile Menu Dropdown */}
-        {mobileMenuOpen && (
-          <div className="md:hidden px-4 pt-3 pb-6 space-y-3 transition-all animate-fadeIn bg-[#0B101D]/98 backdrop-blur-xl border-b border-[#1E293B]">
-            <div className="flex flex-col space-y-1.5">
-              <a
-                href="#home"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-lg text-base font-medium transition-colors text-muted-text hover:text-main-text hover:bg-[#1E293B]/40"
-              >
-                Home
-              </a>
-
-              {/* Mobile Services Accordion */}
-              <div>
-                <button
-                  type="button"
-                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium transition-colors text-muted-text hover:text-main-text hover:bg-[#1E293B]/40"
+          {/* Mobile Menu Dropdown inside Floating Card */}
+          {mobileMenuOpen && (
+            <div className="md:hidden mt-3 pt-3 pb-4 px-2 space-y-2.5 border-t border-white/10 animate-fadeIn">
+              <div className="flex flex-col space-y-1">
+                <a
+                  href="#home"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3 py-2 rounded-lg text-sm font-medium transition-colors text-muted-text hover:text-main-text hover:bg-white/[0.04]"
                 >
-                  <span>Services</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${
-                    mobileServicesOpen ? 'rotate-180 text-accent-blue' : 'text-muted-text/80'
-                  }`} />
-                </button>
+                  Home
+                </a>
 
-                {mobileServicesOpen && (
-                  <div className="pl-3 pr-1 py-1 space-y-1">
-                    {allServices.map((item) => {
-                      const Icon = item.icon;
-                      return (
-                        <a
-                          key={item.title}
-                          href={item.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors bg-[#0F172A]/50 text-main-text hover:text-accent-blue"
-                        >
-                          <Icon className="w-4 h-4 flex-shrink-0 text-accent-blue" />
-                          <span>{item.title}</span>
-                        </a>
-                      );
-                    })}
-                  </div>
-                )}
+                {/* Mobile Services Accordion */}
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-colors text-muted-text hover:text-main-text hover:bg-white/[0.04]"
+                  >
+                    <span>Services</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${
+                      mobileServicesOpen ? 'rotate-180 text-accent-blue' : 'text-muted-text/80'
+                    }`} />
+                  </button>
+
+                  {mobileServicesOpen && (
+                    <div className="pl-3 pr-1 py-1 space-y-1">
+                      {allServices.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                          <a
+                            key={item.title}
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors bg-white/[0.03] text-main-text hover:text-accent-blue"
+                          >
+                            <Icon className="w-3.5 h-3.5 flex-shrink-0 text-accent-blue" />
+                            <span>{item.title}</span>
+                          </a>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+
+                <a
+                  href="#projects"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3 py-2 rounded-lg text-sm font-medium transition-colors text-muted-text hover:text-main-text hover:bg-white/[0.04]"
+                >
+                  Projects
+                </a>
+
+                <a
+                  href="#about"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3 py-2 rounded-lg text-sm font-medium transition-colors text-muted-text hover:text-main-text hover:bg-white/[0.04]"
+                >
+                  About
+                </a>
+
+                <a
+                  href="#contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3 py-2 rounded-lg text-sm font-medium transition-colors text-muted-text hover:text-main-text hover:bg-white/[0.04]"
+                >
+                  Contact
+                </a>
               </div>
 
-              <a
-                href="#projects"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-lg text-base font-medium transition-colors text-muted-text hover:text-main-text hover:bg-[#1E293B]/40"
-              >
-                Projects
-              </a>
-
-              <a
-                href="#about"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-lg text-base font-medium transition-colors text-muted-text hover:text-main-text hover:bg-[#1E293B]/40"
-              >
-                About
-              </a>
-
-              <a
-                href="#contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-lg text-base font-medium transition-colors text-muted-text hover:text-main-text hover:bg-[#1E293B]/40"
-              >
-                Contact
-              </a>
+              <div className="pt-2 border-t border-white/10">
+                <a
+                  href="#book-call"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-full font-sora font-semibold text-xs tracking-tight transition-all bg-accent-blue text-white hover:bg-accent-blue-hover shadow-blue-glow"
+                >
+                  <span>Book a free call</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
             </div>
-
-            <div className="pt-2 border-t border-[#1E293B]/60">
-              <a
-                href="#book-call"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full font-sora font-semibold text-sm tracking-tight transition-all bg-[#0D1527] text-white border border-[#2563EB]/60 hover:border-[#3B82F6] shadow-[0_0_20px_rgba(59,130,246,0.3)]"
-              >
-                <span>Book a free call</span>
-                <ArrowRight className="w-4 h-4 text-accent-blue" />
-              </a>
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </header>
     </>
   );
