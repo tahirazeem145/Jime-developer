@@ -121,10 +121,13 @@ export default function ProjectModal({ isOpen, onClose }) {
     };
   }, []);
 
-  // GSAP Entrance / Exit Animation
+  // GSAP Entrance / Exit Animation & Scroll Lock
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      if (window.lenis) {
+        window.lenis.stop();
+      }
       
       const ctx = gsap.context(() => {
         gsap.fromTo(
@@ -141,10 +144,16 @@ export default function ProjectModal({ isOpen, onClose }) {
 
       return () => {
         document.body.style.overflow = '';
+        if (window.lenis) {
+          window.lenis.start();
+        }
         ctx.revert();
       };
     } else {
       document.body.style.overflow = '';
+      if (window.lenis) {
+        window.lenis.start();
+      }
     }
   }, [isOpen]);
 
@@ -187,6 +196,9 @@ export default function ProjectModal({ isOpen, onClose }) {
         ease: 'power2.in',
         onComplete: () => {
           onClose();
+          if (window.lenis) {
+            window.lenis.start();
+          }
           setTimeout(() => {
             setIsSuccess(false);
           }, 300);
@@ -194,6 +206,9 @@ export default function ProjectModal({ isOpen, onClose }) {
       });
     } else {
       onClose();
+      if (window.lenis) {
+        window.lenis.start();
+      }
       setIsSuccess(false);
     }
   };
@@ -238,7 +253,11 @@ export default function ProjectModal({ isOpen, onClose }) {
   return (
     <div 
       ref={modalOverlayRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 md:p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
+      data-lenis-prevent="true"
+      data-lenis-prevent-touch="true"
+      onWheel={(e) => e.stopPropagation()}
+      onTouchMove={(e) => e.stopPropagation()}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md overflow-hidden"
       onClick={(e) => {
         if (e.target === modalOverlayRef.current) {
           handleClose();
@@ -248,7 +267,11 @@ export default function ProjectModal({ isOpen, onClose }) {
       {/* Modal Dialog Card */}
       <div 
         ref={modalCardRef}
-        className="relative w-full max-w-2xl bg-[#0B101D] border border-white/15 rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.9),0_0_50px_rgba(59,130,246,0.15)] overflow-hidden my-auto"
+        data-lenis-prevent="true"
+        data-lenis-prevent-touch="true"
+        onWheel={(e) => e.stopPropagation()}
+        onTouchMove={(e) => e.stopPropagation()}
+        className="relative w-full max-w-2xl bg-[#0B101D] border border-white/15 rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.9),0_0_50px_rgba(59,130,246,0.15)] flex flex-col max-h-[90vh] overflow-hidden my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         
@@ -295,7 +318,13 @@ export default function ProjectModal({ isOpen, onClose }) {
         </div>
 
         {/* Modal Content */}
-        <div className="p-5 sm:p-8 max-h-[80vh] overflow-y-auto custom-scrollbar">
+        <div 
+          data-lenis-prevent="true"
+          data-lenis-prevent-touch="true"
+          onWheel={(e) => e.stopPropagation()}
+          onTouchMove={(e) => e.stopPropagation()}
+          className="p-5 sm:p-8 overflow-y-auto flex-1 custom-scrollbar overscroll-contain"
+        >
           {isSuccess ? (
             /* SUCCESS CONFIRMATION STATE */
             <div className="py-8 text-center flex flex-col items-center animate-fadeIn">
