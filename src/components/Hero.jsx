@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Mail, ArrowRight, Star, CheckCircle } from 'lucide-react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import BackgroundElements from './BackgroundElements';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const [email, setEmail] = useState('');
@@ -53,20 +50,6 @@ export default function Hero() {
         { opacity: 1, y: 0, stagger: 0.12, duration: 0.7 },
         '-=0.3'
       );
-
-      // Pin the Hero screen still when in viewport so it stays locked
-      // while the Services section rises up from bottom to top and physically overlaps / replaces it!
-      if (heroContentRef.current && heroRef.current) {
-        ScrollTrigger.create({
-          trigger: heroRef.current,
-          start: 'top 80px',
-          end: 'bottom 80px',
-          pin: heroContentRef.current,
-          pinSpacing: false,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        });
-      }
     }, heroRef);
 
     return () => ctx.revert();
@@ -94,21 +77,7 @@ export default function Hero() {
         ref={heroContentRef}
         className="relative z-10 w-full flex flex-col justify-center will-change-transform opacity-100 py-2 sm:py-6"
       >
-        {/* Top Vignette Fade-Out Gradient */}
-        <div 
-          className="absolute top-0 left-0 right-0 h-14 sm:h-20 pointer-events-none z-10"
-          style={{
-            background: 'linear-gradient(to bottom, #080C0A 0%, rgba(8, 12, 10, 0.8) 50%, transparent 100%)'
-          }}
-        />
 
-        {/* Bottom Vignette Fade-Out Gradient */}
-        <div 
-          className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 pointer-events-none z-10"
-          style={{
-            background: 'linear-gradient(to top, #080C0A 0%, rgba(8, 12, 10, 0.85) 50%, transparent 100%)'
-          }}
-        />
 
         {/* Background Graphic Visuals scoped strictly to Hero */}
         <BackgroundElements />
@@ -117,7 +86,7 @@ export default function Hero() {
         
         {/* GOOGLE REVIEW BADGE */}
         <div ref={badgeRef} className="inline-flex items-center justify-center mb-4 sm:mb-6">
-          <div className="inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full bg-[#131D16]/90 border border-[#1D2E22] hover:border-[#A7F3A0]/30 shadow-[0_2px_15px_rgba(0,0,0,0.4)] backdrop-blur-md transition-all">
+          <div className="inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full bg-[#0D1527]/90 border border-[#1E2E4E] hover:border-[#3B82F6]/40 shadow-[0_2px_15px_rgba(0,0,0,0.5)] backdrop-blur-md transition-all">
             {/* Google Icon */}
             <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" viewBox="0 0 24 24">
               <path
@@ -170,7 +139,7 @@ export default function Hero() {
         >
           We turn your idea <br className="hidden sm:inline" />
           into a{' '}
-          <span className="text-accent-lime italic font-extrabold inline-block tracking-tight drop-shadow-[0_0_20px_rgba(167,243,160,0.2)]">
+          <span className="text-accent-blue italic font-extrabold inline-block tracking-tight drop-shadow-[0_0_25px_rgba(59,130,246,0.4)]">
             real product.
           </span>
         </h1>
@@ -186,13 +155,13 @@ export default function Hero() {
         {/* EMAIL CTA CONTAINER */}
         <div ref={ctaRef} className="mt-5 sm:mt-8 max-w-xl mx-auto w-full">
           {submitted ? (
-            <div className="p-4 rounded-full bg-[#131D16]/90 border border-[#A7F3A0]/40 flex items-center justify-center gap-3 text-accent-lime font-inter font-medium text-sm sm:text-base animate-fadeIn shadow-lime-glow">
+            <div className="p-4 rounded-full bg-[#0D1527]/90 border border-[#3B82F6]/50 flex items-center justify-center gap-3 text-accent-blue font-inter font-medium text-sm sm:text-base animate-fadeIn shadow-blue-glow">
               <CheckCircle className="w-5 h-5 flex-shrink-0" />
               <span>Thank you! We'll be in touch with your quote shortly.</span>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="w-full">
-              <div className="relative flex flex-col sm:flex-row items-center p-1.5 sm:p-2 rounded-2xl sm:rounded-full bg-[#131D16]/85 backdrop-blur-xl border border-[#1D2E22] hover:border-[#A7F3A0]/30 focus-within:border-[#A7F3A0]/60 focus-within:shadow-[0_0_30px_rgba(167,243,160,0.18)] transition-all duration-300 gap-2 sm:gap-0">
+              <div className="relative flex flex-col sm:flex-row items-center p-1.5 sm:p-2 rounded-2xl sm:rounded-full bg-[#0D1527]/85 backdrop-blur-xl border border-[#1E2E4E] hover:border-[#3B82F6]/40 focus-within:border-[#3B82F6]/70 focus-within:shadow-[0_0_30px_rgba(59,130,246,0.25)] transition-all duration-300 gap-2 sm:gap-0">
                 {/* Email Input Field */}
                 <div className="flex items-center gap-2.5 sm:gap-3 w-full pl-3 sm:pl-4 py-1.5 sm:py-0">
                   <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-muted-text/70 flex-shrink-0" />
@@ -209,7 +178,7 @@ export default function Hero() {
                 {/* Get a Quote Button */}
                 <button
                   type="submit"
-                  className="w-full sm:w-auto flex-shrink-0 inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl sm:rounded-full bg-accent-lime text-[#0B0F0C] font-sora font-semibold text-xs sm:text-[15px] tracking-tight hover:bg-accent-lime-hover hover:shadow-lime-glow active:scale-[0.98] transition-all duration-200"
+                  className="w-full sm:w-auto flex-shrink-0 inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl sm:rounded-full bg-accent-blue text-white font-sora font-semibold text-xs sm:text-[15px] tracking-tight hover:bg-accent-blue-hover hover:shadow-blue-glow active:scale-[0.98] transition-all duration-200"
                 >
                   <span>Get a quote</span>
                   <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -221,13 +190,13 @@ export default function Hero() {
 
         {/* THREE STATS IN A COMPACT HORIZONTAL ROW */}
         <div ref={statsRef} className="mt-6 sm:mt-10 pt-1 sm:pt-4 max-w-3xl mx-auto w-full">
-          <div className="grid grid-cols-3 divide-x divide-[#2E4A35]/60 items-center justify-center">
+          <div className="grid grid-cols-3 divide-x divide-[#1E2E4E]/60 items-center justify-center">
             {/* Stat 1 */}
             <div 
               ref={(el) => (statsItemsRef.current[0] = el)}
               className="flex flex-col items-center text-center px-2 sm:px-6"
             >
-              <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-accent-lime tracking-tight drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
+              <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-accent-blue tracking-tight drop-shadow-[0_0_18px_rgba(59,130,246,0.35)]">
                 15+
               </span>
               <span className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs md:text-sm text-muted-text font-inter font-medium tracking-wide">
@@ -240,7 +209,7 @@ export default function Hero() {
               ref={(el) => (statsItemsRef.current[1] = el)}
               className="flex flex-col items-center text-center px-2 sm:px-6"
             >
-              <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-accent-lime tracking-tight drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
+              <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-accent-blue tracking-tight drop-shadow-[0_0_18px_rgba(59,130,246,0.35)]">
                 2+
               </span>
               <span className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs md:text-sm text-muted-text font-inter font-medium tracking-wide">
@@ -253,7 +222,7 @@ export default function Hero() {
               ref={(el) => (statsItemsRef.current[2] = el)}
               className="flex flex-col items-center text-center px-2 sm:px-6"
             >
-              <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-accent-lime tracking-tight drop-shadow-[0_0_15px_rgba(167,243,160,0.25)]">
+              <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-accent-blue tracking-tight drop-shadow-[0_0_18px_rgba(59,130,246,0.35)]">
                 2
               </span>
               <span className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs md:text-sm text-muted-text font-inter font-medium tracking-wide">

@@ -7,25 +7,26 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#080C0A',
-        'primary-green': '#162E1F',
-        'accent-lime': '#66FF88',
-        'accent-lime-hover': '#4ADE80',
+        background: '#080B10',
+        'primary-blue': '#1E3A8A',
+        'accent-blue': '#3B82F6',
+        'accent-blue-hover': '#2563EB',
+        'accent-cyan': '#38BDF8',
         'main-text': '#FFFFFF',
-        'muted-text': '#9EA8A3',
-        'surface-dark': '#0A0E0C',
-        'surface-card': '#0D110F',
-        'border-subtle': '#1A221E',
+        'muted-text': '#94A3B8',
+        'surface-dark': '#06080D',
+        'surface-card': '#0B101D',
+        'border-subtle': '#1E293B',
       },
       fontFamily: {
         sora: ['Sora', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
       },
       boxShadow: {
-        'lime-glow': '0 0 25px -5px rgba(167, 243, 160, 0.35)',
-        'lime-glow-lg': '0 0 40px -5px rgba(167, 243, 160, 0.45)',
-        'emerald-glow': '0 0 60px 10px rgba(26, 46, 31, 0.6)',
-        'subtle-card': '0 4px 20px -2px rgba(0, 0, 0, 0.5)',
+        'blue-glow': '0 0 25px -5px rgba(59, 130, 246, 0.45)',
+        'blue-glow-lg': '0 0 45px -5px rgba(59, 130, 246, 0.55)',
+        'sapphire-glow': '0 0 60px 10px rgba(30, 58, 138, 0.5)',
+        'subtle-card': '0 4px 20px -2px rgba(0, 0, 0, 0.6)',
       },
       animation: {
         'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',

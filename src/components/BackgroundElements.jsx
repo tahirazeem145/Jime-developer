@@ -3,31 +3,32 @@ import React from 'react';
 export default function BackgroundElements() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Top ambient soft radial glow */}
+
+      {/* Top ambient soft radial sapphire glow */}
       <div 
         className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full opacity-20 blur-[130px]"
         style={{
-          background: 'radial-gradient(circle, rgba(167,243,160,0.18) 0%, rgba(26,46,31,0.4) 50%, transparent 80%)'
+          background: 'radial-gradient(circle, rgba(59,130,246,0.22) 0%, rgba(30,58,138,0.4) 50%, transparent 80%)'
         }}
       />
 
-      {/* Right side ambient emerald glow behind organic shapes */}
+      {/* Right side ambient electric blue glow behind organic shapes */}
       <div 
-        className="absolute top-[20%] -right-[10%] w-[600px] h-[600px] rounded-full opacity-25 blur-[120px]"
+        className="absolute top-[18%] -right-[10%] w-[650px] h-[650px] rounded-full opacity-25 blur-[120px]"
         style={{
-          background: 'radial-gradient(circle, rgba(167,243,160,0.2) 0%, rgba(26,46,31,0.6) 50%, transparent 75%)'
+          background: 'radial-gradient(circle, rgba(59,130,246,0.28) 0%, rgba(30,58,138,0.6) 50%, transparent 75%)'
         }}
       />
 
-      {/* Left side ambient subtle dark glow */}
+      {/* Left side ambient subtle dark navy glow */}
       <div 
         className="absolute bottom-[20%] -left-[10%] w-[500px] h-[500px] rounded-full opacity-20 blur-[110px]"
         style={{
-          background: 'radial-gradient(circle, rgba(26,46,31,0.5) 0%, rgba(11,15,12,0.8) 70%, transparent 100%)'
+          background: 'radial-gradient(circle, rgba(30,58,138,0.5) 0%, rgba(8,11,16,0.8) 70%, transparent 100%)'
         }}
       />
 
-      {/* 3D ORGANIC DUNES & FLOATING SPHERE ON THE RIGHT (REDUCED PROPORTIONS) */}
+      {/* 3D ORGANIC DUNES & FLOATING SPHERE ON THE RIGHT */}
       <div 
         className="absolute right-0 top-0 bottom-0 w-[220px] sm:w-[320px] md:w-[380px] lg:w-[480px] pointer-events-none select-none overflow-hidden z-0"
         style={{
@@ -43,51 +44,51 @@ export default function BackgroundElements() {
           preserveAspectRatio="xMaxYMid meet"
         >
           <defs>
-            {/* Upper Dune Surface Velvet Gradient */}
+            {/* Upper Dune Surface Velvet Sapphire Gradient */}
             <linearGradient id="upperDuneGradient" x1="280" y1="260" x2="680" y2="480" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#8ACD94" stopOpacity="0.95" />
-              <stop offset="35%" stopColor="#4A8857" stopOpacity="0.9" />
-              <stop offset="70%" stopColor="#1C4426" stopOpacity="0.85" />
-              <stop offset="100%" stopColor="#0B1A0E" stopOpacity="0.6" />
+              <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.95" />
+              <stop offset="35%" stopColor="#1D4ED8" stopOpacity="0.9" />
+              <stop offset="70%" stopColor="#1E3A8A" stopOpacity="0.85" />
+              <stop offset="100%" stopColor="#0B132B" stopOpacity="0.6" />
             </linearGradient>
 
             {/* Lower Dune Surface Velvet Gradient with tail fade */}
             <linearGradient id="lowerDuneGradient" x1="220" y1="520" x2="700" y2="780" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#C4F8BE" stopOpacity="0" />
-              <stop offset="15%" stopColor="#7EBA85" stopOpacity="0.4" />
-              <stop offset="35%" stopColor="#7EBA85" stopOpacity="0.9" />
-              <stop offset="65%" stopColor="#3B7348" stopOpacity="0.85" />
-              <stop offset="90%" stopColor="#183820" stopOpacity="0.75" />
-              <stop offset="100%" stopColor="#0B1A0E" stopOpacity="0.5" />
+              <stop offset="0%" stopColor="#93C5FD" stopOpacity="0" />
+              <stop offset="15%" stopColor="#60A5FA" stopOpacity="0.4" />
+              <stop offset="35%" stopColor="#3B82F6" stopOpacity="0.9" />
+              <stop offset="65%" stopColor="#1D4ED8" stopOpacity="0.85" />
+              <stop offset="90%" stopColor="#1E3A8A" stopOpacity="0.75" />
+              <stop offset="100%" stopColor="#0B132B" stopOpacity="0.5" />
             </linearGradient>
 
-            {/* Upper Dune Rim Light Gradient */}
+            {/* Upper Dune Rim Light Gradient (Electric Royal Azure) */}
             <linearGradient id="upperRimLight" x1="280" y1="280" x2="700" y2="120" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#D8FCD6" stopOpacity="0.9" />
-              <stop offset="40%" stopColor="#A7F3A0" stopOpacity="0.95" />
-              <stop offset="80%" stopColor="#6BC27B" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#A7F3A0" stopOpacity="0.4" />
+              <stop offset="0%" stopColor="#E0F2FE" stopOpacity="0.9" />
+              <stop offset="40%" stopColor="#60A5FA" stopOpacity="0.95" />
+              <stop offset="80%" stopColor="#3B82F6" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#2563EB" stopOpacity="0.4" />
             </linearGradient>
 
-            {/* Lower Dune Rim Light Gradient with smooth tail fade */}
+            {/* Lower Dune Rim Light Gradient */}
             <linearGradient id="lowerRimLight" x1="180" y1="580" x2="680" y2="420" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#E6FEE4" stopOpacity="0" />
-              <stop offset="15%" stopColor="#E6FEE4" stopOpacity="0.4" />
-              <stop offset="40%" stopColor="#D2FBD0" stopOpacity="0.95" />
-              <stop offset="70%" stopColor="#A7F3A0" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#4A8857" stopOpacity="0.2" />
+              <stop offset="0%" stopColor="#E0F2FE" stopOpacity="0" />
+              <stop offset="15%" stopColor="#BAE6FD" stopOpacity="0.4" />
+              <stop offset="40%" stopColor="#60A5FA" stopOpacity="0.95" />
+              <stop offset="70%" stopColor="#3B82F6" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#1D4ED8" stopOpacity="0.2" />
             </linearGradient>
 
-            {/* 3D Sphere 3-Point Light Shader */}
+            {/* 3D Sphere 3-Point Light Shader (Electric Sapphire) */}
             <radialGradient id="sphere3DLight" cx="36%" cy="32%" r="68%">
-              <stop offset="0%" stopColor="#EAFEE8" />
-              <stop offset="25%" stopColor="#A4E39E" />
-              <stop offset="60%" stopColor="#4A8556" />
-              <stop offset="88%" stopColor="#1E4427" />
-              <stop offset="100%" stopColor="#0D2113" />
+              <stop offset="0%" stopColor="#F0F9FF" />
+              <stop offset="25%" stopColor="#93C5FD" />
+              <stop offset="55%" stopColor="#3B82F6" />
+              <stop offset="85%" stopColor="#1E3A8A" />
+              <stop offset="100%" stopColor="#0B132B" />
             </radialGradient>
 
-            {/* Ambient Lime Rim Glow Filter */}
+            {/* Ambient Blue Rim Glow Filter */}
             <filter id="duneGlow" x="-20%" y="-20%" width="140%" height="140%">
               <feGaussianBlur stdDeviation="7" result="blur" />
               <feMerge>
@@ -102,8 +103,8 @@ export default function BackgroundElements() {
             </filter>
           </defs>
 
-          {/* Background Ambient Dark Forest Light behind the curves */}
-          <circle cx="540" cy="400" r="240" fill="#1A2E1F" opacity="0.4" filter="url(#duneGlow)" />
+          {/* Background Ambient Dark Sapphire Light behind the curves */}
+          <circle cx="540" cy="400" r="240" fill="#1E3A8A" opacity="0.35" filter="url(#duneGlow)" />
 
           {/* 1. UPPER SWEEPING DUNE / TORUS CURVE */}
           <g>
@@ -111,7 +112,7 @@ export default function BackgroundElements() {
               d="M 720 120 C 620 190 420 280 370 420 C 330 540 420 620 520 680 L 720 680 Z"
               fill="url(#upperDuneGradient)"
             />
-            {/* Glowing Lime Rim Edge */}
+            {/* Glowing Blue Rim Edge */}
             <path
               d="M 720 120 C 620 190 420 280 370 420 C 330 540 420 620 520 680"
               stroke="url(#upperRimLight)"
@@ -121,7 +122,7 @@ export default function BackgroundElements() {
             />
           </g>
 
-          {/* 2. FLOATING 3D MATTE SPHERE (HOVERING ABOVE UPPER DUNE) */}
+          {/* 2. FLOATING 3D MATTE SPHERE */}
           <g className="animate-float-slow" filter="url(#sphereShadow)">
             {/* Sphere Body */}
             <circle
@@ -136,7 +137,7 @@ export default function BackgroundElements() {
               cy="218"
               r="8"
               fill="#FFFFFF"
-              fillOpacity="0.35"
+              fillOpacity="0.45"
               filter="blur(3px)"
             />
           </g>
@@ -147,7 +148,7 @@ export default function BackgroundElements() {
               d="M 720 450 C 600 500 420 600 300 680 C 200 730 100 770 20 810 L 720 810 Z"
               fill="url(#lowerDuneGradient)"
             />
-            {/* Glowing Lime Rim Edge */}
+            {/* Glowing Blue Rim Edge */}
             <path
               d="M 720 450 C 600 500 420 600 300 680 C 200 730 100 770 20 810"
               stroke="url(#lowerRimLight)"
@@ -159,7 +160,7 @@ export default function BackgroundElements() {
         </svg>
       </div>
 
-      {/* LEFT CORNER CURVED ARC (EXACTLY MATCHING REFERENCE) */}
+      {/* LEFT CORNER CURVED ARC */}
       <div 
         className="absolute left-0 top-[52%] -translate-y-1/2 w-[340px] sm:w-[480px] lg:w-[620px] h-[450px] sm:h-[580px] lg:h-[700px] pointer-events-none opacity-75 sm:opacity-90 z-0"
         style={{
@@ -175,11 +176,11 @@ export default function BackgroundElements() {
         >
           <defs>
             <linearGradient id="leftArcGradient" x1="0" y1="360" x2="340" y2="680" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#1A2E1F" stopOpacity="0.2" />
-              <stop offset="25%" stopColor="#357845" stopOpacity="0.65" />
-              <stop offset="60%" stopColor="#A7F3A0" stopOpacity="0.95" />
-              <stop offset="85%" stopColor="#2E6B3F" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#0B0F0C" stopOpacity="0" />
+              <stop offset="0%" stopColor="#1E3A8A" stopOpacity="0.2" />
+              <stop offset="25%" stopColor="#2563EB" stopOpacity="0.65" />
+              <stop offset="60%" stopColor="#60A5FA" stopOpacity="0.95" />
+              <stop offset="85%" stopColor="#3B82F6" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#080B10" stopOpacity="0" />
             </linearGradient>
 
             <filter id="arcGlow" x="-20%" y="-20%" width="140%" height="140%">
@@ -202,21 +203,7 @@ export default function BackgroundElements() {
         </svg>
       </div>
 
-      {/* DEEP BOTTOM FADE-OUT GRADIENTS */}
-      <div 
-        className="absolute bottom-0 left-0 right-0 h-16 sm:h-28 lg:h-36 pointer-events-none z-20"
-        style={{
-          background: 'linear-gradient(to top, #0B0F0C 10%, rgba(11,15,12,0.7) 45%, transparent 100%)'
-        }}
-      />
-      
-      {/* Secondary Radial Bottom Shadow */}
-      <div 
-        className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[900px] h-[160px] rounded-full opacity-40 blur-[40px] pointer-events-none z-10"
-        style={{
-          background: 'radial-gradient(ellipse, #0B0F0C 50%, transparent 85%)'
-        }}
-      />
     </div>
   );
 }
+
