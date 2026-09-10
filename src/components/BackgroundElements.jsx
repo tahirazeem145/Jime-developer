@@ -8,73 +8,83 @@ export default function BackgroundElements() {
   const containerRef = useRef(null);
   const rightDunesRef = useRef(null);
   const rightGlowRef = useRef(null);
+  const leftArcRef = useRef(null);
+  const leftGlowRef = useRef(null);
 
   useEffect(() => {
-    const rightDunes = rightDunesRef.current;
-    const rightGlow = rightGlowRef.current;
-    if (!rightDunes) return;
+    const ctx = gsap.context(() => {
+      // Timeline scrub: smoothly glides elements completely off-screen as the user scrolls into the Projects section
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: 'bottom 30%',
+          scrub: 1.2,
+          invalidateOnRefresh: true,
+        },
+      });
 
-    let isOut = false;
-
-    // Smooth Scroll Listener to glide right graphic out of the screen
-    const handleScroll = () => {
-      const scrollY = window.scrollY || window.pageYOffset || 0;
-      
-      if (scrollY > 30) {
-        if (!isOut) {
-          isOut = true;
-          gsap.to(rightDunes, {
-            xPercent: 125,
+      // Right side 3D sphere + dunes slide completely out to the right
+      if (rightDunesRef.current) {
+        tl.to(
+          rightDunesRef.current,
+          {
+            xPercent: 140,
             opacity: 0,
-            duration: 0.9,
-            ease: 'power3.inOut',
-            overwrite: 'auto',
-          });
-          if (rightGlow) {
-            gsap.to(rightGlow, {
-              xPercent: 100,
-              opacity: 0,
-              duration: 0.9,
-              ease: 'power3.inOut',
-              overwrite: 'auto',
-            });
-          }
-        }
-      } else {
-        if (isOut) {
-          isOut = false;
-          gsap.to(rightDunes, {
-            xPercent: 0,
-            opacity: 1,
-            duration: 1,
-            ease: 'power3.out',
-            overwrite: 'auto',
-          });
-          if (rightGlow) {
-            gsap.to(rightGlow, {
-              xPercent: 0,
-              opacity: 0.25,
-              duration: 1,
-              ease: 'power3.out',
-              overwrite: 'auto',
-            });
-          }
-        }
+            ease: 'power1.inOut',
+          },
+          0
+        );
       }
-    };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    // Also listen to Lenis scroll if present
-    if (window.lenis) {
-      window.lenis.on('scroll', handleScroll);
-    }
+      // Right ambient glow fades and translates right
+      if (rightGlowRef.current) {
+        tl.to(
+          rightGlowRef.current,
+          {
+            xPercent: 100,
+            opacity: 0,
+            ease: 'power1.inOut',
+          },
+          0
+        );
+      }
+
+      // Left curved arc slides completely out to the left
+      if (leftArcRef.current) {
+        tl.to(
+          leftArcRef.current,
+          {
+            xPercent: -140,
+            opacity: 0,
+            ease: 'power1.inOut',
+          },
+          0
+        );
+      }
+
+      // Left ambient navy glow fades and translates left
+      if (leftGlowRef.current) {
+        tl.to(
+          leftGlowRef.current,
+          {
+            xPercent: -100,
+            opacity: 0,
+            ease: 'power1.inOut',
+          },
+          0
+        );
+      }
+    }, containerRef);
+
+    // Refresh ScrollTrigger after elements have settled
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (window.lenis) {
-        window.lenis.off('scroll', handleScroll);
-      }
+      clearTimeout(refreshTimer);
+      ctx.revert();
     };
   }, []);
 
@@ -100,7 +110,8 @@ export default function BackgroundElements() {
 
       {/* Left side ambient subtle dark navy glow */}
       <div 
-        className="absolute bottom-[20%] -left-[10%] w-[500px] h-[500px] rounded-full opacity-20 blur-[110px]"
+        ref={leftGlowRef}
+        className="absolute bottom-[20%] -left-[10%] w-[500px] h-[500px] rounded-full opacity-20 blur-[110px] will-change-transform"
         style={{
           background: 'radial-gradient(circle, rgba(30,58,138,0.5) 0%, rgba(8,11,16,0.8) 70%, transparent 100%)'
         }}
@@ -236,7 +247,10 @@ export default function BackgroundElements() {
       </div>
 
       {/* LEFT CORNER CURVED ARC */}
-      <div className="absolute left-0 top-[52%] -translate-y-1/2 w-[340px] sm:w-[480px] lg:w-[620px] h-[450px] sm:h-[580px] lg:h-[700px] pointer-events-none opacity-75 sm:opacity-90 z-0">
+      <div 
+        ref={leftArcRef}
+        className="absolute left-0 top-[52%] -translate-y-1/2 w-[340px] sm:w-[480px] lg:w-[620px] h-[450px] sm:h-[580px] lg:h-[700px] pointer-events-none opacity-75 sm:opacity-90 z-0 will-change-transform"
+      >
         <svg
           viewBox="0 0 600 700"
           fill="none"
