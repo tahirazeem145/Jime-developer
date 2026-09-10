@@ -29,13 +29,7 @@ export default function BackgroundElements() {
       />
 
       {/* 3D ORGANIC DUNES & FLOATING SPHERE ON THE RIGHT */}
-      <div 
-        className="absolute right-0 top-0 bottom-0 w-[220px] sm:w-[320px] md:w-[380px] lg:w-[480px] pointer-events-none select-none overflow-hidden z-0"
-        style={{
-          maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 75%, transparent 96%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 75%, transparent 96%)',
-        }}
-      >
+      <div className="absolute right-0 top-0 bottom-0 w-[220px] sm:w-[320px] md:w-[380px] lg:w-[480px] pointer-events-none select-none overflow-hidden z-0">
         <svg
           viewBox="0 0 700 800"
           fill="none"
@@ -161,13 +155,7 @@ export default function BackgroundElements() {
       </div>
 
       {/* LEFT CORNER CURVED ARC */}
-      <div 
-        className="absolute left-0 top-[52%] -translate-y-1/2 w-[340px] sm:w-[480px] lg:w-[620px] h-[450px] sm:h-[580px] lg:h-[700px] pointer-events-none opacity-75 sm:opacity-90 z-0"
-        style={{
-          maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 85%, transparent 98%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 85%, transparent 98%)',
-        }}
-      >
+      <div className="absolute left-0 top-[52%] -translate-y-1/2 w-[340px] sm:w-[480px] lg:w-[620px] h-[450px] sm:h-[580px] lg:h-[700px] pointer-events-none opacity-75 sm:opacity-90 z-0">
         <svg
           viewBox="0 0 600 700"
           fill="none"

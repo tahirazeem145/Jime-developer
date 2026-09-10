@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Mail, ArrowRight, Star, CheckCircle } from 'lucide-react';
 import { gsap } from 'gsap';
-import BackgroundElements from './BackgroundElements';
 
 export default function Hero() {
   const [email, setEmail] = useState('');
@@ -67,26 +66,19 @@ export default function Hero() {
   };
 
   return (
-    <section 
+    <div 
       id="home" 
       ref={heroRef}
-      className="relative z-10 w-full min-h-[calc(100svh-80px)] sm:min-h-[calc(100vh-80px)] flex flex-col justify-center items-center py-4 sm:py-8"
+      className="relative z-10 w-full flex flex-col justify-center items-center py-6 sm:py-10"
     >
-      {/* Hero Inner Content Wrapper (Pinned during curtain scroll) */}
       <div 
         ref={heroContentRef}
-        className="relative z-10 w-full flex flex-col justify-center will-change-transform opacity-100 py-2 sm:py-6"
+        className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center will-change-transform opacity-100"
       >
-
-
-        {/* Background Graphic Visuals scoped strictly to Hero */}
-        <BackgroundElements />
-
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         {/* GOOGLE REVIEW BADGE */}
         <div ref={badgeRef} className="inline-flex items-center justify-center mb-4 sm:mb-6">
-          <div className="inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full bg-[#0D1527]/90 border border-[#1E2E4E] hover:border-[#3B82F6]/40 shadow-[0_2px_15px_rgba(0,0,0,0.5)] backdrop-blur-md transition-all">
+          <div className="inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 hover:border-accent-blue/40 backdrop-blur-sm transition-all">
             {/* Google Icon */}
             <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" viewBox="0 0 24 24">
               <path
@@ -123,7 +115,7 @@ export default function Hero() {
             </div>
 
             {/* Separator Dot */}
-            <span className="text-muted-text/80 text-xs sm:text-sm">·</span>
+            <span className="text-muted-text/60 text-xs">·</span>
 
             {/* Reviews Count */}
             <span className="text-xs sm:text-sm font-inter text-muted-text font-normal">
@@ -147,41 +139,41 @@ export default function Hero() {
         {/* SUBTITLE */}
         <p 
           ref={subtitleRef}
-          className="mt-2.5 sm:mt-5 text-sm sm:text-lg md:text-xl text-muted-text max-w-2xl mx-auto font-inter font-normal leading-relaxed tracking-normal"
+          className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl text-muted-text max-w-2xl mx-auto font-inter font-normal leading-relaxed tracking-normal"
         >
           Web and mobile apps, designed and shipped fast.
         </p>
 
-        {/* EMAIL CTA CONTAINER */}
-        <div ref={ctaRef} className="mt-5 sm:mt-8 max-w-xl mx-auto w-full">
+        {/* EMAIL CTA CONTAINER (SLEEK SLIM PILL ON ALL SCREENS) */}
+        <div ref={ctaRef} className="mt-6 sm:mt-8 max-w-md mx-auto w-full px-2">
           {submitted ? (
-            <div className="p-4 rounded-full bg-[#0D1527]/90 border border-[#3B82F6]/50 flex items-center justify-center gap-3 text-accent-blue font-inter font-medium text-sm sm:text-base animate-fadeIn shadow-blue-glow">
-              <CheckCircle className="w-5 h-5 flex-shrink-0" />
-              <span>Thank you! We'll be in touch with your quote shortly.</span>
+            <div className="p-3.5 rounded-full bg-white/[0.05] border border-accent-blue/50 flex items-center justify-center gap-2.5 text-accent-blue font-inter font-medium text-sm animate-fadeIn shadow-blue-glow">
+              <CheckCircle className="w-4 h-4 flex-shrink-0" />
+              <span>Thank you! We'll be in touch shortly.</span>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="w-full">
-              <div className="relative flex flex-col sm:flex-row items-center p-1.5 sm:p-2 rounded-2xl sm:rounded-full bg-[#0D1527]/85 backdrop-blur-xl border border-[#1E2E4E] hover:border-[#3B82F6]/40 focus-within:border-[#3B82F6]/70 focus-within:shadow-[0_0_30px_rgba(59,130,246,0.25)] transition-all duration-300 gap-2 sm:gap-0">
+              <div className="relative flex flex-row items-center p-1.5 pl-3.5 sm:pl-4 rounded-full bg-white/[0.04] border border-white/15 hover:border-accent-blue/50 focus-within:border-accent-blue focus-within:shadow-[0_0_25px_rgba(59,130,246,0.2)] transition-all duration-300">
                 {/* Email Input Field */}
-                <div className="flex items-center gap-2.5 sm:gap-3 w-full pl-3 sm:pl-4 py-1.5 sm:py-0">
-                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-muted-text/70 flex-shrink-0" />
+                <div className="flex items-center gap-2 flex-1 min-w-0 pr-2">
+                  <Mail className="w-4 h-4 text-muted-text/60 flex-shrink-0" />
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email address"
+                    placeholder="Enter your email"
                     required
-                    className="w-full bg-transparent text-main-text placeholder:text-muted-text/60 text-sm sm:text-base font-inter focus:outline-none"
+                    className="w-full bg-transparent text-main-text placeholder:text-muted-text/50 text-xs sm:text-sm font-inter focus:outline-none min-w-0"
                   />
                 </div>
 
                 {/* Get a Quote Button */}
                 <button
                   type="submit"
-                  className="w-full sm:w-auto flex-shrink-0 inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl sm:rounded-full bg-accent-blue text-white font-sora font-semibold text-xs sm:text-[15px] tracking-tight hover:bg-accent-blue-hover hover:shadow-blue-glow active:scale-[0.98] transition-all duration-200"
+                  className="flex-shrink-0 inline-flex items-center justify-center gap-1.5 px-4 sm:px-6 py-2.5 rounded-full bg-accent-blue text-white font-sora font-semibold text-xs sm:text-sm tracking-tight hover:bg-accent-blue-hover hover:shadow-blue-glow active:scale-[0.98] transition-all duration-200"
                 >
-                  <span>Get a quote</span>
-                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <span>Get quote</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </form>
@@ -189,17 +181,17 @@ export default function Hero() {
         </div>
 
         {/* THREE STATS IN A COMPACT HORIZONTAL ROW */}
-        <div ref={statsRef} className="mt-6 sm:mt-10 pt-1 sm:pt-4 max-w-3xl mx-auto w-full">
-          <div className="grid grid-cols-3 divide-x divide-[#1E2E4E]/60 items-center justify-center">
+        <div ref={statsRef} className="mt-8 sm:mt-12 pt-2 max-w-2xl mx-auto w-full">
+          <div className="grid grid-cols-3 divide-x divide-white/10 items-center justify-center">
             {/* Stat 1 */}
             <div 
               ref={(el) => (statsItemsRef.current[0] = el)}
-              className="flex flex-col items-center text-center px-2 sm:px-6"
+              className="flex flex-col items-center text-center px-2 sm:px-4"
             >
-              <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-accent-blue tracking-tight drop-shadow-[0_0_18px_rgba(59,130,246,0.35)]">
+              <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[42px] text-accent-blue tracking-tight drop-shadow-[0_0_18px_rgba(59,130,246,0.35)]">
                 15+
               </span>
-              <span className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs md:text-sm text-muted-text font-inter font-medium tracking-wide">
+              <span className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-muted-text font-inter font-medium tracking-wide">
                 Products shipped
               </span>
             </div>
@@ -207,12 +199,12 @@ export default function Hero() {
             {/* Stat 2 */}
             <div 
               ref={(el) => (statsItemsRef.current[1] = el)}
-              className="flex flex-col items-center text-center px-2 sm:px-6"
+              className="flex flex-col items-center text-center px-2 sm:px-4"
             >
-              <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-accent-blue tracking-tight drop-shadow-[0_0_18px_rgba(59,130,246,0.35)]">
+              <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[42px] text-accent-blue tracking-tight drop-shadow-[0_0_18px_rgba(59,130,246,0.35)]">
                 2+
               </span>
-              <span className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs md:text-sm text-muted-text font-inter font-medium tracking-wide">
+              <span className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-muted-text font-inter font-medium tracking-wide">
                 Years in business
               </span>
             </div>
@@ -220,12 +212,12 @@ export default function Hero() {
             {/* Stat 3 */}
             <div 
               ref={(el) => (statsItemsRef.current[2] = el)}
-              className="flex flex-col items-center text-center px-2 sm:px-6"
+              className="flex flex-col items-center text-center px-2 sm:px-4"
             >
-              <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-accent-blue tracking-tight drop-shadow-[0_0_18px_rgba(59,130,246,0.35)]">
+              <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[42px] text-accent-blue tracking-tight drop-shadow-[0_0_18px_rgba(59,130,246,0.35)]">
                 2
               </span>
-              <span className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs md:text-sm text-muted-text font-inter font-medium tracking-wide">
+              <span className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-muted-text font-inter font-medium tracking-wide">
                 Countries
               </span>
             </div>
@@ -234,7 +226,6 @@ export default function Hero() {
 
       </div>
     </div>
-  </section>
-);
+  );
 }
 
