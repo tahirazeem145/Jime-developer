@@ -10,7 +10,7 @@ import {
   Cpu 
 } from 'lucide-react';
 
-export default function Navbar() {
+export default function Navbar({ onOpenProjectModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [servicesHovered, setServicesHovered] = useState(false);
@@ -225,13 +225,20 @@ export default function Navbar() {
 
             {/* Right Action Button (Desktop: Turing-style glowing pill button) */}
             <div className="hidden md:flex items-center">
-              <a
-                href="#book-call"
-                className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full font-sora font-semibold text-xs sm:text-sm tracking-tight bg-accent-blue text-white hover:bg-accent-blue-hover shadow-blue-glow hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+              <button
+                type="button"
+                onClick={() => {
+                  if (onOpenProjectModal) {
+                    onOpenProjectModal();
+                  } else {
+                    window.dispatchEvent(new CustomEvent('open-project-modal'));
+                  }
+                }}
+                className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full font-sora font-semibold text-xs sm:text-sm tracking-tight bg-accent-blue text-white hover:bg-accent-blue-hover shadow-blue-glow hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
               >
                 <span>Book a free call</span>
                 <ArrowRight className="w-3.5 h-3.5" />
-              </a>
+              </button>
             </div>
 
             {/* Mobile Menu Toggle Button */}
@@ -319,14 +326,21 @@ export default function Navbar() {
               </div>
 
               <div className="pt-2 border-t border-white/10">
-                <a
-                  href="#book-call"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-full font-sora font-semibold text-xs tracking-tight transition-all bg-accent-blue text-white hover:bg-accent-blue-hover shadow-blue-glow"
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onOpenProjectModal) {
+                      onOpenProjectModal();
+                    } else {
+                      window.dispatchEvent(new CustomEvent('open-project-modal'));
+                    }
+                  }}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-full font-sora font-semibold text-xs tracking-tight transition-all bg-accent-blue text-white hover:bg-accent-blue-hover shadow-blue-glow cursor-pointer"
                 >
                   <span>Book a free call</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                </button>
               </div>
             </div>
           )}

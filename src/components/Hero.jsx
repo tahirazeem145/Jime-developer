@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Star } from 'lucide-react';
 import { gsap } from 'gsap';
 
-export default function Hero() {
+export default function Hero({ onOpenProjectModal }) {
   const heroRef = useRef(null);
   const heroContentRef = useRef(null);
   const badgeRef = useRef(null);
@@ -158,13 +158,20 @@ export default function Hero() {
           </a>
 
           {/* Secondary CTA: Start your project */}
-          <a
-            href="#contact"
-            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] text-main-text hover:text-white border border-white/15 hover:border-white/30 backdrop-blur-md font-sora font-medium text-xs sm:text-sm tracking-tight hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
+          <button
+            type="button"
+            onClick={() => {
+              if (onOpenProjectModal) {
+                onOpenProjectModal();
+              } else {
+                window.dispatchEvent(new CustomEvent('open-project-modal'));
+              }
+            }}
+            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] text-main-text hover:text-white border border-white/15 hover:border-white/30 backdrop-blur-md font-sora font-medium text-xs sm:text-sm tracking-tight hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 cursor-pointer"
           >
             <span>Start your project</span>
             <ArrowRight className="w-3.5 h-3.5 text-muted-text group-hover:text-white transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
+          </button>
         </div>
 
         {/* THREE STATS IN A COMPACT HORIZONTAL ROW */}
