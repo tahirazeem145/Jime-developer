@@ -396,33 +396,6 @@ export default function Projects() {
           </div>
         </div>
       </section>
-
-      {/* 2. BOTTOM CONSULTATION BANNER (Resumes vertical scrolling seamlessly) */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div 
-          className="group relative p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#0D1527] via-[#0B101D] to-[#0A1224] border border-[#1E3A8A]/40 overflow-hidden shadow-[0_15px_50px_rgba(0,0,0,0.7)] flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
-        >
-          <div className="relative z-10">
-            <span className="text-xs font-sora font-semibold tracking-wider uppercase text-accent-blue">
-              Start Your Journey
-            </span>
-            <h3 className="font-sora font-bold text-2xl sm:text-3xl text-main-text mt-1.5">
-              Have a project in mind? Let's build it together.
-            </h3>
-            <p className="text-xs sm:text-sm text-muted-text font-inter mt-1 max-w-xl">
-              From MVP in weeks to full-scale SaaS platforms, we bring engineering precision to your vision.
-            </p>
-          </div>
-
-          <a
-            href="#book-call"
-            className="flex-shrink-0 inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 rounded-full bg-accent-blue text-white font-sora font-semibold text-sm tracking-tight hover:bg-accent-blue-hover shadow-blue-glow hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
-          >
-            <span>Book a free consultation</span>
-            <ArrowRight className="w-4 h-4" />
-          </a>
-        </div>
-      </div>
     </div>
   );
 }
