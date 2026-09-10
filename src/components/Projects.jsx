@@ -2,10 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   ArrowUpRight, 
   Sparkles, 
-  ExternalLink, 
+  ChevronLeft, 
+  ChevronRight, 
   Layers, 
-  Code2, 
-  CheckCircle2, 
   ArrowRight 
 } from 'lucide-react';
 import { gsap } from 'gsap';
@@ -15,9 +14,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
+  const scrollContainerRef = useRef(null);
   const cardsRef = useRef([]);
+  const isDragging = useRef(false);
+  const isUserInteracting = useRef(false);
+  const userInteractionTimeout = useRef(null);
+  const startX = useRef(0);
+  const scrollLeftStart = useRef(0);
 
   const filters = [
     { id: 'all', label: 'All Projects' },
@@ -101,13 +110,92 @@ export default function Projects() {
     ? projectsData
     : projectsData.filter((p) => p.category === activeFilter);
 
+  // Update navigation button status & active dot index
+  const checkScroll = () => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    setCanScrollLeft(scrollLeft > 10);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+
+    const cardWidth = el.querySelector('.project-card')?.offsetWidth || 400;
+    const index = Math.round(scrollLeft / (cardWidth + 24));
+    setActiveIndex(Math.min(filteredProjects.length - 1, Math.max(0, index)));
+  };
+
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    el.addEventListener('scroll', checkScroll, { passive: true });
+    checkScroll();
+    return () => el.removeEventListener('scroll', checkScroll);
+  }, [filteredProjects]);
+
+  const markUserInteracting = () => {
+    isUserInteracting.current = true;
+    if (userInteractionTimeout.current) clearTimeout(userInteractionTimeout.current);
+    userInteractionTimeout.current = setTimeout(() => {
+      isUserInteracting.current = false;
+    }, 2500);
+  };
+
+  // Button navigation handler
+  const handleScroll = (direction) => {
+    markUserInteracting();
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const cardWidth = el.querySelector('.project-card')?.offsetWidth || 400;
+    const scrollAmount = direction === 'left' ? -(cardWidth + 24) : (cardWidth + 24);
+    el.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  };
+
+  // Mouse Drag to Scroll handlers
+  const handleMouseDown = (e) => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    isDragging.current = true;
+    markUserInteracting();
+    startX.current = e.pageX - el.offsetLeft;
+    scrollLeftStart.current = el.scrollLeft;
+    el.style.cursor = 'grabbing';
+    el.style.userSelect = 'none';
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging.current) return;
+    e.preventDefault();
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const x = e.pageX - el.offsetLeft;
+    const walk = (x - startX.current) * 1.5;
+    el.scrollLeft = scrollLeftStart.current - walk;
+  };
+
+  const handleMouseUp = () => {
+    isDragging.current = false;
+    const el = scrollContainerRef.current;
+    if (el) {
+      el.style.cursor = 'grab';
+      el.style.removeProperty('user-select');
+    }
+  };
+
+  // Card Mouse Hover Spotlight
+  const handleCardMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
+    e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
+  };
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header entrance
+      // 1. Header Entrance
       if (headerRef.current) {
         gsap.fromTo(
           headerRef.current,
-          { opacity: 0, y: 40 },
+          { opacity: 0, y: 35 },
           {
             opacity: 1,
             y: 0,
@@ -122,121 +210,179 @@ export default function Projects() {
         );
       }
 
-      // Cards staggered reveal
-      cardsRef.current.forEach((card, index) => {
-        if (card) {
-          gsap.fromTo(
-            card,
-            { opacity: 0, y: 50 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.7,
-              delay: (index % 2) * 0.15,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: card,
-                start: 'top 88%',
-                toggleActions: 'play none none none',
-              },
+      // 2. All Projects Entrance: Come smoothly from Right to Left
+      const cards = cardsRef.current.filter(Boolean);
+      if (cards.length > 0) {
+        gsap.fromTo(
+          cards,
+          { opacity: 0, x: 140, scale: 0.96 },
+          {
+            opacity: 1,
+            x: 0,
+            scale: 1,
+            stagger: 0.14,
+            duration: 0.85,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: scrollContainerRef.current || sectionRef.current,
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
+
+      // 3. Scroll-Driven Right-to-Left Translation on Page Scroll
+      const st = ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: 'top 70%',
+        end: 'bottom 25%',
+        scrub: 1.2,
+        onUpdate: (self) => {
+          if (scrollContainerRef.current && !isDragging.current && !isUserInteracting.current) {
+            const maxScroll = scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth;
+            if (maxScroll > 0) {
+              scrollContainerRef.current.scrollLeft = self.progress * maxScroll;
             }
-          );
-        }
+          }
+        },
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, [filteredProjects]);
 
-  const handleCardMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
-    e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
-  };
-
   return (
     <section 
       id="projects" 
       ref={sectionRef}
-      className="relative z-10 w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8"
+      className="relative z-10 w-full py-20 sm:py-28 px-4 sm:px-6 lg:px-8"
     >
       {/* Background Ambient Glows */}
       <div className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full bg-primary-blue/15 blur-[140px] pointer-events-none -z-10" />
       <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full bg-accent-blue/10 blur-[150px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto">
-        {/* SECTION HEADER */}
-        <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-          {/* Badge */}
-          <div className="inline-flex items-center justify-center mb-4">
-            <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all">
+        {/* SECTION HEADER WITH TITLE, FILTERS & CAROUSEL NAVIGATION CONTROLS */}
+        <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-14">
+          <div className="max-w-2xl">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-4">
               <Sparkles className="w-3.5 h-3.5 text-accent-blue" />
               <span className="text-xs sm:text-sm font-inter font-medium text-main-text tracking-wide">
                 Selected Case Studies
               </span>
             </div>
+
+            {/* Headline */}
+            <h2 className="font-sora font-extrabold text-3xl sm:text-4xl md:text-5xl leading-[1.15] text-main-text tracking-tight">
+              Transforming ideas into{' '}
+              <span className="text-accent-blue italic drop-shadow-[0_0_25px_rgba(59,130,246,0.35)]">
+                high-impact products.
+              </span>
+            </h2>
+
+            {/* Subtitle */}
+            <p className="mt-3 text-sm sm:text-base text-muted-text font-inter leading-relaxed">
+              Explore custom web platforms and SaaS solutions engineered for fast-growing businesses.
+            </p>
           </div>
 
-          {/* Headline */}
-          <h2 className="font-sora font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[52px] leading-[1.15] text-main-text tracking-tight">
-            Transforming ideas into{' '}
-            <span className="text-accent-blue italic drop-shadow-[0_0_25px_rgba(59,130,246,0.35)]">
-              high-impact products.
-            </span>
-          </h2>
+          {/* RIGHT SIDE: FILTERS & NAVIGATION ARROWS */}
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 self-start md:self-end">
+            {/* Filter Pills */}
+            <div className="flex flex-wrap items-center gap-2">
+              {filters.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => {
+                    setActiveFilter(tab.id);
+                    markUserInteracting();
+                    if (scrollContainerRef.current) {
+                      scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+                    }
+                  }}
+                  type="button"
+                  className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-inter font-medium transition-all duration-300 ${
+                    activeFilter === tab.id
+                      ? 'bg-accent-blue text-white shadow-blue-glow scale-105'
+                      : 'bg-white/[0.04] text-muted-text hover:text-white border border-white/10 hover:border-white/25 hover:bg-white/[0.08]'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
 
-          {/* Subtitle */}
-          <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-muted-text font-inter font-normal leading-relaxed">
-            A curated showcase of custom web apps, scalable portals, and high-performance digital platforms we have built.
-          </p>
-
-          {/* FILTER PILLS (Turing Aesthetic) */}
-          <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-            {filters.map((tab) => (
+            {/* Left / Right Arrow Buttons */}
+            <div className="flex items-center gap-2">
               <button
-                key={tab.id}
-                onClick={() => setActiveFilter(tab.id)}
+                onClick={() => handleScroll('left')}
+                disabled={!canScrollLeft}
                 type="button"
-                className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-inter font-medium transition-all duration-300 ${
-                  activeFilter === tab.id
-                    ? 'bg-accent-blue text-white shadow-blue-glow scale-105'
-                    : 'bg-white/[0.04] text-muted-text hover:text-white border border-white/10 hover:border-white/25 hover:bg-white/[0.08]'
+                aria-label="Scroll left"
+                className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 ${
+                  canScrollLeft
+                    ? 'bg-white/[0.06] border-white/20 text-white hover:bg-accent-blue hover:border-accent-blue hover:shadow-blue-glow active:scale-95 cursor-pointer'
+                    : 'bg-white/[0.02] border-white/5 text-muted-text/30 cursor-not-allowed'
                 }`}
               >
-                {tab.label}
+                <ChevronLeft className="w-5 h-5" />
               </button>
-            ))}
+
+              <button
+                onClick={() => handleScroll('right')}
+                disabled={!canScrollRight}
+                type="button"
+                aria-label="Scroll right"
+                className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 ${
+                  canScrollRight
+                    ? 'bg-white/[0.06] border-white/20 text-white hover:bg-accent-blue hover:border-accent-blue hover:shadow-blue-glow active:scale-95 cursor-pointer'
+                    : 'bg-white/[0.02] border-white/5 text-muted-text/30 cursor-not-allowed'
+                }`}
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* PROJECTS GRID (2 Columns with Modern Cards) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
+        {/* SIDE-BY-SIDE HORIZONTAL TRACK (Right-to-Left on Scroll + Drag) */}
+        <div
+          ref={scrollContainerRef}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          className="flex gap-6 sm:gap-8 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 -mx-4 px-4 sm:mx-0 sm:px-0 cursor-grab active:cursor-grabbing scroll-smooth"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
           {filteredProjects.map((project, idx) => (
             <div
               key={project.id}
               ref={(el) => (cardsRef.current[idx] = el)}
               onMouseMove={handleCardMouseMove}
-              className="group relative flex flex-col rounded-3xl overflow-hidden bg-[#0B101D]/75 backdrop-blur-xl border border-white/10 hover:border-accent-blue/50 shadow-[0_10px_40px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_50px_rgba(59,130,246,0.22)] transition-all duration-500"
+              className="project-card group relative flex-shrink-0 w-[310px] sm:w-[380px] md:w-[420px] lg:w-[450px] flex flex-col rounded-3xl overflow-hidden bg-[#0B101D]/80 backdrop-blur-xl border border-white/10 hover:border-accent-blue/50 shadow-[0_12px_40px_rgba(0,0,0,0.65)] hover:shadow-[0_20px_50px_rgba(59,130,246,0.22)] transition-all duration-500 snap-start select-none"
             >
               {/* Card Mouse Hover Spotlight */}
               <div
                 className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
                 style={{
-                  background: 'radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.14), transparent 70%)',
+                  background: 'radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.16), transparent 70%)',
                 }}
               />
+
               {/* Card Image Container */}
-              <div className="relative w-full h-56 sm:h-72 overflow-hidden bg-[#06080D]">
+              <div className="relative w-full h-52 sm:h-64 overflow-hidden bg-[#06080D]">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
                   loading="lazy"
+                  draggable={false}
                 />
                 
-                {/* Gradient scrim for text contrast */}
+                {/* Gradient scrim */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B101D] via-[#0B101D]/30 to-transparent pointer-events-none" />
 
                 {/* Top Category Badge */}
@@ -254,7 +400,7 @@ export default function Projects() {
               </div>
 
               {/* Card Content */}
-              <div className="p-6 sm:p-8 flex flex-col flex-grow justify-between">
+              <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between">
                 <div>
                   <h3 className="font-sora font-bold text-xl sm:text-2xl text-main-text group-hover:text-accent-blue transition-colors duration-300">
                     {project.title}
@@ -262,13 +408,13 @@ export default function Projects() {
                   <p className="mt-1.5 text-xs sm:text-sm font-medium text-accent-cyan">
                     {project.headline}
                   </p>
-                  <p className="mt-3 text-xs sm:text-sm text-muted-text font-inter leading-relaxed line-clamp-3">
+                  <p className="mt-2.5 text-xs sm:text-sm text-muted-text font-inter leading-relaxed line-clamp-3">
                     {project.description}
                   </p>
                 </div>
 
                 {/* Metrics Highlight Row */}
-                <div className="mt-6 pt-5 border-t border-white/10 grid grid-cols-3 gap-2">
+                <div className="mt-5 pt-4 border-t border-white/10 grid grid-cols-3 gap-2">
                   {project.metrics.map((metric) => (
                     <div key={metric.label} className="text-left">
                       <div className="font-sora font-bold text-base sm:text-lg text-white group-hover:text-accent-blue transition-colors">
@@ -282,7 +428,7 @@ export default function Projects() {
                 </div>
 
                 {/* Tech Tags & CTA Link */}
-                <div className="mt-6 pt-4 border-t border-white/5 flex flex-wrap items-center justify-between gap-3">
+                <div className="mt-5 pt-4 border-t border-white/5 flex flex-wrap items-center justify-between gap-3">
                   <div className="flex flex-wrap gap-1.5">
                     {project.tags.map((tag) => (
                       <span
@@ -304,6 +450,28 @@ export default function Projects() {
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* BOTTOM PAGINATION DOTS */}
+        <div className="mt-6 flex items-center justify-center gap-1.5">
+          {filteredProjects.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                markUserInteracting();
+                const el = scrollContainerRef.current;
+                if (!el) return;
+                const cardWidth = el.querySelector('.project-card')?.offsetWidth || 400;
+                el.scrollTo({ left: i * (cardWidth + 24), behavior: 'smooth' });
+              }}
+              aria-label={`Go to slide ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                activeIndex === i
+                  ? 'w-7 bg-accent-blue shadow-blue-glow'
+                  : 'w-2 bg-white/20 hover:bg-white/40'
+              }`}
+            />
           ))}
         </div>
 
