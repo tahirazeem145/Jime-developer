@@ -70,17 +70,17 @@ export default function MouseGlow() {
   return (
     <div
       ref={containerRef}
-      className="pointer-events-none fixed inset-0 z-20 overflow-hidden transition-opacity duration-500 opacity-0 mix-blend-screen"
+      className="pointer-events-none fixed inset-0 z-0 overflow-hidden transition-opacity duration-500 opacity-0"
     >
-      {/* 1. Large Ambient Atmospheric Sapphire Glow (700px) */}
+      {/* 1. Large Ambient Atmospheric Sapphire Glow (750px) */}
       <div
         ref={outerGlowRef}
         className="absolute top-0 left-0 rounded-full pointer-events-none will-change-transform"
         style={{
-          width: '700px',
-          height: '700px',
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(30, 58, 138, 0.22) 40%, rgba(8, 11, 16, 0) 70%)',
-          filter: 'blur(60px)',
+          width: '750px',
+          height: '750px',
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(30, 58, 138, 0.25) 40%, rgba(8, 11, 16, 0) 70%)',
+          filter: 'blur(70px)',
         }}
       />
 

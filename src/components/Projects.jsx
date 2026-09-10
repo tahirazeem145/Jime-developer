@@ -23,10 +23,11 @@ export default function Projects() {
   const scrollContainerRef = useRef(null);
   const cardsRef = useRef([]);
   const isDragging = useRef(false);
-  const isUserInteracting = useRef(false);
-  const userInteractionTimeout = useRef(null);
   const startX = useRef(0);
   const scrollLeftStart = useRef(0);
+  const activeIndexRef = useRef(0);
+  const scrollRaf = useRef(null);
+  const cardMoveRaf = useRef(null);
 
   const filters = [
     { id: 'all', label: 'All Projects' },
@@ -110,17 +111,28 @@ export default function Projects() {
     ? projectsData
     : projectsData.filter((p) => p.category === activeFilter);
 
-  // Update navigation button status & active dot index
+  // Debounced non-thrashing scroll state checker
   const checkScroll = () => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    const { scrollLeft, scrollWidth, clientWidth } = el;
-    setCanScrollLeft(scrollLeft > 10);
-    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    if (scrollRaf.current) return;
+    scrollRaf.current = requestAnimationFrame(() => {
+      scrollRaf.current = null;
+      const el = scrollContainerRef.current;
+      if (!el) return;
+      const { scrollLeft, scrollWidth, clientWidth } = el;
+      const nextLeft = scrollLeft > 15;
+      const nextRight = scrollLeft < scrollWidth - clientWidth - 15;
 
-    const cardWidth = el.querySelector('.project-card')?.offsetWidth || 400;
-    const index = Math.round(scrollLeft / (cardWidth + 24));
-    setActiveIndex(Math.min(filteredProjects.length - 1, Math.max(0, index)));
+      setCanScrollLeft((prev) => (prev !== nextLeft ? nextLeft : prev));
+      setCanScrollRight((prev) => (prev !== nextRight ? nextRight : prev));
+
+      const cardWidth = 400;
+      const index = Math.round(scrollLeft / (cardWidth + 24));
+      const clampedIndex = Math.min(filteredProjects.length - 1, Math.max(0, index));
+      if (activeIndexRef.current !== clampedIndex) {
+        activeIndexRef.current = clampedIndex;
+        setActiveIndex(clampedIndex);
+      }
+    });
   };
 
   useEffect(() => {
@@ -128,24 +140,18 @@ export default function Projects() {
     if (!el) return;
     el.addEventListener('scroll', checkScroll, { passive: true });
     checkScroll();
-    return () => el.removeEventListener('scroll', checkScroll);
+    return () => {
+      el.removeEventListener('scroll', checkScroll);
+      if (scrollRaf.current) cancelAnimationFrame(scrollRaf.current);
+    };
   }, [filteredProjects]);
 
-  const markUserInteracting = () => {
-    isUserInteracting.current = true;
-    if (userInteractionTimeout.current) clearTimeout(userInteractionTimeout.current);
-    userInteractionTimeout.current = setTimeout(() => {
-      isUserInteracting.current = false;
-    }, 2500);
-  };
-
-  // Button navigation handler
+  // Smooth button navigation handler
   const handleScroll = (direction) => {
-    markUserInteracting();
     const el = scrollContainerRef.current;
     if (!el) return;
     const cardWidth = el.querySelector('.project-card')?.offsetWidth || 400;
-    const scrollAmount = direction === 'left' ? -(cardWidth + 24) : (cardWidth + 24);
+    const scrollAmount = direction === 'left' ? -(cardWidth + 28) : (cardWidth + 28);
     el.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   };
 
@@ -153,8 +159,9 @@ export default function Projects() {
   const handleMouseDown = (e) => {
     const el = scrollContainerRef.current;
     if (!el) return;
+    // Don't initiate drag if clicking buttons or links
+    if (e.target.closest('a, button')) return;
     isDragging.current = true;
-    markUserInteracting();
     startX.current = e.pageX - el.offsetLeft;
     scrollLeftStart.current = el.scrollLeft;
     el.style.cursor = 'grabbing';
@@ -163,11 +170,11 @@ export default function Projects() {
 
   const handleMouseMove = (e) => {
     if (!isDragging.current) return;
-    e.preventDefault();
     const el = scrollContainerRef.current;
     if (!el) return;
+    e.preventDefault();
     const x = e.pageX - el.offsetLeft;
-    const walk = (x - startX.current) * 1.5;
+    const walk = (x - startX.current) * 1.3;
     el.scrollLeft = scrollLeftStart.current - walk;
   };
 
@@ -180,26 +187,17 @@ export default function Projects() {
     }
   };
 
-  // Card Mouse Hover Spotlight
-  const handleCardMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
-    e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
-  };
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       // 1. Header Entrance
       if (headerRef.current) {
         gsap.fromTo(
           headerRef.current,
-          { opacity: 0, y: 35 },
+          { opacity: 0, y: 30 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.75,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: headerRef.current,
@@ -215,14 +213,14 @@ export default function Projects() {
       if (cards.length > 0) {
         gsap.fromTo(
           cards,
-          { opacity: 0, x: 140, scale: 0.96 },
+          { opacity: 0, x: 120 },
           {
             opacity: 1,
             x: 0,
-            scale: 1,
-            stagger: 0.14,
-            duration: 0.85,
+            stagger: 0.12,
+            duration: 0.8,
             ease: 'power3.out',
+            clearProps: 'transform',
             scrollTrigger: {
               trigger: scrollContainerRef.current || sectionRef.current,
               start: 'top 85%',
@@ -231,22 +229,6 @@ export default function Projects() {
           }
         );
       }
-
-      // 3. Scroll-Driven Right-to-Left Translation on Page Scroll
-      const st = ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: 'top 70%',
-        end: 'bottom 25%',
-        scrub: 1.2,
-        onUpdate: (self) => {
-          if (scrollContainerRef.current && !isDragging.current && !isUserInteracting.current) {
-            const maxScroll = scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth;
-            if (maxScroll > 0) {
-              scrollContainerRef.current.scrollLeft = self.progress * maxScroll;
-            }
-          }
-        },
-      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -297,7 +279,6 @@ export default function Projects() {
                   key={tab.id}
                   onClick={() => {
                     setActiveFilter(tab.id);
-                    markUserInteracting();
                     if (scrollContainerRef.current) {
                       scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
                     }
@@ -347,31 +328,22 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* SIDE-BY-SIDE HORIZONTAL TRACK (Right-to-Left on Scroll + Drag) */}
+        {/* SIDE-BY-SIDE HORIZONTAL TRACK */}
         <div
           ref={scrollContainerRef}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseUp}
-          className="flex gap-6 sm:gap-8 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 -mx-4 px-4 sm:mx-0 sm:px-0 cursor-grab active:cursor-grabbing scroll-smooth"
+          className="flex gap-6 sm:gap-8 overflow-x-auto scrollbar-none py-4 -mx-4 px-4 sm:mx-0 sm:px-0 cursor-grab active:cursor-grabbing"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {filteredProjects.map((project, idx) => (
             <div
               key={project.id}
               ref={(el) => (cardsRef.current[idx] = el)}
-              onMouseMove={handleCardMouseMove}
-              className="project-card group relative flex-shrink-0 w-[310px] sm:w-[380px] md:w-[420px] lg:w-[450px] flex flex-col rounded-3xl overflow-hidden bg-[#0B101D]/80 backdrop-blur-xl border border-white/10 hover:border-accent-blue/50 shadow-[0_12px_40px_rgba(0,0,0,0.65)] hover:shadow-[0_20px_50px_rgba(59,130,246,0.22)] transition-all duration-500 snap-start select-none"
+              className="project-card group relative flex-shrink-0 w-[310px] sm:w-[380px] md:w-[420px] lg:w-[450px] flex flex-col rounded-3xl overflow-hidden bg-[#0B101D] border border-white/10 hover:border-accent-blue/60 shadow-[0_12px_40px_rgba(0,0,0,0.7)] hover:shadow-[0_20px_50px_rgba(59,130,246,0.25)] transition-colors duration-300 select-none"
             >
-              {/* Card Mouse Hover Spotlight */}
-              <div
-                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
-                style={{
-                  background: 'radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.16), transparent 70%)',
-                }}
-              />
-
               {/* Card Image Container */}
               <div className="relative w-full h-52 sm:h-64 overflow-hidden bg-[#06080D]">
                 <img
@@ -459,7 +431,6 @@ export default function Projects() {
             <button
               key={i}
               onClick={() => {
-                markUserInteracting();
                 const el = scrollContainerRef.current;
                 if (!el) return;
                 const cardWidth = el.querySelector('.project-card')?.offsetWidth || 400;
@@ -477,16 +448,8 @@ export default function Projects() {
 
         {/* BOTTOM CTA BANNER (Turing Inspiration) */}
         <div 
-          onMouseMove={handleCardMouseMove}
           className="group relative mt-16 sm:mt-24 p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#0D1527] via-[#0B101D] to-[#0A1224] border border-[#1E3A8A]/40 overflow-hidden shadow-[0_15px_50px_rgba(0,0,0,0.7)] flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
         >
-          {/* Mouse Hover Spotlight */}
-          <div
-            className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
-            style={{
-              background: 'radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.16), transparent 70%)',
-            }}
-          />
           <div className="relative z-10">
             <span className="text-xs font-sora font-semibold tracking-wider uppercase text-accent-blue">
               Start Your Journey
