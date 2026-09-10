@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, MessageSquareQuote, CheckCircle2, ArrowUpRight, Sparkles } from 'lucide-react';
+import { Star, CheckCircle2, ArrowUpRight, Sparkles } from 'lucide-react';
 
 const TESTIMONIALS_DATA = [
   {
@@ -163,9 +163,8 @@ export default function Testimonials() {
                   </div>
 
                   {/* Detailed Review Quote */}
-                  <div className="mt-5 relative">
-                    <MessageSquareQuote className="w-8 h-8 text-accent-blue/20 absolute -top-3 -left-2 pointer-events-none" />
-                    <div className="space-y-3 font-inter text-sm sm:text-[15px] text-slate-300 leading-relaxed pl-3 border-l-2 border-accent-blue/30">
+                  <div className="mt-5">
+                    <div className="space-y-3.5 font-inter text-sm sm:text-[15px] text-slate-200 leading-relaxed pl-4 border-l-2 border-accent-blue/50">
                       {featuredReview.quote.split('\n\n').map((paragraph, idx) => (
                         <p key={idx}>{paragraph}</p>
                       ))}
