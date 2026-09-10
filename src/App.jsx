@@ -10,7 +10,7 @@ import FloatingWhatsApp from './components/FloatingWhatsApp';
 export default function App() {
   return (
     <SmoothScroll>
-      <div className="relative min-h-screen bg-[#080B10] text-white font-inter flex flex-col justify-center overflow-hidden selection:bg-[#3B82F6] selection:text-white">
+      <div className="relative min-h-screen bg-[#080B10] text-white font-inter flex flex-col justify-center overflow-x-hidden selection:bg-[#3B82F6] selection:text-white">
         {/* Top Fixed Header */}
         <Navbar />
 

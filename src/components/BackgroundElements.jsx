@@ -1,8 +1,85 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function BackgroundElements() {
+  const containerRef = useRef(null);
+  const rightDunesRef = useRef(null);
+  const rightGlowRef = useRef(null);
+
+  useEffect(() => {
+    const rightDunes = rightDunesRef.current;
+    const rightGlow = rightGlowRef.current;
+    if (!rightDunes) return;
+
+    let isOut = false;
+
+    // Smooth Scroll Listener to glide right graphic out of the screen
+    const handleScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset || 0;
+      
+      if (scrollY > 30) {
+        if (!isOut) {
+          isOut = true;
+          gsap.to(rightDunes, {
+            xPercent: 125,
+            opacity: 0,
+            duration: 0.9,
+            ease: 'power3.inOut',
+            overwrite: 'auto',
+          });
+          if (rightGlow) {
+            gsap.to(rightGlow, {
+              xPercent: 100,
+              opacity: 0,
+              duration: 0.9,
+              ease: 'power3.inOut',
+              overwrite: 'auto',
+            });
+          }
+        }
+      } else {
+        if (isOut) {
+          isOut = false;
+          gsap.to(rightDunes, {
+            xPercent: 0,
+            opacity: 1,
+            duration: 1,
+            ease: 'power3.out',
+            overwrite: 'auto',
+          });
+          if (rightGlow) {
+            gsap.to(rightGlow, {
+              xPercent: 0,
+              opacity: 0.25,
+              duration: 1,
+              ease: 'power3.out',
+              overwrite: 'auto',
+            });
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Also listen to Lenis scroll if present
+    if (window.lenis) {
+      window.lenis.on('scroll', handleScroll);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (window.lenis) {
+        window.lenis.off('scroll', handleScroll);
+      }
+    };
+  }, []);
+
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none z-0">
 
       {/* Top ambient soft radial sapphire glow */}
       <div 
@@ -14,7 +91,8 @@ export default function BackgroundElements() {
 
       {/* Right side ambient electric blue glow behind organic shapes */}
       <div 
-        className="absolute top-[18%] -right-[10%] w-[650px] h-[650px] rounded-full opacity-25 blur-[120px]"
+        ref={rightGlowRef}
+        className="absolute top-[18%] -right-[10%] w-[650px] h-[650px] rounded-full opacity-25 blur-[120px] will-change-transform"
         style={{
           background: 'radial-gradient(circle, rgba(59,130,246,0.28) 0%, rgba(30,58,138,0.6) 50%, transparent 75%)'
         }}
@@ -29,7 +107,10 @@ export default function BackgroundElements() {
       />
 
       {/* 3D ORGANIC DUNES & FLOATING SPHERE ON THE RIGHT */}
-      <div className="absolute right-0 top-0 bottom-0 w-[220px] sm:w-[320px] md:w-[380px] lg:w-[480px] pointer-events-none select-none overflow-hidden z-0">
+      <div 
+        ref={rightDunesRef}
+        className="absolute right-0 top-0 bottom-0 w-[220px] sm:w-[320px] md:w-[380px] lg:w-[480px] pointer-events-none select-none overflow-hidden z-0 will-change-transform"
+      >
         <svg
           viewBox="0 0 700 800"
           fill="none"
