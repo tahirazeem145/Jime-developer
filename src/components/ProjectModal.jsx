@@ -7,7 +7,6 @@ import {
   Smartphone, 
   Cpu, 
   TrendingUp, 
-  Layers, 
   ArrowRight,
   Send,
   CheckCircle2
@@ -52,7 +51,6 @@ const SERVICES = [
   { id: 'mobile', title: 'Mobile App Development', icon: Smartphone, desc: 'iOS & Android Native Apps' },
   { id: 'ai', title: 'Custom AI & ML', icon: Cpu, desc: 'AI Automation, LLMs & ML' },
   { id: 'marketing', title: 'Digital Marketing', icon: TrendingUp, desc: 'SEO, Ads & Brand Growth' },
-  { id: 'custom', title: 'Full-Stack / Other', icon: Layers, desc: 'Custom Software Solution' },
 ];
 
 const BUDGET_OPTIONS = [
