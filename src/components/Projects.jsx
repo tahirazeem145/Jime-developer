@@ -126,21 +126,27 @@ export default function Projects() {
     if (!section || !track) return;
 
     const ctx = gsap.context(() => {
-      // Calculate exact distance required to scroll all projects completely across the screen
-      const trackWidth = track.scrollWidth;
-      const viewportWidth = window.innerWidth;
-      const extraPadding = window.innerWidth < 768 ? 40 : 100;
-      const overflowDistance = trackWidth - viewportWidth + extraPadding;
+      // Calculate exact distance required to bring the last card completely inside the screen
+      const getScrollDistance = () => {
+        if (!track || !track.lastElementChild) return 0;
+        const lastCard = track.lastElementChild;
+        const currentTransform = gsap.getProperty(track, 'x') || 0;
+        const lastCardRect = lastCard.getBoundingClientRect();
+        const naturalRight = lastCardRect.right - Number(currentTransform);
+        const targetMargin = window.innerWidth < 768 ? 24 : 64;
+        const targetRight = window.innerWidth - targetMargin;
+        return Math.max(0, naturalRight - targetRight);
+      };
 
-      // Only pin when there are multiple cards that actually overflow the screen
-      const shouldPin = overflowDistance > 60 && filteredProjects.length >= 3;
+      const distance = getScrollDistance();
+      const shouldPin = distance > 50 && filteredProjects.length >= 2;
 
       if (shouldPin) {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
             start: 'top top',
-            end: () => `+=${overflowDistance + 450}`,
+            end: () => `+=${getScrollDistance() + 450}`,
             pin: true,
             pinSpacing: true,
             scrub: 1.0,
@@ -161,13 +167,13 @@ export default function Projects() {
           },
         });
 
-        // Smooth horizontal translation of the project cards track from right to left
+        // Smooth horizontal translation of the project cards track so last card lands fully inside viewport
         tl.to(track, {
-          x: -overflowDistance,
+          x: () => -getScrollDistance(),
           ease: 'none',
         });
       } else {
-        // If there are few cards that already fit on screen, scroll normally without pinning!
+        // If cards already fit on screen, scroll normally without pinning!
         gsap.set(track, { x: 0 });
         if (progressBarRef.current) {
           progressBarRef.current.style.width = '100%';
