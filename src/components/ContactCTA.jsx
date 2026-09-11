@@ -50,7 +50,7 @@ export default function ContactCTA() {
   };
 
   return (
-    <section id="contact" className="relative z-10 w-full bg-transparent py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-white/5">
+    <section id="contact" className="relative z-10 w-full bg-transparent pt-10 sm:pt-14 pb-20 sm:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-white/5">
       <div className="max-w-7xl mx-auto relative z-20">
         
         {/* SECTION HEADER */}
