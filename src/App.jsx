@@ -7,6 +7,7 @@ import TrustedBy from './components/TrustedBy';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Blog from './components/Blog';
+import ContactCTA from './components/ContactCTA';
 import Footer from './components/Footer';
 import BackgroundElements from './components/BackgroundElements';
 import PostHeroDesignElements from './components/PostHeroDesignElements';
@@ -65,9 +66,12 @@ export default function App() {
 
             {/* 6th SECTION: Guides & From The Blog */}
             <Blog onOpenProjectModal={() => setIsProjectModalOpen(true)} />
+
+            {/* 7th SECTION: Contact Us CTA */}
+            <ContactCTA />
           </div>
 
-          {/* 7th SECTION: Footer */}
+          {/* 8th SECTION: Footer */}
           <Footer onOpenProjectModal={() => setIsProjectModalOpen(true)} />
         </main>
 

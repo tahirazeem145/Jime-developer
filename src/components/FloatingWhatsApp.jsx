@@ -17,7 +17,7 @@ export default function FloatingWhatsApp() {
 
       {/* Floating Action Button */}
       <a
-        href="https://wa.me/"
+        href="https://api.whatsapp.com/send/?phone=918610647763&text=Hi+Jime+Developers%2C+I%27d+like+to+talk+about+a+project.&type=phone_number&app_absent=0"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with Jime Developers on WhatsApp"

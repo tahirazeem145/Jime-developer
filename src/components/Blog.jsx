@@ -32,10 +32,6 @@ export default function Blog({ onOpenProjectModal }) {
 
   return (
     <section id="blog" className="relative z-10 w-full bg-transparent pt-20 sm:pt-28 pb-48 sm:pb-64 md:pb-80 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-white/5">
-      {/* Ambient background glows */}
-      <div className="absolute top-1/4 left-1/3 w-[550px] h-[550px] rounded-full bg-accent-blue/5 blur-[150px] pointer-events-none -z-10" />
-      <div className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] rounded-full bg-primary-blue/5 blur-[130px] pointer-events-none -z-10" />
-
       <div className="max-w-7xl mx-auto relative z-20">
         
         {/* SECTION HEADER */}

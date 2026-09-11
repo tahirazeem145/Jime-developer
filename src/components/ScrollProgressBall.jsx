@@ -18,7 +18,7 @@ export default function ScrollProgressBall() {
   const [isScrolling, setIsScrolling] = useState(false);
 
   const updateProgress = useCallback(() => {
-    const bottomElement = document.getElementById('blog') || document.getElementById('faq');
+    const bottomElement = document.getElementById('contact') || document.getElementById('blog') || document.getElementById('faq');
     if (!bottomElement || !trackRef.current || !lineRef.current || !ballRef.current) return;
 
     // Get current scroll position (Lenis smooth scroll or native window.scrollY)
@@ -28,7 +28,7 @@ export default function ScrollProgressBall() {
     const bottomHeight = bottomElement.offsetHeight;
     const windowHeight = window.innerHeight;
     
-    // Target is when the bottom section (Blog) is reached/visible
+    // Target is when the bottom section (Contact) is reached/visible
     const maxScroll = Math.max(bottomOffsetTop + bottomHeight - windowHeight, 1);
     const rawProgress = currentScroll / maxScroll;
     const clampedProgress = Math.min(Math.max(rawProgress, 0), 1);
@@ -45,6 +45,7 @@ export default function ScrollProgressBall() {
     const projectsEl = document.getElementById('projects');
     const testimonialsEl = document.getElementById('testimonials');
     const faqEl = document.getElementById('faq');
+    const blogEl = document.getElementById('blog');
 
     if (currentScroll < (projectsEl?.offsetTop || 600) - 200) {
       setActiveSection('Hero');
@@ -52,10 +53,12 @@ export default function ScrollProgressBall() {
       setActiveSection('Projects');
     } else if (currentScroll < (faqEl?.offsetTop || 3000) - 200) {
       setActiveSection('Testimonials');
-    } else if (currentScroll < bottomOffsetTop - 200) {
+    } else if (currentScroll < (blogEl?.offsetTop || 4200) - 200) {
       setActiveSection('FAQ');
-    } else {
+    } else if (currentScroll < bottomOffsetTop - 200) {
       setActiveSection('Guides');
+    } else {
+      setActiveSection('Contact');
     }
 
     // Indicate active scrolling
@@ -107,7 +110,7 @@ export default function ScrollProgressBall() {
     const clickY = e.clientY - rect.top;
     const clickProgress = Math.min(Math.max(clickY / rect.height, 0), 1);
 
-    const bottomElement = document.getElementById('blog') || document.getElementById('faq');
+    const bottomElement = document.getElementById('contact') || document.getElementById('blog') || document.getElementById('faq');
     if (!bottomElement) return;
 
     const bottomOffsetTop = bottomElement.offsetTop;
@@ -154,10 +157,11 @@ export default function ScrollProgressBall() {
 
           {/* Section Milestone Dots */}
           <div className="absolute top-0 -left-[2px] w-1.5 h-1.5 rounded-full bg-accent-blue/50 border border-white/30" title="Hero" />
-          <div className="absolute top-[25%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="Projects" />
-          <div className="absolute top-[50%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="Testimonials" />
-          <div className="absolute top-[75%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="FAQ" />
-          <div className="absolute bottom-0 -left-[2px] w-1.5 h-1.5 rounded-full bg-accent-blue border border-white/40 shadow-blue-glow" title="Guides / Blog" />
+          <div className="absolute top-[20%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="Projects" />
+          <div className="absolute top-[40%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="Testimonials" />
+          <div className="absolute top-[60%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="FAQ" />
+          <div className="absolute top-[80%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="Guides / Blog" />
+          <div className="absolute bottom-0 -left-[2px] w-1.5 h-1.5 rounded-full bg-accent-blue border border-white/40 shadow-blue-glow" title="Contact Us" />
         </div>
 
         {/* 3D FLOATING GLOWING SAPPHIRE BALL / SPHERE (Compact & refined) */}

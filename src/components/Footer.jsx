@@ -28,7 +28,7 @@ export default function Footer({ onOpenProjectModal }) {
             {/* Social Icons */}
             <div className="flex items-center gap-3">
               <a
-                href="https://www.instagram.com/jimedevelopers/"
+                href="https://www.instagram.com/jime_developers/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -37,7 +37,7 @@ export default function Footer({ onOpenProjectModal }) {
                 <Instagram className="w-4 h-4" />
               </a>
               <a
-                href="https://www.linkedin.com/company/jime-developers/"
+                href="https://www.linkedin.com/company/jime-developers/?originalSubdomain=in"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
