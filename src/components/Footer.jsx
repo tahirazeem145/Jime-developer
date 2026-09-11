@@ -203,19 +203,28 @@ export default function Footer({ onOpenProjectModal }) {
       </div>
 
       {/* MASSIVE COLOSSAL WATERMARK WORDMARK */}
-      <div className="w-full overflow-hidden select-none pointer-events-none flex justify-center items-end border-t border-slate-200/60 bg-gradient-to-b from-transparent to-slate-100/70 pt-4 sm:pt-6 pb-2 sm:pb-4 px-4 sm:px-8">
+      <div className="w-full overflow-hidden select-none pointer-events-none flex justify-center items-end border-t border-slate-200/60 bg-gradient-to-b from-transparent to-blue-50/40 pt-4 sm:pt-6 pb-2 sm:pb-4 px-4 sm:px-8">
         <svg
           viewBox="0 0 1700 220"
           className="w-full h-auto select-none pointer-events-none"
           aria-hidden="true"
         >
+          <defs>
+            <linearGradient id="footerWordmarkBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#1E3A8A" />
+              <stop offset="35%" stopColor="#2563EB" />
+              <stop offset="70%" stopColor="#3B82F6" />
+              <stop offset="100%" stopColor="#60A5FA" />
+            </linearGradient>
+          </defs>
           <text
             x="50%"
             y="80%"
             textAnchor="middle"
             textLength="1560"
             lengthAdjust="spacing"
-            className="font-sora font-extrabold fill-slate-200/90"
+            fill="url(#footerWordmarkBlue)"
+            className="font-sora font-extrabold"
             style={{
               fontSize: '175px',
               fontFamily: 'Sora, Inter, sans-serif',
