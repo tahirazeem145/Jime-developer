@@ -4,8 +4,7 @@ import {
   Sparkles, 
   Layers, 
   ArrowRight,
-  ChevronRight,
-  FolderGit2
+  ChevronRight
 } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -338,35 +337,6 @@ export default function Projects() {
                   </div>
                 </div>
               ))}
-
-              {/* FINAL CARD: EXPLORE ALL PROJECTS CALLOUT */}
-              <div className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[350px] rounded-3xl bg-gradient-to-br from-[#0F172A] via-[#0B101D] to-[#0A1224] border border-[#2563EB]/40 p-6 sm:p-8 flex flex-col justify-between items-center text-center shadow-[0_15px_45px_rgba(0,0,0,0.8)] select-none">
-                <div className="w-14 h-14 rounded-2xl bg-[#1E3A8A]/30 border border-[#3B82F6]/50 flex items-center justify-center text-accent-blue shadow-blue-glow mb-4">
-                  <FolderGit2 className="w-7 h-7" />
-                </div>
-
-                <div>
-                  <span className="text-xs font-sora font-semibold tracking-wider uppercase text-accent-blue">
-                    Complete Portfolio
-                  </span>
-                  <h3 className="font-sora font-bold text-xl sm:text-2xl text-main-text mt-1.5">
-                    15+ High-Growth Digital Products
-                  </h3>
-                  <p className="text-xs text-muted-text font-inter mt-2">
-                    Explore our full catalog of web applications, custom SaaS tools, mobile apps, and e-commerce platforms.
-                  </p>
-                </div>
-
-                <a
-                  href="#all-projects"
-                  className="group w-full mt-6 inline-flex items-center justify-between pl-6 pr-2 py-2 rounded-full bg-accent-blue hover:bg-accent-blue-hover text-white font-sora font-semibold text-xs sm:text-sm tracking-tight shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_35px_rgba(59,130,246,0.7)] active:scale-[0.98] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]"
-                >
-                  <span>View all the projects</span>
-                  <div className="w-7 h-7 rounded-full bg-white/20 group-hover:bg-white/30 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5">
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </div>
-                </a>
-              </div>
             </div>
           </div>
 
