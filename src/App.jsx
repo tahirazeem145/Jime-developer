@@ -7,6 +7,7 @@ import TrustedBy from './components/TrustedBy';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import BackgroundElements from './components/BackgroundElements';
+import PostHeroDesignElements from './components/PostHeroDesignElements';
 import ParticleBackground from './components/ParticleBackground';
 import MouseGlow from './components/MouseGlow';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
@@ -35,24 +36,30 @@ export default function App() {
           {/* Floating Particles */}
           <ParticleBackground />
 
-          {/* 1st SECTION: Hero Section */}
+          {/* 1st SECTION: Hero Section (with its own dedicated 3D elements) */}
           <div className="relative w-full min-h-screen flex flex-col justify-center items-center">
-            {/* 3D Background Elements */}
+            {/* 3D Background Elements for Hero only */}
             <BackgroundElements />
             <Hero onOpenProjectModal={() => setIsProjectModalOpen(true)} />
           </div>
 
-          {/* 2nd SECTION: Proudly Worked With / Client Trust Marquee */}
-          <TrustedBy />
+          {/* POST-HERO WRAPPER WITH 3D BLUE BACKGROUND DESIGN ELEMENTS */}
+          <div className="relative w-full overflow-hidden">
+            {/* 3D Blue Waves, Isometric Boxes, Spheres & Spotlights (ONLY AFTER HERO) */}
+            <PostHeroDesignElements />
 
-          {/* 3rd SECTION: Projects Section */}
-          <Projects />
+            {/* 2nd SECTION: Proudly Worked With / Client Trust Marquee */}
+            <TrustedBy />
 
-          {/* 4th SECTION: Verified Client Testimonials */}
-          <Testimonials />
+            {/* 3rd SECTION: Projects Section */}
+            <Projects />
 
-          {/* 5th SECTION: Frequently Asked Questions */}
-          <FAQ onOpenProjectModal={() => setIsProjectModalOpen(true)} />
+            {/* 4th SECTION: Verified Client Testimonials */}
+            <Testimonials />
+
+            {/* 5th SECTION: Frequently Asked Questions */}
+            <FAQ onOpenProjectModal={() => setIsProjectModalOpen(true)} />
+          </div>
         </main>
 
         {/* Floating Action Button */}

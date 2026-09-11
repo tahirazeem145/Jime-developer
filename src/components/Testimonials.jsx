@@ -53,7 +53,7 @@ export default function Testimonials() {
   const otherReviews = TESTIMONIALS_DATA.filter((t) => !t.featured);
 
   return (
-    <section id="testimonials" className="relative w-full bg-[#080B10] py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden select-none">
+    <section id="testimonials" className="relative w-full bg-transparent py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden select-none">
       {/* Ambient background glows */}
       <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-accent-blue/5 blur-[140px] pointer-events-none -z-10" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-primary-blue/5 blur-[120px] pointer-events-none -z-10" />

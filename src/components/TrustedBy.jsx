@@ -156,7 +156,7 @@ export default function TrustedBy() {
   const marqueeLogos = [...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS];
 
   return (
-    <section className="relative w-full bg-[#080B10] py-12 sm:py-16 overflow-hidden border-t border-b border-white/5 select-none">
+    <section className="relative w-full bg-transparent py-12 sm:py-16 overflow-hidden border-t border-b border-white/5 select-none">
       {/* Subtle background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[180px] bg-accent-blue/5 blur-[120px] pointer-events-none rounded-full" />
 

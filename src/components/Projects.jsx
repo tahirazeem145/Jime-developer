@@ -195,7 +195,7 @@ export default function Projects() {
   }, [filteredProjects, activeFilter]);
 
   return (
-    <div className="relative w-full bg-[#080B10]">
+    <div className="relative w-full bg-transparent">
       {/* 1. PINNED HORIZONTAL SCROLL SHOWCASE SECTION */}
       <section 
         id="projects" 
