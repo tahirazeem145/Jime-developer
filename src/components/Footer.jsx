@@ -66,12 +66,12 @@ export default function Footer({ onOpenProjectModal }) {
               </li>
               <li>
                 <a
-                  href="https://www.jimedevelopers.in/web-development"
+                  href="https://www.jimedevelopers.in/digital-marketing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent-blue transition-colors duration-200"
                 >
-                  E-commerce Development
+                  Digital Marketing
                 </a>
               </li>
               <li>
@@ -91,7 +91,7 @@ export default function Footer({ onOpenProjectModal }) {
                   rel="noopener noreferrer"
                   className="hover:text-accent-blue transition-colors duration-200"
                 >
-                  Web App & SaaS
+                  Custom AI & ML
                 </a>
               </li>
             </ul>
