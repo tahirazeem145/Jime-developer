@@ -74,9 +74,13 @@ export default function Navbar({ onOpenProjectModal }) {
 
       <header className="fixed top-3 sm:top-5 left-0 right-0 z-50 flex justify-center px-3 sm:px-6 pointer-events-none">
         {/* Double-Bezel Outer Shell */}
-        <div className="w-full max-w-6xl p-1 rounded-full bg-white/[0.03] border border-white/10 hover:border-accent-blue/40 shadow-[0_12px_40px_rgba(0,0,0,0.8),0_0_30px_rgba(59,130,246,0.08)] backdrop-blur-2xl transition-all duration-300 pointer-events-auto">
+        <div className={`w-full max-w-6xl p-1 bg-white/[0.03] border border-white/10 hover:border-accent-blue/40 shadow-[0_12px_40px_rgba(0,0,0,0.8),0_0_30px_rgba(59,130,246,0.08)] backdrop-blur-2xl transition-all duration-300 pointer-events-auto ${
+          mobileMenuOpen ? 'rounded-2xl sm:rounded-3xl' : 'rounded-full'
+        }`}>
           {/* Inner Core Container */}
-          <div className="w-full rounded-full bg-[#0B101D]/90 px-4 sm:px-6 py-2 sm:py-2.5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)]">
+          <div className={`w-full bg-[#0B101D]/90 px-4 sm:px-6 py-2 sm:py-2.5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)] transition-all duration-300 ${
+            mobileMenuOpen ? 'rounded-xl sm:rounded-2xl' : 'rounded-full'
+          }`}>
             <div className="flex items-center justify-between">
               {/* Logo on the left */}
               <div className="flex items-center gap-3">
