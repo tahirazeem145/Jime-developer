@@ -150,27 +150,27 @@ export default function ScrollProgressBall() {
           />
 
           {/* Section Milestone Dots */}
-          <div className="absolute top-0 -left-[3px] w-2 h-2 rounded-full bg-accent-blue/50 border border-white/30" title="Hero" />
-          <div className="absolute top-[33%] -left-[3px] w-2 h-2 rounded-full bg-white/20 border border-white/20" title="Projects" />
-          <div className="absolute top-[66%] -left-[3px] w-2 h-2 rounded-full bg-white/20 border border-white/20" title="Testimonials" />
-          <div className="absolute bottom-0 -left-[3px] w-2 h-2 rounded-full bg-accent-blue border border-white/40 shadow-blue-glow" title="FAQ" />
+          <div className="absolute top-0 -left-[2px] w-1.5 h-1.5 rounded-full bg-accent-blue/50 border border-white/30" title="Hero" />
+          <div className="absolute top-[33%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="Projects" />
+          <div className="absolute top-[66%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="Testimonials" />
+          <div className="absolute bottom-0 -left-[2px] w-1.5 h-1.5 rounded-full bg-accent-blue border border-white/40 shadow-blue-glow" title="FAQ" />
         </div>
 
-        {/* 3D FLOATING GLOWING SAPPHIRE BALL / SPHERE (Zero CSS transition on position for 100% synchronized movement) */}
+        {/* 3D FLOATING GLOWING SAPPHIRE BALL / SPHERE (Compact & refined) */}
         <div 
           ref={ballRef}
-          className="absolute -translate-x-1/2 left-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 cursor-grab active:cursor-grabbing will-change-transform"
+          className="absolute -translate-x-1/2 left-1/2 -translate-y-1/2 w-4.5 h-4.5 sm:w-5 sm:h-5 md:w-6 md:h-6 cursor-grab active:cursor-grabbing will-change-transform"
           style={{ 
             top: '0%',
-            transform: `translate(-50%, -50%) scale(${isHovered || isScrolling ? 1.12 : 1})`,
+            transform: `translate(-50%, -50%) scale(${isHovered || isScrolling ? 1.15 : 1})`,
             transition: 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
           }}
         >
           {/* Outer Volumetric Halo Glow */}
           <div 
             ref={glowRef}
-            className={`absolute inset-0 rounded-full bg-[#3B82F6] blur-[12px] sm:blur-[16px] pointer-events-none transition-opacity duration-200 ${
-              isScrolling || isHovered ? 'opacity-85 scale-110' : 'opacity-60'
+            className={`absolute inset-0 rounded-full bg-[#3B82F6] blur-[6px] sm:blur-[8px] pointer-events-none transition-opacity duration-200 ${
+              isScrolling || isHovered ? 'opacity-90 scale-125' : 'opacity-65'
             }`}
           />
 
@@ -179,7 +179,7 @@ export default function ScrollProgressBall() {
             viewBox="0 0 100 100" 
             fill="none" 
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full relative z-10 drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)] filter"
+            className="w-full h-full relative z-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] filter"
           >
             <defs>
               {/* 3D Sphere 3-Point Light Shader matching Hero & Reference */}
