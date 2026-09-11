@@ -6,6 +6,7 @@ import Projects from './components/Projects';
 import TrustedBy from './components/TrustedBy';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
+import Blog from './components/Blog';
 import BackgroundElements from './components/BackgroundElements';
 import PostHeroDesignElements from './components/PostHeroDesignElements';
 import ScrollProgressBall from './components/ScrollProgressBall';
@@ -60,6 +61,9 @@ export default function App() {
 
             {/* 5th SECTION: Frequently Asked Questions */}
             <FAQ onOpenProjectModal={() => setIsProjectModalOpen(true)} />
+
+            {/* 6th SECTION: Guides & From The Blog */}
+            <Blog onOpenProjectModal={() => setIsProjectModalOpen(true)} />
           </div>
         </main>
 

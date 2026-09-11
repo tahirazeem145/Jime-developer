@@ -18,18 +18,18 @@ export default function ScrollProgressBall() {
   const [isScrolling, setIsScrolling] = useState(false);
 
   const updateProgress = useCallback(() => {
-    const faqElement = document.getElementById('faq');
-    if (!faqElement || !trackRef.current || !lineRef.current || !ballRef.current) return;
+    const bottomElement = document.getElementById('blog') || document.getElementById('faq');
+    if (!bottomElement || !trackRef.current || !lineRef.current || !ballRef.current) return;
 
     // Get current scroll position (Lenis smooth scroll or native window.scrollY)
     const currentScroll = window.lenis != null ? window.lenis.scroll : (window.scrollY || document.documentElement.scrollTop || 0);
 
-    const faqOffsetTop = faqElement.offsetTop;
-    const faqHeight = faqElement.offsetHeight;
+    const bottomOffsetTop = bottomElement.offsetTop;
+    const bottomHeight = bottomElement.offsetHeight;
     const windowHeight = window.innerHeight;
     
-    // Target is when FAQ section is reached/visible
-    const maxScroll = Math.max(faqOffsetTop + faqHeight - windowHeight, 1);
+    // Target is when the bottom section (Blog) is reached/visible
+    const maxScroll = Math.max(bottomOffsetTop + bottomHeight - windowHeight, 1);
     const rawProgress = currentScroll / maxScroll;
     const clampedProgress = Math.min(Math.max(rawProgress, 0), 1);
 
@@ -44,15 +44,18 @@ export default function ScrollProgressBall() {
     // Determine current section in view
     const projectsEl = document.getElementById('projects');
     const testimonialsEl = document.getElementById('testimonials');
+    const faqEl = document.getElementById('faq');
 
     if (currentScroll < (projectsEl?.offsetTop || 600) - 200) {
       setActiveSection('Hero');
     } else if (currentScroll < (testimonialsEl?.offsetTop || 1800) - 200) {
       setActiveSection('Projects');
-    } else if (currentScroll < faqOffsetTop - 200) {
+    } else if (currentScroll < (faqEl?.offsetTop || 3000) - 200) {
       setActiveSection('Testimonials');
-    } else {
+    } else if (currentScroll < bottomOffsetTop - 200) {
       setActiveSection('FAQ');
+    } else {
+      setActiveSection('Guides');
     }
 
     // Indicate active scrolling
@@ -104,13 +107,13 @@ export default function ScrollProgressBall() {
     const clickY = e.clientY - rect.top;
     const clickProgress = Math.min(Math.max(clickY / rect.height, 0), 1);
 
-    const faqElement = document.getElementById('faq');
-    if (!faqElement) return;
+    const bottomElement = document.getElementById('blog') || document.getElementById('faq');
+    if (!bottomElement) return;
 
-    const faqOffsetTop = faqElement.offsetTop;
-    const faqHeight = faqElement.offsetHeight;
+    const bottomOffsetTop = bottomElement.offsetTop;
+    const bottomHeight = bottomElement.offsetHeight;
     const windowHeight = window.innerHeight;
-    const maxScroll = faqOffsetTop + faqHeight - windowHeight;
+    const maxScroll = bottomOffsetTop + bottomHeight - windowHeight;
     const targetScroll = clickProgress * maxScroll;
 
     if (window.lenis) {
@@ -151,9 +154,10 @@ export default function ScrollProgressBall() {
 
           {/* Section Milestone Dots */}
           <div className="absolute top-0 -left-[2px] w-1.5 h-1.5 rounded-full bg-accent-blue/50 border border-white/30" title="Hero" />
-          <div className="absolute top-[33%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="Projects" />
-          <div className="absolute top-[66%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="Testimonials" />
-          <div className="absolute bottom-0 -left-[2px] w-1.5 h-1.5 rounded-full bg-accent-blue border border-white/40 shadow-blue-glow" title="FAQ" />
+          <div className="absolute top-[25%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="Projects" />
+          <div className="absolute top-[50%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="Testimonials" />
+          <div className="absolute top-[75%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="FAQ" />
+          <div className="absolute bottom-0 -left-[2px] w-1.5 h-1.5 rounded-full bg-accent-blue border border-white/40 shadow-blue-glow" title="Guides / Blog" />
         </div>
 
         {/* 3D FLOATING GLOWING SAPPHIRE BALL / SPHERE (Compact & refined) */}
