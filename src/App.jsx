@@ -7,6 +7,7 @@ import TrustedBy from './components/TrustedBy';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Blog from './components/Blog';
+import Footer from './components/Footer';
 import BackgroundElements from './components/BackgroundElements';
 import PostHeroDesignElements from './components/PostHeroDesignElements';
 import ScrollProgressBall from './components/ScrollProgressBall';
@@ -65,6 +66,9 @@ export default function App() {
             {/* 6th SECTION: Guides & From The Blog */}
             <Blog onOpenProjectModal={() => setIsProjectModalOpen(true)} />
           </div>
+
+          {/* 7th SECTION: Footer */}
+          <Footer onOpenProjectModal={() => setIsProjectModalOpen(true)} />
         </main>
 
         {/* Floating Action Button */}
