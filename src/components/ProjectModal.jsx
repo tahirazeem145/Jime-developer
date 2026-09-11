@@ -252,364 +252,364 @@ export default function ProjectModal({ isOpen, onClose }) {
       data-lenis-prevent-touch="true"
       onWheel={(e) => e.stopPropagation()}
       onTouchMove={(e) => e.stopPropagation()}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md overflow-hidden"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 md:p-6 bg-slate-950/40 backdrop-blur-md overflow-hidden"
       onClick={(e) => {
         if (e.target === modalOverlayRef.current) {
           handleClose();
         }
       }}
     >
-      {/* Modal Dialog Card with Double-Bezel Enclosure */}
+      {/* Modal Dialog Card */}
       <div 
         ref={modalCardRef}
         data-lenis-prevent="true"
         data-lenis-prevent-touch="true"
         onWheel={(e) => e.stopPropagation()}
         onTouchMove={(e) => e.stopPropagation()}
-        className="relative w-full max-w-2xl p-1.5 sm:p-2 rounded-3xl sm:rounded-[2rem] bg-white/[0.04] border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.98),0_0_60px_rgba(59,130,246,0.15)] flex flex-col max-h-[90vh] overflow-hidden my-auto"
+        className="relative w-full max-w-2xl p-1.5 sm:p-2 rounded-3xl sm:rounded-[2rem] bg-slate-50 border border-slate-200 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Inner Core Container */}
-        <div className="w-full rounded-[calc(1.5rem-0.25rem)] sm:rounded-[calc(2rem-0.375rem)] bg-black flex flex-col flex-1 overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+        <div className="w-full rounded-[calc(1.5rem-0.25rem)] sm:rounded-[calc(2rem-0.375rem)] bg-white border border-slate-100 flex flex-col flex-1 overflow-hidden shadow-sm">
           
           {/* TOP PROGRESS BAR */}
-          <div className="w-full bg-white/[0.06] h-1.5 relative overflow-hidden">
-          <div 
-            className="h-full bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#38BDF8] transition-all duration-500 ease-out shadow-[0_0_12px_rgba(59,130,246,0.8)]"
-            style={{ width: `${progressPercentage}%` }}
-          />
-        </div>
+          <div className="w-full bg-slate-100 h-1.5 relative overflow-hidden">
+            <div 
+              className="h-full bg-accent-blue transition-all duration-500 ease-out shadow-sm"
+              style={{ width: `${progressPercentage}%` }}
+            />
+          </div>
 
-        {/* Modal Header */}
-        <div className="flex items-center justify-between px-5 sm:px-8 pt-5 pb-3 border-b border-white/10">
-          <div className="flex items-center gap-2.5">
-              <div className="flex items-center gap-3">
+          {/* Modal Header */}
+          <div className="flex items-center justify-between px-5 sm:px-8 pt-5 pb-3 border-b border-slate-100">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center">
                 <img
                   src="./assets/jime-logo-white.png"
                   alt="Jime Developers"
-                  className="h-7 w-auto object-contain brightness-0 invert opacity-90"
+                  className="h-7 w-auto object-contain brightness-0 opacity-90"
                 />
               </div>
-            <div>
-              <h2 className="font-sora font-bold text-lg sm:text-xl text-[#F8FAFC]">
-                Start Your Project
-              </h2>
-              <p className="text-xs text-muted-text font-inter">
-                Tell us about your vision & get a rapid roadmap
-              </p>
+              <div className="text-left">
+                <h2 className="font-sora font-bold text-lg sm:text-xl text-slate-950">
+                  Start Your Project
+                </h2>
+                <p className="text-xs text-slate-500 font-inter">
+                  Tell us about your vision & get a rapid roadmap
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              {/* Live Progress Tag */}
+              <span className="hidden sm:inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-sora font-semibold bg-blue-50 border border-blue-200 text-accent-blue">
+                {progressPercentage}% Completed
+              </span>
+
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={handleClose}
+                className="p-2 rounded-full text-slate-500 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-all duration-200 cursor-pointer"
+                aria-label="Close modal"
+              >
+                <X className="w-4 h-4" />
+              </button>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
-            {/* Live Progress Tag */}
-            <span className="hidden sm:inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-sora font-semibold bg-white/[0.05] border border-white/10 text-accent-blue">
-              {progressPercentage}% Completed
-            </span>
-
-            {/* Close Button */}
-            <button
-              type="button"
-              onClick={handleClose}
-              className="p-2 rounded-full text-muted-text hover:text-white bg-white/[0.04] hover:bg-white/10 border border-white/10 transition-all duration-200"
-              aria-label="Close modal"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-
-        {/* Modal Content */}
-        <div 
-          data-lenis-prevent="true"
-          data-lenis-prevent-touch="true"
-          onWheel={(e) => e.stopPropagation()}
-          onTouchMove={(e) => e.stopPropagation()}
-          className="p-5 sm:p-8 overflow-y-auto flex-1 custom-scrollbar overscroll-contain"
-        >
-          {isSuccess ? (
-            /* SUCCESS CONFIRMATION STATE */
-            <div className="py-8 text-center flex flex-col items-center animate-fadeIn">
-              <div className="w-16 h-16 rounded-full bg-accent-blue/20 border-2 border-accent-blue flex items-center justify-center text-accent-blue mb-5 shadow-[0_0_30px_rgba(59,130,246,0.4)]">
-                <CheckCircle2 className="w-8 h-8" />
-              </div>
-
-              <h3 className="font-sora font-bold text-2xl text-[#F8FAFC] tracking-tight mb-2">
-                Thank You, {formData.name}!
-              </h3>
-              
-              <p className="text-sm text-muted-text max-w-md mx-auto leading-relaxed mb-6 font-inter">
-                We've received your project request for{' '}
-                <span className="text-accent-blue font-semibold">
-                  {SERVICES.find(s => s.id === formData.service)?.title || 'your product'}
-                </span>
-                . Our engineering team will review it and get in touch within 24 hours.
-              </p>
-
-              <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-left max-w-md w-full mb-6 space-y-2 text-xs font-inter">
-                <div className="flex justify-between text-muted-text">
-                  <span>Client:</span>
-                  <span className="text-white font-medium">{formData.name}</span>
+          {/* Modal Content */}
+          <div 
+            data-lenis-prevent="true"
+            data-lenis-prevent-touch="true"
+            onWheel={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+            className="p-5 sm:p-8 overflow-y-auto flex-1 custom-scrollbar overscroll-contain"
+          >
+            {isSuccess ? (
+              /* SUCCESS CONFIRMATION STATE */
+              <div className="py-8 text-center flex flex-col items-center animate-fadeIn">
+                <div className="w-16 h-16 rounded-full bg-blue-50 border-2 border-accent-blue flex items-center justify-center text-accent-blue mb-5 shadow-sm">
+                  <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <div className="flex justify-between text-muted-text">
-                  <span>Contact:</span>
-                  <span className="text-white font-medium">{selectedCountry.dial} {formData.phone}</span>
-                </div>
-                <div className="flex justify-between text-muted-text">
-                  <span>Selected Budget:</span>
+
+                <h3 className="font-sora font-bold text-2xl text-slate-950 tracking-tight mb-2">
+                  Thank You, {formData.name}!
+                </h3>
+                
+                <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed mb-6 font-inter">
+                  We've received your project request for{' '}
                   <span className="text-accent-blue font-semibold">
-                    {BUDGET_OPTIONS.find(b => b.id === formData.budget)?.detail}
+                    {SERVICES.find(s => s.id === formData.service)?.title || 'your product'}
                   </span>
-                </div>
-              </div>
+                  . Our engineering team will review it and get in touch within 24 hours.
+                </p>
 
-              <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-md">
-                <a
-                  href={`https://wa.me/?text=${encodeURIComponent(
-                    `Hi Jime Developers! I submitted a project request for ${
-                      SERVICES.find((s) => s.id === formData.service)?.title || 'my project'
-                    }. My name is ${formData.name}.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-accent-blue text-white font-sora font-semibold text-xs sm:text-sm tracking-tight hover:bg-accent-blue-hover shadow-blue-glow transition-all"
-                >
-                  <span>Connect on WhatsApp Now</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-
-                <button
-                  type="button"
-                  onClick={handleClose}
-                  className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-3 rounded-full bg-white/[0.05] hover:bg-white/[0.1] text-main-text border border-white/15 text-xs sm:text-sm font-sora font-medium transition-all"
-                >
-                  Done
-                </button>
-              </div>
-            </div>
-          ) : (
-            /* PROJECT DETAILS FORM */
-            <form onSubmit={handleSubmit} className="space-y-6">
-              
-              {/* 1. FULL NAME */}
-              <div className="space-y-2 text-left">
-                <label className="block font-sora font-semibold text-xs sm:text-sm text-[#F8FAFC]">
-                  Full Name <span className="text-accent-blue">*</span>
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Enter your name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/15 hover:border-white/30 focus:border-accent-blue focus:bg-white/[0.07] focus:outline-none text-white text-sm sm:text-base font-inter placeholder:text-muted-text/50 transition-all duration-200"
-                />
-              </div>
-
-              {/* 2. COMPANY (OPTIONAL) */}
-              <div className="space-y-2 text-left">
-                <label className="block font-sora font-semibold text-xs sm:text-sm text-[#F8FAFC]">
-                  Company (Optional)
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter your company name"
-                  value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/15 hover:border-white/30 focus:border-accent-blue focus:bg-white/[0.07] focus:outline-none text-white text-sm sm:text-base font-inter placeholder:text-muted-text/50 transition-all duration-200"
-                />
-              </div>
-
-              {/* 3. EMAIL ADDRESS */}
-              <div className="space-y-2 text-left">
-                <label className="block font-sora font-semibold text-xs sm:text-sm text-[#F8FAFC]">
-                  Email Address <span className="text-accent-blue">*</span>
-                </label>
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter your email address"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/15 hover:border-white/30 focus:border-accent-blue focus:bg-white/[0.07] focus:outline-none text-white text-sm sm:text-base font-inter placeholder:text-muted-text/50 transition-all duration-200"
-                />
-              </div>
-
-              {/* 4. PHONE NUMBER WITH AUTO IP-DETECTED COUNTRY CODE */}
-              <div className="space-y-2 text-left">
-                <label className="block font-sora font-semibold text-xs sm:text-sm text-[#F8FAFC]">
-                  Phone Number <span className="text-accent-blue">*</span>
-                </label>
-
-                <div className="flex items-center gap-2.5">
-                  {/* Country Selector Dropdown */}
-                  <div className="relative flex-shrink-0" ref={countryDropdownRef}>
-                    <button
-                      type="button"
-                      onClick={() => setCountryDropdownOpen(!countryDropdownOpen)}
-                      className="flex items-center gap-2 px-3.5 sm:px-4 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/15 hover:border-accent-blue/40 text-white text-sm sm:text-base font-inter focus:outline-none transition-all cursor-pointer"
-                    >
-                      <span className="text-lg">{selectedCountry.flag}</span>
-                      <span className="font-semibold text-accent-blue font-sora text-xs sm:text-sm">
-                        {selectedCountry.dial}
-                      </span>
-                      <ChevronDown className={`w-4 h-4 text-muted-text transition-transform duration-200 ${
-                        countryDropdownOpen ? 'rotate-180' : ''
-                      }`} />
-                    </button>
-
-                    {/* Dropdown Menu */}
-                    {countryDropdownOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-64 max-h-56 overflow-y-auto rounded-2xl bg-[#0A0A0A] border border-white/20 shadow-[0_15px_40px_rgba(0,0,0,0.95)] z-50 p-2 custom-scrollbar animate-fadeIn">
-                        <input
-                          type="text"
-                          placeholder="Search country..."
-                          value={countrySearch}
-                          onChange={(e) => setCountrySearch(e.target.value)}
-                          className="w-full px-3 py-2 mb-2 rounded-xl bg-white/[0.06] border border-white/10 text-white text-xs placeholder:text-muted-text focus:outline-none focus:border-accent-blue"
-                          autoFocus
-                        />
-                        <div className="space-y-0.5">
-                          {filteredCountries.map((c) => (
-                            <button
-                              key={`${c.code}-${c.dial}`}
-                              type="button"
-                              onClick={() => {
-                                setSelectedCountry(c);
-                                setCountryDropdownOpen(false);
-                                setCountrySearch('');
-                              }}
-                              className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-inter transition-colors ${
-                                selectedCountry.code === c.code && selectedCountry.dial === c.dial
-                                  ? 'bg-accent-blue/20 text-accent-blue font-semibold'
-                                  : 'text-muted-text hover:text-white hover:bg-white/[0.05]'
-                              }`}
-                            >
-                              <div className="flex items-center gap-2 truncate">
-                                <span>{c.flag}</span>
-                                <span className="truncate">{c.name}</span>
-                              </div>
-                              <span className="text-muted-text/80 font-sora text-[11px] ml-2">
-                                {c.dial}
-                              </span>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-left max-w-md w-full mb-6 space-y-2 text-xs font-inter">
+                  <div className="flex justify-between text-slate-500">
+                    <span>Client:</span>
+                    <span className="text-slate-900 font-semibold">{formData.name}</span>
                   </div>
-
-                  {/* Phone input field */}
-                  <div className="relative flex-1 min-w-0">
-                    <input
-                      type="tel"
-                      required
-                      placeholder="Enter your phone number"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/15 hover:border-white/30 focus:border-accent-blue focus:bg-white/[0.07] focus:outline-none text-white text-sm sm:text-base font-inter placeholder:text-muted-text/50 transition-all duration-200"
-                    />
+                  <div className="flex justify-between text-slate-500">
+                    <span>Contact:</span>
+                    <span className="text-slate-900 font-semibold">{selectedCountry.dial} {formData.phone}</span>
+                  </div>
+                  <div className="flex justify-between text-slate-500">
+                    <span>Selected Budget:</span>
+                    <span className="text-accent-blue font-bold">
+                      {BUDGET_OPTIONS.find(b => b.id === formData.budget)?.detail}
+                    </span>
                   </div>
                 </div>
-              </div>
 
-              {/* 3. WHAT SERVICE THEY WANT */}
-              <div className="space-y-2 text-left">
-                <label className="block text-xs font-sora font-medium text-main-text">
-                  What service do you need? <span className="text-accent-blue">*</span>
-                </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {SERVICES.map((s) => {
-                    const Icon = s.icon;
-                    const isSelected = formData.service === s.id;
-                    return (
+                <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-md">
+                  <a
+                    href={`https://wa.me/?text=${encodeURIComponent(
+                      `Hi Jime Developers! I submitted a project request for ${
+                        SERVICES.find((s) => s.id === formData.service)?.title || 'my project'
+                      }. My name is ${formData.name}.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-slate-950 text-white font-sora font-semibold text-xs sm:text-sm tracking-tight hover:bg-accent-blue shadow-md transition-all"
+                  >
+                    <span>Connect on WhatsApp Now</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={handleClose}
+                    className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-3 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 text-xs sm:text-sm font-sora font-medium transition-all cursor-pointer"
+                  >
+                    Done
+                  </button>
+                </div>
+              </div>
+            ) : (
+              /* PROJECT DETAILS FORM */
+              <form onSubmit={handleSubmit} className="space-y-6">
+                
+                {/* 1. FULL NAME */}
+                <div className="space-y-2 text-left">
+                  <label className="block font-sora font-semibold text-xs sm:text-sm text-slate-800">
+                    Full Name <span className="text-accent-blue">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter your name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 hover:border-slate-300 focus:border-accent-blue focus:bg-white focus:outline-none text-slate-900 text-sm sm:text-base font-inter placeholder:text-slate-400 transition-all duration-200"
+                  />
+                </div>
+
+                {/* 2. COMPANY (OPTIONAL) */}
+                <div className="space-y-2 text-left">
+                  <label className="block font-sora font-semibold text-xs sm:text-sm text-slate-800">
+                    Company (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter your company name"
+                    value={formData.company}
+                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 hover:border-slate-300 focus:border-accent-blue focus:bg-white focus:outline-none text-slate-900 text-sm sm:text-base font-inter placeholder:text-slate-400 transition-all duration-200"
+                  />
+                </div>
+
+                {/* 3. EMAIL ADDRESS */}
+                <div className="space-y-2 text-left">
+                  <label className="block font-sora font-semibold text-xs sm:text-sm text-slate-800">
+                    Email Address <span className="text-accent-blue">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="Enter your email address"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 hover:border-slate-300 focus:border-accent-blue focus:bg-white focus:outline-none text-slate-900 text-sm sm:text-base font-inter placeholder:text-slate-400 transition-all duration-200"
+                  />
+                </div>
+
+                {/* 4. PHONE NUMBER WITH AUTO IP-DETECTED COUNTRY CODE */}
+                <div className="space-y-2 text-left">
+                  <label className="block font-sora font-semibold text-xs sm:text-sm text-slate-800">
+                    Phone Number <span className="text-accent-blue">*</span>
+                  </label>
+
+                  <div className="flex items-center gap-2.5">
+                    {/* Country Selector Dropdown */}
+                    <div className="relative flex-shrink-0" ref={countryDropdownRef}>
                       <button
-                        key={s.id}
                         type="button"
-                        onClick={() => setFormData({ ...formData, service: s.id })}
-                        className={`flex items-start gap-3 p-3 rounded-xl border text-left transition-all duration-200 group ${
-                          isSelected
-                            ? 'bg-accent-blue/15 border-accent-blue text-white shadow-[0_0_20px_rgba(59,130,246,0.2)]'
-                            : 'bg-white/[0.03] border-white/10 hover:border-white/25 text-muted-text hover:text-main-text'
-                        }`}
+                        onClick={() => setCountryDropdownOpen(!countryDropdownOpen)}
+                        className="flex items-center gap-2 px-3.5 sm:px-4 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 hover:border-accent-blue/40 text-slate-900 text-sm sm:text-base font-inter focus:outline-none transition-all cursor-pointer"
                       >
-                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors ${
-                          isSelected 
-                            ? 'bg-accent-blue text-white' 
-                            : 'bg-white/[0.06] text-accent-blue group-hover:bg-accent-blue/20'
-                        }`}>
-                          <Icon className="w-4 h-4" />
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <div className="text-xs font-sora font-semibold text-white flex items-center justify-between">
-                            <span className="truncate">{s.title}</span>
-                            {isSelected && <Check className="w-3.5 h-3.5 text-accent-blue flex-shrink-0" />}
+                        <span className="text-lg">{selectedCountry.flag}</span>
+                        <span className="font-semibold text-accent-blue font-sora text-xs sm:text-sm">
+                          {selectedCountry.dial}
+                        </span>
+                        <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
+                          countryDropdownOpen ? 'rotate-180' : ''
+                        }`} />
+                      </button>
+
+                      {/* Dropdown Menu */}
+                      {countryDropdownOpen && (
+                        <div className="absolute top-full left-0 mt-2 w-64 max-h-56 overflow-y-auto rounded-2xl bg-white border border-slate-200 shadow-xl z-50 p-2 custom-scrollbar animate-fadeIn">
+                          <input
+                            type="text"
+                            placeholder="Search country..."
+                            value={countrySearch}
+                            onChange={(e) => setCountrySearch(e.target.value)}
+                            className="w-full px-3 py-2 mb-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder:text-slate-400 focus:outline-none focus:border-accent-blue"
+                            autoFocus
+                          />
+                          <div className="space-y-0.5">
+                            {filteredCountries.map((c) => (
+                              <button
+                                key={`${c.code}-${c.dial}`}
+                                type="button"
+                                onClick={() => {
+                                  setSelectedCountry(c);
+                                  setCountryDropdownOpen(false);
+                                  setCountrySearch('');
+                                }}
+                                className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-inter transition-colors ${
+                                  selectedCountry.code === c.code && selectedCountry.dial === c.dial
+                                    ? 'bg-blue-50 text-accent-blue font-semibold'
+                                    : 'text-slate-700 hover:bg-slate-50'
+                                }`}
+                              >
+                                <div className="flex items-center gap-2 truncate">
+                                  <span>{c.flag}</span>
+                                  <span className="truncate">{c.name}</span>
+                                </div>
+                                <span className="text-slate-400 font-sora text-[11px] ml-2">
+                                  {c.dial}
+                                </span>
+                              </button>
+                            ))}
                           </div>
-                          <p className="text-[11px] text-muted-text font-inter mt-0.5 line-clamp-1">
-                            {s.desc}
-                          </p>
                         </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* 4. BUDGET OPTIONS (4 CHOICES: < 25K, 25K to 1L, 1L to 5L, 5L+) */}
-              <div className="space-y-2 text-left">
-                <label className="block text-xs font-sora font-medium text-main-text">
-                  Estimated Project Budget <span className="text-accent-blue">*</span>
-                </label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  {BUDGET_OPTIONS.map((b) => {
-                    const isSelected = formData.budget === b.id;
-                    return (
-                      <button
-                        key={b.id}
-                        type="button"
-                        onClick={() => setFormData({ ...formData, budget: b.id })}
-                        className={`p-3 rounded-xl border text-center transition-all duration-200 ${
-                          isSelected
-                            ? 'bg-accent-blue/20 border-accent-blue text-white shadow-[0_0_15px_rgba(59,130,246,0.25)]'
-                            : 'bg-white/[0.03] border-white/10 hover:border-white/20 text-muted-text hover:text-white'
-                        }`}
-                      >
-                        <div className={`text-xs font-sora font-bold ${isSelected ? 'text-accent-blue' : 'text-white'}`}>
-                          {b.label}
-                        </div>
-                        <div className="text-[10px] text-muted-text font-inter mt-0.5">
-                          {b.detail}
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* SUBMIT BUTTON (Button-in-Button Architecture) */}
-              <div className="pt-2">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="group w-full inline-flex items-center justify-between pl-6 pr-2 py-2.5 rounded-full bg-accent-blue hover:bg-accent-blue-hover text-white font-sora font-semibold text-sm tracking-tight shadow-[0_0_20px_rgba(59,130,246,0.45)] hover:shadow-[0_0_35px_rgba(59,130,246,0.7)] active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] cursor-pointer"
-                >
-                  {isSubmitting ? (
-                    <div className="w-full flex items-center justify-center py-1">
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      )}
                     </div>
-                  ) : (
-                    <>
-                      <span>Submit Project Details</span>
-                      <div className="w-8 h-8 rounded-full bg-white/20 group-hover:bg-white/30 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5">
-                        <Send className="w-4 h-4" />
-                      </div>
-                    </>
-                  )}
-                </button>
-              </div>
 
-            </form>
-          )}
-        </div>
+                    {/* Phone input field */}
+                    <div className="relative flex-1 min-w-0">
+                      <input
+                        type="tel"
+                        required
+                        placeholder="Enter your phone number"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 hover:border-slate-300 focus:border-accent-blue focus:bg-white focus:outline-none text-slate-900 text-sm sm:text-base font-inter placeholder:text-slate-400 transition-all duration-200"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. WHAT SERVICE THEY WANT */}
+                <div className="space-y-2 text-left">
+                  <label className="block text-xs font-sora font-semibold text-slate-800">
+                    What service do you need? <span className="text-accent-blue">*</span>
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {SERVICES.map((s) => {
+                      const Icon = s.icon;
+                      const isSelected = formData.service === s.id;
+                      return (
+                        <button
+                          key={s.id}
+                          type="button"
+                          onClick={() => setFormData({ ...formData, service: s.id })}
+                          className={`flex items-start gap-3 p-3 rounded-xl border text-left transition-all duration-200 group cursor-pointer ${
+                            isSelected
+                              ? 'bg-blue-50/80 border-accent-blue text-slate-950 shadow-sm'
+                              : 'bg-slate-50 border-slate-200 hover:border-slate-300 text-slate-700'
+                          }`}
+                        >
+                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors ${
+                            isSelected 
+                              ? 'bg-accent-blue text-white' 
+                              : 'bg-white border border-slate-200 text-accent-blue group-hover:bg-blue-50'
+                          }`}>
+                            <Icon className="w-4 h-4" />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <div className="text-xs font-sora font-semibold text-slate-900 flex items-center justify-between">
+                              <span className="truncate">{s.title}</span>
+                              {isSelected && <Check className="w-3.5 h-3.5 text-accent-blue flex-shrink-0" />}
+                            </div>
+                            <p className="text-[11px] text-slate-500 font-inter mt-0.5 line-clamp-1">
+                              {s.desc}
+                            </p>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* 4. BUDGET OPTIONS */}
+                <div className="space-y-2 text-left">
+                  <label className="block text-xs font-sora font-semibold text-slate-800">
+                    Estimated Project Budget <span className="text-accent-blue">*</span>
+                  </label>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    {BUDGET_OPTIONS.map((b) => {
+                      const isSelected = formData.budget === b.id;
+                      return (
+                        <button
+                          key={b.id}
+                          type="button"
+                          onClick={() => setFormData({ ...formData, budget: b.id })}
+                          className={`p-3 rounded-xl border text-center transition-all duration-200 cursor-pointer ${
+                            isSelected
+                              ? 'bg-blue-50/80 border-accent-blue text-accent-blue shadow-sm'
+                              : 'bg-slate-50 border-slate-200 hover:border-slate-300 text-slate-700'
+                          }`}
+                        >
+                          <div className={`text-xs font-sora font-bold ${isSelected ? 'text-accent-blue' : 'text-slate-900'}`}>
+                            {b.label}
+                          </div>
+                          <div className="text-[10px] text-slate-500 font-inter mt-0.5">
+                            {b.detail}
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* SUBMIT BUTTON */}
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="group w-full inline-flex items-center justify-between pl-6 pr-2 py-2.5 rounded-full bg-slate-950 hover:bg-accent-blue text-white font-sora font-semibold text-sm tracking-tight shadow-md hover:shadow-lg active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] cursor-pointer"
+                  >
+                    {isSubmitting ? (
+                      <div className="w-full flex items-center justify-center py-1">
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      </div>
+                    ) : (
+                      <>
+                        <span>Submit Project Details</span>
+                        <div className="w-8 h-8 rounded-full bg-white/20 group-hover:bg-white/30 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5">
+                          <Send className="w-4 h-4 text-white" />
+                        </div>
+                      </>
+                    )}
+                  </button>
+                </div>
+
+              </form>
+            )}
+          </div>
 
         </div>
       </div>

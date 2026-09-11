@@ -28,7 +28,7 @@ export default function App() {
 
   return (
     <SmoothScroll>
-      <div className="relative min-h-screen bg-[#080B10] text-white font-inter flex flex-col overflow-x-hidden selection:bg-[#3B82F6] selection:text-white">
+      <div className="relative min-h-screen bg-[#FFFFFF] text-slate-900 font-inter flex flex-col overflow-x-hidden selection:bg-[#2563EB] selection:text-white">
         {/* Top Fixed Header */}
         <Navbar onOpenProjectModal={() => setIsProjectModalOpen(true)} />
 

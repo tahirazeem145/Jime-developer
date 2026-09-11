@@ -3,11 +3,11 @@ import { Instagram, Linkedin } from 'lucide-react';
 
 export default function Footer({ onOpenProjectModal }) {
   return (
-    <footer className="relative z-20 w-full bg-[#03060C] border-t border-white/10 pt-16 sm:pt-20 pb-0 overflow-hidden select-none">
+    <footer className="relative z-20 w-full bg-[#F8FAFC] border-t border-slate-200 pt-16 sm:pt-20 pb-0 overflow-hidden select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         
         {/* TOP SECTION: 4 COLUMNS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 sm:gap-12 pb-14 sm:pb-16 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 sm:gap-12 pb-14 sm:pb-16 border-b border-slate-200">
           
           {/* COLUMN 1: BRAND INFO (Spans 2 columns on large screens) */}
           <div className="lg:col-span-2 flex flex-col items-start text-left max-w-sm">
@@ -16,12 +16,12 @@ export default function Footer({ onOpenProjectModal }) {
               <img
                 src="./assets/jime-logo-white.png"
                 alt="Jime Developers"
-                className="h-8 sm:h-9 w-auto object-contain brightness-0 invert drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]"
+                className="h-8 sm:h-9 w-auto object-contain brightness-0 opacity-90"
               />
             </a>
 
             {/* Studio Description */}
-            <p className="text-xs sm:text-sm text-slate-400 font-inter leading-relaxed mb-6">
+            <p className="text-xs sm:text-sm text-slate-500 font-inter leading-relaxed mb-6">
               A web development studio building websites and apps for founders and small businesses. Based in Tamil Nadu, working with clients across India and Malaysia.
             </p>
 
@@ -32,7 +32,7 @@ export default function Footer({ onOpenProjectModal }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/10 hover:border-accent-blue/50 hover:bg-accent-blue/10 flex items-center justify-center text-slate-400 hover:text-accent-blue transition-all duration-300"
+                className="w-8 h-8 rounded-lg bg-white border border-slate-200 hover:border-accent-blue/50 hover:bg-blue-50 flex items-center justify-center text-slate-600 hover:text-accent-blue transition-all duration-300 shadow-sm"
               >
                 <Instagram className="w-4 h-4" />
               </a>
@@ -41,7 +41,7 @@ export default function Footer({ onOpenProjectModal }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/10 hover:border-accent-blue/50 hover:bg-accent-blue/10 flex items-center justify-center text-slate-400 hover:text-accent-blue transition-all duration-300"
+                className="w-8 h-8 rounded-lg bg-white border border-slate-200 hover:border-accent-blue/50 hover:bg-blue-50 flex items-center justify-center text-slate-600 hover:text-accent-blue transition-all duration-300 shadow-sm"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
@@ -50,10 +50,10 @@ export default function Footer({ onOpenProjectModal }) {
 
           {/* COLUMN 2: SERVICES */}
           <div className="flex flex-col text-left">
-            <h4 className="font-sora font-bold text-xs sm:text-sm tracking-wider uppercase text-white mb-4 sm:mb-5">
+            <h4 className="font-sora font-bold text-xs sm:text-sm tracking-wider uppercase text-slate-900 mb-4 sm:mb-5">
               SERVICES
             </h4>
-            <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-slate-400 font-inter">
+            <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-slate-500 font-inter">
               <li>
                 <a
                   href="https://www.jimedevelopers.in/web-development"
@@ -99,10 +99,10 @@ export default function Footer({ onOpenProjectModal }) {
 
           {/* COLUMN 3: COMPANY */}
           <div className="flex flex-col text-left">
-            <h4 className="font-sora font-bold text-xs sm:text-sm tracking-wider uppercase text-white mb-4 sm:mb-5">
+            <h4 className="font-sora font-bold text-xs sm:text-sm tracking-wider uppercase text-slate-900 mb-4 sm:mb-5">
               COMPANY
             </h4>
-            <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-slate-400 font-inter">
+            <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-slate-500 font-inter">
               <li>
                 <a
                   href="#home"
@@ -141,10 +141,10 @@ export default function Footer({ onOpenProjectModal }) {
 
           {/* COLUMN 4: LEGAL */}
           <div className="flex flex-col text-left">
-            <h4 className="font-sora font-bold text-xs sm:text-sm tracking-wider uppercase text-white mb-4 sm:mb-5">
+            <h4 className="font-sora font-bold text-xs sm:text-sm tracking-wider uppercase text-slate-900 mb-4 sm:mb-5">
               LEGAL
             </h4>
-            <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-slate-400 font-inter">
+            <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-slate-500 font-inter">
               <li>
                 <a
                   href="https://www.jimedevelopers.in/privacy-policy"
@@ -170,15 +170,15 @@ export default function Footer({ onOpenProjectModal }) {
 
         </div>
 
-        {/* BOTTOM METADATA BAR (LARAVEL STYLE) */}
-        <div className="pt-8 pb-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-inter">
+        {/* BOTTOM METADATA BAR */}
+        <div className="pt-8 pb-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-inter font-medium">
           <div className="flex items-center gap-6">
             <p>© 2026 Jime Developers</p>
             <a
               href="https://www.jimedevelopers.in/privacy-policy"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-slate-300 transition-colors duration-200"
+              className="hover:text-slate-900 transition-colors duration-200"
             >
               Legal
             </a>
@@ -186,15 +186,15 @@ export default function Footer({ onOpenProjectModal }) {
               href="https://www.jimedevelopers.in/terms"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-slate-300 transition-colors duration-200"
+              className="hover:text-slate-900 transition-colors duration-200"
             >
               Trust
             </a>
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-medium text-emerald-400">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-[11px] font-semibold text-emerald-700 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               All Systems Operational
             </span>
           </div>
@@ -202,8 +202,8 @@ export default function Footer({ onOpenProjectModal }) {
 
       </div>
 
-      {/* MASSIVE COLOSSAL WATERMARK WORDMARK (LARAVEL STYLE) */}
-      <div className="w-full overflow-hidden select-none pointer-events-none flex justify-center items-end border-t border-white/[0.04] bg-gradient-to-b from-transparent to-[#020408] pt-4 sm:pt-6 pb-2 sm:pb-4 px-4 sm:px-8">
+      {/* MASSIVE COLOSSAL WATERMARK WORDMARK */}
+      <div className="w-full overflow-hidden select-none pointer-events-none flex justify-center items-end border-t border-slate-200/60 bg-gradient-to-b from-transparent to-slate-100/70 pt-4 sm:pt-6 pb-2 sm:pb-4 px-4 sm:px-8">
         <svg
           viewBox="0 0 1700 220"
           className="w-full h-auto select-none pointer-events-none"
@@ -215,7 +215,7 @@ export default function Footer({ onOpenProjectModal }) {
             textAnchor="middle"
             textLength="1560"
             lengthAdjust="spacing"
-            className="font-sora font-extrabold fill-[#091122]"
+            className="font-sora font-extrabold fill-slate-200/90"
             style={{
               fontSize: '175px',
               fontFamily: 'Sora, Inter, sans-serif',

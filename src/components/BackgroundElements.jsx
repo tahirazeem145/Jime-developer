@@ -93,27 +93,27 @@ export default function BackgroundElements() {
 
       {/* Top ambient soft radial sapphire glow */}
       <div 
-        className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full opacity-20 blur-[130px]"
+        className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full opacity-60 blur-[130px]"
         style={{
-          background: 'radial-gradient(circle, rgba(59,130,246,0.22) 0%, rgba(30,58,138,0.4) 50%, transparent 80%)'
+          background: 'radial-gradient(circle, rgba(37,99,235,0.06) 0%, rgba(219,234,254,0.3) 50%, transparent 80%)'
         }}
       />
 
       {/* Right side ambient electric blue glow behind organic shapes */}
       <div 
         ref={rightGlowRef}
-        className="absolute top-[18%] -right-[10%] w-[650px] h-[650px] rounded-full opacity-25 blur-[120px] will-change-transform"
+        className="absolute top-[18%] -right-[10%] w-[650px] h-[650px] rounded-full opacity-50 blur-[120px] will-change-transform"
         style={{
-          background: 'radial-gradient(circle, rgba(59,130,246,0.28) 0%, rgba(30,58,138,0.6) 50%, transparent 75%)'
+          background: 'radial-gradient(circle, rgba(37,99,235,0.07) 0%, rgba(191,219,254,0.4) 50%, transparent 75%)'
         }}
       />
 
-      {/* Left side ambient subtle dark navy glow */}
+      {/* Left side ambient subtle light blue glow */}
       <div 
         ref={leftGlowRef}
-        className="absolute bottom-[20%] -left-[10%] w-[500px] h-[500px] rounded-full opacity-20 blur-[110px] will-change-transform"
+        className="absolute bottom-[20%] -left-[10%] w-[500px] h-[500px] rounded-full opacity-40 blur-[110px] will-change-transform"
         style={{
-          background: 'radial-gradient(circle, rgba(30,58,138,0.5) 0%, rgba(8,11,16,0.8) 70%, transparent 100%)'
+          background: 'radial-gradient(circle, rgba(219,234,254,0.5) 0%, rgba(241,245,249,0.8) 70%, transparent 100%)'
         }}
       />
 
@@ -243,7 +243,7 @@ export default function BackgroundElements() {
               <stop offset="25%" stopColor="#2563EB" stopOpacity="0.65" />
               <stop offset="60%" stopColor="#60A5FA" stopOpacity="0.95" />
               <stop offset="85%" stopColor="#3B82F6" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#080B10" stopOpacity="0" />
+              <stop offset="100%" stopColor="#2563EB" stopOpacity="0" />
             </linearGradient>
 
             <filter id="arcGlow" x="-20%" y="-20%" width="140%" height="140%">

@@ -68,7 +68,7 @@ export default function Hero({ onOpenProjectModal }) {
             href="https://www.google.com/search?q=Jime+Developers+Reviews"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-accent-blue/40 backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+            className="group inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-slate-100/90 hover:bg-slate-200/80 border border-slate-200/90 hover:border-blue-400 backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] cursor-pointer shadow-sm"
           >
             {/* Google Icon */}
             <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
@@ -91,7 +91,7 @@ export default function Hero({ onOpenProjectModal }) {
             </svg>
 
             {/* Rating Number */}
-            <span className="font-inter font-bold text-xs sm:text-sm text-main-text group-hover:text-white transition-colors">
+            <span className="font-inter font-bold text-xs sm:text-sm text-slate-900 transition-colors">
               5.0
             </span>
 
@@ -106,10 +106,10 @@ export default function Hero({ onOpenProjectModal }) {
             </div>
 
             {/* Separator Dot */}
-            <span className="text-muted-text/60 text-xs">·</span>
+            <span className="text-slate-400 text-xs">·</span>
 
             {/* Reviews Count */}
-            <span className="text-xs sm:text-sm font-inter text-muted-text group-hover:text-main-text font-normal transition-colors">
+            <span className="text-xs sm:text-sm font-inter text-slate-600 group-hover:text-slate-900 font-normal transition-colors">
               5 Google reviews
             </span>
           </a>
@@ -118,11 +118,11 @@ export default function Hero({ onOpenProjectModal }) {
         {/* MAIN HEADLINE */}
         <h1 
           ref={headlineRef}
-          className="font-sora font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-[72px] leading-[1.12] sm:leading-[1.08] tracking-[-0.03em] text-main-text max-w-4xl mx-auto will-change-transform"
+          className="font-sora font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-[72px] leading-[1.12] sm:leading-[1.08] tracking-[-0.035em] text-slate-950 max-w-4xl mx-auto will-change-transform"
         >
           We turn your idea <br className="hidden sm:inline" />
           into a{' '}
-          <span className="text-accent-blue italic font-extrabold inline-block tracking-tight drop-shadow-[0_0_25px_rgba(59,130,246,0.4)]">
+          <span className="text-accent-blue italic font-extrabold inline-block tracking-tight">
             real product.
           </span>
         </h1>
@@ -130,7 +130,7 @@ export default function Hero({ onOpenProjectModal }) {
         {/* SUBTITLE */}
         <p 
           ref={subtitleRef}
-          className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl text-muted-text max-w-2xl mx-auto font-inter font-normal leading-relaxed tracking-normal"
+          className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-inter font-normal leading-relaxed tracking-normal"
         >
           Web and mobile apps, designed and shipped fast.
         </p>
@@ -140,12 +140,12 @@ export default function Hero({ onOpenProjectModal }) {
           ref={ctaRef} 
           className="mt-7 sm:mt-9 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 max-w-lg mx-auto w-full px-2"
         >
-          {/* Primary CTA: WhatsApp (Button-in-Button Architecture) */}
+          {/* Primary CTA: WhatsApp */}
           <a
-            href="https://wa.me/"
+            href="https://api.whatsapp.com/send/?phone=918610647763&text=Hi+Jime+Developers%2C+I%27d+like+to+talk+about+a+project.&type=phone_number&app_absent=0"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative w-full sm:w-auto inline-flex items-center justify-between sm:justify-center gap-3 pl-6 pr-2 py-2 rounded-full bg-accent-blue text-white font-sora font-semibold text-xs sm:text-sm tracking-tight hover:bg-accent-blue-hover shadow-[0_0_25px_rgba(59,130,246,0.45)] hover:shadow-[0_0_40px_rgba(59,130,246,0.7)] active:scale-[0.97] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]"
+            className="group relative w-full sm:w-auto inline-flex items-center justify-between sm:justify-center gap-3 pl-6 pr-2 py-2 rounded-full bg-accent-blue text-white font-sora font-semibold text-xs sm:text-sm tracking-tight hover:bg-accent-blue-hover shadow-[0_4px_16px_rgba(37,99,235,0.3)] hover:shadow-[0_4px_24px_rgba(37,99,235,0.45)] active:scale-[0.97] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]"
           >
             <div className="flex items-center gap-2.5">
               <svg
@@ -157,11 +157,11 @@ export default function Hero({ onOpenProjectModal }) {
               <span>Chat on WhatsApp</span>
             </div>
             <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:bg-white/30">
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5 text-white" />
             </div>
           </a>
 
-          {/* Secondary CTA: Start your project (Button-in-Button Architecture) */}
+          {/* Secondary CTA: Start your project */}
           <button
             type="button"
             onClick={() => {
@@ -171,29 +171,29 @@ export default function Hero({ onOpenProjectModal }) {
                 window.dispatchEvent(new CustomEvent('open-project-modal'));
               }
             }}
-            className="group relative w-full sm:w-auto inline-flex items-center justify-between sm:justify-center gap-3 pl-6 pr-2 py-2 rounded-full bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/15 hover:border-white/30 backdrop-blur-md font-sora font-semibold text-xs sm:text-sm tracking-tight active:scale-[0.97] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] cursor-pointer"
+            className="group relative w-full sm:w-auto inline-flex items-center justify-between sm:justify-center gap-3 pl-6 pr-2 py-2 rounded-full bg-slate-950 hover:bg-slate-900 text-white font-sora font-semibold text-xs sm:text-sm tracking-tight active:scale-[0.97] transition-all duration-300 shadow-[0_4px_16px_rgba(15,23,42,0.18)] cursor-pointer"
           >
             <span>Start your project</span>
-            <div className="w-8 h-8 rounded-full bg-white/10 group-hover:bg-accent-blue/30 flex items-center justify-center text-muted-text group-hover:text-white transition-all duration-300 group-hover:translate-x-0.5">
-              <ArrowRight className="w-3.5 h-3.5" />
+            <div className="w-8 h-8 rounded-full bg-white/15 group-hover:bg-white/25 flex items-center justify-center text-white transition-all duration-300 group-hover:translate-x-0.5">
+              <ArrowRight className="w-3.5 h-3.5 text-white" />
             </div>
           </button>
         </div>
 
         {/* THREE STATS IN A MACHINED DOUBLE-BEZEL ENCLOSURE */}
         <div ref={statsRef} className="mt-10 sm:mt-14 max-w-2xl mx-auto w-full">
-          <div className="p-1 sm:p-1.5 rounded-3xl bg-white/[0.02] border border-white/10 backdrop-blur-md shadow-[0_15px_35px_rgba(0,0,0,0.5)]">
-            <div className="rounded-[calc(1.5rem-0.25rem)] bg-[#0B101D]/75 px-4 py-4 sm:py-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)]">
-              <div className="grid grid-cols-3 divide-x divide-white/10 items-center justify-center">
+          <div className="p-1 sm:p-1.5 rounded-3xl bg-slate-100/90 border border-slate-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+            <div className="rounded-[calc(1.5rem-0.25rem)] bg-white px-4 py-4 sm:py-5 border border-slate-100">
+              <div className="grid grid-cols-3 divide-x divide-slate-100 items-center justify-center">
                 {/* Stat 1 */}
                 <div 
                   ref={(el) => (statsItemsRef.current[0] = el)}
                   className="flex flex-col items-center text-center px-2 sm:px-4"
                 >
-                  <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[42px] text-accent-blue tracking-tight drop-shadow-[0_0_18px_rgba(59,130,246,0.35)]">
+                  <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[42px] text-accent-blue tracking-tight">
                     15+
                   </span>
-                  <span className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-muted-text font-inter font-medium tracking-wide">
+                  <span className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-slate-500 font-inter font-medium tracking-wide">
                     Products shipped
                   </span>
                 </div>
@@ -203,10 +203,10 @@ export default function Hero({ onOpenProjectModal }) {
                   ref={(el) => (statsItemsRef.current[1] = el)}
                   className="flex flex-col items-center text-center px-2 sm:px-4"
                 >
-                  <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[42px] text-accent-blue tracking-tight drop-shadow-[0_0_18px_rgba(59,130,246,0.35)]">
+                  <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[42px] text-accent-blue tracking-tight">
                     2+
                   </span>
-                  <span className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-muted-text font-inter font-medium tracking-wide">
+                  <span className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-slate-500 font-inter font-medium tracking-wide">
                     Years in business
                   </span>
                 </div>
@@ -216,10 +216,10 @@ export default function Hero({ onOpenProjectModal }) {
                   ref={(el) => (statsItemsRef.current[2] = el)}
                   className="flex flex-col items-center text-center px-2 sm:px-4"
                 >
-                  <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[42px] text-accent-blue tracking-tight drop-shadow-[0_0_18px_rgba(59,130,246,0.35)]">
+                  <span className="font-sora font-extrabold text-2xl sm:text-4xl lg:text-[42px] text-accent-blue tracking-tight">
                     2
                   </span>
-                  <span className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-muted-text font-inter font-medium tracking-wide">
+                  <span className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-slate-500 font-inter font-medium tracking-wide">
                     Countries
                   </span>
                 </div>

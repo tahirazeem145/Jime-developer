@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
   
   html {
@@ -28,8 +28,8 @@
   }
 
   body {
-    background-color: #080B10;
-    color: #FFFFFF;
+    background-color: #FFFFFF;
+    color: #0F172A;
     overflow-x: hidden;
     overscroll-behavior-y: none;
     -webkit-font-smoothing: antialiased;
@@ -37,124 +37,83 @@
   }
 }
 
-/* Custom Grid Effect matching Turing's subtle cyber grid */
+/* Custom Grid Effect for Editorial Clean Aesthetic */
 .cyber-grid-bottom {
   background-size: 48px 48px;
   background-image: 
-    linear-gradient(to right, rgba(59, 130, 246, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+    linear-gradient(to right, rgba(226, 232, 240, 0.6) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.6) 1px, transparent 1px);
   mask-image: radial-gradient(ellipse 70% 60% at 50% 100%, black 20%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 100%, black 20%, transparent 100%);
 }
 
-/* Turing Electric Blue Glassmorphism */
+/* Light Editorial Glassmorphism & Surfaces */
 .glass-card {
-  background: linear-gradient(145deg, rgba(13, 19, 34, 0.7) 0%, rgba(8, 12, 22, 0.8) 100%);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid #E2E8F0;
   box-shadow: 
-    0 24px 60px rgba(0, 0, 0, 0.85),
-    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.2),
-    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.5),
-    inset 0 0 20px rgba(59, 130, 246, 0.05);
+    0 10px 30px -5px rgba(15, 23, 42, 0.05),
+    0 4px 6px -2px rgba(15, 23, 42, 0.02);
 }
 
 .glass-card:hover {
-  border-color: rgba(59, 130, 246, 0.5);
+  border-color: #CBD5E1;
   box-shadow: 
-    0 30px 70px rgba(0, 0, 0, 0.95),
-    0 0 35px rgba(59, 130, 246, 0.2),
-    inset 0 1px 2.5px 0 rgba(255, 255, 255, 0.3),
-    inset 0 0 25px rgba(59, 130, 246, 0.08);
+    0 20px 35px -5px rgba(37, 99, 235, 0.08),
+    0 8px 12px -2px rgba(15, 23, 42, 0.04);
 }
 
 .glass-subcard {
-  background: linear-gradient(145deg, rgba(15, 23, 42, 0.68) 0%, rgba(10, 15, 28, 0.76) 100%);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.6),
-    inset 0 1px 1.5px rgba(255, 255, 255, 0.18),
-    inset 0 0 15px rgba(59, 130, 246, 0.03);
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
 }
 
 .glass-subcard:hover {
-  border-color: rgba(59, 130, 246, 0.4);
-  box-shadow: 
-    0 14px 40px rgba(0, 0, 0, 0.75),
-    0 0 20px rgba(59, 130, 246, 0.15),
-    inset 0 1px 2px rgba(255, 255, 255, 0.28);
+  border-color: #93C5FD;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08);
 }
 
 .glass-pill {
-  background: linear-gradient(135deg, rgba(18, 28, 51, 0.8) 0%, rgba(11, 18, 33, 0.85) 100%);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  box-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.4),
-    inset 0 1px 1.5px rgba(255, 255, 255, 0.2);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
 }
 
-/* ============================================================ */
-/* BLACK & WHITE THEME GLASSMORPHISM (Services, Projects, About) */
-/* ============================================================ */
-
+/* Editorial Minimalist Cards */
 .glass-card-bw {
-  background: linear-gradient(145deg, rgba(22, 22, 22, 0.75) 0%, rgba(10, 10, 10, 0.85) 100%);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 
-    0 24px 60px rgba(0, 0, 0, 0.9),
-    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.25),
-    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.6),
-    inset 0 0 20px rgba(255, 255, 255, 0.02);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
 }
 
 .glass-card-bw:hover {
-  border-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 
-    0 30px 70px rgba(0, 0, 0, 0.98),
-    0 0 35px rgba(255, 255, 255, 0.12),
-    inset 0 1px 2.5px 0 rgba(255, 255, 255, 0.4),
-    inset 0 0 25px rgba(255, 255, 255, 0.05);
+  border-color: #0F172A;
+  box-shadow: 0 20px 40px -5px rgba(15, 23, 42, 0.1);
 }
 
 .glass-subcard-bw {
-  background: linear-gradient(145deg, rgba(26, 26, 26, 0.7) 0%, rgba(12, 12, 12, 0.8) 100%);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.6),
-    inset 0 1px 1.5px rgba(255, 255, 255, 0.16);
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
 }
 
 .glass-subcard-bw:hover {
-  border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 
-    0 14px 40px rgba(0, 0, 0, 0.8),
-    0 0 20px rgba(255, 255, 255, 0.1),
-    inset 0 1px 2px rgba(255, 255, 255, 0.25);
+  border-color: #94A3B8;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
 }
 
 .glass-pill-bw {
-  background: linear-gradient(135deg, rgba(35, 35, 35, 0.8) 0%, rgba(18, 18, 18, 0.85) 100%);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.5),
-    inset 0 1px 1.5px rgba(255, 255, 255, 0.25);
-  color: #FFFFFF;
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  color: #0F172A;
 }
 
 /* Star glowing effect */
 .gold-star {
-  filter: drop-shadow(0 0 4px rgba(250, 204, 21, 0.5));
+  filter: drop-shadow(0 0 3px rgba(234, 179, 8, 0.4));
 }
 
 /* Animated Section Divider Effects */

@@ -72,18 +72,18 @@ export default function FAQ({ onOpenProjectModal }) {
   };
 
   return (
-    <section id="faq" className="relative w-full bg-transparent py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-white/5">
+    <section id="faq" className="relative w-full bg-transparent py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-slate-200">
       {/* Ambient background glows */}
-      <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-accent-blue/5 blur-[150px] pointer-events-none -z-10" />
-      <div className="absolute bottom-1/3 left-1/4 w-[450px] h-[450px] rounded-full bg-primary-blue/5 blur-[130px] pointer-events-none -z-10" />
+      <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-[150px] pointer-events-none -z-10" />
+      <div className="absolute bottom-1/3 left-1/4 w-[450px] h-[450px] rounded-full bg-blue-600/5 blur-[130px] pointer-events-none -z-10" />
 
       <div className="max-w-4xl mx-auto relative z-10 text-center">
         
         {/* Eyebrow badge */}
-        <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-3.5">
+        <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-3.5">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-blue opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-blue shadow-[0_0_8px_rgba(59,130,246,0.9)]"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-blue shadow-[0_0_8px_rgba(37,99,235,0.8)]"></span>
           </span>
           <span className="text-xs font-sora font-semibold tracking-wider uppercase text-accent-blue">
             Questions & Answers
@@ -91,18 +91,18 @@ export default function FAQ({ onOpenProjectModal }) {
         </div>
 
         {/* Section Headline */}
-        <h2 className="font-sora font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[48px] leading-[1.12] text-white tracking-tight">
+        <h2 className="font-sora font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[48px] leading-[1.12] text-slate-950 tracking-tight">
           Frequently Asked{' '}
-          <span className="text-accent-blue italic drop-shadow-[0_0_25px_rgba(59,130,246,0.35)]">
+          <span className="text-accent-blue italic">
             Questions.
           </span>
         </h2>
         
-        <p className="mt-3.5 text-sm sm:text-base text-muted-text font-inter max-w-xl mx-auto leading-relaxed">
+        <p className="mt-3.5 text-sm sm:text-base text-slate-500 font-inter max-w-xl mx-auto leading-relaxed">
           Everything you need to know about our engineering process, pricing, timelines, and post-launch support.
         </p>
 
-        {/* ACCORDION LIST (DOPPELRAND DOUBLE-BEZEL CARDS) */}
+        {/* ACCORDION LIST */}
         <div className="mt-12 sm:mt-16 space-y-3.5 text-left">
           {FAQ_ITEMS.map((item, index) => {
             const isOpen = openIndex === index;
@@ -111,12 +111,12 @@ export default function FAQ({ onOpenProjectModal }) {
                 key={item.id}
                 className={`p-1 rounded-2xl transition-all duration-300 ${
                   isOpen
-                    ? 'bg-white/[0.05] border border-accent-blue/40 shadow-[0_10px_30px_rgba(59,130,246,0.12)]'
-                    : 'bg-white/[0.02] border border-white/10 hover:border-white/20 hover:bg-white/[0.03]'
+                    ? 'bg-slate-50 border border-accent-blue/50 shadow-[0_4px_20px_rgba(37,99,235,0.08)]'
+                    : 'bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50/50 shadow-sm'
                 }`}
               >
                 {/* Inner Core Container */}
-                <div className="rounded-[calc(1rem-0.125rem)] bg-[#0B101D]/85 overflow-hidden transition-colors">
+                <div className="rounded-[calc(1rem-0.125rem)] bg-white overflow-hidden transition-colors border border-slate-100">
                   <button
                     type="button"
                     onClick={() => toggleFAQ(index)}
@@ -124,11 +124,11 @@ export default function FAQ({ onOpenProjectModal }) {
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-center gap-3.5 min-w-0">
-                      <span className="font-sora text-xs font-bold text-accent-blue/80 min-w-[24px]">
+                      <span className="font-sora text-xs font-bold text-accent-blue min-w-[24px]">
                         {index + 1 < 10 ? `0${index + 1}` : index + 1}
                       </span>
                       <span className={`font-sora text-sm sm:text-base font-semibold transition-colors duration-300 ${
-                        isOpen ? 'text-accent-blue' : 'text-white group-hover:text-[#93C5FD]'
+                        isOpen ? 'text-accent-blue' : 'text-slate-900 group-hover:text-accent-blue'
                       }`}>
                         {item.question}
                       </span>
@@ -136,16 +136,16 @@ export default function FAQ({ onOpenProjectModal }) {
 
                     <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
                       isOpen
-                        ? 'bg-accent-blue text-white rotate-180 shadow-[0_0_12px_rgba(59,130,246,0.5)]'
-                        : 'bg-white/[0.06] text-muted-text group-hover:text-white group-hover:bg-white/[0.12]'
+                        ? 'bg-accent-blue text-white rotate-180 shadow-sm'
+                        : 'bg-slate-100 text-slate-500 group-hover:text-slate-900 group-hover:bg-slate-200'
                     }`}>
                       <ChevronDown className="w-4 h-4 transition-transform duration-300" />
                     </div>
                   </button>
 
-                  {/* Expandable Answer Block with Custom Animation */}
+                  {/* Expandable Answer Block */}
                   {isOpen && (
-                    <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 text-xs sm:text-sm text-slate-300 font-inter leading-relaxed pl-12 sm:pl-14 border-t border-white/5 animate-fadeIn">
+                    <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 text-xs sm:text-sm text-slate-600 font-inter leading-relaxed pl-12 sm:pl-14 border-t border-slate-100 animate-fadeIn">
                       <p>{item.answer}</p>
                     </div>
                   )}
@@ -156,17 +156,17 @@ export default function FAQ({ onOpenProjectModal }) {
         </div>
 
         {/* BOTTOM CALLOUT / CONTACT PROMPT */}
-        <div className="mt-14 sm:mt-18 p-1 sm:p-1.5 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-md max-w-2xl mx-auto shadow-[0_15px_40px_rgba(0,0,0,0.6)]">
-          <div className="rounded-[calc(1.5rem-0.25rem)] bg-[#0B101D]/90 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)]">
+        <div className="mt-14 sm:mt-18 p-1 sm:p-1.5 rounded-3xl bg-slate-50 border border-slate-200 max-w-2xl mx-auto shadow-sm">
+          <div className="rounded-[calc(1.5rem-0.25rem)] bg-white p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left border border-slate-100">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-accent-blue/15 border border-accent-blue/30 flex items-center justify-center text-accent-blue flex-shrink-0 shadow-blue-glow">
+              <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center text-accent-blue flex-shrink-0 shadow-sm">
                 <MessageSquare className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-sora font-bold text-base sm:text-lg text-white">
+                <h3 className="font-sora font-bold text-base sm:text-lg text-slate-900">
                   Still have questions?
                 </h3>
-                <p className="text-xs sm:text-sm text-muted-text font-inter mt-0.5">
+                <p className="text-xs sm:text-sm text-slate-500 font-inter mt-0.5">
                   We're ready to answer your specific technical requirements.
                 </p>
               </div>
@@ -181,11 +181,11 @@ export default function FAQ({ onOpenProjectModal }) {
                   window.dispatchEvent(new CustomEvent('open-project-modal'));
                 }
               }}
-              className="group inline-flex items-center justify-between gap-3 pl-5 pr-1.5 py-2 rounded-full bg-accent-blue hover:bg-accent-blue-hover text-white font-sora font-semibold text-xs sm:text-sm tracking-tight shadow-[0_0_20px_rgba(59,130,246,0.45)] hover:shadow-[0_0_30px_rgba(59,130,246,0.7)] active:scale-[0.98] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] cursor-pointer flex-shrink-0 w-full sm:w-auto"
+              className="group inline-flex items-center justify-between gap-3 pl-5 pr-1.5 py-2 rounded-full bg-slate-950 hover:bg-accent-blue text-white font-sora font-semibold text-xs sm:text-sm tracking-tight shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] cursor-pointer flex-shrink-0 w-full sm:w-auto"
             >
               <span>Get in touch</span>
               <div className="w-7 h-7 rounded-full bg-white/20 group-hover:bg-white/30 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5">
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3.5 h-3.5 text-white" />
               </div>
             </button>
           </div>

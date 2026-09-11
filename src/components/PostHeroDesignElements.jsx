@@ -22,8 +22,8 @@ export default function PostHeroDesignElements() {
       </div>
 
       {/* Ambient Blue Radial Glows for upper sections only */}
-      <div className="absolute top-[18%] left-1/4 w-[650px] h-[650px] rounded-full bg-accent-blue/12 blur-[150px] pointer-events-none" />
-      <div className="absolute top-[55%] right-1/4 w-[600px] h-[600px] rounded-full bg-primary-blue/12 blur-[140px] pointer-events-none" />
+      <div className="absolute top-[18%] left-1/4 w-[650px] h-[650px] rounded-full bg-blue-500/[0.04] blur-[150px] pointer-events-none" />
+      <div className="absolute top-[55%] right-1/4 w-[600px] h-[600px] rounded-full bg-blue-600/[0.03] blur-[140px] pointer-events-none" />
 
     </div>
   );

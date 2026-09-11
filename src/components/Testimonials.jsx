@@ -55,8 +55,8 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="relative w-full bg-transparent py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden select-none">
       {/* Ambient background glows */}
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-accent-blue/5 blur-[140px] pointer-events-none -z-10" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-primary-blue/5 blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-blue-600/5 blur-[120px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         
@@ -64,10 +64,10 @@ export default function Testimonials() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 sm:mb-16">
           <div className="max-w-2xl text-left">
             {/* Eyebrow badge */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-3.5">
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-3.5">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-blue opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-blue shadow-[0_0_8px_rgba(59,130,246,0.9)]"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-blue shadow-[0_0_8px_rgba(37,99,235,0.8)]"></span>
               </span>
               <span className="text-xs font-sora font-semibold tracking-wider uppercase text-accent-blue">
                 Testimonials
@@ -75,13 +75,13 @@ export default function Testimonials() {
             </div>
 
             {/* Main Title */}
-            <h2 className="font-sora font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[50px] leading-[1.12] text-white tracking-tight">
+            <h2 className="font-sora font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[50px] leading-[1.12] text-slate-950 tracking-tight">
               Don't take our word{' '}
-              <span className="text-accent-blue italic drop-shadow-[0_0_25px_rgba(59,130,246,0.35)]">
+              <span className="text-accent-blue italic">
                 for it.
               </span>
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-muted-text font-inter max-w-xl leading-relaxed">
+            <p className="mt-3 text-sm sm:text-base text-slate-500 font-inter max-w-xl leading-relaxed">
               Read direct feedback from founders and engineering leaders across India and Malaysia who built and shipped with Jime Developers.
             </p>
           </div>
@@ -89,16 +89,16 @@ export default function Testimonials() {
           {/* TWO HIGHLIGHT METRIC PILLS */}
           <div className="flex flex-wrap sm:flex-nowrap items-center gap-3.5 sm:gap-4 self-start lg:self-end">
             {/* Stat Pill 1: 15+ Projects delivered */}
-            <div className="p-1 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-              <div className="rounded-[calc(1rem-0.125rem)] bg-[#0B101D]/80 px-4 py-3 sm:px-5 sm:py-3.5 flex items-center gap-3">
-                <div className="font-sora font-extrabold text-2xl sm:text-3xl text-accent-blue tracking-tight drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+            <div className="p-1 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+              <div className="rounded-[calc(1rem-0.125rem)] bg-white px-4 py-3 sm:px-5 sm:py-3.5 flex items-center gap-3 border border-slate-100">
+                <div className="font-sora font-extrabold text-2xl sm:text-3xl text-accent-blue tracking-tight">
                   15+
                 </div>
                 <div className="text-left">
-                  <div className="text-xs sm:text-sm font-sora font-bold text-white leading-tight">
+                  <div className="text-xs sm:text-sm font-sora font-bold text-slate-900 leading-tight">
                     Projects
                   </div>
-                  <div className="text-[11px] text-muted-text font-inter">
+                  <div className="text-[11px] text-slate-500 font-inter font-medium">
                     Delivered with excellence
                   </div>
                 </div>
@@ -106,16 +106,16 @@ export default function Testimonials() {
             </div>
 
             {/* Stat Pill 2: 100% Launched on schedule */}
-            <div className="p-1 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-              <div className="rounded-[calc(1rem-0.125rem)] bg-[#0B101D]/80 px-4 py-3 sm:px-5 sm:py-3.5 flex items-center gap-3">
-                <div className="font-sora font-extrabold text-2xl sm:text-3xl text-[#34D399] tracking-tight drop-shadow-[0_0_15px_rgba(52,211,153,0.3)]">
+            <div className="p-1 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+              <div className="rounded-[calc(1rem-0.125rem)] bg-white px-4 py-3 sm:px-5 sm:py-3.5 flex items-center gap-3 border border-slate-100">
+                <div className="font-sora font-extrabold text-2xl sm:text-3xl text-emerald-600 tracking-tight">
                   100%
                 </div>
                 <div className="text-left">
-                  <div className="text-xs sm:text-sm font-sora font-bold text-white leading-tight">
+                  <div className="text-xs sm:text-sm font-sora font-bold text-slate-900 leading-tight">
                     On Schedule
                   </div>
-                  <div className="text-[11px] text-muted-text font-inter">
+                  <div className="text-[11px] text-slate-500 font-inter font-medium">
                     Reliable milestone delivery
                   </div>
                 </div>
@@ -129,24 +129,24 @@ export default function Testimonials() {
           
           {/* FEATURED LEFT HERO TESTIMONIAL CARD (col-span-7) */}
           {featuredReview && (
-            <div className="lg:col-span-7 p-1.5 sm:p-2 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-accent-blue/40 shadow-[0_20px_50px_rgba(0,0,0,0.8)] transition-all duration-500 flex flex-col">
-              <div className="rounded-[calc(2rem-0.375rem)] bg-[#0B101D]/90 p-6 sm:p-8 flex flex-col justify-between flex-grow shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] text-left">
+            <div className="lg:col-span-7 p-1.5 sm:p-2 rounded-[2rem] bg-slate-50 border border-slate-200 hover:border-accent-blue/40 shadow-[0_10px_30px_rgba(15,23,42,0.04)] transition-all duration-500 flex flex-col">
+              <div className="rounded-[calc(2rem-0.375rem)] bg-white p-6 sm:p-8 flex flex-col justify-between flex-grow border border-slate-100 shadow-sm text-left">
                 
                 <div>
                   {/* Top Bar: Stars + Verified Google Review Badge */}
-                  <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-white/10">
+                  <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-slate-100">
                     <div className="flex items-center gap-1">
                       {[...Array(featuredReview.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-[#FBBF24] text-[#FBBF24] gold-star" />
+                        <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400 gold-star" />
                       ))}
-                      <span className="ml-2 font-sora font-bold text-sm text-white">5.0</span>
+                      <span className="ml-2 font-sora font-bold text-sm text-slate-900">5.0</span>
                     </div>
 
                     <a
                       href={featuredReview.verifiedLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-accent-blue/40 text-xs font-inter font-medium text-[#93C5FD] transition-all duration-300"
+                      className="group/link inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 hover:bg-blue-100 border border-blue-200 text-xs font-inter font-semibold text-blue-700 transition-all duration-300 shadow-sm"
                     >
                       <svg className="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24">
                         <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -155,19 +155,19 @@ export default function Testimonials() {
                         <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                       </svg>
                       <span>Verified Google Review</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 text-blue-600" />
                     </a>
                   </div>
 
                   {/* Project Tag Mention */}
-                  <div className="mt-4 flex items-center gap-2 max-w-full px-3 py-1.5 rounded-lg bg-accent-blue/10 border border-accent-blue/20 text-accent-blue text-xs font-inter font-medium min-w-0 overflow-hidden">
-                    <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0" />
+                  <div className="mt-4 flex items-center gap-2 max-w-full px-3 py-1.5 rounded-lg bg-blue-50 border border-blue-200 text-blue-800 text-xs font-inter font-semibold min-w-0 overflow-hidden">
+                    <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 text-accent-blue" />
                     <span className="truncate min-w-0 flex-1">{featuredReview.project}</span>
                   </div>
 
                   {/* Detailed Review Quote */}
                   <div className="mt-5">
-                    <div className="space-y-3.5 font-inter text-sm sm:text-[15px] text-slate-200 leading-relaxed pl-4 border-l-2 border-accent-blue/50">
+                    <div className="space-y-3.5 font-inter text-sm sm:text-[15px] text-slate-700 leading-relaxed pl-4 border-l-2 border-accent-blue">
                       {featuredReview.quote.split('\n\n').map((paragraph, idx) => (
                         <p key={idx}>{paragraph}</p>
                       ))}
@@ -176,32 +176,32 @@ export default function Testimonials() {
                 </div>
 
                 {/* Author Profile Footer */}
-                <div className="mt-8 pt-5 border-t border-white/10 flex items-center justify-between gap-4">
+                <div className="mt-8 pt-5 border-t border-slate-100 flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3.5">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent-blue to-[#1D4ED8] flex items-center justify-center font-sora font-extrabold text-white text-base shadow-[0_0_15px_rgba(59,130,246,0.4)]">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent-blue to-blue-700 flex items-center justify-center font-sora font-extrabold text-white text-base shadow-sm">
                       PR
                     </div>
                     <div>
-                      <div className="font-sora font-bold text-base text-white flex items-center gap-1.5">
+                      <div className="font-sora font-bold text-base text-slate-900 flex items-center gap-1.5">
                         <span>{featuredReview.name}</span>
                         <span className="text-sm">{featuredReview.flag}</span>
                       </div>
-                      <div className="text-xs text-muted-text font-inter">
+                      <div className="text-xs text-slate-500 font-inter font-medium">
                         {featuredReview.location}
                       </div>
                     </div>
                   </div>
 
-                  {/* External Review CTA Button-in-Button */}
+                  {/* External Review CTA */}
                   <a
                     href={featuredReview.verifiedLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/btn inline-flex items-center gap-2 pl-4 pr-1.5 py-1.5 rounded-full bg-white/[0.05] hover:bg-accent-blue text-xs font-sora font-semibold text-white border border-white/10 hover:border-transparent transition-all duration-300"
+                    className="group/btn inline-flex items-center gap-2 pl-4 pr-1.5 py-1.5 rounded-full bg-slate-100 hover:bg-accent-blue text-xs font-sora font-semibold text-slate-800 hover:text-white border border-slate-200 hover:border-transparent transition-all duration-300 shadow-sm"
                   >
                     <span className="hidden sm:inline">View on Google</span>
-                    <div className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center transition-transform duration-300 group-hover/btn:translate-x-0.5">
-                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    <div className="w-6 h-6 rounded-full bg-white/80 group-hover/btn:bg-white/20 flex items-center justify-center transition-transform duration-300 group-hover/btn:translate-x-0.5">
+                      <ArrowUpRight className="w-3.5 h-3.5 text-slate-700 group-hover/btn:text-white" />
                     </div>
                   </a>
                 </div>
@@ -215,37 +215,37 @@ export default function Testimonials() {
             {otherReviews.map((review) => (
               <div
                 key={review.id}
-                className="p-1.5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accent-blue/35 shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-300 flex flex-col flex-1"
+                className="p-1.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-accent-blue/35 shadow-[0_4px_15px_rgba(15,23,42,0.03)] transition-all duration-300 flex flex-col flex-1"
               >
-                <div className="rounded-[calc(1rem-0.125rem)] bg-[#0B101D]/85 p-5 sm:p-6 flex flex-col justify-between flex-grow shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)] text-left">
+                <div className="rounded-[calc(1rem-0.125rem)] bg-white p-5 sm:p-6 flex flex-col justify-between flex-grow border border-slate-100 shadow-sm text-left">
                   
                   <div>
                     {/* Stars + Verified Tag */}
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-0.5">
                         {[...Array(review.rating)].map((_, i) => (
-                          <Star key={i} className="w-3.5 h-3.5 fill-[#FBBF24] text-[#FBBF24] gold-star" />
+                          <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400 gold-star" />
                         ))}
                       </div>
-                      <span className="text-[11px] font-inter font-medium text-muted-text px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/5">
+                      <span className="text-[11px] font-inter font-semibold text-slate-600 px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200">
                         {review.verifiedSource}
                       </span>
                     </div>
 
                     {/* Short Quote */}
-                    <p className="font-inter text-sm sm:text-base text-[#F8FAFC] leading-relaxed font-medium">
+                    <p className="font-inter text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
                       "{review.quote}"
                     </p>
                   </div>
 
                   {/* Author Bar */}
-                  <div className="mt-4 pt-3.5 border-t border-white/10 flex items-center justify-between">
+                  <div className="mt-4 pt-3.5 border-t border-slate-100 flex items-center justify-between">
                     <div>
-                      <div className="font-sora font-bold text-sm text-white flex items-center gap-1.5">
+                      <div className="font-sora font-bold text-sm text-slate-900 flex items-center gap-1.5">
                         <span>{review.name}</span>
                         <span className="text-xs">{review.flag}</span>
                       </div>
-                      <div className="text-[11px] text-muted-text font-inter">
+                      <div className="text-[11px] text-slate-500 font-inter font-medium">
                         {review.location}
                       </div>
                     </div>

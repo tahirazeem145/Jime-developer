@@ -146,22 +146,22 @@ export default function ScrollProgressBall() {
         title="Scroll Progress (Click to jump)"
       >
         {/* Background Track Rail */}
-        <div className="w-[2px] h-full bg-white/[0.08] group-hover:bg-white/[0.15] rounded-full transition-colors duration-300 relative">
+        <div className="w-[2px] h-full bg-slate-200 group-hover:bg-slate-300 rounded-full transition-colors duration-300 relative">
           
-          {/* Active Glowing Laser Progress Line (Zero CSS transition delay for 1:1 real-time lockstep) */}
+          {/* Active Glowing Laser Progress Line */}
           <div 
             ref={lineRef}
-            className="w-[2.5px] -left-[0.25px] absolute top-0 bg-gradient-to-b from-[#38BDF8] via-[#3B82F6] to-[#60A5FA] rounded-full shadow-[0_0_12px_rgba(59,130,246,0.95)]"
+            className="w-[2.5px] -left-[0.25px] absolute top-0 bg-gradient-to-b from-sky-400 via-accent-blue to-blue-700 rounded-full shadow-sm"
             style={{ height: '0%' }}
           />
 
           {/* Section Milestone Dots */}
-          <div className="absolute top-0 -left-[2px] w-1.5 h-1.5 rounded-full bg-accent-blue/50 border border-white/30" title="Hero" />
-          <div className="absolute top-[20%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="Projects" />
-          <div className="absolute top-[40%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="Testimonials" />
-          <div className="absolute top-[60%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="FAQ" />
-          <div className="absolute top-[80%] -left-[2px] w-1.5 h-1.5 rounded-full bg-white/25 border border-white/20" title="Guides / Blog" />
-          <div className="absolute bottom-0 -left-[2px] w-1.5 h-1.5 rounded-full bg-accent-blue border border-white/40 shadow-blue-glow" title="Contact Us" />
+          <div className="absolute top-0 -left-[2px] w-1.5 h-1.5 rounded-full bg-accent-blue border border-white" title="Hero" />
+          <div className="absolute top-[20%] -left-[2px] w-1.5 h-1.5 rounded-full bg-slate-300 border border-white" title="Projects" />
+          <div className="absolute top-[40%] -left-[2px] w-1.5 h-1.5 rounded-full bg-slate-300 border border-white" title="Testimonials" />
+          <div className="absolute top-[60%] -left-[2px] w-1.5 h-1.5 rounded-full bg-slate-300 border border-white" title="FAQ" />
+          <div className="absolute top-[80%] -left-[2px] w-1.5 h-1.5 rounded-full bg-slate-300 border border-white" title="Guides / Blog" />
+          <div className="absolute bottom-0 -left-[2px] w-1.5 h-1.5 rounded-full bg-accent-blue border border-white shadow-sm" title="Contact Us" />
         </div>
 
         {/* 3D FLOATING GLOWING SAPPHIRE BALL / SPHERE (Compact & refined) */}
@@ -178,7 +178,7 @@ export default function ScrollProgressBall() {
           <div 
             ref={glowRef}
             className={`absolute inset-0 rounded-full bg-[#3B82F6] blur-[6px] sm:blur-[8px] pointer-events-none transition-opacity duration-200 ${
-              isScrolling || isHovered ? 'opacity-90 scale-125' : 'opacity-65'
+              isScrolling || isHovered ? 'opacity-80 scale-125' : 'opacity-50'
             }`}
           />
 
@@ -187,10 +187,10 @@ export default function ScrollProgressBall() {
             viewBox="0 0 100 100" 
             fill="none" 
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full relative z-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] filter"
+            className="w-full h-full relative z-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)] filter"
           >
             <defs>
-              {/* 3D Sphere 3-Point Light Shader matching Hero & Reference */}
+              {/* 3D Sphere 3-Point Light Shader */}
               <radialGradient id="scrollSphere3D" cx="34%" cy="30%" r="68%">
                 <stop offset="0%" stopColor="#FFFFFF" />
                 <stop offset="20%" stopColor="#BAE6FD" />
@@ -248,11 +248,11 @@ export default function ScrollProgressBall() {
           </svg>
 
           {/* Hover / Scroll Progress & Section Indicator Tooltip */}
-          <div className={`absolute right-full top-1/2 -translate-y-1/2 mr-3 px-2.5 py-1 rounded-lg bg-[#0B101D]/90 border border-accent-blue/30 backdrop-blur-md shadow-lg pointer-events-none transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap ${
+          <div className={`absolute right-full top-1/2 -translate-y-1/2 mr-3 px-2.5 py-1 rounded-lg bg-white/95 border border-slate-200 backdrop-blur-md shadow-lg pointer-events-none transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap ${
             isHovered || isScrolling ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'
           }`}>
             <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
-            <span className="text-[11px] font-sora font-semibold text-white">
+            <span className="text-[11px] font-sora font-bold text-slate-900">
               {activeSection}
             </span>
             <span className="text-[10px] font-inter text-accent-blue font-bold ml-0.5">
