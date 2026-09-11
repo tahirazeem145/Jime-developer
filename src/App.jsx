@@ -42,11 +42,11 @@ export default function App() {
             <Hero onOpenProjectModal={() => setIsProjectModalOpen(true)} />
           </div>
 
-          {/* 2nd SECTION: Projects Section */}
-          <Projects />
-
-          {/* 3rd SECTION: Proudly Worked With / Client Trust Marquee */}
+          {/* 2nd SECTION: Proudly Worked With / Client Trust Marquee */}
           <TrustedBy />
+
+          {/* 3rd SECTION: Projects Section */}
+          <Projects />
 
           {/* 4th SECTION: Verified Client Testimonials */}
           <Testimonials />

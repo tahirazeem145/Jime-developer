@@ -131,7 +131,7 @@ export default function Navbar({ onOpenProjectModal }) {
                         {/* Header bar inside mega menu */}
                         <div className="flex items-center justify-between pb-3 mb-3 border-b px-1 border-white/10">
                           <span className="text-xs font-sora font-semibold tracking-wider uppercase text-accent-blue">
-                            Our Core Services
+                            Our Services
                           </span>
                           <span className="text-xs font-inter text-muted-text">
                             Custom Web & App Engineering
