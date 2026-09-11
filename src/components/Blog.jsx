@@ -99,20 +99,15 @@ export default function Blog({ onOpenProjectModal }) {
           </div>
 
           {/* View all blogs CTA link */}
-          <button
-            type="button"
-            onClick={() => {
-              if (onOpenProjectModal) {
-                onOpenProjectModal();
-              } else {
-                window.dispatchEvent(new CustomEvent('open-project-modal'));
-              }
-            }}
+          <a
+            href="https://www.jimedevelopers.in/blog"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm sm:text-base font-sora font-semibold text-accent-blue hover:text-accent-cyan transition-colors cursor-pointer group flex-shrink-0 self-start md:self-end"
           >
             <span>View all blogs</span>
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </button>
+          </a>
         </div>
 
         {/* BLOG CARDS GRID */}
