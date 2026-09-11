@@ -55,8 +55,11 @@ export default function ContactCTA() {
         
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-3.5">
-            <Sparkles className="w-3.5 h-3.5 text-accent-blue" />
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-3.5">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-blue opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-blue shadow-[0_0_8px_rgba(59,130,246,0.9)]"></span>
+            </span>
             <span className="text-xs font-sora font-semibold tracking-wider uppercase text-accent-blue">
               CONTACT US
             </span>
