@@ -157,9 +157,9 @@ export default function Testimonials() {
                   </div>
 
                   {/* Project Tag Mention */}
-                  <div className="mt-4 inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-accent-blue/10 border border-accent-blue/20 text-accent-blue text-xs font-inter font-medium">
+                  <div className="mt-4 flex items-center gap-2 max-w-full px-3 py-1.5 rounded-lg bg-accent-blue/10 border border-accent-blue/20 text-accent-blue text-xs font-inter font-medium min-w-0 overflow-hidden">
                     <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0" />
-                    <span className="truncate">{featuredReview.project}</span>
+                    <span className="truncate min-w-0 flex-1">{featuredReview.project}</span>
                   </div>
 
                   {/* Detailed Review Quote */}
