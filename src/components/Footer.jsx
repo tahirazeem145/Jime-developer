@@ -203,22 +203,24 @@ export default function Footer({ onOpenProjectModal }) {
       </div>
 
       {/* MASSIVE COLOSSAL WATERMARK WORDMARK (LARAVEL STYLE) */}
-      <div className="w-full overflow-hidden select-none pointer-events-none flex justify-center items-end border-t border-white/[0.04] bg-gradient-to-b from-transparent to-[#020408] pt-4 sm:pt-6 pb-2 sm:pb-4 px-2 sm:px-6">
+      <div className="w-full overflow-hidden select-none pointer-events-none flex justify-center items-end border-t border-white/[0.04] bg-gradient-to-b from-transparent to-[#020408] pt-4 sm:pt-6 pb-2 sm:pb-4 px-4 sm:px-8">
         <svg
-          viewBox="0 0 1400 220"
-          className="w-full h-auto max-w-full select-none pointer-events-none"
+          viewBox="0 0 1700 220"
+          className="w-full h-auto select-none pointer-events-none"
           aria-hidden="true"
         >
           <text
             x="50%"
-            y="82%"
+            y="80%"
             textAnchor="middle"
-            className="font-sora font-extrabold fill-[#091122] tracking-tighter"
+            textLength="1560"
+            lengthAdjust="spacing"
+            className="font-sora font-extrabold fill-[#091122]"
             style={{
-              fontSize: '196px',
+              fontSize: '175px',
               fontFamily: 'Sora, Inter, sans-serif',
               fontWeight: 800,
-              letterSpacing: '-0.04em',
+              letterSpacing: '-0.03em',
             }}
           >
             Jime Developers
