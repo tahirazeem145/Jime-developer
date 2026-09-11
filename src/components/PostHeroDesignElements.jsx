@@ -8,31 +8,32 @@ export default function PostHeroDesignElements() {
       {/* 1. TOP POST-HERO AREA (Around TrustedBy & Projects Entrance) */}
       {/* ========================================================================= */}
 
-      {/* Left 3D Sweeping Electric Blue Ribbon Wave */}
-      <div className="absolute left-0 top-[2%] w-[280px] sm:w-[420px] lg:w-[540px] h-[600px] opacity-85 sm:opacity-95 pointer-events-none">
+      {/* Left 3D Slim Electric Blue Crescent Wave (Flush on the left border, compact) */}
+      <div className="absolute left-0 top-[3%] w-[70px] sm:w-[105px] lg:w-[135px] h-[220px] sm:h-[290px] lg:h-[330px] pointer-events-none opacity-90">
         <svg
-          viewBox="0 0 500 650"
+          viewBox="0 0 140 330"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full object-contain object-left"
+          className="w-full h-full object-fill object-left"
+          preserveAspectRatio="none"
         >
           <defs>
-            <linearGradient id="postHeroWaveGrad" x1="0" y1="100" x2="450" y2="500" gradientUnits="userSpaceOnUse">
+            <linearGradient id="leftBorderWaveGrad1" x1="0" y1="0" x2="140" y2="165" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#1E3A8A" stopOpacity="0.85" />
-              <stop offset="30%" stopColor="#2563EB" stopOpacity="0.9" />
-              <stop offset="70%" stopColor="#3B82F6" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#080B10" stopOpacity="0" />
+              <stop offset="35%" stopColor="#2563EB" stopOpacity="0.9" />
+              <stop offset="80%" stopColor="#3B82F6" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#080B10" stopOpacity="0.2" />
             </linearGradient>
 
-            <linearGradient id="postHeroWaveRim" x1="0" y1="120" x2="420" y2="480" gradientUnits="userSpaceOnUse">
+            <linearGradient id="leftBorderWaveRim1" x1="0" y1="0" x2="140" y2="165" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.95" />
               <stop offset="25%" stopColor="#BAE6FD" stopOpacity="0.95" />
-              <stop offset="60%" stopColor="#60A5FA" stopOpacity="0.9" />
+              <stop offset="65%" stopColor="#60A5FA" stopOpacity="0.9" />
               <stop offset="100%" stopColor="#1D4ED8" stopOpacity="0.3" />
             </linearGradient>
 
-            <filter id="postHeroGlow" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="7" result="blur" />
+            <filter id="borderGlow" x="-20%" y="-20%" width="150%" height="140%">
+              <feGaussianBlur stdDeviation="5" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
@@ -40,75 +41,75 @@ export default function PostHeroDesignElements() {
             </filter>
           </defs>
 
-          {/* 3D Wave Body */}
+          {/* 3D Wave Body - Perfectly flush on the left border (x=0) */}
           <path
-            d="M -10 80 C 180 120 320 260 260 440 C 220 540 80 600 -10 640 Z"
-            fill="url(#postHeroWaveGrad)"
+            d="M 0 0 C 75 35 130 95 130 165 C 130 235 75 295 0 330 Z"
+            fill="url(#leftBorderWaveGrad1)"
           />
-          {/* Glowing Top Rim Edge */}
+          {/* Glowing Electric Rim Edge */}
           <path
-            d="M -10 80 C 180 120 320 260 260 440 C 220 540 80 600 -10 640"
-            stroke="url(#postHeroWaveRim)"
-            strokeWidth="3"
+            d="M 0 0 C 75 35 130 95 130 165 C 130 235 75 295 0 330"
+            stroke="url(#leftBorderWaveRim1)"
+            strokeWidth="2.5"
             strokeLinecap="round"
-            filter="url(#postHeroGlow)"
+            filter="url(#borderGlow)"
           />
         </svg>
       </div>
 
-      {/* Right 3D Floating Sapphire Box / Prism at Projects Section */}
-      <div className="absolute right-0 top-[14%] w-[260px] sm:w-[380px] lg:w-[480px] h-[520px] pointer-events-none">
+      {/* Right 3D Compact Floating Sapphire Prism at Projects Section */}
+      <div className="absolute right-0 top-[15%] w-[160px] sm:w-[220px] lg:w-[280px] h-[280px] sm:h-[360px] pointer-events-none opacity-85">
         <svg
-          viewBox="0 0 500 550"
+          viewBox="0 0 300 380"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="w-full h-full object-contain object-right"
         >
           <defs>
-            <linearGradient id="boxFrontGrad" x1="160" y1="140" x2="380" y2="360" gradientUnits="userSpaceOnUse">
+            <linearGradient id="boxFrontGrad" x1="80" y1="80" x2="260" y2="260" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.4" />
               <stop offset="60%" stopColor="#1D4ED8" stopOpacity="0.3" />
               <stop offset="100%" stopColor="#0B132B" stopOpacity="0.7" />
             </linearGradient>
 
-            <linearGradient id="boxTopGrad" x1="180" y1="80" x2="420" y2="200" gradientUnits="userSpaceOnUse">
+            <linearGradient id="boxTopGrad" x1="100" y1="40" x2="280" y2="140" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#93C5FD" stopOpacity="0.55" />
               <stop offset="100%" stopColor="#2563EB" stopOpacity="0.25" />
             </linearGradient>
 
-            <linearGradient id="boxEdgeRim" x1="160" y1="80" x2="420" y2="380" gradientUnits="userSpaceOnUse">
+            <linearGradient id="boxEdgeRim" x1="80" y1="40" x2="280" y2="280" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.95" />
               <stop offset="40%" stopColor="#60A5FA" stopOpacity="0.85" />
               <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.35" />
             </linearGradient>
           </defs>
 
-          {/* 3D Geometric Isometric Glass Box Facets */}
+          {/* 3D Geometric Isometric Glass Box */}
           <g className="animate-float-slow">
             {/* Top Face */}
             <polygon
-              points="280,100 440,160 340,240 180,180"
+              points="180,50 280,95 210,150 110,105"
               fill="url(#boxTopGrad)"
               stroke="url(#boxEdgeRim)"
-              strokeWidth="2"
+              strokeWidth="1.8"
             />
             {/* Front Left Face */}
             <polygon
-              points="180,180 340,240 340,420 180,360"
+              points="110,105 210,150 210,270 110,225"
               fill="url(#boxFrontGrad)"
               stroke="url(#boxEdgeRim)"
-              strokeWidth="2"
+              strokeWidth="1.8"
             />
             {/* Front Right Face */}
             <polygon
-              points="340,240 440,160 440,340 340,420"
+              points="210,150 280,95 280,215 210,270"
               fill="url(#boxFrontGrad)"
               stroke="url(#boxEdgeRim)"
-              strokeWidth="2"
+              strokeWidth="1.8"
               opacity="0.85"
             />
             {/* Inner Floating Energy Node */}
-            <circle cx="310" cy="270" r="14" fill="#60A5FA" opacity="0.8" filter="url(#postHeroGlow)" />
+            <circle cx="195" cy="170" r="9" fill="#60A5FA" opacity="0.8" filter="url(#borderGlow)" />
           </g>
         </svg>
       </div>
@@ -117,61 +118,31 @@ export default function PostHeroDesignElements() {
       {/* 2. MID POST-HERO AREA (Around Testimonials Section) */}
       {/* ========================================================================= */}
 
-      {/* Left 3D Ambient Glowing Curved Blue Shape */}
-      <div className="absolute left-0 top-[48%] w-[260px] sm:w-[380px] lg:w-[480px] h-[580px] pointer-events-none opacity-85">
+      {/* Left 3D Slim Blue Border Accent (Flush on left border at Testimonials) */}
+      <div className="absolute left-0 top-[50%] w-[65px] sm:w-[95px] lg:w-[125px] h-[200px] sm:h-[260px] pointer-events-none opacity-85">
         <svg
-          viewBox="0 0 500 600"
+          viewBox="0 0 130 260"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full object-contain object-left"
+          className="w-full h-full object-fill object-left"
+          preserveAspectRatio="none"
         >
-          <defs>
-            <linearGradient id="midBlueGrad" x1="0" y1="200" x2="420" y2="450" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#1E3A8A" stopOpacity="0.8" />
-              <stop offset="40%" stopColor="#2563EB" stopOpacity="0.85" />
-              <stop offset="80%" stopColor="#3B82F6" stopOpacity="0.65" />
-              <stop offset="100%" stopColor="#080B10" stopOpacity="0" />
-            </linearGradient>
-
-            <linearGradient id="midBlueRim" x1="0" y1="180" x2="440" y2="480" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.95" />
-              <stop offset="35%" stopColor="#BAE6FD" stopOpacity="0.95" />
-              <stop offset="70%" stopColor="#60A5FA" stopOpacity="0.85" />
-              <stop offset="100%" stopColor="#1D4ED8" stopOpacity="0.2" />
-            </linearGradient>
-          </defs>
-
-          {/* Sweeping S-Curve Surface */}
+          {/* Sweeping Slim Arc on the Border */}
           <path
-            d="M -10 160 C 220 200 380 340 320 480 C 260 580 120 620 -10 640 Z"
-            fill="url(#midBlueGrad)"
+            d="M 0 0 C 65 30 115 75 115 130 C 115 185 65 230 0 260 Z"
+            fill="url(#leftBorderWaveGrad1)"
           />
           <path
-            d="M -10 160 C 220 200 380 340 320 480 C 260 580 120 620 -10 640"
-            stroke="url(#midBlueRim)"
-            strokeWidth="2.8"
+            d="M 0 0 C 65 30 115 75 115 130 C 115 185 65 230 0 260"
+            stroke="url(#leftBorderWaveRim1)"
+            strokeWidth="2.2"
             strokeLinecap="round"
-            filter="url(#postHeroGlow)"
+            filter="url(#borderGlow)"
           />
         </svg>
       </div>
 
-      {/* Right Glowing Floating Sphere at Testimonials */}
-      <div className="absolute right-[4%] top-[52%] w-[140px] sm:w-[200px] h-[140px] sm:h-[200px] pointer-events-none">
-        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full animate-float-reverse">
-          <defs>
-            <radialGradient id="sphereTestimonial" cx="35%" cy="30%" r="70%">
-              <stop offset="0%" stopColor="#FFFFFF" />
-              <stop offset="25%" stopColor="#93C5FD" />
-              <stop offset="55%" stopColor="#3B82F6" />
-              <stop offset="85%" stopColor="#1E3A8A" />
-              <stop offset="100%" stopColor="#0B132B" />
-            </radialGradient>
-          </defs>
-          <circle cx="100" cy="100" r="62" fill="url(#sphereTestimonial)" filter="url(#postHeroGlow)" opacity="0.9" />
-          <circle cx="84" cy="80" r="16" fill="#FFFFFF" fillOpacity="0.45" filter="blur(4px)" />
-        </svg>
-      </div>
+
 
       {/* ========================================================================= */}
       {/* 3. BOTTOM POST-HERO AREA (Full-width 3D Wave, Cyber Grid & Laser Flare) */}
@@ -240,7 +211,7 @@ export default function PostHeroDesignElements() {
             stroke="url(#postHeroBottomRimGlow)"
             strokeWidth="3"
             strokeLinecap="round"
-            filter="url(#postHeroGlow)"
+            filter="url(#borderGlow)"
           />
         </svg>
       </div>

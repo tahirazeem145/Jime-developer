@@ -208,27 +208,7 @@ export default function BackgroundElements() {
             />
           </g>
 
-          {/* 2. FLOATING 3D MATTE SPHERE */}
-          <g className="animate-float-slow" filter="url(#sphereShadow)">
-            {/* Sphere Body */}
-            <circle
-              cx="490"
-              cy="230"
-              r="38"
-              fill="url(#sphere3DLight)"
-            />
-            {/* Subtle Specular Glint */}
-            <circle
-              cx="482"
-              cy="218"
-              r="8"
-              fill="#FFFFFF"
-              fillOpacity="0.45"
-              filter="blur(3px)"
-            />
-          </g>
-
-          {/* 3. LOWER ROLLING DUNE / WAVE CURVE */}
+          {/* 2. LOWER ROLLING DUNE / WAVE CURVE */}
           <g>
             <path
               d="M 720 450 C 600 500 420 600 300 680 C 200 730 100 770 20 810 L 720 810 Z"

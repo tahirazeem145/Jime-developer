@@ -8,6 +8,7 @@ import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import BackgroundElements from './components/BackgroundElements';
 import PostHeroDesignElements from './components/PostHeroDesignElements';
+import ScrollProgressBall from './components/ScrollProgressBall';
 import ParticleBackground from './components/ParticleBackground';
 import MouseGlow from './components/MouseGlow';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
@@ -64,6 +65,9 @@ export default function App() {
 
         {/* Floating Action Button */}
         <FloatingWhatsApp />
+
+        {/* 3D Interactive Scroll Progress Ball (Moves down to FAQ) */}
+        <ScrollProgressBall />
 
         {/* Start Your Project Modal */}
         <ProjectModal 
