@@ -14,7 +14,7 @@ export default function Footer({ onOpenProjectModal }) {
             {/* Logo */}
             <a href="#" className="inline-block mb-5 transition-transform duration-300 hover:scale-[1.02]">
               <img
-                src="/assets/jime-logo-white.png"
+                src="./assets/jime-logo-white.png"
                 alt="Jime Developers"
                 className="h-8 sm:h-9 w-auto object-contain brightness-0 invert drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]"
               />

@@ -86,7 +86,7 @@ export default function Navbar({ onOpenProjectModal }) {
               <div className="flex items-center gap-3">
                 <a href="#" className="flex items-center group transition-transform duration-300 hover:scale-[1.02]">
                   <img
-                    src="/assets/jime-logo-white.png"
+                    src="./assets/jime-logo-white.png"
                     alt="Jime Developers"
                     className="h-8 sm:h-9 w-auto object-contain brightness-0 invert transition-all duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]"
                   />

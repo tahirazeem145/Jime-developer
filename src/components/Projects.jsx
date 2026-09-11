@@ -35,7 +35,7 @@ export default function Projects() {
       title: 'Tamizha Jobs',
       headline: 'AI-Powered Career & Recruitment Ecosystem',
       description: 'A scalable recruitment platform engineered for speed, offering real-time applicant tracking, intelligent resume screening, and sub-100ms job search.',
-      image: '/assets/tamizha-jobs.png',
+      image: './assets/tamizha-jobs.png',
       tags: ['React', 'Node.js', 'PostgreSQL', 'TailwindCSS'],
       metrics: [
         { label: 'Monthly Active', value: '100k+' },
@@ -52,7 +52,7 @@ export default function Projects() {
       title: 'Al-Hidhaya Academy',
       headline: 'Next-Gen Educational Management & Portal',
       description: 'Unified cloud school management system featuring automated gradebooks, attendance sync, parent-teacher live communication, and exam evaluation.',
-      image: '/assets/al-hidhaya-school.jpg',
+      image: './assets/al-hidhaya-school.jpg',
       tags: ['Next.js', 'TypeScript', 'Supabase', 'TailwindCSS'],
       metrics: [
         { label: 'Enrolled Students', value: '5,000+' },
@@ -69,7 +69,7 @@ export default function Projects() {
       title: 'Affylix Store',
       headline: 'One Link. Sell Anything Effortlessly.',
       description: 'A mobile-first social commerce storefront that helps creators turn one link into a scalable income stream.',
-      image: '/assets/affylix-store.png',
+      image: './assets/affylix-store.png',
       tags: ['React', 'Node.js', 'Social Commerce', 'TailwindCSS'],
       metrics: [
         { label: 'Monthly Active', value: '50k+' },
@@ -86,7 +86,7 @@ export default function Projects() {
       title: 'UnknownRx',
       headline: 'Premium Streetwear E-Commerce Platform',
       description: 'A bold WooCommerce-powered streetwear store designed for performance, branding, and seamless shopping.',
-      image: '/assets/unknownrx.png',
+      image: './assets/unknownrx.png',
       tags: ['WooCommerce', 'WordPress', 'React', 'Stripe'],
       metrics: [
         { label: 'Sales Growth', value: '+120%' },
@@ -103,7 +103,7 @@ export default function Projects() {
       title: 'Fun Math',
       headline: 'Interactive Math Learning App for Kids',
       description: 'A bilingual, gamified math learning app built with React Native and Expo to make arithmetic fun and interactive for kids.',
-      image: '/assets/fun-math.png',
+      image: './assets/fun-math.png',
       tags: ['React Native', 'Expo', 'TypeScript', 'Gamification'],
       metrics: [
         { label: 'Downloads', value: '25k+' },

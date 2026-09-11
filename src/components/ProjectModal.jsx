@@ -283,13 +283,13 @@ export default function ProjectModal({ isOpen, onClose }) {
         {/* Modal Header */}
         <div className="flex items-center justify-between px-5 sm:px-8 pt-5 pb-3 border-b border-white/10">
           <div className="flex items-center gap-2.5">
-            <div className="flex items-center">
-              <img
-                src="/assets/jime-logo-white.png"
-                alt="Jime Developers"
-                className="h-7 sm:h-8 w-auto object-contain brightness-0 invert drop-shadow-[0_0_12px_rgba(255,255,255,0.25)]"
-              />
-            </div>
+              <div className="flex items-center gap-3">
+                <img
+                  src="./assets/jime-logo-white.png"
+                  alt="Jime Developers"
+                  className="h-7 w-auto object-contain brightness-0 invert opacity-90"
+                />
+              </div>
             <div>
               <h2 className="font-sora font-bold text-lg sm:text-xl text-[#F8FAFC]">
                 Start Your Project
