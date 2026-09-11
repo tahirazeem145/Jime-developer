@@ -57,62 +57,7 @@ export default function PostHeroDesignElements() {
         </svg>
       </div>
 
-      {/* Right 3D Compact Floating Sapphire Prism at Projects Section */}
-      <div className="absolute right-0 top-[15%] w-[160px] sm:w-[220px] lg:w-[280px] h-[280px] sm:h-[360px] pointer-events-none opacity-85">
-        <svg
-          viewBox="0 0 300 380"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full object-contain object-right"
-        >
-          <defs>
-            <linearGradient id="boxFrontGrad" x1="80" y1="80" x2="260" y2="260" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.4" />
-              <stop offset="60%" stopColor="#1D4ED8" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#0B132B" stopOpacity="0.7" />
-            </linearGradient>
 
-            <linearGradient id="boxTopGrad" x1="100" y1="40" x2="280" y2="140" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#93C5FD" stopOpacity="0.55" />
-              <stop offset="100%" stopColor="#2563EB" stopOpacity="0.25" />
-            </linearGradient>
-
-            <linearGradient id="boxEdgeRim" x1="80" y1="40" x2="280" y2="280" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.95" />
-              <stop offset="40%" stopColor="#60A5FA" stopOpacity="0.85" />
-              <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.35" />
-            </linearGradient>
-          </defs>
-
-          {/* 3D Geometric Isometric Glass Box */}
-          <g className="animate-float-slow">
-            {/* Top Face */}
-            <polygon
-              points="180,50 280,95 210,150 110,105"
-              fill="url(#boxTopGrad)"
-              stroke="url(#boxEdgeRim)"
-              strokeWidth="1.8"
-            />
-            {/* Front Left Face */}
-            <polygon
-              points="110,105 210,150 210,270 110,225"
-              fill="url(#boxFrontGrad)"
-              stroke="url(#boxEdgeRim)"
-              strokeWidth="1.8"
-            />
-            {/* Front Right Face */}
-            <polygon
-              points="210,150 280,95 280,215 210,270"
-              fill="url(#boxFrontGrad)"
-              stroke="url(#boxEdgeRim)"
-              strokeWidth="1.8"
-              opacity="0.85"
-            />
-            {/* Inner Floating Energy Node */}
-            <circle cx="195" cy="170" r="9" fill="#60A5FA" opacity="0.8" filter="url(#borderGlow)" />
-          </g>
-        </svg>
-      </div>
 
       {/* ========================================================================= */}
       {/* 2. MID POST-HERO AREA (Around Testimonials Section) */}
