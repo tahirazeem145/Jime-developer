@@ -1,4 +1,5 @@
 import React from 'react';
+import LiquidWaveBottom from './LiquidWaveBottom';
 
 export default function PostHeroDesignElements() {
   return (
@@ -104,62 +105,8 @@ export default function PostHeroDesignElements() {
       {/* Perspective Cyber Grid Floor at bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-[280px] sm:h-[380px] md:h-[440px] cyber-grid-bottom opacity-50 sm:opacity-70" />
 
-      {/* Full-width 3D Blue Waves with Glowing Rim Lights at the very bottom */}
-      <div className="absolute bottom-0 left-0 right-0 w-full h-[220px] sm:h-[300px] md:h-[360px]">
-        <svg
-          viewBox="0 0 1440 360"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full object-cover object-bottom"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            {/* Primary Sapphire Gradient */}
-            <linearGradient id="postHeroBottomWave1" x1="720" y1="40" x2="720" y2="360" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#1E3A8A" stopOpacity="0.65" />
-              <stop offset="50%" stopColor="#0F172A" stopOpacity="0.88" />
-              <stop offset="100%" stopColor="#080B10" stopOpacity="0.98" />
-            </linearGradient>
-
-            {/* Secondary Azure Gradient */}
-            <linearGradient id="postHeroBottomWave2" x1="720" y1="90" x2="720" y2="360" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#2563EB" stopOpacity="0.6" />
-              <stop offset="60%" stopColor="#1E3A8A" stopOpacity="0.85" />
-              <stop offset="100%" stopColor="#080B10" stopOpacity="0.98" />
-            </linearGradient>
-
-            {/* Glowing Cyan Rim Light */}
-            <linearGradient id="postHeroBottomRimGlow" x1="0" y1="0" x2="1440" y2="0" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#3B82F6" stopOpacity="0" />
-              <stop offset="15%" stopColor="#60A5FA" stopOpacity="0.7" />
-              <stop offset="50%" stopColor="#E0F2FE" stopOpacity="1" />
-              <stop offset="85%" stopColor="#60A5FA" stopOpacity="0.7" />
-              <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-
-          {/* Background Dune Wave */}
-          <path
-            d="M 0 200 C 320 120 640 240 960 160 C 1200 100 1360 140 1440 170 L 1440 360 L 0 360 Z"
-            fill="url(#postHeroBottomWave1)"
-          />
-
-          {/* Foreground Dune Wave */}
-          <path
-            d="M 0 250 C 280 180 560 270 880 200 C 1140 145 1320 215 1440 240 L 1440 360 L 0 360 Z"
-            fill="url(#postHeroBottomWave2)"
-          />
-
-          {/* Glowing Top Electric Rim Line */}
-          <path
-            d="M 0 250 C 280 180 560 270 880 200 C 1140 145 1320 215 1440 240"
-            stroke="url(#postHeroBottomRimGlow)"
-            strokeWidth="3"
-            strokeLinecap="round"
-            filter="url(#borderGlow)"
-          />
-        </svg>
-      </div>
+      {/* Interactive Liquid Flow Wave reacting in real-time to cursor hover */}
+      <LiquidWaveBottom />
 
       {/* Laser Horizon Flare Light at the bottom */}
       <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center">
