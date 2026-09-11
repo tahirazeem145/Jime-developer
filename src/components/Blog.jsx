@@ -77,12 +77,12 @@ export default function Blog({ onOpenProjectModal }) {
   const [selectedArticle, setSelectedArticle] = useState(null);
 
   return (
-    <section id="blog" className="relative w-full bg-transparent py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-white/5">
+    <section id="blog" className="relative z-10 w-full bg-transparent pt-20 sm:pt-28 pb-48 sm:pb-64 md:pb-80 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-white/5">
       {/* Ambient background glows */}
       <div className="absolute top-1/4 left-1/3 w-[550px] h-[550px] rounded-full bg-accent-blue/5 blur-[150px] pointer-events-none -z-10" />
       <div className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] rounded-full bg-primary-blue/5 blur-[130px] pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-20">
         
         {/* SECTION HEADER */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
@@ -111,12 +111,12 @@ export default function Blog({ onOpenProjectModal }) {
         </div>
 
         {/* BLOG CARDS GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 relative z-20">
           {BLOG_POSTS.map((post) => (
             <article
               key={post.id}
               onClick={() => setSelectedArticle(post)}
-              className="group flex flex-col rounded-2xl bg-white/[0.02] border border-white/10 hover:border-accent-blue/40 overflow-hidden backdrop-blur-md transition-all duration-300 hover:shadow-[0_15px_35px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 cursor-pointer"
+              className="group flex flex-col rounded-2xl bg-[#0B101D]/90 border border-white/10 hover:border-accent-blue/40 overflow-hidden backdrop-blur-md transition-all duration-300 hover:shadow-[0_15px_35px_rgba(59,130,246,0.2)] hover:-translate-y-1.5 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
             >
               {/* Card Image / Banner Header */}
               <div className={`relative w-full h-48 sm:h-52 bg-gradient-to-br ${post.gradient} p-6 flex flex-col justify-center items-center text-center overflow-hidden`}>
