@@ -3,8 +3,8 @@ import { Instagram, Linkedin } from 'lucide-react';
 
 export default function Footer({ onOpenProjectModal }) {
   return (
-    <footer className="relative z-20 w-full bg-[#06090F] border-t border-white/10 pt-16 sm:pt-20 pb-12 px-4 sm:px-6 lg:px-12 select-none">
-      <div className="max-w-7xl mx-auto">
+    <footer className="relative z-20 w-full bg-[#03060C] border-t border-white/10 pt-16 sm:pt-20 pb-0 overflow-hidden select-none">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         
         {/* TOP SECTION: 4 COLUMNS */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 sm:gap-12 pb-14 sm:pb-16 border-b border-white/10">
@@ -170,11 +170,60 @@ export default function Footer({ onOpenProjectModal }) {
 
         </div>
 
-        {/* BOTTOM BAR: COPYRIGHT */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-inter text-left">
-          <p>© 2026 Jime Developers. All rights reserved.</p>
+        {/* BOTTOM METADATA BAR (LARAVEL STYLE) */}
+        <div className="pt-8 pb-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-inter">
+          <div className="flex items-center gap-6">
+            <p>© 2026 Jime Developers</p>
+            <a
+              href="https://www.jimedevelopers.in/privacy-policy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-slate-300 transition-colors duration-200"
+            >
+              Legal
+            </a>
+            <a
+              href="https://www.jimedevelopers.in/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-slate-300 transition-colors duration-200"
+            >
+              Trust
+            </a>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-medium text-emerald-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              All Systems Operational
+            </span>
+          </div>
         </div>
 
+      </div>
+
+      {/* MASSIVE COLOSSAL WATERMARK WORDMARK (LARAVEL STYLE) */}
+      <div className="w-full overflow-hidden select-none pointer-events-none flex justify-center items-end border-t border-white/[0.04] bg-gradient-to-b from-transparent to-[#020408] pt-4 sm:pt-6 pb-2 sm:pb-4 px-2 sm:px-6">
+        <svg
+          viewBox="0 0 1400 220"
+          className="w-full h-auto max-w-full select-none pointer-events-none"
+          aria-hidden="true"
+        >
+          <text
+            x="50%"
+            y="82%"
+            textAnchor="middle"
+            className="font-sora font-extrabold fill-[#091122] tracking-tighter"
+            style={{
+              fontSize: '196px',
+              fontFamily: 'Sora, Inter, sans-serif',
+              fontWeight: 800,
+              letterSpacing: '-0.04em',
+            }}
+          >
+            Jime Developers
+          </text>
+        </svg>
       </div>
     </footer>
   );
