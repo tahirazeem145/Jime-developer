@@ -55,7 +55,7 @@ export default function Hero({ onOpenProjectModal }) {
     <div 
       id="home" 
       ref={heroRef}
-      className="relative z-10 w-full flex flex-col justify-center items-center pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-12"
+      className="relative z-10 w-full flex flex-col justify-center items-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8"
     >
       <div 
         ref={heroContentRef}

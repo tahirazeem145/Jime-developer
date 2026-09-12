@@ -40,7 +40,7 @@ export default function App() {
           <ParticleBackground />
 
           {/* 1st SECTION: Hero Section (with its own dedicated 3D elements) */}
-          <div className="relative w-full min-h-screen flex flex-col justify-center items-center">
+          <div className="relative w-full flex flex-col items-center">
             {/* 3D Background Elements for Hero only */}
             <BackgroundElements />
             <Hero onOpenProjectModal={() => setIsProjectModalOpen(true)} />
@@ -76,9 +76,6 @@ export default function App() {
 
         {/* Floating Action Button */}
         <FloatingWhatsApp />
-
-        {/* 3D Interactive Scroll Progress Ball (Moves down to FAQ) */}
-        <ScrollProgressBall />
 
         {/* Start Your Project Modal */}
         <ProjectModal 
