@@ -14,6 +14,7 @@ import PostHeroDesignElements from './components/PostHeroDesignElements';
 import MouseGlow from './components/MouseGlow';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import ProjectModal from './components/ProjectModal';
+import ScrollProgressLine from './components/ScrollProgressLine';
 
 export default function App() {
   const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
@@ -72,6 +73,9 @@ export default function App() {
 
         {/* Floating Action Button */}
         <FloatingWhatsApp />
+
+        {/* Minimalist Right-Side Scroll Progress Line */}
+        <ScrollProgressLine />
 
         {/* Start Your Project Modal */}
         <ProjectModal 
