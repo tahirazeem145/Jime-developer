@@ -11,7 +11,6 @@ import ContactCTA from './components/ContactCTA';
 import Footer from './components/Footer';
 import BackgroundElements from './components/BackgroundElements';
 import PostHeroDesignElements from './components/PostHeroDesignElements';
-import ScrollProgressBall from './components/ScrollProgressBall';
 import ParticleBackground from './components/ParticleBackground';
 import MouseGlow from './components/MouseGlow';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
