@@ -78,18 +78,6 @@ export default function FAQ({ onOpenProjectModal }) {
       <div className="absolute bottom-1/3 left-1/4 w-[450px] h-[450px] rounded-full bg-blue-600/5 blur-[130px] pointer-events-none -z-10" />
 
       <div className="max-w-4xl mx-auto relative z-10 text-center">
-        
-        {/* Eyebrow badge */}
-        <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-3.5">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-blue opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-blue shadow-[0_0_8px_rgba(37,99,235,0.8)]"></span>
-          </span>
-          <span className="text-xs font-sora font-semibold tracking-wider uppercase text-accent-blue">
-            Questions & Answers
-          </span>
-        </div>
-
         {/* Section Headline */}
         <h2 className="font-sora font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[48px] leading-[1.12] text-slate-950 tracking-tight">
           Frequently Asked{' '}
@@ -97,10 +85,6 @@ export default function FAQ({ onOpenProjectModal }) {
             Questions.
           </span>
         </h2>
-        
-        <p className="mt-3.5 text-sm sm:text-base text-slate-500 font-inter max-w-xl mx-auto leading-relaxed">
-          Everything you need to know about our engineering process, pricing, timelines, and post-launch support.
-        </p>
 
         {/* ACCORDION LIST */}
         <div className="mt-12 sm:mt-16 space-y-3.5 text-left">
