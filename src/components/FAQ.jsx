@@ -72,7 +72,7 @@ export default function FAQ({ onOpenProjectModal }) {
   };
 
   return (
-    <section id="faq" className="relative w-full bg-transparent py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-slate-200">
+    <section id="faq" className="relative w-full bg-transparent pt-10 pb-12 sm:pt-12 sm:pb-14 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-slate-200">
       {/* Ambient background glows */}
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-[150px] pointer-events-none -z-10" />
       <div className="absolute bottom-1/3 left-1/4 w-[450px] h-[450px] rounded-full bg-blue-600/5 blur-[130px] pointer-events-none -z-10" />
@@ -87,7 +87,7 @@ export default function FAQ({ onOpenProjectModal }) {
         </h2>
 
         {/* ACCORDION LIST */}
-        <div className="mt-12 sm:mt-16 space-y-3.5 text-left">
+        <div className="mt-8 sm:mt-10 space-y-3.5 text-left">
           {FAQ_ITEMS.map((item, index) => {
             const isOpen = openIndex === index;
             return (

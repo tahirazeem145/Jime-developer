@@ -146,7 +146,7 @@ export default function Projects() {
           scrollTrigger: {
             trigger: section,
             start: 'top top',
-            end: () => `+=${getScrollDistance() + 450}`,
+            end: () => `+=${getScrollDistance() + 30}`,
             pin: true,
             pinSpacing: true,
             scrub: 1.0,

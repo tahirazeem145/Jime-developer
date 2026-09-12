@@ -3,11 +3,11 @@ import { Instagram, Linkedin } from 'lucide-react';
 
 export default function Footer({ onOpenProjectModal }) {
   return (
-    <footer className="relative z-20 w-full bg-[#F8FAFC] border-t border-slate-200 pt-16 sm:pt-20 pb-0 overflow-hidden select-none">
+    <footer className="relative z-20 w-full bg-[#F8FAFC] border-t border-slate-200 pt-10 sm:pt-14 pb-0 overflow-hidden select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         
         {/* TOP SECTION: 4 COLUMNS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 sm:gap-12 pb-14 sm:pb-16 border-b border-slate-200">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-slate-200">
           
           {/* COLUMN 1: BRAND INFO (Spans 2 columns on large screens) */}
           <div className="lg:col-span-2 flex flex-col items-start text-left max-w-sm">

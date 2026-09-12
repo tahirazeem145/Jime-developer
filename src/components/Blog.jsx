@@ -31,11 +31,11 @@ export default function Blog({ onOpenProjectModal }) {
   const [selectedArticle, setSelectedArticle] = useState(null);
 
   return (
-    <section id="blog" className="relative z-10 w-full bg-transparent pt-16 sm:pt-24 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-slate-200">
+    <section id="blog" className="relative z-10 w-full bg-transparent pt-10 sm:pt-12 pb-10 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-slate-200">
       <div className="max-w-7xl mx-auto relative z-20">
         
         {/* SECTION HEADER */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-7 sm:mb-8">
           <div className="max-w-2xl text-left">
             {/* Eyebrow badge */}
             <span className="text-xs sm:text-sm font-sora font-semibold tracking-wider uppercase text-accent-blue block mb-2">

@@ -53,7 +53,7 @@ export default function Testimonials() {
   const otherReviews = TESTIMONIALS_DATA.filter((t) => !t.featured);
 
   return (
-    <section id="testimonials" className="relative w-full bg-transparent py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden select-none">
+    <section id="testimonials" className="relative w-full bg-transparent pt-10 pb-12 sm:pt-12 sm:pb-14 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-slate-200/80">
       {/* Ambient background glows */}
       <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-[140px] pointer-events-none -z-10" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-blue-600/5 blur-[120px] pointer-events-none -z-10" />
@@ -61,7 +61,7 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* SECTION HEADER */}
-        <div className="mb-12 sm:mb-16">
+        <div className="mb-8 sm:mb-10">
           <div className="max-w-2xl text-left">
             {/* Eyebrow badge */}
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-3.5">

@@ -50,11 +50,11 @@ export default function ContactCTA() {
   };
 
   return (
-    <section id="contact" className="relative z-10 w-full bg-transparent pt-10 sm:pt-14 pb-20 sm:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-slate-200">
+    <section id="contact" className="relative z-10 w-full bg-transparent pt-10 sm:pt-12 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-slate-200">
       <div className="max-w-7xl mx-auto relative z-20">
         
         {/* SECTION HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-3.5">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-blue opacity-75"></span>
