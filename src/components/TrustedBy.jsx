@@ -164,8 +164,7 @@ export default function TrustedBy() {
         
         {/* Section Heading Badge (PROUDLY WORKED WITH) */}
         <div className="inline-flex items-center justify-center mb-6 sm:mb-7">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 backdrop-blur-md shadow-[0_2px_10px_rgba(0,0,0,0.03)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
+          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white border border-slate-200 backdrop-blur-md shadow-[0_2px_10px_rgba(0,0,0,0.03)]">
             <span className="text-[11px] sm:text-xs font-sora font-bold tracking-[0.18em] uppercase text-accent-blue">
               PROUDLY WORKED WITH
             </span>
