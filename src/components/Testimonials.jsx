@@ -60,8 +60,8 @@ export default function Testimonials() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* SECTION HEADER & METRIC STATS ROW */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 sm:mb-16">
+        {/* SECTION HEADER */}
+        <div className="mb-12 sm:mb-16">
           <div className="max-w-2xl text-left">
             {/* Eyebrow badge */}
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-3.5">
@@ -81,46 +81,6 @@ export default function Testimonials() {
                 for it.
               </span>
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-slate-500 font-inter max-w-xl leading-relaxed">
-              Read direct feedback from founders and engineering leaders across India and Malaysia who built and shipped with Jime Developers.
-            </p>
-          </div>
-
-          {/* TWO HIGHLIGHT METRIC PILLS */}
-          <div className="flex flex-wrap sm:flex-nowrap items-center gap-3.5 sm:gap-4 self-start lg:self-end">
-            {/* Stat Pill 1: 15+ Projects delivered */}
-            <div className="p-1 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
-              <div className="rounded-[calc(1rem-0.125rem)] bg-white px-4 py-3 sm:px-5 sm:py-3.5 flex items-center gap-3 border border-slate-100">
-                <div className="font-sora font-extrabold text-2xl sm:text-3xl text-accent-blue tracking-tight">
-                  15+
-                </div>
-                <div className="text-left">
-                  <div className="text-xs sm:text-sm font-sora font-bold text-slate-900 leading-tight">
-                    Projects
-                  </div>
-                  <div className="text-[11px] text-slate-500 font-inter font-medium">
-                    Delivered with excellence
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Stat Pill 2: 100% Launched on schedule */}
-            <div className="p-1 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
-              <div className="rounded-[calc(1rem-0.125rem)] bg-white px-4 py-3 sm:px-5 sm:py-3.5 flex items-center gap-3 border border-slate-100">
-                <div className="font-sora font-extrabold text-2xl sm:text-3xl text-emerald-600 tracking-tight">
-                  100%
-                </div>
-                <div className="text-left">
-                  <div className="text-xs sm:text-sm font-sora font-bold text-slate-900 leading-tight">
-                    On Schedule
-                  </div>
-                  <div className="text-[11px] text-slate-500 font-inter font-medium">
-                    Reliable milestone delivery
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
