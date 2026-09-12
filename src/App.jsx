@@ -11,7 +11,6 @@ import ContactCTA from './components/ContactCTA';
 import Footer from './components/Footer';
 import BackgroundElements from './components/BackgroundElements';
 import PostHeroDesignElements from './components/PostHeroDesignElements';
-import ParticleBackground from './components/ParticleBackground';
 import MouseGlow from './components/MouseGlow';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import ProjectModal from './components/ProjectModal';
@@ -35,9 +34,6 @@ export default function App() {
         <main className="relative z-10 w-full flex-grow flex flex-col">
           {/* Interactive Cursor Mouse Glow */}
           <MouseGlow />
-
-          {/* Floating Particles */}
-          <ParticleBackground />
 
           {/* 1st SECTION: Hero Section (with its own dedicated 3D elements) */}
           <div className="relative w-full flex flex-col items-center">
