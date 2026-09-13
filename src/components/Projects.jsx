@@ -151,7 +151,6 @@ export default function Projects() {
             pinSpacing: true,
             scrub: 1.0,
             invalidateOnRefresh: true,
-            anticipatePin: 1,
             onUpdate: (self) => {
               // Update live progress bar
               if (progressBarRef.current) {

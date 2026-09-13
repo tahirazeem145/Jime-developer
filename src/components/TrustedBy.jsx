@@ -152,9 +152,6 @@ const CLIENT_LOGOS = [
 ];
 
 export default function TrustedBy() {
-  // Duplicate array for seamless infinite marquee loop
-  const marqueeLogos = [...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS];
-
   return (
     <section className="relative w-full bg-slate-50/50 pt-2 pb-2 sm:pt-3 sm:pb-3 overflow-hidden border-t border-b border-slate-200 select-none">
       {/* Subtle background glow */}
@@ -174,24 +171,42 @@ export default function TrustedBy() {
         {/* Marquee Container with Left & Right Gradient Fade Masks */}
         <div className="relative w-full overflow-hidden">
           {/* Left Gradient Fade */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-slate-50 via-slate-50/80 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-slate-50 via-slate-50/90 to-transparent z-10 pointer-events-none" />
 
           {/* Right Gradient Fade */}
-          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-slate-50 via-slate-50/80 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-slate-50 via-slate-50/90 to-transparent z-10 pointer-events-none" />
 
-          {/* Infinite Moving Logo Track */}
-          <div className="flex w-max animate-marquee items-center gap-8 sm:gap-12 md:gap-16 py-1.5">
-            {marqueeLogos.map((client, index) => (
-              <div
-                key={`${client.id}-${index}`}
-                className="flex items-center justify-center px-4 py-2.5 rounded-2xl bg-white border border-slate-200/70 hover:border-slate-300 hover:bg-white text-slate-500 hover:text-slate-900 transition-all duration-300 group cursor-default hover:scale-105 shadow-sm"
-                title={`${client.name} — ${client.category}`}
-              >
-                <div className="transition-transform duration-300 drop-shadow-sm group-hover:drop-shadow-[0_2px_10px_rgba(37,99,235,0.2)]">
-                  {client.svg}
+          {/* Dual Seamless Moving Logo Track */}
+          <div className="flex w-max animate-marquee py-1.5">
+            {/* Track 1 */}
+            <div className="flex items-center gap-6 sm:gap-10 md:gap-14 pr-6 sm:pr-10 md:pr-14 shrink-0">
+              {CLIENT_LOGOS.map((client) => (
+                <div
+                  key={`t1-${client.id}`}
+                  className="flex items-center justify-center px-4 py-2.5 rounded-2xl bg-white border border-slate-200/70 hover:border-slate-300 hover:bg-white text-slate-500 hover:text-slate-900 transition-all duration-300 group cursor-default hover:scale-105 shadow-sm shrink-0"
+                  title={`${client.name} — ${client.category}`}
+                >
+                  <div className="transition-transform duration-300 drop-shadow-sm group-hover:drop-shadow-[0_2px_10px_rgba(37,99,235,0.2)]">
+                    {client.svg}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Track 2 (Clone for perfect seamless continuous loop) */}
+            <div className="flex items-center gap-6 sm:gap-10 md:gap-14 pr-6 sm:pr-10 md:pr-14 shrink-0" aria-hidden="true">
+              {CLIENT_LOGOS.map((client) => (
+                <div
+                  key={`t2-${client.id}`}
+                  className="flex items-center justify-center px-4 py-2.5 rounded-2xl bg-white border border-slate-200/70 hover:border-slate-300 hover:bg-white text-slate-500 hover:text-slate-900 transition-all duration-300 group cursor-default hover:scale-105 shadow-sm shrink-0"
+                  title={`${client.name} — ${client.category}`}
+                >
+                  <div className="transition-transform duration-300 drop-shadow-sm group-hover:drop-shadow-[0_2px_10px_rgba(37,99,235,0.2)]">
+                    {client.svg}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
