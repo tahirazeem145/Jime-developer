@@ -31,7 +31,7 @@ export default function Blog({ onOpenProjectModal }) {
   const [selectedArticle, setSelectedArticle] = useState(null);
 
   return (
-    <section id="blog" className="relative z-10 w-full bg-transparent pt-10 sm:pt-12 pb-10 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-slate-200">
+    <section id="blog" className="relative z-10 w-full bg-transparent pt-5 sm:pt-7 pb-5 sm:pb-7 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-slate-200">
       <div className="max-w-7xl mx-auto relative z-20">
         
         {/* SECTION HEADER */}

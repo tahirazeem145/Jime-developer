@@ -50,31 +50,17 @@ export default function ContactCTA() {
   };
 
   return (
-    <section id="contact" className="relative z-10 w-full bg-transparent pt-10 sm:pt-12 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-slate-200">
+    <section id="contact" className="relative z-10 w-full bg-transparent pt-6 sm:pt-8 pb-8 sm:pb-10 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-slate-200">
       <div className="max-w-7xl mx-auto relative z-20">
         
         {/* SECTION HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-3.5">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-blue opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-blue shadow-[0_0_8px_rgba(37,99,235,0.8)]"></span>
-            </span>
-            <span className="text-xs font-sora font-semibold tracking-wider uppercase text-accent-blue">
-              CONTACT US
-            </span>
-          </div>
-
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
           <h2 className="font-sora font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[48px] leading-[1.15] text-slate-950 tracking-tight">
             Let's build your next{' '}
             <span className="text-accent-blue italic">
               digital product.
             </span>
           </h2>
-
-          <p className="mt-4 text-sm sm:text-base text-slate-500 font-inter max-w-xl mx-auto leading-relaxed">
-            Tell us about your project vision, timeline, and requirements. We'll reply with a clear technical roadmap and estimate within 24 hours.
-          </p>
         </div>
 
         {/* 2-COLUMN LAYOUT */}

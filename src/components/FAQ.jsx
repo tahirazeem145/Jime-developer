@@ -72,7 +72,7 @@ export default function FAQ({ onOpenProjectModal }) {
   };
 
   return (
-    <section id="faq" className="relative w-full bg-transparent pt-10 pb-12 sm:pt-12 sm:pb-14 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-slate-200">
+    <section id="faq" className="relative w-full bg-transparent pt-5 pb-5 sm:pt-7 sm:pb-7 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-slate-200">
       {/* Ambient background glows */}
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-[150px] pointer-events-none -z-10" />
       <div className="absolute bottom-1/3 left-1/4 w-[450px] h-[450px] rounded-full bg-blue-600/5 blur-[130px] pointer-events-none -z-10" />
@@ -140,7 +140,7 @@ export default function FAQ({ onOpenProjectModal }) {
         </div>
 
         {/* BOTTOM CALLOUT / CONTACT PROMPT */}
-        <div className="mt-14 sm:mt-18 p-1 sm:p-1.5 rounded-3xl bg-slate-50 border border-slate-200 max-w-2xl mx-auto shadow-sm">
+        <div className="mt-8 sm:mt-10 p-1 sm:p-1.5 rounded-3xl bg-slate-50 border border-slate-200 max-w-2xl mx-auto shadow-sm">
           <div className="rounded-[calc(1.5rem-0.25rem)] bg-white p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left border border-slate-100">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center text-accent-blue flex-shrink-0 shadow-sm">
