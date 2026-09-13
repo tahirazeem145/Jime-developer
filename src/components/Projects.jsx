@@ -200,7 +200,7 @@ export default function Projects() {
       <section 
         id="projects" 
         ref={sectionRef}
-        className="relative z-10 w-full min-h-screen flex flex-col justify-between py-6 sm:py-8 px-4 sm:px-6 lg:px-10 overflow-hidden"
+        className="relative z-10 w-full min-h-screen flex flex-col justify-between pt-3 pb-6 sm:pt-5 sm:pb-8 px-4 sm:px-6 lg:px-10 overflow-hidden"
       >
         {/* Ambient background glows */}
         <div className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-[150px] pointer-events-none -z-10" />
@@ -210,17 +210,6 @@ export default function Projects() {
           {/* SECTION HEADER */}
           <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4 sm:mb-6">
             <div className="max-w-2xl">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-2.5">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-blue opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-blue shadow-[0_0_8px_rgba(37,99,235,0.8)]"></span>
-                </span>
-                <span className="text-xs font-inter font-semibold text-slate-800 tracking-wide">
-                  Featured Case Studies
-                </span>
-              </div>
-
               {/* Headline */}
               <h2 className="font-sora font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-[42px] leading-[1.15] text-slate-950 tracking-tight">
                 Transforming ideas into{' '}

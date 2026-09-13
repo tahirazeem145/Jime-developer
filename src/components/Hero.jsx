@@ -55,7 +55,7 @@ export default function Hero({ onOpenProjectModal }) {
     <div 
       id="home" 
       ref={heroRef}
-      className="relative z-10 w-full flex flex-col justify-center items-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8"
+      className="relative z-10 w-full flex flex-col justify-center items-center pt-24 sm:pt-28 md:pt-32 pb-1 sm:pb-2"
     >
       <div 
         ref={heroContentRef}
@@ -130,9 +130,9 @@ export default function Hero({ onOpenProjectModal }) {
         {/* SUBTITLE */}
         <p 
           ref={subtitleRef}
-          className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-inter font-normal leading-relaxed tracking-normal"
+          className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl text-slate-600 max-w-xs sm:max-w-xl md:max-w-2xl mx-auto font-inter font-normal leading-relaxed tracking-normal px-3"
         >
-          Web and mobile apps, designed and shipped fast.
+          Web and mobile apps, <br className="sm:hidden" />designed and shipped fast.
         </p>
 
         {/* 2 CTA BUTTONS: PRIMARY (WHATSAPP) + SECONDARY (START YOUR PROJECT) */}

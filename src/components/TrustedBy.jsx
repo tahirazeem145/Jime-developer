@@ -156,14 +156,14 @@ export default function TrustedBy() {
   const marqueeLogos = [...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS];
 
   return (
-    <section className="relative w-full bg-slate-50/50 pt-7 pb-10 sm:pt-9 sm:pb-12 overflow-hidden border-t border-b border-slate-200 select-none">
+    <section className="relative w-full bg-slate-50/50 pt-2 pb-2 sm:pt-3 sm:pb-3 overflow-hidden border-t border-b border-slate-200 select-none">
       {/* Subtle background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[180px] bg-blue-500/5 blur-[120px] pointer-events-none rounded-full" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         
         {/* Section Heading Badge (PROUDLY WORKED WITH) */}
-        <div className="inline-flex items-center justify-center mb-6 sm:mb-7">
+        <div className="inline-flex items-center justify-center mb-2.5 sm:mb-3">
           <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white border border-slate-200 backdrop-blur-md shadow-[0_2px_10px_rgba(0,0,0,0.03)]">
             <span className="text-[11px] sm:text-xs font-sora font-bold tracking-[0.18em] uppercase text-accent-blue">
               PROUDLY WORKED WITH
@@ -180,11 +180,11 @@ export default function TrustedBy() {
           <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-slate-50 via-slate-50/80 to-transparent z-10 pointer-events-none" />
 
           {/* Infinite Moving Logo Track */}
-          <div className="flex w-max animate-marquee items-center gap-8 sm:gap-12 md:gap-16 py-3">
+          <div className="flex w-max animate-marquee items-center gap-8 sm:gap-12 md:gap-16 py-1.5">
             {marqueeLogos.map((client, index) => (
               <div
                 key={`${client.id}-${index}`}
-                className="flex items-center justify-center px-4 py-3 rounded-2xl bg-white border border-slate-200/70 hover:border-slate-300 hover:bg-white text-slate-500 hover:text-slate-900 transition-all duration-300 group cursor-default hover:scale-105 shadow-sm"
+                className="flex items-center justify-center px-4 py-2.5 rounded-2xl bg-white border border-slate-200/70 hover:border-slate-300 hover:bg-white text-slate-500 hover:text-slate-900 transition-all duration-300 group cursor-default hover:scale-105 shadow-sm"
                 title={`${client.name} — ${client.category}`}
               >
                 <div className="transition-transform duration-300 drop-shadow-sm group-hover:drop-shadow-[0_2px_10px_rgba(37,99,235,0.2)]">

@@ -120,7 +120,7 @@ export default function BackgroundElements() {
       {/* 3D ORGANIC DUNES & FLOATING SPHERE ON THE RIGHT */}
       <div 
         ref={rightDunesRef}
-        className="absolute right-0 top-0 bottom-0 w-[220px] sm:w-[320px] md:w-[380px] lg:w-[480px] pointer-events-none select-none overflow-hidden z-0 will-change-transform"
+        className="absolute right-0 top-0 bottom-0 w-[140px] xs:w-[180px] sm:w-[320px] md:w-[380px] lg:w-[480px] translate-x-2 xs:translate-x-0 pointer-events-none select-none overflow-hidden z-0 will-change-transform opacity-75 sm:opacity-100"
       >
         <svg
           viewBox="0 0 700 800"

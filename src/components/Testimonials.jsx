@@ -63,17 +63,6 @@ export default function Testimonials() {
         {/* SECTION HEADER */}
         <div className="mb-8 sm:mb-10">
           <div className="max-w-2xl text-left">
-            {/* Eyebrow badge */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 hover:border-accent-blue/40 shadow-sm backdrop-blur-md transition-all mb-3.5">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-blue opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-blue shadow-[0_0_8px_rgba(37,99,235,0.8)]"></span>
-              </span>
-              <span className="text-xs font-sora font-semibold tracking-wider uppercase text-accent-blue">
-                Testimonials
-              </span>
-            </div>
-
             {/* Main Title */}
             <h2 className="font-sora font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[50px] leading-[1.12] text-slate-950 tracking-tight">
               Don't take our word{' '}
